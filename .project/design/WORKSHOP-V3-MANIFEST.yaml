@@ -1,0 +1,317 @@
+# Workshop v3 Canonical Frames — Machine-Readable Manifest
+#
+# Schema: workshop-v3-manifest/1 (repo-local, mirrors play-nice
+# references-v1 field conventions). Retrieved 2026-09-13T02:40Z from the
+# Figma desktop Dev Mode MCP server (get_metadata / get_design_context /
+# get_screenshot) for file Wbg1rdt9fVCjWAXEKI1pTc ("Untitled" — Workshop v3
+# evidence file; the product design file remains VATVojyJZT9HKx0CrDS0yr,
+# DO NOT MODIFY, per the audit's CANONICAL AUTHORITIES section). Every value
+# below was read from the Figma file itself; nothing was inferred from chat
+# prose.
+
+figma_file_key: <figma-file-key>
+figma_file_name: Untitled (Workshop v3 evidence file)
+figma_file_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc
+workshop_version: v3
+workshop_page: "0:1 Workshop"
+
+# Canonical reference artifacts (recovered verbatim)
+philosophy_node_id: "17:8873"            # Project Worlds design philosophy ("The world knows how loudly to exist.")
+audit_node_id: "18:2"                    # Convergence Audit & Final Classification
+classification_node_id: "17:9864"        # Warmth exploration classification (16/16 convergence map)
+lore_registry_node_id: "17:8255"         # Who's Here — canonical lore registry
+design_language_node_id: "17:6852"       # Project Worlds design language
+volume_rules_node_id: "17:7750"          # Emotional Volume Rules
+convergence_roadmap_node_id: "17:10084"  # Convergence roadmap
+
+# The convergence audit (18:2), verbatim summary verdict:
+#   "All 8 frames: CANONICAL REFERENCE — READY FOR IMPLEMENTATION"
+#   "Each frame faithfully embodies 'The world knows how loudly to exist' at its
+#    designated emotional register. No frame requires revision before
+#    implementation handoff. Reservations noted below are known normalization
+#    gaps, not blockers."
+
+# The 8 revised frames — audited, CANONICAL REFERENCE — READY FOR IMPLEMENTATION
+frames_revised:
+  - canonical_name: Today — Quiet Day
+    figma_name: "Today — Quiet Day"
+    node_id: "17:481"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:481
+    page: Workshop
+    dimensions: 1440x1000
+    emotional_volume: "AMBIENT (audit register line: WARM)"
+    status: "CANONICAL REFERENCE — READY FOR IMPLEMENTATION"
+    implementation_ready: true
+    implementation_priority: 1
+    audit_note: "All 7 dimensions pass. Nav canonical. 'Nothing needs you right now' — world carries burden. Mermaid companion present, not center stage."
+    reservations: [mermaid-art, font-fallback, touch-targets, decoration-encoding]
+  - canonical_name: Vault
+    figma_name: "Vault screen"
+    node_id: "17:1014"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:1014
+    page: Workshop
+    dimensions: 1440x1000
+    emotional_volume: "AMBIENT (audit register line: WARM)"
+    status: CANONICAL REFERENCE — READY FOR IMPLEMENTATION
+    implementation_ready: true
+    audit_note: "All 7 dimensions pass. 'Lock vault' (LITERAL ✅). Container metaphor earned. 'Treasures in safekeeping' / 'the sea keeps what it is told' — genuine warmth."
+    reservations: [mermaid-art, font-fallback, decoration-encoding]
+  - canonical_name: Login
+    figma_name: "Project Worlds login"
+    node_id: "17:1681"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:1681
+    page: Workshop
+    dimensions: 900x700
+    emotional_volume: GENEROUS
+    status: CANONICAL REFERENCE — READY FOR IMPLEMENTATION
+    implementation_ready: true
+    audit_note: "All 6 applicable dimensions pass (Attention N/A). 'Enter' (LITERAL ✅, corrected from 'Step inside'). Companion greeting warm. No nav correct for pre-auth."
+    reservations: [mermaid-art, font-fallback]
+  - canonical_name: Mobile Today
+    figma_name: "Today"
+    node_id: "17:1929"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:1929
+    page: Workshop
+    dimensions: 390x844
+    emotional_volume: "AMBIENT (audit register line: WARM)"
+    status: CANONICAL REFERENCE — READY FOR IMPLEMENTATION
+    implementation_ready: true
+    responsive_relationship: "Responsive interpretation of Today — Quiet Day (17:481), same quiet-day product state, 390px mobile form with bottom nav (per audit inventory: 'Mobile Today (17:1929) · Mobile 390px · quiet day, bottom nav')."
+    audit_note: "5 of 7 pass, 2 minor reservations. Vault omitted from 4-item bottom nav — likely intentional. 44px touch targets need implementation verification."
+    reservations: [mermaid-art, mobile-nav, touch-targets, font-fallback, decoration-encoding]
+  - canonical_name: Chat
+    figma_name: "Companion present chat"
+    node_id: "17:2536"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:2536
+    page: Workshop
+    dimensions: 1440x1000
+    emotional_volume: "AMBIENT → PRESENT (audit register line: COMPANION PRESENT)"
+    status: CANONICAL REFERENCE — READY FOR IMPLEMENTATION
+    implementation_ready: true
+    audit_note: "6 of 7 pass, 1 rendering reservation. Left panel text wrapping artifact. 'Would you like me to check, or look at it yourself?' — companion offers choice, never imposes."
+    reservations: [mermaid-art, chat-wrapping, chat-patterns-exploratory, font-fallback, decoration-encoding]
+  - canonical_name: Projects
+    figma_name: "Projects workspace"
+    node_id: "17:2752"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:2752
+    page: Workshop
+    dimensions: 1440x1000
+    emotional_volume: "PRACTICAL (audit register line: CAPABLE)"
+    status: CANONICAL REFERENCE — READY FOR IMPLEMENTATION
+    implementation_ready: true
+    audit_note: "All 7 dimensions pass. 'Watching your projects' — world monitors. 'I can check on this if you'd like' — proportional companion offer. Status uses text + color."
+    reservations: [mermaid-art, font-fallback]
+  - canonical_name: Setup
+    figma_name: "Setup wizard — first encounter"
+    node_id: "17:3039"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:3039
+    page: Workshop
+    dimensions: 1440x900
+    emotional_volume: GENEROUS
+    status: CANONICAL REFERENCE — READY FOR IMPLEMENTATION
+    implementation_ready: true
+    audit_note: "All 6 applicable dimensions pass (Attention N/A). Planet correctly excluded from companion selection. 'Or skip for now' — no pressure."
+    reservations: [mermaid-art, companion-art, font-fallback]
+  - canonical_name: Notifications
+    figma_name: "How the World Tells You Things"
+    node_id: "17:6369"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:6369
+    page: Workshop
+    dimensions: 1440x700
+    emotional_volume: "VARIES (audit register line: CAPABLE)"
+    status: CANONICAL REFERENCE — READY FOR IMPLEMENTATION
+    implementation_ready: true
+    audit_note: "All 7 dimensions pass. Three tiers (GOOD NEWS / A SMALL UPDATE / WHEN YOU'RE READY) with correct persistence rules. Principle stated explicitly."
+    notification_semantics:
+      - "GOOD NEWS → Transient. May gently disappear into history."
+      - "A SMALL UPDATE → Informational. May disappear when safe."
+      - "WHEN YOU'RE READY → Persists until acknowledged. 'No rush, but it's waiting.'"
+      - "Timed messages pause on hover/focus/interaction."
+      - "The world never requires Rylee to read on its clock."
+      - "Urgency through wording and hierarchy — never color alone."
+    reservations: [font-fallback, decoration-encoding]
+
+# The 8 originally-canonical frames — converged in the classification map
+# (17:9864); the four revised-set members here overlap with frames_revised.
+# Node IDs below are the canonical (17:xxx series) frames on the Workshop page.
+frames_originally_canonical:
+  - canonical_name: Empty State — Interests
+    figma_name: "Interests unexplored room"
+    node_id: "17:1515"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:1515
+    page: Workshop
+    emotional_volume: GENEROUS
+    classification: CANONICAL REFERENCE
+    classification_note: "'This room is still empty. It has been keeping the light on for you.' approved. Normalize sidebar labels."
+    status: canonical-reference (16/16 converged; not in the 8-frame revision pass)
+    implementation_ready: true  # per convergence map; not audit-verified
+    reservations: [sidebar-labels, mermaid-art]
+  - canonical_name: Bad Day
+    figma_name: "Today — Bad Day"
+    node_id: "17:2117"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:2117
+    page: Workshop
+    dimensions: 1440x1100
+    emotional_volume: ATTENTIVE
+    classification: CANONICAL REFERENCE
+    classification_note: "Three-tier triage hierarchy approved. Companion at restrained volume. 'This isn't broken. It's waiting for you when you're ready.'"
+    status: canonical-reference (16/16 converged; not in the 8-frame revision pass)
+    implementation_ready: true  # per convergence map; not audit-verified
+    reservations: [sidebar-labels, mermaid-art]
+  - canonical_name: Journal Writing
+    figma_name: "Journal writing"
+    node_id: "17:2268"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:2268
+    page: Workshop
+    dimensions: 1440x1000
+    emotional_volume: QUIET
+    classification: CANONICAL REFERENCE
+    classification_note: "Near-silence is correct. '✦ quietly here' and companion absence during private writing approved. No revisions needed."
+    status: canonical-reference (16/16 converged; not in the 8-frame revision pass)
+    implementation_ready: true  # per convergence map; not audit-verified
+    reservations: []
+  - canonical_name: Settings
+    figma_name: "Project Worlds settings"
+    node_id: "17:3762"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:3762
+    page: Workshop
+    dimensions: 1440x1100
+    emotional_volume: PRACTICAL
+    classification: CANONICAL REFERENCE
+    classification_note: "Section framing and clear controls approved. Companion selector needs lore revision: planet = world; visitors have provenance."
+    status: canonical-reference (16/16 converged; not in the 8-frame revision pass)
+    implementation_ready: true  # per convergence map; not audit-verified
+    reservations: [companion-selector-lore, sidebar-labels]
+  - canonical_name: Companion Popover
+    figma_name: "Companion progressive disclosure"
+    node_id: "17:4565"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:4565
+    page: Workshop
+    dimensions: 1440x800
+    emotional_volume: QUIET → AMBIENT → PRESENT
+    classification: CANONICAL REFERENCE
+    classification_note: "Progressive disclosure from 'quietly here' to 'she's with you' is canonical. Accessibility annotations approved."
+    status: canonical-reference (16/16 converged; not in the 8-frame revision pass)
+    implementation_ready: true  # per convergence map; not audit-verified
+    reservations: [companion-art]
+  - canonical_name: World Overview
+    figma_name: "Your World"
+    node_id: "17:5485"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:5485
+    page: Workshop
+    dimensions: 1440x1000
+    emotional_volume: PRACTICAL
+    classification: CANONICAL REFERENCE
+    classification_note: "Planet as world is correct. Field guide, Burrito Journalism provenance, and capabilities as 'senses' approved."
+    status: canonical-reference (16/16 converged; not in the 8-frame revision pass)
+    implementation_ready: true  # per convergence map; not audit-verified
+    reservations: [sidebar-labels]
+  - canonical_name: Journal Reading
+    figma_name: "Journal reading"
+    node_id: "17:5763"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:5763
+    page: Workshop
+    dimensions: 1440x1000
+    emotional_volume: AMBIENT (WARM, NOSTALGIC)
+    classification: CANONICAL REFERENCE
+    classification_note: "'Your words, kept safe,' quiet-day interstitial, rose dates, and '47 entries kept safe' approved. Canonical sidebar labels."
+    status: canonical-reference (16/16 converged; not in the 8-frame revision pass)
+    implementation_ready: true  # per convergence map; not audit-verified
+    reservations: []
+  - canonical_name: Question
+    figma_name: "Today — Question"
+    node_id: "17:6245"
+    node_url: https://www.figma.com/design/Wbg1rdt9fVCjWAXEKI1pTc?node-id=17:6245
+    page: Workshop
+    dimensions: 1440x1000
+    emotional_volume: AMBIENT → ATTENTIVE (CURIOUS)
+    classification: CANONICAL REFERENCE
+    classification_note: "Attention, uncertainty, and evidence-provenance language approved as canonical. Companion curious posture approved."
+    question_semantics:
+      - "Something caught my attention. ✦"
+      - "This isn't a problem yet — just something I noticed."
+      - "I'll keep watching. It might resolve on its own."
+      - "✦ What I can see: …"
+    status: canonical-reference (16/16 converged; not in the 8-frame revision pass)
+    implementation_ready: true  # per convergence map; not audit-verified
+    reservations: [sidebar-labels]
+
+# Early same-name iterations on the Workshop page — NOT canonical. The audit
+# and classification reference the 17:xxx series above. Kept here only to make
+# the distinction machine-checkable (a future agent must not implement these).
+superseded_iterations:
+  - node_id: "13:14"
+    figma_name: "Today — Quiet Day"
+    superseded_by: "17:481"
+  - node_id: "13:110"
+    figma_name: "Today — Question"
+    superseded_by: "17:6245"
+  - node_id: "13:315"
+    figma_name: "Today — Degraded"
+    superseded_by: "17:2117"  # bad-day/attention lineage; see audit inventory
+  - node_id: "13:410"
+    figma_name: "Today — Bad Day"
+    superseded_by: "17:2117"
+  - node_id: "13:184"
+    figma_name: "Today — Reservation"
+    superseded_by: "17:6245"  # early uncertainty/question lineage
+  - node_id: "13:658"
+    figma_name: "Today — First Run"
+    superseded_by: "17:3039"
+  - node_id: "16:3"
+    figma_name: "Login screen"
+    superseded_by: "17:1681"
+  - node_id: "16:2253"
+    figma_name: "Settings screen"
+    superseded_by: "17:3762"
+  - node_id: "15:84"
+    figma_name: "Today screen"
+    superseded_by: "17:1929"
+  - node_id: "15:404"
+    figma_name: "Vault screen"
+    superseded_by: "17:1014"
+  - node_id: "16:469"
+    figma_name: "Your World"
+    superseded_by: "17:5485"
+
+# The 8 cross-frame reservations, verbatim from the audit (18:2), item 5/6.
+reservations:
+  - id: mermaid-art
+    verbatim: "MERMAID ART — All 8 frames use design-agent illustrations, not source rig 67:2. Implementation uses Direction A (Gentle Silhouette) from the canonical rig at scale-appropriate sizes (16→32→48→80→160→512px)."
+    affects: all-8-revised-frames
+  - id: companion-art
+    verbatim: "COMPANION ART — Setup companion icons are design-agent art. Implementation uses canonical rigs 78:2–82:2 and their 24px icon components."
+    affects: [Setup]
+  - id: mobile-nav
+    verbatim: "MOBILE NAV — Mobile Today shows 4 of 5 nav items (Vault omitted). Implementation confirms which 4 items appear in ≤599px bottom nav."
+    affects: [Mobile Today]
+  - id: chat-wrapping
+    verbatim: "CHAT WRAPPING — Chat frame (17:2536) left panel text wraps character-by-character. Design intent clear; rendering artifact, not design direction."
+    affects: [Chat]
+  - id: chat-patterns-exploratory
+    verbatim: "CHAT PATTERNS — Chat interactions remain EXPLORATORY per canonical-file classification. This frame captures design language and tone."
+    affects: [Chat]
+  - id: font-fallback
+    verbatim: "FONT FALLBACK — Workshop uses Inter. Canonical: Young Serif (expressive), Instrument Sans (interface). Implementation uses canonical fonts."
+    affects: all-16-frames
+  - id: touch-targets
+    verbatim: "TOUCH TARGETS — Mobile frames need implementation verification that all interactive elements meet ≥44px minimum per accessibility contract."
+    affects: [Mobile Today]
+  - id: decoration-encoding
+    verbatim: "DECORATION ENCODING — Ambient characters (✦ ✧ ° ◦ ◖ ◗) need consistent Unicode encoding and aria-hidden per accessibility §7."
+    affects: all-16-frames
+
+# Classification-map (17:9864) common revisions, verbatim:
+common_revisions:
+  - "Sidebar navigation → canonical route labels (Today, Projects, Journal & Memory, Vault, Settings)"
+  - "Mermaid artwork → consistent Direction A visual language"
+  - "Companion selector → lore-informed (planet = world, visitors have provenance)"
+  - "Control labels → literal clarity (poetry in framing, not in buttons)"
+  - "Notification persistence → action-required persists until dismissed"
+
+# Canonical lore (verified in 17:8255 'Who's Here' and 17:8873 philosophy):
+#   🌎 Planet = the Personal World itself (the place, not a companion)
+#   🧜‍♀️ Mermaid = Rylee's companion (origin: Rylee likes mermaids)
+#   🌮 Taco Truck = visiting from Burrito Journalism
+#   🐿️ Squirrel = visiting from VEFR / Ratatarskor
+#   🤖 Robot = Workshop lineage

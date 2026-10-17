@@ -1,0 +1,11 @@
+schema_version: 1
+id: authelia
+name: Sign-in
+kind: http
+base_url: http://authelia.lan.example:9091
+auth:
+  type: none
+network:
+  lan: true
+timeout_s: 5
+max_bytes: 1048576

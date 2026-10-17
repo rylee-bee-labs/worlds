@@ -1,0 +1,7 @@
+schema_version: 1
+id: cleanuparr.stats
+provider: cleanuparr
+method: GET
+path: /api/v2/stats
+effect: read
+ttl_s: 120

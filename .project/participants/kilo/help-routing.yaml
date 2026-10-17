@@ -1,0 +1,49 @@
+schema: play-nice/help-routing-v1
+
+participant: kilo
+based_on: play-nice/question-v1
+
+# The Kilo harness routes by topic. Tool surface / confirmation policy /
+# session lifecycle are the harness's own answers. Reasoning quality is
+# NOT — that's the loaded brain's job. Anything that would mutate canonical
+# project truth is NOT routed to the harness at all; it goes to the owner.
+
+can_answer:
+  - topic: which-tools-are-exposed
+    capability: tool-surface
+  - topic: which-mcp-servers-are-connected
+    capability: tool-surface
+  - topic: how-confirmation-policy-applies
+    capability: confirmation-policy
+  - topic: working-directory-or-environment-resolution
+    capability: session-environment
+  - topic: session-lifecycle-restart-recovery-persistence
+    capability: session-lifecycle
+  - topic: git-read-only-operations
+    capability: git-read
+  - topic: file-search-and-read
+    capability: file-access
+
+cannot_answer:
+  - topic: which-model-is-best-for-task
+    owner: loaded brain pack (.project/participants/<brain>/)
+  - topic: what-a-brain-can-reason-about
+    owner: loaded brain pack
+  - topic: product-priority
+    owner: the human owner (Rylee)
+  - topic: deployment-state
+    owner: project runtime/ops truth
+  - topic: security-policy
+    owner: project canonical contracts
+  - topic: source-code-truth
+    owner: repo + tests + runtime evidence
+  - topic: visual-taste-and-composition
+    owner: figma participant pack
+  - topic: contract-adoption-state
+    owner: .project/contracts/adoption.yaml + canonical library
+  - topic: reasoning-quality
+    owner: loaded brain pack
+
+# Note: help-routing notes (the human-readable explanation of how to use
+# these routes) live in interaction.md; this file is the machine-readable
+# routing map only.

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Personal World — layered planet pet</title>
+  <desc id="desc">Personal World, a friendly buttercream planet with pastel cloud bands and a lavender-and-mint ring. Front and back ring groups have matching local pivot origins and can be animated independently of the globe by applying identical transforms. Transparent background.</desc>
+  <g id="personal-world-pet" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <g id="ring-back" transform="translate(256 280) rotate(0) scale(1 1)" data-rig-control="rings" data-local-pivot="0 0">
+      <path id="ring-back-base" fill="#C8B8E1" stroke="none" d="M-192.11 62.42 C-203.72 26.70 -127.11 -30.20 -21.01 -64.67 C85.09 -99.15 180.51 -98.14 192.11 -62.42L145.51 -47.28 C139.71 -65.14 69.86 -58.45 -10.51 -32.34 C-90.87 -6.22 -151.31 29.42 -145.51 47.28 Z" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="ring-back-stripe" fill="none" stroke="#A8DCCC" stroke-width="9" d="M-172.14 55.93 C-181.02 28.62 -111.14 -18.56 -16.07 -49.45 C79.00 -80.35 163.27 -83.25 172.14 -55.93" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="ring-back-outline" fill="none" d="M-192.11 62.42 C-203.72 26.70 -127.11 -30.20 -21.01 -64.67 C85.09 -99.15 180.51 -98.14 192.11 -62.42 M-145.51 47.28 C-151.31 29.42 -90.87 -6.22 -10.51 -32.34 C69.86 -58.45 139.71 -65.14 145.51 -47.28" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="globe">
+      <g id="planet-body">
+        <circle id="planet-disc" cx="256" cy="242" r="115" fill="#FAE8BC" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="cloud-bands" stroke="none">
+        <path id="cloud-band-upper" fill="#F2CDBB" d="M162 176 C218 190 294 192 355 184 A115 115 0 0 0 344 168 C283 176 218 174 174 163 A115 115 0 0 0 162 176 Z" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path id="cloud-band-lower" fill="#F2CDBB" d="M145 273 C218 292 298 288 367 272 A115 115 0 0 1 357 297 C286 312 214 310 156 299 A115 115 0 0 1 145 273 Z" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path id="cloud-band-bottom" fill="#EDC1B4" d="M177 326 C226 337 279 338 330 330 A115 115 0 0 1 177 326 Z" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="planet-highlight" fill="none" stroke="#FFF6DF" stroke-width="8">
+        <path d="M180 183 Q201 153 235 150" id="planet-highlight-path-01" fill="none" stroke="#FFF6DF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="outline-details" fill="none">
+        <circle id="planet-outline" cx="256" cy="242" r="115" fill="none" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="face">
+        <g id="cheek-left" fill="#ECAFC1" stroke="none">
+          <ellipse cx="210" cy="247" rx="14" ry="9" id="cheek-left-ellipse-01" fill="#ECAFC1" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="cheek-right" fill="#ECAFC1" stroke="none">
+          <ellipse cx="301" cy="247" rx="14" ry="9" id="cheek-right-ellipse-01" fill="#ECAFC1" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="eye-left" fill="#603D49" stroke="none">
+          <ellipse cx="223" cy="224" rx="6" ry="8" id="eye-left-ellipse-01" fill="#603D49" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <circle cx="221" cy="221" r="2" fill="#FFF9EE" id="eye-left-circle-01" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="eye-right" fill="#603D49" stroke="none">
+          <ellipse cx="287" cy="224" rx="6" ry="8" id="eye-right-ellipse-01" fill="#603D49" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <circle cx="285" cy="221" r="2" fill="#FFF9EE" id="eye-right-circle-01" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="mouth" fill="none" stroke-width="4">
+          <path id="smile" d="M245 248 Q255 260 266 248" fill="none" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+      </g>
+    </g>
+    <g id="ring-front" transform="translate(256 280) rotate(0) scale(1 1)" data-rig-control="rings" data-local-pivot="0 0">
+      <path id="ring-front-base" fill="#DDCEF0" stroke="none" d="M192.11 -62.42 C203.72 -26.70 127.11 30.20 21.01 64.67 C-85.09 99.15 -180.51 98.14 -192.11 62.42L-145.51 47.28 C-139.71 65.14 -69.86 58.45 10.51 32.34 C90.87 6.22 151.31 -29.42 145.51 -47.28 Z" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="ring-front-stripe" fill="none" stroke="#B8E4D5" stroke-width="9" d="M172.14 -55.93 C181.02 -28.62 111.14 18.56 16.07 49.45 C-79.00 80.35 -163.27 83.25 -172.14 55.93" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="ring-front-outline" fill="none" d="M192.11 -62.42 C203.72 -26.70 127.11 30.20 21.01 64.67 C-85.09 99.15 -180.51 98.14 -192.11 62.42 M145.51 -47.28 C151.31 -29.42 90.87 6.22 10.51 32.34 C-69.86 58.45 -139.71 65.14 -145.51 47.28" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="ring-front-highlight" fill="none" stroke="#F6EDF9" stroke-width="3" d="M-162.00 53.00 Q-143.00 66.00 -110.00 65.00" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+  </g>
+  <g id="sparkles" stroke="#603D49" stroke-width="3" stroke-linejoin="round">
+    <g id="sparkle-left">
+      <path fill="#F6D99D" d="M104 144 Q104 158 90 160 Q104 162 104 176 Q106 162 120 160 Q106 158 104 144 Z" id="sparkle-left-path-01" stroke="#603D49" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="sparkle-right">
+      <path fill="#DCCCF0" d="M395 346 Q395 356 385 358 Q395 360 395 370 Q397 360 407 358 Q397 356 395 346 Z" id="sparkle-right-path-01" stroke="#603D49" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="orbit-dot" fill="#B8E4D5">
+      <circle cx="362" cy="115" r="5" id="orbit-dot-circle-01" fill="#B8E4D5" stroke="#603D49" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+# Throwaway Authelia IdP for the live OIDC harness.
+# Procedure: docs/oidc-live-test.md · Tests: tests/test_oidc_live.py
+#
+# This file contains no secrets. The OIDC client secret is read from the
+# HOST environment at `docker compose` time and passed into the container;
+# Authelia's config templating (X_AUTHELIA_CONFIG_FILTERS=template) renders
+# it from that environment at load time — see docs/oidc-live-test.md.
+# Generate that config first (it is untracked and gitignored):
+#   uv run python tests/test_oidc_live.py --write-authelia-config
+
+name: pw-authelia-test
+
+services:
+  authelia:
+    image: authelia/authelia:4.38
+    container_name: pw-authelia-test
+    volumes:
+      # :z relabels the (gitignored) generated config for SELinux hosts
+      # such as Fedora Atomic/Bazzite; a no-op where SELinux is off.
+      - ./build/authelia-test/config:/config:z
+    environment:
+      # The client secret is never written to a tracked file. It reaches
+      # the generated config only through Authelia's config templating,
+      # which this filter enables (the config uses `{{ mustEnv "..." }}`).
+      X_AUTHELIA_CONFIG_FILTERS: template
+      PW_TEST_AUTHELIA_CLIENT_SECRET: ${PW_TEST_AUTHELIA_CLIENT_SECRET:?export PW_TEST_AUTHELIA_CLIENT_SECRET first — see docs/oidc-live-test.md}
+    ports:
+      # Loopback only: a throwaway IdP must never be reachable from the LAN.
+      - "127.0.0.1:${PW_TEST_AUTHELIA_PORT:-9091}:9091"
+      - "[::1]:${PW_TEST_AUTHELIA_PORT:-9091}:9091"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9091/api/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+    restart: "no"

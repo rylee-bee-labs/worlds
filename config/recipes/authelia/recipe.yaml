@@ -1,0 +1,8 @@
+schema_version: 1
+name: authelia
+title: Sign-in
+summary: Whether the sign-in service is healthy.
+status: ready
+note: ""
+verified: false
+env: []

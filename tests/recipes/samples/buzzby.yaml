@@ -1,0 +1,31 @@
+cards:
+  buzzby-release:
+    - name: normal
+      responses:
+        vefr-latest-release:
+          name: "vefr 9.9.0: an example release"
+          tag_name: v9.9.0
+          published_at: "2027-01-14T08:00:00Z"
+          html_url: https://releases.example/vefr/v9.9.0
+          body: "## Buzzby's post\n\nDown we go! An example post."
+      expect:
+        state: healthy
+        values:
+          release: "vefr 9.9.0: an example release"
+          read-the-post: https://releases.example/vefr/v9.9.0
+    - name: unavailable
+      responses:
+        vefr-latest-release:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          release: "unknown"
+    - name: empty
+      responses:
+        vefr-latest-release:
+          __status: 404
+      expect:
+        state: degraded
+        values:
+          release: "unknown"

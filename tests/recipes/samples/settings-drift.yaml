@@ -1,0 +1,45 @@
+cards:
+  settings-drift:
+    - name: everything applied
+      responses:
+        verify:
+          ok: true
+          drift: []
+          drift_items: []
+          errors: []
+          applied: false
+      expect:
+        state: healthy
+        values:
+          drifted: "0"
+          errors: "0"
+    - name: settings have drifted
+      responses:
+        verify:
+          ok: false
+          drift:
+            - key: example-feature-enabled
+              expected: true
+              actual: false
+            - key: example-timeout-seconds
+              expected: 30
+              actual: 60
+          drift_items:
+            - key: example-feature-enabled
+            - key: example-timeout-seconds
+          errors: []
+          applied: false
+      expect:
+        state: needs_attention
+        values:
+          drifted: "2"
+          errors: "0"
+    - name: unavailable
+      responses:
+        verify:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          drifted: unknown
+          errors: unknown

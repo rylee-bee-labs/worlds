@@ -1,0 +1,9 @@
+schema_version: 1
+name: lidarr
+title: Lidarr
+summary: Shows the albums coming out soon and who they are by.
+status: ready
+note: ""
+verified: false
+env:
+  - LIDARR_API_KEY

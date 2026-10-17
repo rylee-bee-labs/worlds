@@ -1,0 +1,25 @@
+schema_version: 1
+id: books
+title: Books
+icon: book
+group: life
+requests:
+  - bindery.wanted
+  - bindery.queue
+view: stat
+meaning:
+  concept: Books that are still on their way.
+  short: How many books are wanted or downloading.
+  full: >-
+    Counts the books the library still wants and the books that are downloading
+    right now. Both numbers come from the service itself; a number it does not
+    report reads unknown.
+fields:
+  - path: $.wanted.totalRecords
+    label: Wanted
+    format: number
+    unit: wanted
+  - path: $.queue.totalRecords
+    label: Downloading
+    format: number
+    unit: in queue

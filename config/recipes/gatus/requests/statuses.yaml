@@ -1,0 +1,8 @@
+schema_version: 1
+id: gatus.statuses
+provider: gatus
+method: GET
+path: /api/v1/endpoints/statuses
+query: {}
+effect: read
+ttl_s: 60

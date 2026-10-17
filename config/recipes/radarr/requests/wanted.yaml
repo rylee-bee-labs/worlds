@@ -1,0 +1,9 @@
+schema_version: 1
+id: radarr.wanted
+provider: radarr
+method: GET
+path: /api/v3/wanted/missing
+query:
+  pageSize: "1"
+effect: read
+ttl_s: 60

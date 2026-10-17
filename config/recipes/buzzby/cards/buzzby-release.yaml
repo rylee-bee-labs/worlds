@@ -1,0 +1,24 @@
+schema_version: 1
+id: buzzby-release
+title: Buzzby's latest news
+icon: sparkle
+group: life
+request: github-public.vefr-latest-release
+view: list
+meaning:
+  concept: The newest public release, announced by Buzzby.
+  short: What just shipped, and where to read Buzzby's post.
+  full: >-
+    Buzzby is the projects' openly AI community bee. When a release is published, its notes open with her
+    short post. This card shows the newest public vefr release straight from GitHub: its name, when it was
+    published, and the link to read it. If GitHub can't be reached, the card says unknown.
+fields:
+  - path: $.name
+    label: Release
+    format: text
+  - path: $.published_at
+    label: Published
+    format: relative_time
+  - path: $.html_url
+    label: Read the post
+    format: text

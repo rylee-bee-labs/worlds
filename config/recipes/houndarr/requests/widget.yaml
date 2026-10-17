@@ -1,0 +1,7 @@
+schema_version: 1
+id: houndarr.widget
+provider: houndarr
+method: GET
+path: /api/v1/widget
+effect: read
+ttl_s: 120

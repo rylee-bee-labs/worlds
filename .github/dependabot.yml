@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    groups:
+      # CodeQL refuses to run when its init and analyze steps are different versions
+      # (personal-world#299/#300, 2026-10-12): bump every codeql-action step in one PR.
+      codeql-action:
+        patterns:
+          - "github/codeql-action*"
+  - package-ecosystem: npm
+    directory: /ui
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    ignore:
+      # Rylee 2026-10-10: hold msw 3 until Vitest's @vitest/mocker accepts it (it peers on msw ^2.4.9;
+      # personal-world#287 could not install). Drop this once a Vitest release supports msw 3.
+      - dependency-name: msw
+        versions: [">=3.0.0"]

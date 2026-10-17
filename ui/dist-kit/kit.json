@@ -1,0 +1,16 @@
+{
+  "name": "worlds-kit",
+  "version": "0.1.0+c87ed71c66",
+  "built_at": "not recorded (content-addressed)",
+  "source": "personal-world",
+  "default_theme": "starfield",
+  "themes": [
+    "station",
+    "daylight",
+    "doorways",
+    "moss",
+    "ocean",
+    "plain",
+    "starfield"
+  ]
+}

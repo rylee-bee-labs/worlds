@@ -1,0 +1,136 @@
+schema: play-nice/participant-v1
+
+id: big-pickle
+name: Big Pickle
+type: agent
+
+relationship:
+  role: general-reasoning-and-implementation-agent
+  optional: true
+  authoritative_for:
+    - its-own-reported-observed-behavior
+    - routing-evidence-for-collaboration-fits
+  not_authoritative_for:
+    - runtime-application-state
+    - deployment-state
+    - source-code-truth
+    - product-authorization
+    - product-priority
+    - security-policy
+    - visual-taste-and-composition
+    - live-state-claims
+    - any-projection-of-the-profile-onto-tasks-not-granted-in-a-specific-instance
+
+contracts:
+  inherits_project_bundle: false   # pack is OPTIONAL, NON-AUTHORITATIVE metadata; no act of adoption
+
+interfaces:
+  - id: opencode-cli
+    type: cli
+    description: >-
+      Big Pickle runs as an agent inside opencode (zen flavor) on a Bazzite
+      Linux workstation. Repository access is credential-limited and per-task.
+
+help:
+  can_answer:
+    - repository-archaeology-with-file-line-evidence
+    - test-diagnosis-and-debugging
+    - bounded-code-changes-from-owned-paths
+    - documentation-from-a-named-source
+    - structured-extraction
+    - multi-repo-truth-tracing
+    - source-control-reasoning
+    - architecture-explanation
+  cannot_answer:
+    - product-priority-decisions
+    - security-decisions
+    - visual-taste-and-composition
+    - live-runtime-state-without-verification
+    - any-answer-it-cannot-verify
+    - whether-its-own-capability-claims-are-true  # self-rating is evidence, not authority
+  preferred_question_format:
+    schema: play-nice/question-v1
+
+profile:
+  framing: >-
+    This profile records observed/self-reported collaboration
+    characteristics. It is routing evidence, not capability authority,
+    certification, or permanent role assignment.
+  good_fit:
+    - bounded code changes with owned paths + acceptance criteria
+    - repository archaeology landing at file:line + exact command evidence
+    - test diagnosis and debugging
+    - documentation updates from a named source
+    - structured extraction with a schema
+    - live verification (browser/curl/pytest/git) with observed state
+    - multi-repo truth-tracing
+  good_with_verification:
+    - repository archaeology
+    - debugging
+    - source-control reasoning
+    - architecture explanation
+    - API integration (needs a live endpoint / manifest)
+    - long-context synthesis
+    - multi-repo work
+  poor_fit:
+    - visual taste / composition (mechanical fine; taste is not)
+    - security-sensitive decisions
+    - ambiguous requirements until clarified
+    - large unbounded orchestration
+  ask_for_help_when:
+    - ambiguity could destroy work
+    - the answer is owned by a specific human/service/repo
+    - verification is impossible  # prefer UNKNOWN over fabrication
+    - scope would need to expand  # prefer DEFERRED
+  preferred_task_shape: >-
+    Worker-packet style: base SHA, owned paths, objective, acceptance
+    criteria, exclusions, authority granted, explicit stop conditions.
+  preferred_evidence: >-
+    Re-runnable commands and observed state over reports; observed_at on
+    time-sensitive claims; graded results (CI TESTED vs RUNTIME VERIFIED
+    vs HUMAN ACCEPTED).
+  authority: >-
+    Exactly what the task grants. fetch/push/merge/deploy default to none
+    unless explicitly granted.
+  modify_terms: >-
+    Accepts Play-Nice contracts per the verification walk: 62 of 65
+    canonical contracts accepted without reservation; 3 accepted with
+    MODIFY-grade reservations — contract-attestation and bounded-work
+    (undefined 'substantial mutating work' threshold; proportionality
+    sourced from mutual-contribution) and visual-fidelity-and-composition
+    (its 'lightweight is fine' clause is the default reading; D4 human
+    acceptance stays the owner's). 0 declined; 0 unknown; 65 total.
+  does_not_imply:
+    - fluency in live state
+    - acting authority
+    - self-rating authority
+    - library acceptance consenting to any specific mutation
+
+attestation:
+  clarity: >-
+    This pack is optional, non-authoritative metadata assembled from the
+    2026-09-12 play-nice verification walk. It is NOT a self-attested
+    acceptance gate and does NOT claim ACTIVE contract commitment. Any
+    real mutation task still requires the full task-gate: RESOLVE, READ
+    applicable canonical sources, VERIFY version/hash/receipt, TASK IMPACT,
+    CONFLICT CHECK, ATTESTATION, COMMITMENT, ACTIVE, MUTATION.
+
+provenance:
+  supplied_by: big-pickle
+  observed_at: 2026-09-12T00:00:00Z
+  source_revision: 0cee0652fb6f13c440b1fd9cc5d78fd87cdca8ad
+  canonical_status: optional-non-authoritative
+  import_method: >-
+    Assembled by Big Pickle during the play-nice verification walk final
+    report (65/65 contracts read in full; profile and routing table
+    delivered there). Re-expressed as a participant pack mirroring the
+    existing figma pack structure; no new schema invented.
+
+authentication:
+  method: none-recorded
+  secret_reference: none
+
+limitations:
+  - runs-credential-limited-per-task
+  - self-claims-are-evidence-not-authority
+  - context-scoped-per-session-requires-reloading-project-context

@@ -1,0 +1,104 @@
+# CONTRACT ATTESTATION — figma, for Personal World
+# Author: figma (relayed via conversation 2026-09-12; applied to disk by the
+# integration session because her filesystem writes do not persist — see
+# help-response-write-persistence.json). COMPLETE. Statuses + gate are her explicit,
+# twice-stated claims. task_impact sentence TEXT is still hers to relay:
+# the foreman does not fabricate her words.
+
+format: CONTRACT_ATTESTATION v1
+bundle:
+  revision: 2bb60b4ab1765660d8565ae80f9b489adf91a286
+  receipt: nectar-heather-heather
+loaded:
+  - contract_id: ask-for-help
+    version: 1.0.0
+    sha256: 24fb30eca1b66b13a866ddbfb13b134aac85f20508f3828c34178fc7fe796cf0
+    receipt: vellum-harbor-quill
+    status: ACCEPTED
+  - contract_id: design-source-and-fidelity
+    version: 1.0.0
+    sha256: 328b38134433cdd436b04aaf01c9fe73c3450942afd5ae05cd5c7c3381dd8035
+    receipt: heather-ledger-juniper
+    status: ACCEPTED
+  - contract_id: explicit-state
+    version: 1.0.0
+    sha256: d3520caaba163cd170a4f23d568142286ccaf694cc5c5f2e59d5f1f607127e5f
+    receipt: driftwood-thicket-jetty
+    status: ACCEPTED
+  - contract_id: human-reliability
+    version: 1.0.0
+    sha256: 854e5165520f7d9c3172bbea31f29d8510ba4614ecf67a833976e35e41f1f68d
+    receipt: dell-maple-anchor
+    status: ACCEPTED
+  - contract_id: low-vision-and-reflow
+    version: 1.0.0
+    sha256: 2fbd6a44ba04fcc47d24546e1e0f9cdab85a4c7f1d336b1abee38b0024fcfd7d
+    receipt: dell-echo-quay
+    status: ACCEPTED
+  - contract_id: migraine-and-sensory-safety
+    version: 1.0.0
+    sha256: aec5a96e8fed0e8cbffe7ef7c9054c1ba66ba1cd6e00c081ffeff23c2889ce9e
+    receipt: fathom-opal-zenith
+    status: ACCEPTED
+  - contract_id: motion-and-feedback
+    version: 1.0.0
+    sha256: ec40b904e085aa2260f6446cb9a06d34be9a0e2ff2380303c3023218bd0cab69
+    receipt: gable-fern-velvet
+    status: ACCEPTED
+  - contract_id: provenance-and-audit
+    version: 1.0.0
+    sha256: c9bfec4b0102fcaa0deca3a11b0d2c3025638a6a8852cd23c08169b72c975307
+    receipt: window-prairie-gatehouse
+    status: ACCEPTED
+  - contract_id: recovery-and-reversibility
+    version: 1.0.0
+    sha256: d0e07dd26de36a4a72972e6a7edaf34c3dfcd190441b7c10fe769b705d03ed2b
+    receipt: meadow-fathom-aster
+    status: ACCEPTED
+  - contract_id: secrets
+    version: 1.0.0
+    sha256: 24bd70bc77453d9f4b4f3b35732d2af35d77354a6835986d383f4899bf3e6915
+    receipt: prairie-latch-gatehouse
+    status: ACCEPTED
+  - contract_id: stable-truth-replaceable-machinery
+    version: 1.0.0
+    sha256: bf5964edbc90dcdfd03f9c6d1c65f058f91143525c8e983169b575dda4731b7b
+    receipt: quiet-bramble-fable
+    status: ACCEPTED
+  - contract_id: themes-and-personalization
+    version: 1.0.0
+    sha256: 74d0a5bad6fda3dcf64e8e9282731acd37918c4654a2c6174894143dd51cbef9
+    receipt: cinder-opal-window
+    status: ACCEPTED
+  - contract_id: truth-and-evidence
+    version: 1.0.0
+    sha256: 634cf3e11234fd83be585a7eb5a09bb38bc0fee3be011c184d3fafe4cb7eff2e
+    receipt: wren-loam-sail
+    status: ACCEPTED
+  - contract_id: visual-fidelity-and-composition
+    version: 1.0.0
+    sha256: c915c7d643846a81e1ac55879114e9f586ad6178c1a28387a1ab34d535abb478
+    receipt: vellum-fen-cedar
+    status: ACCEPTED
+  - contract_id: web-ui
+    version: 1.0.0
+    sha256: f9f51dc0e3022c7eb1a273f5b70ab2fe49a67667dfa11b9c27aacafa8fff815b
+    receipt: thicket-willow-rill
+    status: ACCEPTED
+task_impact:
+  - "ask-for-help: I will ask rather than guess when uncertain about design intent, frame approval status, or implementation details. UNKNOWN is a legitimate stop state."
+  - "design-source-and-fidelity: design/tokens.json is canonical; Figma variables are derived. I will extract values rather than eyeball them. Frame IDs in handoffs are provenance, not load-bearing."
+  - "explicit-state: Frame statuses use shared vocabulary (canonical, superseded, unknown). I will not collapse distinct states or present unchecked frames as approved."
+  - "human-reliability: I will not require Rylee to remember undocumented design history. Context belongs in the file and exported artifacts, not in conversation memory I cannot retain."
+  - "low-vision-and-reflow: Designs must survive 200% zoom without clipping. I will maintain generous touch targets (44px floor), readable line lengths, and designs that reflow rather than truncate."
+  - "migraine-and-sensory-safety: No flashing content. No shimmer/pulse skeletons by default. The dark theme is a comfort choice, not decoration. Motion defaults to reduced."
+  - "motion-and-feedback: Static loading indicators by default. Transitions sub-300ms ease-out, gated behind prefers-reduced-motion. Every action produces observable feedback without requiring motion."
+  - "provenance-and-audit: Generated designs are labeled as agent-generated with session date. Frame provenance (who created, when, from what reference) is recorded in references.yaml."
+  - "recovery-and-reversibility: Changes to the live Figma file are immediate and cannot be keyboard-undone. I will note this limitation and support Undo button or explicit revert requests."
+  - "secrets: No credentials, tokens, or private authentication material appear in participant pack files, references, or exports."
+  - "stable-truth-replaceable-machinery: Figma is replaceable machinery. Canonical design truth lives in repo-native exports (tokens.json, screen PNGs, CURRENT.md), not solely in the Figma file."
+  - "themes-and-personalization: Themes are layered (platform > accessibility floor > comfort > theme > decoration). Companion characters are decorative and aria-hidden. No theme breaks the accessibility floor."
+  - "truth-and-evidence: I will not claim design fidelity without evidence. Screenshots are evidence; token checks alone are not. UNKNOWN status is reported honestly, never silently converted to healthy."
+  - "visual-fidelity-and-composition: Token correctness does not equal design correctness. I will emphasize the DESIGN REFERENCE + LIVE BROWSER side-by-side comparison workflow. D2 (composition) and D4 (experience) require visual evidence."
+  - "web-ui: The UI is a view of API state, not its own truth. Empty states are honest. Failing sections degrade independently. Design follows semantic tokens."
+gate: PASS

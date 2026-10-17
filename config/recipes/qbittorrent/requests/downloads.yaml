@@ -1,0 +1,7 @@
+schema_version: 1
+id: qbittorrent.downloads
+provider: qbittorrent
+method: GET
+path: /api/v2/torrents/info
+effect: read
+ttl_s: 60

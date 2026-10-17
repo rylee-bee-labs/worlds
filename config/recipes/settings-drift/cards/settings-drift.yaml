@@ -1,0 +1,24 @@
+schema_version: 1
+id: settings-drift
+title: Settings drift
+icon: drift
+group: machine
+request: settings-drift.verify
+view: stat
+meaning:
+  concept: Whether configured settings still match what is applied.
+  short: Do the configured settings still match?
+  full: Compares the settings the owner configured with what is actually applied, and lists what has drifted or failed.
+status:
+  path: $.ok
+  healthy:
+    - true
+  needs_attention:
+    - false
+fields:
+  - path: $.drift
+    label: Drifted
+    format: count
+  - path: $.errors
+    label: Errors
+    format: count

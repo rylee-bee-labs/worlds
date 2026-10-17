@@ -1,0 +1,8 @@
+schema_version: 1
+name: settings-drift
+title: Settings drift
+summary: Whether configured settings still match what is applied.
+status: ready
+note: ""
+verified: false
+env: []

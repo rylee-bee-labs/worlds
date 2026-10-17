@@ -1,0 +1,467 @@
+/**
+ * PROJECT WORLDS — Generated Design Tokens
+ *
+ * ⚠️  THIS FILE IS GENERATED. Do not edit by hand.
+ * Source: design/tokens.json (immutable) + design/themes/*.json
+ * Generator: scripts/generate-tokens.mjs
+ *
+ * Cascade order matters: immutable :root block first, then the station
+ * default on :root, then one [data-theme="<name>"] block per other theme.
+ * :root and [data-theme="…"] have equal specificity, so the later block
+ * wins — which is exactly how a theme override must behave.
+ *
+ * Run: node scripts/generate-tokens.mjs
+ */
+
+  /* Accessibility-contract constants — immutable, never themed over. */
+:root {
+  --pw-targets-minimum: 44px;
+  --pw-targets-large: 56px;
+  --pw-focus-ring_width: 2px;
+  --pw-focus-ring_offset: 2px;
+  --pw-motion-default: off;
+}
+
+/* :root fallback theme: station (first-run default is DEFAULT_THEME). Also
+   addressable as [data-theme="station"] so an element (a theme swatch) can show
+   Station's own colours inside another theme. */
+:root, [data-theme="station"] {
+  --pw-surface-void: #080B14;
+  --pw-surface-canvas: #0C101C;
+  --pw-surface-hull: #131926;
+  --pw-surface-panel: #1E2636;
+  --pw-surface-elevated: #273144;
+  --pw-surface-raised: #2D3A4E;
+
+  --pw-accent-primary: #72b1b1;
+  --pw-accent-on_primary: #0a2830;
+  --pw-accent-secondary: #C47D6D;
+  --pw-accent-warm: #D4A057;
+  --pw-accent-warm_soft: rgba(212, 160, 87, 0.16);
+  --pw-accent-gold: #C9A227;
+  --pw-accent-gold_soft: rgba(201, 162, 39, 0.14);
+  --pw-accent-green: #6A9A66;
+  --pw-accent-green_soft: rgba(106, 154, 102, 0.16);
+  --pw-accent-coral: #C47D6D;
+  --pw-accent-coral_soft: rgba(196, 125, 109, 0.14);
+  --pw-accent-teal: #5A9E9E;
+  --pw-accent-teal_soft: rgba(90, 158, 158, 0.14);
+  --pw-accent-lavender: #9B8EC4;
+  --pw-accent-lavender_soft: rgba(155, 142, 196, 0.14);
+
+  --pw-text-primary: #EDE7DB;
+  --pw-text-secondary: #CDC6B8;
+  --pw-text-muted: #A29A8C;
+
+  --pw-border-subtle: rgba(232, 220, 200, 0.10);
+  --pw-border-strong: rgba(232, 220, 200, 0.18);
+  --pw-border-hover: rgba(232, 220, 200, 0.20);
+
+  --pw-spacing-xs: 4px;
+  --pw-spacing-sm: 8px;
+  --pw-spacing-md: 12px;
+  --pw-spacing-lg: 16px;
+  --pw-spacing-xl: 24px;
+  --pw-spacing-2xl: 32px;
+  --pw-spacing-3xl: 48px;
+  --pw-spacing-4xl: 64px;
+
+  --pw-radius-sm: 10px;
+  --pw-radius-md: 16px;
+  --pw-radius-lg: 24px;
+  --pw-radius-full: 9999px;
+
+  --pw-shadow-soft: 0 2px 16px rgba(0,0,0,0.22), 0 0 40px rgba(212,160,87,0.04);
+  --pw-shadow-warm: 0 4px 24px rgba(212,160,87,0.12), 0 0 60px rgba(212,160,87,0.06);
+  --pw-shadow-glow: 0 0 20px rgba(212,160,87,0.18), 0 0 40px rgba(212,160,87,0.08);
+
+  --pw-typography-font_sans: 'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --pw-typography-font_serif: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+  --pw-typography-font_mono: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  --pw-typography-size_h1: clamp(30px, 4.4vw, 44px);
+  --pw-typography-size_lead: 18px;
+  --pw-typography-size_body: 16px;
+  --pw-typography-size_small: 14px;
+  --pw-typography-size_micro: 13px;
+  --pw-typography-size_label: 13px;
+
+
+}
+
+[data-theme="daylight"] {
+  --pw-surface-void: #fffdf8;
+  --pw-surface-canvas: #f4efe6;
+  --pw-surface-hull: #ece5d8;
+  --pw-surface-panel: #fbf8f2;
+  --pw-surface-elevated: #fffdf8;
+  --pw-surface-raised: #e9e1d2;
+
+  --pw-accent-primary: #8a4f0f;
+  --pw-accent-on_primary: #fffdf8;
+  --pw-accent-secondary: #1f6b67;
+  --pw-accent-warm: #8a4f0f;
+  --pw-accent-warm_soft: rgba(138, 79, 15, 0.10);
+  --pw-accent-gold: #735608;
+  --pw-accent-gold_soft: rgba(115, 86, 8, 0.10);
+  --pw-accent-green: #3d6b39;
+  --pw-accent-green_soft: rgba(61, 107, 57, 0.10);
+  --pw-accent-coral: #9a4a3a;
+  --pw-accent-coral_soft: rgba(154, 74, 58, 0.10);
+  --pw-accent-teal: #1f6b67;
+  --pw-accent-teal_soft: rgba(31, 107, 103, 0.10);
+  --pw-accent-lavender: #574a8c;
+  --pw-accent-lavender_soft: rgba(87, 74, 140, 0.10);
+
+  --pw-text-primary: #2a2433;
+  --pw-text-secondary: #473f4f;
+  --pw-text-muted: #5a5263;
+
+  --pw-border-subtle: rgba(42, 36, 51, 0.14);
+  --pw-border-strong: rgba(42, 36, 51, 0.26);
+  --pw-border-hover: rgba(42, 36, 51, 0.32);
+
+  --pw-spacing-xs: 4px;
+  --pw-spacing-sm: 8px;
+  --pw-spacing-md: 12px;
+  --pw-spacing-lg: 16px;
+  --pw-spacing-xl: 24px;
+  --pw-spacing-2xl: 32px;
+  --pw-spacing-3xl: 48px;
+  --pw-spacing-4xl: 64px;
+
+  --pw-radius-sm: 10px;
+  --pw-radius-md: 14px;
+  --pw-radius-lg: 24px;
+  --pw-radius-full: 9999px;
+
+  --pw-shadow-soft: 0 10px 30px rgba(42,36,51,0.12);
+  --pw-shadow-warm: 0 4px 24px rgba(138,79,15,0.10);
+  --pw-shadow-glow: 0 0 20px rgba(138,79,15,0.14);
+
+  --pw-typography-font_sans: 'Atkinson Hyperlegible Next', 'Public Sans', system-ui, sans-serif;
+  --pw-typography-font_serif: 'Fraunces', Georgia, serif;
+  --pw-typography-font_mono: 'JetBrains Mono', ui-monospace, monospace;
+  --pw-typography-size_h1: clamp(28px, 4vw, 40px);
+  --pw-typography-size_lead: 18px;
+  --pw-typography-size_body: 16px;
+  --pw-typography-size_small: 14px;
+  --pw-typography-size_micro: 13px;
+  --pw-typography-size_label: 13px;
+
+
+}
+
+[data-theme="doorways"] {
+  --pw-surface-void: #0F1226;
+  --pw-surface-canvas: #161A30;
+  --pw-surface-hull: #1A1E38;
+  --pw-surface-panel: #1F2442;
+  --pw-surface-elevated: #262C4E;
+  --pw-surface-raised: #2C3358;
+
+  --pw-accent-primary: #E2AB62;
+  --pw-accent-on_primary: #161A30;
+  --pw-accent-secondary: #E7A3B0;
+  --pw-accent-warm: #E2AB62;
+  --pw-accent-warm_soft: rgba(226, 171, 98, 0.14);
+  --pw-accent-gold: #C9A227;
+  --pw-accent-gold_soft: rgba(201, 162, 39, 0.14);
+  --pw-accent-green: #9CC48A;
+  --pw-accent-green_soft: rgba(156, 196, 138, 0.14);
+  --pw-accent-coral: #B57F8B;
+  --pw-accent-coral_soft: rgba(231, 163, 176, 0.14);
+  --pw-accent-teal: #86C3CC;
+  --pw-accent-teal_soft: rgba(134, 195, 204, 0.14);
+  --pw-accent-lavender: #B09CE0;
+  --pw-accent-lavender_soft: rgba(176, 156, 224, 0.14);
+
+  --pw-text-primary: #ECE4D6;
+  --pw-text-secondary: #D3CAB9;
+  --pw-text-muted: #B8AF9F;
+
+  --pw-border-subtle: rgba(236, 228, 214, 0.12);
+  --pw-border-strong: rgba(236, 228, 214, 0.20);
+  --pw-border-hover: rgba(236, 228, 214, 0.24);
+
+  --pw-spacing-xs: 4px;
+  --pw-spacing-sm: 8px;
+  --pw-spacing-md: 12px;
+  --pw-spacing-lg: 16px;
+  --pw-spacing-xl: 24px;
+  --pw-spacing-2xl: 32px;
+  --pw-spacing-3xl: 48px;
+  --pw-spacing-4xl: 64px;
+
+  --pw-radius-sm: 12px;
+  --pw-radius-md: 16px;
+  --pw-radius-lg: 24px;
+  --pw-radius-full: 9999px;
+
+  --pw-shadow-soft: 0 10px 30px rgba(8,10,24,0.45), 0 0 32px rgba(226,171,98,0.05);
+  --pw-shadow-warm: 0 4px 24px rgba(226,171,98,0.12), 0 0 60px rgba(226,171,98,0.05);
+  --pw-shadow-glow: 0 0 20px rgba(226,171,98,0.18), 0 0 40px rgba(226,171,98,0.06);
+
+  --pw-typography-font_sans: 'Atkinson Hyperlegible Next', 'Public Sans', system-ui, sans-serif;
+  --pw-typography-font_serif: 'Fraunces', Georgia, serif;
+  --pw-typography-font_mono: 'JetBrains Mono', ui-monospace, monospace;
+  --pw-typography-size_h1: clamp(32px, 4.4vw, 48px);
+  --pw-typography-size_lead: 18px;
+  --pw-typography-size_body: 16px;
+  --pw-typography-size_small: 15px;
+  --pw-typography-size_micro: 14px;
+  --pw-typography-size_label: 13px;
+
+
+}
+
+[data-theme="moss"] {
+  --pw-surface-void: #080D0A;
+  --pw-surface-canvas: #0C120E;
+  --pw-surface-hull: #141E16;
+  --pw-surface-panel: #1A281E;
+  --pw-surface-elevated: #203024;
+  --pw-surface-raised: #263828;
+
+  --pw-accent-primary: #7AAA76;
+  --pw-accent-on_primary: #0A200E;
+  --pw-accent-secondary: #A8B85A;
+  --pw-accent-warm: #A8B85A;
+  --pw-accent-warm_soft: rgba(168, 184, 90, 0.14);
+  --pw-accent-gold: #B8C86A;
+  --pw-accent-gold_soft: rgba(184, 200, 106, 0.12);
+  --pw-accent-green: #5A9A66;
+  --pw-accent-green_soft: rgba(90, 154, 102, 0.16);
+  --pw-accent-coral: #AA8A6A;
+  --pw-accent-coral_soft: rgba(170, 138, 106, 0.12);
+  --pw-accent-teal: #6A9A8A;
+  --pw-accent-teal_soft: rgba(106, 154, 138, 0.14);
+  --pw-accent-lavender: #8A9A7A;
+  --pw-accent-lavender_soft: rgba(138, 154, 122, 0.12);
+
+  --pw-text-primary: #D8E8D0;
+  --pw-text-secondary: #A0B898;
+  --pw-text-muted: #85a080;
+
+  --pw-border-subtle: rgba(106, 154, 102, 0.10);
+  --pw-border-strong: rgba(106, 154, 102, 0.18);
+  --pw-border-hover: rgba(106, 154, 102, 0.22);
+
+  --pw-spacing-xs: 4px;
+  --pw-spacing-sm: 8px;
+  --pw-spacing-md: 12px;
+  --pw-spacing-lg: 16px;
+  --pw-spacing-xl: 24px;
+  --pw-spacing-2xl: 32px;
+  --pw-spacing-3xl: 48px;
+  --pw-spacing-4xl: 64px;
+
+  --pw-radius-sm: 10px;
+  --pw-radius-md: 16px;
+  --pw-radius-lg: 24px;
+  --pw-radius-full: 9999px;
+
+  --pw-shadow-soft: 0 2px 16px rgba(0,0,0,0.22), 0 0 40px rgba(106,154,102,0.04);
+  --pw-shadow-warm: 0 4px 24px rgba(106,154,102,0.10), 0 0 60px rgba(106,154,102,0.05);
+  --pw-shadow-glow: 0 0 20px rgba(106,154,102,0.16), 0 0 40px rgba(106,154,102,0.06);
+
+  --pw-typography-font_sans: 'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --pw-typography-font_serif: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+  --pw-typography-font_mono: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  --pw-typography-size_h1: clamp(30px, 4.4vw, 44px);
+  --pw-typography-size_lead: 18px;
+  --pw-typography-size_body: 16px;
+  --pw-typography-size_small: 14px;
+  --pw-typography-size_micro: 13px;
+  --pw-typography-size_label: 13px;
+
+
+}
+
+[data-theme="ocean"] {
+  --pw-surface-void: #060D14;
+  --pw-surface-canvas: #0A1219;
+  --pw-surface-hull: #0F1923;
+  --pw-surface-panel: #152030;
+  --pw-surface-elevated: #1A2838;
+  --pw-surface-raised: #1F3040;
+
+  --pw-accent-primary: #5AA8B8;
+  --pw-accent-on_primary: #0A2028;
+  --pw-accent-secondary: #7A9AAA;
+  --pw-accent-warm: #5AA8B8;
+  --pw-accent-warm_soft: rgba(90, 168, 184, 0.14);
+  --pw-accent-gold: #7AB8C8;
+  --pw-accent-gold_soft: rgba(122, 184, 200, 0.12);
+  --pw-accent-green: #4A9A8A;
+  --pw-accent-green_soft: rgba(74, 154, 138, 0.14);
+  --pw-accent-coral: #8A7A9A;
+  --pw-accent-coral_soft: rgba(138, 122, 154, 0.12);
+  --pw-accent-teal: #5AA8B8;
+  --pw-accent-teal_soft: rgba(90, 168, 184, 0.14);
+  --pw-accent-lavender: #8A9AB8;
+  --pw-accent-lavender_soft: rgba(138, 154, 184, 0.12);
+
+  --pw-text-primary: #D8E8F0;
+  --pw-text-secondary: #A0B8C8;
+  --pw-text-muted: #7d97a8;
+
+  --pw-border-subtle: rgba(90, 168, 184, 0.10);
+  --pw-border-strong: rgba(90, 168, 184, 0.18);
+  --pw-border-hover: rgba(90, 168, 184, 0.22);
+
+  --pw-spacing-xs: 4px;
+  --pw-spacing-sm: 8px;
+  --pw-spacing-md: 12px;
+  --pw-spacing-lg: 16px;
+  --pw-spacing-xl: 24px;
+  --pw-spacing-2xl: 32px;
+  --pw-spacing-3xl: 48px;
+  --pw-spacing-4xl: 64px;
+
+  --pw-radius-sm: 8px;
+  --pw-radius-md: 14px;
+  --pw-radius-lg: 22px;
+  --pw-radius-full: 9999px;
+
+  --pw-shadow-soft: 0 2px 16px rgba(0,0,0,0.25), 0 0 40px rgba(90,168,184,0.04);
+  --pw-shadow-warm: 0 4px 24px rgba(90,168,184,0.10), 0 0 60px rgba(90,168,184,0.05);
+  --pw-shadow-glow: 0 0 20px rgba(90,168,184,0.16), 0 0 40px rgba(90,168,184,0.06);
+
+  --pw-typography-font_sans: 'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --pw-typography-font_serif: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+  --pw-typography-font_mono: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  --pw-typography-size_h1: clamp(28px, 4vw, 40px);
+  --pw-typography-size_lead: 18px;
+  --pw-typography-size_body: 16px;
+  --pw-typography-size_small: 14px;
+  --pw-typography-size_micro: 13px;
+  --pw-typography-size_label: 13px;
+
+
+}
+
+[data-theme="plain"] {
+  --pw-surface-void: #0D0C0B;
+  --pw-surface-canvas: #141211;
+  --pw-surface-hull: #181514;
+  --pw-surface-panel: #1C1917;
+  --pw-surface-elevated: #23201D;
+  --pw-surface-raised: #2C2724;
+
+  --pw-accent-primary: #72B1B1;
+  --pw-accent-on_primary: #0C2A2A;
+  --pw-accent-secondary: #D4A057;
+  --pw-accent-warm: #D4A057;
+  --pw-accent-warm_soft: rgba(212, 160, 87, 0.14);
+  --pw-accent-gold: #C9A227;
+  --pw-accent-gold_soft: rgba(201, 162, 39, 0.14);
+  --pw-accent-green: #6A9A66;
+  --pw-accent-green_soft: rgba(106, 154, 102, 0.16);
+  --pw-accent-coral: #C47D6D;
+  --pw-accent-coral_soft: rgba(196, 125, 109, 0.14);
+  --pw-accent-teal: #72B1B1;
+  --pw-accent-teal_soft: rgba(114, 177, 177, 0.14);
+  --pw-accent-lavender: #9B8EC4;
+  --pw-accent-lavender_soft: rgba(155, 142, 196, 0.14);
+
+  --pw-text-primary: #ECE7DF;
+  --pw-text-secondary: #C2BBB1;
+  --pw-text-muted: #98918A;
+
+  --pw-border-subtle: rgba(236, 231, 223, 0.10);
+  --pw-border-strong: rgba(236, 231, 223, 0.18);
+  --pw-border-hover: rgba(236, 231, 223, 0.22);
+
+  --pw-spacing-xs: 4px;
+  --pw-spacing-sm: 8px;
+  --pw-spacing-md: 12px;
+  --pw-spacing-lg: 16px;
+  --pw-spacing-xl: 24px;
+  --pw-spacing-2xl: 32px;
+  --pw-spacing-3xl: 48px;
+  --pw-spacing-4xl: 64px;
+
+  --pw-radius-sm: 10px;
+  --pw-radius-md: 14px;
+  --pw-radius-lg: 24px;
+  --pw-radius-full: 9999px;
+
+  --pw-shadow-soft: 0 10px 30px rgba(0,0,0,0.28), 0 0 28px rgba(212,160,87,0.06);
+  --pw-shadow-warm: 0 4px 24px rgba(212,160,87,0.10), 0 0 60px rgba(212,160,87,0.05);
+  --pw-shadow-glow: 0 0 20px rgba(212,160,87,0.18), 0 0 40px rgba(212,160,87,0.06);
+
+  --pw-typography-font_sans: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  --pw-typography-font_serif: 'Young Serif', Georgia, serif;
+  --pw-typography-font_mono: 'SF Mono', 'Cascadia Code', ui-monospace, monospace;
+  --pw-typography-size_h1: clamp(30px, 4.4vw, 44px);
+  --pw-typography-size_lead: 18px;
+  --pw-typography-size_body: 16px;
+  --pw-typography-size_small: 14px;
+  --pw-typography-size_micro: 13px;
+  --pw-typography-size_label: 13px;
+
+
+}
+
+[data-theme="starfield"] {
+  --pw-surface-void: #0C0D14;
+  --pw-surface-canvas: #0F1119;
+  --pw-surface-hull: #141620;
+  --pw-surface-panel: #1A1D2A;
+  --pw-surface-elevated: #222636;
+  --pw-surface-raised: #2A2E40;
+
+  --pw-accent-primary: #D4A057;
+  --pw-accent-on_primary: #0C0D14;
+  --pw-accent-secondary: #5AA8B8;
+  --pw-accent-warm: #D4A057;
+  --pw-accent-warm_soft: rgba(212, 160, 87, 0.12);
+  --pw-accent-gold: #C9A227;
+  --pw-accent-gold_soft: rgba(201, 162, 39, 0.14);
+  --pw-accent-green: #6A9A66;
+  --pw-accent-green_soft: rgba(106, 154, 102, 0.16);
+  --pw-accent-coral: #C47D6D;
+  --pw-accent-coral_soft: rgba(196, 125, 109, 0.14);
+  --pw-accent-teal: #5AA8B8;
+  --pw-accent-teal_soft: rgba(90, 168, 184, 0.14);
+  --pw-accent-lavender: #9B8EC4;
+  --pw-accent-lavender_soft: rgba(155, 142, 196, 0.14);
+
+  --pw-text-primary: #F0EDE6;
+  --pw-text-secondary: #B8B2A6;
+  --pw-text-muted: #a29a8c;
+
+  --pw-border-subtle: rgba(240, 237, 230, 0.08);
+  --pw-border-strong: rgba(240, 237, 230, 0.15);
+  --pw-border-hover: rgba(240, 237, 230, 0.20);
+
+  --pw-spacing-xs: 4px;
+  --pw-spacing-sm: 8px;
+  --pw-spacing-md: 12px;
+  --pw-spacing-lg: 16px;
+  --pw-spacing-xl: 24px;
+  --pw-spacing-2xl: 32px;
+  --pw-spacing-3xl: 48px;
+  --pw-spacing-4xl: 64px;
+
+  --pw-radius-sm: 3px;
+  --pw-radius-md: 8px;
+  --pw-radius-lg: 16px;
+  --pw-radius-full: 9999px;
+
+  --pw-shadow-soft: 0 2px 16px rgba(0,0,0,0.3), 0 0 40px rgba(212,160,87,0.04);
+  --pw-shadow-warm: 0 4px 24px rgba(212,160,87,0.10), 0 0 60px rgba(212,160,87,0.05);
+  --pw-shadow-glow: 0 0 20px rgba(212,160,87,0.18), 0 0 40px rgba(212,160,87,0.06);
+
+  --pw-typography-font_sans: 'Atkinson Hyperlegible Next', 'Public Sans', system-ui, sans-serif;
+  --pw-typography-font_serif: 'Fraunces', Georgia, serif;
+  --pw-typography-font_mono: 'JetBrains Mono', ui-monospace, monospace;
+  --pw-typography-size_h1: clamp(28px, 4vw, 40px);
+  --pw-typography-size_lead: 18px;
+  --pw-typography-size_body: 16px;
+  --pw-typography-size_small: 14px;
+  --pw-typography-size_micro: 13px;
+  --pw-typography-size_label: 13px;
+
+
+}

@@ -1,0 +1,57 @@
+cards:
+  downloads:
+    - name: normal
+      responses:
+        downloads:
+          - hash: "aaaa1111"
+            name: Example Download
+            size: 1024
+            progress: 0.5
+            dlspeed: 1024
+            state: downloading
+          - hash: "bbbb2222"
+            name: Second Example
+            size: 2048
+            progress: 1.0
+            dlspeed: 0
+            state: uploading
+        transfer:
+          dl_info_speed: 2048
+          up_info_speed: 512
+          dl_rate_limit: 0
+          up_rate_limit: 0
+          connection_status: connected
+      expect:
+        state: healthy
+        values:
+          downloading: "2"
+          down: 2,048 B/s
+          up: 512 B/s
+          connection: connected
+    - name: disconnected
+      responses:
+        downloads: []
+        transfer:
+          dl_info_speed: 0
+          up_info_speed: 0
+          connection_status: disconnected
+      expect:
+        state: needs_attention
+        values:
+          downloading: "0"
+          down: 0 B/s
+          up: 0 B/s
+          connection: disconnected
+    - name: unavailable
+      responses:
+        downloads:
+          __status: 500
+        transfer:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          downloading: unknown
+          down: unknown
+          up: unknown
+          connection: unknown

@@ -1,0 +1,653 @@
+schema: play-nice/references-v1
+
+participant: figma
+
+references:
+  # --- design file ---
+  - id: figma-file-personal-world
+    type: file
+    external_id: VATVojyJZT9HKx0CrDS0yr
+    description: Personal World design file (frames, tokens, companions) — provenance, not canonical storage
+    status: canonical
+    provenance:
+      participant: figma
+      source: Figma cloud file
+      observed_at: 2026-09-07
+      method: handoff-export
+
+  # --- archived frame index (historical statuses) ---
+  - id: frame-index-archived
+    type: document
+    description: Archived frame index with node IDs and V0.1 handoff statuses (Rows 1-10)
+    status: historical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: figma-first-pass
+
+  # --- approved core screens (V0.1 handoff status) ---
+  - id: frame-today-hybrid-desktop-1440
+    type: frame
+    external_id: "4:5"
+    description: Today Hybrid Desktop 1440 — primary Today view
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-world-capability-first
+    type: frame
+    external_id: "6:4"
+    description: World/capability detail view
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-journal-screen
+    type: frame
+    external_id: "3:445"
+    description: Journal entry and history view
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-settings-refined
+    type: frame
+    external_id: "5:4"
+    description: Settings / Reading & Interaction preferences
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+
+  # --- responsive cascade ---
+  - id: frame-today-responsive-cascade
+    type: frame
+    external_id: "14:472"
+    description: Today view desktop -> compact -> tablet -> phone
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-today-hybrid-narrow-900
+    type: frame
+    external_id: "4:135"
+    description: Today view at compact breakpoint (900px)
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+
+  # --- today states ---
+  - id: frame-today-empty
+    type: frame
+    external_id: "3:722"
+    description: Today empty state
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-today-attention
+    type: frame
+    external_id: "3:779"
+    description: Today attention state
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-today-partial
+    type: frame
+    external_id: "3:941"
+    description: Today partial state
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-today-loading
+    type: frame
+    external_id: "3:1044"
+    description: Today loading state
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+
+  # --- accessibility & platform rules frames ---
+  - id: frame-responsive-platform-rules
+    type: frame
+    external_id: "14:5"
+    description: Breakpoint specifications, token grids, platform rules
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-accessibility-stress-tests
+    type: frame
+    external_id: "14:914"
+    description: Edge-case accessibility scenarios tested
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-accessibility-stress-variants
+    type: frame
+    external_id: "4:266"
+    description: Additional a11y test variants
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+
+  # --- patterns & feature details ---
+  - id: frame-pattern-sheet-1
+    type: frame
+    external_id: "5:283"
+    description: Reusable component patterns
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-pattern-sheet-2
+    type: frame
+    external_id: "5:449"
+    description: Additional patterns
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-pattern-sheet-3
+    type: frame
+    external_id: "5:587"
+    description: Additional patterns
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-feature-detail-1
+    type: frame
+    external_id: "7:4"
+    description: Feature-specific interaction design
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-feature-detail-2
+    type: frame
+    external_id: "7:192"
+    description: Feature-specific interaction design
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+
+  # --- companion / themes (historical) ---
+  - id: frame-world-keeper-construction
+    type: frame
+    external_id: "11:4"
+    description: World Keeper globe companion construction (historical — superseded by five-resident set)
+    status: historical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-world-keeper-poses
+    type: frame
+    external_id: "13:4"
+    description: World Keeper 6 semantic poses (historical)
+    status: historical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-world-keeper-contexts
+    type: frame
+    external_id: "13:295"
+    description: World Keeper placement contexts (historical)
+    status: historical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-comfortable-theme
+    type: frame
+    external_id: "3:2005"
+    description: Default dark aubergine theme (comfortable contrast)
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-high-contrast-theme
+    type: frame
+    external_id: "3:2147"
+    description: High contrast variant
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+
+  # --- handoff row ---
+  - id: frame-implementation-handoff-index
+    type: frame
+    external_id: "16:157"
+    description: Master index of deliverables and reading order
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-accessibility-contract-visual
+    type: frame
+    external_id: "16:5"
+    description: Visual reference of the accessibility contract (canonical text in docs/accessibility/)
+    status: canonical
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+
+  # --- reference / superseded ---
+  - id: frame-design-direction
+    type: frame
+    external_id: "3:1268"
+    description: Early design exploration and direction-setting
+    status: reference
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-reference-studies
+    type: frame
+    external_id: "6:230"
+    description: Comparative reference material
+    status: reference
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-superseded-1
+    type: frame
+    external_id: "3:1438"
+    description: Earlier iteration — do not implement
+    status: superseded
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-superseded-2
+    type: frame
+    external_id: "7:565"
+    description: Earlier iteration — do not implement
+    status: superseded
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-superseded-3
+    type: frame
+    external_id: "9:5"
+    description: Earlier iteration — do not implement
+    status: superseded
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-superseded-4
+    type: frame
+    external_id: "14:1147"
+    description: Earlier iteration — do not implement
+    status: superseded
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+  - id: frame-superseded-5
+    type: frame
+    external_id: "7:371"
+    description: Earlier iteration — do not implement
+    status: superseded
+    provenance:
+      participant: figma
+      source: design/handoff/FRAME_INDEX.md
+      observed_at: 2026-09-06
+      method: archived-handoff
+
+  # --- CHAT SCREENS: figma's correction — status unknown (no recorded approval) ---
+  - id: frame-chat-active-conversation
+    type: frame
+    description: Chat active conversation screen — exported 2026-09-06, repo-tracked SVG, no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+  - id: frame-chat-empty-new
+    type: frame
+    description: Chat empty/new screen — no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+  - id: frame-chat-error-partial
+    type: frame
+    description: Chat error/partial screen — no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+  - id: frame-chat-thinking-working
+    type: frame
+    description: Chat thinking/working screen — no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+  - id: frame-chat-tool-capability
+    type: frame
+    description: Chat tool capability screen — no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+  - id: frame-chat-source-provenance
+    type: frame
+    description: Chat source provenance screen — no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+  - id: frame-chat-long-dense
+    type: frame
+    description: Chat long/dense screen — no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+  - id: frame-chat-contextual-vefr
+    type: frame
+    description: Chat contextual VEFR screen — no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+  - id: frame-chat-narrow-responsive
+    type: frame
+    description: Chat narrow responsive screen — no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: design/screens/chat/
+      observed_at: 2026-09-06
+      method: svg-export
+
+  # --- FRAME 197:902: figma's correction — status unknown, agent-generated, not in repo evidence ---
+  - id: frame-197-902-capability-detail
+    type: frame
+    external_id: "197:902"
+    description: Capability detail frame — agent-generated reference; NOT in repo evidence; no recorded approval
+    status: unknown
+    provenance:
+      participant: figma
+      source: agent-generated during first pass
+      observed_at: 2026-09-12
+      method: conversation-relay
+
+  # --- token sources ---
+  - id: canonical-tokens-repo
+    type: file
+    description: Canonical semantic token source (repo-owned); Figma variables derive from it, never the reverse
+    status: canonical
+    provenance:
+      participant: personal-world
+      source: design/tokens.json
+      observed_at: 2026-09-12
+      method: repo-truth
+  - id: figma-variable-collection
+    type: component
+    description: Figma-side variable collection — only four variables; immature; observed, not canonical
+    status: observed
+    provenance:
+      participant: figma
+      source: figma:variables (VATVojyJZT9HKx0CrDS0yr)
+      observed_at: 2026-09-12
+      method: figma-first-pass-report
+
+  # --- exports ---
+  - id: repo-tracked-svg-exports
+    type: export
+    description: Repo-tracked SVG exports of designed screens (design/screens/)
+    status: reference
+    provenance:
+      participant: figma
+      source: design/screens/
+      observed_at: 2026-09-07
+      method: svg-re-export
+  - id: local-png-exports-0-1
+    type: export
+    description: Local PNG re-exports 2026-09-11 (design/exports/0.1/ + ~/figma_files/) — untracked local copies
+    status: reference
+    provenance:
+      participant: figma
+      source: design/exports/0.1/
+      observed_at: 2026-09-11
+      method: png-re-export
+  # --- Workshop v3 evidence file (2026-09-13 MCP retrieval) ---
+  - id: figma-file-workshop-v3
+    type: file
+    external_id: Wbg1rdt9fVCjWAXEKI1pTc
+    description: Workshop v3 evidence file — warmth explorations, canonical frames, philosophy, convergence audit (product design file remains figma-file-personal-world)
+    status: canonical
+    provenance:
+      participant: figma
+      source: Figma cloud file (desktop Dev Mode MCP retrieval)
+      observed_at: 2026-09-13
+      method: figma-mcp-get-metadata-design-context-screenshot
+  - id: workshop-v3-page
+    type: document
+    external_id: "0:1"
+    description: Workshop page — single page containing all v3 explorations and artifacts
+    status: canonical
+    provenance:
+      participant: figma
+      source: Figma file Wbg1rdt9fVCjWAXEKI1pTc
+      observed_at: 2026-09-13
+      method: figma-mcp-get-metadata
+  - id: workshop-v3-philosophy
+    type: frame
+    external_id: "17:8873"
+    description: Project Worlds design philosophy — "The world knows how loudly to exist." + core principles + emotional volume scale + companion behavior + lore
+    status: canonical
+    provenance:
+      participant: figma
+      source: Figma file Wbg1rdt9fVCjWAXEKI1pTc
+      observed_at: 2026-09-13
+      method: figma-mcp-get-design-context
+  - id: workshop-v3-audit
+    type: frame
+    external_id: "18:2"
+    description: Convergence Audit & Final Classification — all 8 revised frames CANONICAL REFERENCE — READY FOR IMPLEMENTATION; 8 reservations verbatim
+    status: canonical
+    provenance:
+      participant: figma
+      source: Figma file Wbg1rdt9fVCjWAXEKI1pTc
+      observed_at: 2026-09-13
+      method: figma-mcp-get-design-context
+  - id: workshop-v3-classification
+    type: frame
+    external_id: "17:9864"
+    description: Warmth exploration classification — 16/16 converged; originally-canonical + revised sets; common revisions
+    status: canonical
+    provenance:
+      participant: figma
+      source: Figma file Wbg1rdt9fVCjWAXEKI1pTc
+      observed_at: 2026-09-13
+      method: figma-mcp-get-design-context
+
+  # --- Workshop v3 canonical frames: 8 audited revised frames ---
+  - id: workshop-v3-today-quiet-day
+    type: frame
+    external_id: "17:481"
+    description: Today — Quiet Day (1440x1000, WARM) — IMPLEMENTATION TARGET #1; NOT 13:14 (superseded iteration), NOT V0.1 3:722
+    status: canonical
+    provenance:
+      participant: figma
+      source: Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1
+      observed_at: 2026-09-13
+      method: figma-mcp-get-design-context-screenshot
+  - id: workshop-v3-vault
+    type: frame
+    external_id: "17:1014"
+    description: Vault screen (1440x1000, WARM) — canonical after revision
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-login
+    type: frame
+    external_id: "17:1681"
+    description: Project Worlds login (900x700, GENEROUS) — canonical after revision
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-mobile-today
+    type: frame
+    external_id: "17:1929"
+    description: Today mobile (390x844, WARM) — responsive interpretation of Today — Quiet Day 17:481; bottom nav
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-design-context }
+  - id: workshop-v3-chat
+    type: frame
+    external_id: "17:2536"
+    description: Companion present chat (1440x1000, COMPANION PRESENT) — canonical after revision; chat interactions remain exploratory per reservation
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-projects
+    type: frame
+    external_id: "17:2752"
+    description: Projects workspace (1440x1000, CAPABLE) — canonical after revision
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-setup
+    type: frame
+    external_id: "17:3039"
+    description: Setup wizard — first encounter (1440x900, GENEROUS) — canonical after revision
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-notifications
+    type: frame
+    external_id: "17:6369"
+    description: How the World Tells You Things (1440x700, CAPABLE) — notification tier study; canonical after revision
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+
+  # --- Workshop v3 originally-canonical frames (converged, not in revision pass) ---
+  - id: workshop-v3-interests-empty
+    type: frame
+    external_id: "17:1515"
+    description: Interests unexplored room (GENEROUS) — originally canonical
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-bad-day
+    type: frame
+    external_id: "17:2117"
+    description: Today — Bad Day (1440x1100, ATTENTIVE) — originally canonical
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-journal-writing
+    type: frame
+    external_id: "17:2268"
+    description: Journal writing (1440x1000, QUIET) — originally canonical
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-settings
+    type: frame
+    external_id: "17:3762"
+    description: Project Worlds settings (1440x1100, PRACTICAL) — originally canonical
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-companion-popover
+    type: frame
+    external_id: "17:4565"
+    description: Companion progressive disclosure (1440x800, QUIET-AMBIENT-PRESENT) — originally canonical
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-world-overview
+    type: frame
+    external_id: "17:5485"
+    description: Your World (1440x1000, PRACTICAL) — originally canonical
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-journal-reading
+    type: frame
+    external_id: "17:5763"
+    description: Journal reading (1440x1000, AMBIENT warm nostalgic) — originally canonical
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-metadata }
+  - id: workshop-v3-question
+    type: frame
+    external_id: "17:6245"
+    description: Today — Question (1440x1000, AMBIENT to ATTENTIVE curious) — originally canonical; "Something caught my attention" uncertainty pattern
+    status: canonical
+    provenance: { participant: figma, source: "Figma file Wbg1rdt9fVCjWAXEKI1pTc, page 0:1", observed_at: 2026-09-13, method: figma-mcp-get-design-context }

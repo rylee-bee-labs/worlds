@@ -1,0 +1,19 @@
+schema_version: 1
+id: sign-in
+title: Sign-in
+icon: key
+group: machine
+request: authelia.health
+view: stat
+meaning:
+  concept: Whether the sign-in service is healthy.
+  short: Is the sign-in service answering?
+  full: Asks the sign-in service how it is doing and shows the status word it reports.
+status:
+  path: $.status
+  healthy:
+    - OK
+fields:
+  - path: $.status
+    label: Status
+    format: text

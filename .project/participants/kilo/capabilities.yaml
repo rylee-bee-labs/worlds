@@ -1,0 +1,187 @@
+schema: play-nice/participant-capabilities-v1
+
+participant: kilo
+
+# This file records the OBSERVED tool surface and behavior of the Kilo
+# harness from a 2026-09-12 onboarding experiment. It is NOT a
+# certification or a permanent role assignment. The harness exposes; the
+# project authorizes.
+
+capabilities:
+  - id: file-read
+    description: >-
+      Read absolute or worktree-relative paths via the Read tool. Directories
+      return an enumeration of entries. Read-before-Edit is enforced for
+      mutation flows.
+    inputs:
+      - file path (absolute or relative to worktree)
+    outputs:
+      - file contents (with line numbers) or directory listing
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: file-search
+    description: >-
+      Glob pattern file discovery and Grep content search across the
+      worktree. Respects .gitignore. Supports regex and literal modes.
+    inputs:
+      - glob pattern (Glob) or regex / literal (Grep)
+    outputs:
+      - matching file paths (Glob) or file:line matches (Grep)
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: file-edit
+    description: >-
+      Edit existing files via the Edit tool. Exact-string match is required;
+      oldString must appear exactly once unless replaceAll is set. Read-before-
+      Edit is enforced.
+    inputs:
+      - file path, oldString, newString
+    outputs:
+      - patched file
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: file-write
+    description: >-
+      Write new files or overwrite existing ones via the Write tool.
+      Read-before-Write is required for files that already exist.
+    inputs:
+      - file path, content
+    outputs:
+      - file at given path
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: bash-execution
+    description: >-
+      Execute shell commands in a persistent shell session. Configurable
+      timeout. Read-only commands run freely; mutating git commands
+      (add/commit/push/merge/checkout/reset/stash) require per-command
+      confirmation that cannot be saved as always-allow.
+    inputs:
+      - shell command string
+    outputs:
+      - stdout, stderr, exit code
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: background-process
+    description: >-
+      Start and manage long-running processes (dev servers, watchers, etc.).
+      Returned immediately; non-blocking. Tracked in the session sidebar.
+    inputs:
+      - command, optional workdir, optional readiness probe
+    outputs:
+      - process id, retained tail logs
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: git-read
+    description: >-
+      Read-only git operations: status, log, diff, fetch, rev-parse,
+      rev-list. No confirmation gate.
+    inputs:
+      - git subcommand + args
+    outputs:
+      - structured git output
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: git-pull-ff-only
+    description: >-
+      Fast-forward-only pull from a configured remote. Requires per-command
+      confirmation in this session; not bypassable via config.
+    inputs:
+      - remote, branch
+    outputs:
+      - updated working tree
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: git-mutate
+    description: >-
+      Mutating git operations (add, commit, push, merge, reset, stash).
+      Per-command confirmation. Should generally be preceded by explicit
+      owner authority (Rylee says "deploy" / "merge" / "commit X").
+    inputs:
+      - git subcommand + args + paths
+    outputs:
+      - updated repo state
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: web-fetch
+    description: >-
+      WebFetch: retrieve one URL and convert to markdown/text/html. HTTP is
+      upgraded to HTTPS. Read-only.
+    inputs:
+      - URL
+    outputs:
+      - converted content
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: web-search
+    description: >-
+      WebSearch via the configured provider (Brave + kilo websearch MCP
+      fallback in this session).
+    inputs:
+      - query, optional recency_days, top_k
+    outputs:
+      - ranked search results
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: mcp-tool-surface
+    description: >-
+      Connected MCP servers expose additional tools. Each MCP server is a
+      separate trust boundary; tool presence is capability, not consent.
+      Servers observed in this session: memory, preferences, synology,
+      proxmox, unifi, dns-traefik, gitea (read-side), kilo-local-recall,
+      inbox-mcp, firecrawl, reddit, context7, figma.
+    inputs:
+      - tool-specific args per MCP server
+    outputs:
+      - tool-specific responses
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: question-tool
+    description: >-
+      Interactive question tool with 2-3 options per question, recommended
+      option first, single or multi-select, optional default. Returns labels
+      as the answer.
+    inputs:
+      - questions array with options
+    outputs:
+      - selected option labels
+    observed_in_session: 2026-09-12T17:33:48Z
+
+  - id: plan-mode
+    description: >-
+      Structured planning mode for non-trivial work. Exit with plan_exit
+      once the plan file is finalized; does not implement.
+    inputs:
+      - planning context
+    outputs:
+      - plan file ready for implementation
+    observed_in_session: 2026-09-12T17:33:48Z
+
+# Honest limitations (play-nice/participant-capabilities-v1 requires a
+# non-empty list). Mirrors participant.yaml `limitations`; the harness
+# exposes tools, and exposure is never authorization.
+limitations:
+  - capability-is-not-authorization
+  - confirmation-prompt-cannot-be-pinned-as-always-allow
+  - context-does-not-persist-across-sessions-unless-explicitly-written
+  - long-jobs-look-frozen-without-explicit-progress
+  - external-system-access-requires-separate-authentication
+
+# Deliberately NOT listed (capability implied by tool availability, but
+# authority is held elsewhere — see participant.yaml `not_authoritative_for`):
+#   - push to remote without explicit owner grant
+#   - merge / close issues / deploy
+#   - rewrite another participant pack
+#   - bump adoption pin
+#   - bypass confirmation gates via config
+#
+# HARNESS-LEVEL SUPPORT FOR BRAIN SELF-VALIDATION
+# Kilo does not itself validate structured output (that is the brain's
+# job to do well), but the harness DOES expose the tools a brain needs
+# to validate itself: bash to run parsers, file-tools to read/repair
+# generated files, and a per-command confirmation gate that does not
+# silently bypass the validation step. A brain that produces structured
+# files (YAML / JSON / TOML) is expected to run `yaml.safe_load`,
+# `python -m json.tool`, `tombi check`, etc. before accepting the file
+# — see .project/participants/minimax/participant.yaml
+# `known_failure_modes.observed[].id: schema-format-adherence`.

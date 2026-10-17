@@ -1,0 +1,41 @@
+cards:
+  music:
+    - name: normal
+      responses:
+        calendar:
+          - title: Example Album
+            releaseDate: "2027-01-16T08:00:00Z"
+            artist:
+              artistName: Example Artist
+          - title: Second Album
+            releaseDate: "2027-01-17T08:00:00Z"
+            artist:
+              artistName: Second Artist
+      expect:
+        state: healthy
+        values:
+          new-albums: "2"
+          next-album: Example Album
+          by: Example Artist
+          out: in 1 day
+    - name: empty
+      responses:
+        calendar: []
+      expect:
+        state: healthy
+        values:
+          new-albums: "0"
+          next-album: unknown
+          by: unknown
+          out: unknown
+    - name: unavailable
+      responses:
+        calendar:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          new-albums: unknown
+          next-album: unknown
+          by: unknown
+          out: unknown

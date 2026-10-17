@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="t">
+  <title id="t">Assistant</title>
+  <!-- Worlds' default helper: a friendly monitor in the crew's navy and gold.
+       Decorative in the UI (alt="" there); this title is for standalone use. -->
+  <!-- stand -->
+  <path d="M214 392h84l14 52H200z" fill="#1B2340" stroke="#D4A057" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="166" y="440" width="180" height="22" rx="11" fill="#1B2340" stroke="#D4A057" stroke-width="6"/>
+  <!-- commbadge on the stand: a small gold ringed planet (Sol's shape, no face) -->
+  <circle cx="256" cy="414" r="11" fill="#D4A057"/>
+  <ellipse cx="256" cy="414" rx="20" ry="6.5" transform="rotate(-18 256 414)" fill="none" stroke="#F3D9A8" stroke-width="3.5"/>
+  <!-- bezel -->
+  <rect x="52" y="70" width="408" height="324" rx="44" fill="#1B2340" stroke="#D4A057" stroke-width="8"/>
+  <rect x="74" y="92" width="364" height="280" rx="30" fill="#0F1226"/>
+  <!-- soft screen glow, low and warm -->
+  <rect x="74" y="92" width="364" height="280" rx="30" fill="#E2AB62" opacity="0.07"/>
+  <!-- face: happy closed eyes and a small smile, in warm cream -->
+  <path d="M170 212q26-30 52 0" fill="none" stroke="#F3D9A8" stroke-width="16" stroke-linecap="round"/>
+  <path d="M290 212q26-30 52 0" fill="none" stroke="#F3D9A8" stroke-width="16" stroke-linecap="round"/>
+  <path d="M214 272q42 36 84 0" fill="none" stroke="#F3D9A8" stroke-width="14" stroke-linecap="round"/>
+  <!-- cheeks -->
+  <ellipse cx="160" cy="262" rx="18" ry="11" fill="#E7A3B0" opacity="0.55"/>
+  <ellipse cx="352" cy="262" rx="18" ry="11" fill="#E7A3B0" opacity="0.55"/>
+  <!-- a tiny power light -->
+  <circle cx="420" cy="382" r="6" fill="#E2AB62"/>
+</svg>

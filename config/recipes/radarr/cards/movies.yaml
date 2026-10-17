@@ -1,0 +1,27 @@
+schema_version: 1
+id: movies
+title: Movies
+icon: film
+group: life
+requests:
+  - radarr.calendar
+  - radarr.wanted
+view: stat
+meaning:
+  concept: Which films are due soon and how many are still wanted.
+  short: What films are coming up?
+  full: The films with a release in the next month, with the next one named, plus the number of films still missing. The counts come from Radarr itself.
+fields:
+  - path: "$.calendar"
+    label: Coming up
+    format: count
+  - path: "$.calendar[0].title"
+    label: Next film
+    format: text
+  - path: "$.wanted.totalRecords"
+    label: Missing
+    format: number
+    unit: wanted
+meter:
+  type: marks
+  items: "$.calendar[*].title"

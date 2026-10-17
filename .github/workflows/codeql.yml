@@ -1,0 +1,66 @@
+name: codeql
+
+# Security scanning on every pull request and once a week on main
+# (owner decision 2026-09-27). GitHub's default setup also re-scanned main
+# after every merge: the same code a PR had just scanned, 145 times a week.
+# Replaces the default setup, which must be switched off for this workflow's
+# results to be accepted (Settings → Code security → CodeQL → Advanced).
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "41 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: codeql-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [actions, javascript-typescript, python]
+    # Code scanning on a private repo needs paid GitHub Code Security, which is off
+    # (owner decision 2026-10-17: skip CodeQL while Worlds is private, $0). The job
+    # still reports so the required check settles, says so in its summary, and
+    # scans again by itself the moment the repo is public.
+    steps:
+      - name: Scan only while the repo is public
+        id: vis
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          private=$(gh api "repos/$GITHUB_REPOSITORY" --jq .private) || exit 1
+          case "$private" in
+            false) echo "scan=true" >> "$GITHUB_OUTPUT" ;;
+            true)
+              echo "scan=false" >> "$GITHUB_OUTPUT"
+              echo "CodeQL skipped: private repo without GitHub Code Security (owner decision 2026-10-17)." | tee -a "$GITHUB_STEP_SUMMARY"
+              ;;
+            *) echo "::error::could not tell whether the repo is private (got '$private')"; exit 1 ;;
+          esac
+      - if: steps.vis.outputs.scan == 'true'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - if: steps.vis.outputs.scan == 'true'
+        uses: github/codeql-action/init@24c54180a607b1449ed407dd24f251e4e9147c8d # v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: none
+      - if: steps.vis.outputs.scan == 'true'
+        uses: github/codeql-action/analyze@24c54180a607b1449ed407dd24f251e4e9147c8d # v4
+        with:
+          category: "/language:${{ matrix.language }}"

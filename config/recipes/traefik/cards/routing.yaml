@@ -1,0 +1,25 @@
+schema_version: 1
+id: routing
+title: Routing
+icon: route
+group: machine
+request: traefik.overview
+view: stat
+meaning:
+  concept: Whether the routing service has any broken routes.
+  short: Are the routes working?
+  full: Counts the routes the routing service knows about and how many have errors or warnings.
+fields:
+  - path: $.http.routers.total
+    label: Routes
+    format: number
+  - path: $.http.routers.errors
+    label: With errors
+    format: number
+  - path: $.http.routers.warnings
+    label: With warnings
+    format: number
+status:
+  path: $.http.routers.errors
+  healthy: [0]
+  above: {value: 0, state: needs_attention}

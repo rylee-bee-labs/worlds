@@ -1,0 +1,13 @@
+schema_version: 1
+id: grimmory
+name: Grimmory
+kind: http
+base_url: http://grimmory.lan.example:8788
+auth:
+  type: password_grant
+  token_path: /api/v1/auth/token
+  secret_ref: env:GRIMMORY_CREDENTIALS
+network:
+  lan: true
+timeout_s: 5
+max_bytes: 1048576

@@ -1,0 +1,15 @@
+schema_version: 1
+id: houndarr
+title: Houndarr
+icon: hound
+group: machine
+request: houndarr.widget
+view: status
+meaning:
+  concept: What Houndarr has been doing.
+  short: Reachable means healthy. Nothing more is mapped yet.
+  full: >-
+    Houndarr's activity summary is not mapped yet, because its response shape
+    has not been checked. While it answers, this card reads healthy; if it
+    cannot be reached, it reads unavailable.
+fields: []

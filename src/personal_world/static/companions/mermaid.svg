@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Pastel mermaid — layered idle source rig</title>
+  <desc id="desc">A smiling mermaid with pink, lilac, mint and blue hair, a lavender shell top, a defined waist and a curved teal tail ending in two separate leaf-shaped fins. Transparent background.</desc>
+  <g id="mermaid" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <g id="hair-back">
+      <path id="hair-back-base" fill="#DFCEF1" d="M169 100 C173 57 227 43 271 65 C313 83 324 122 315 161 C308 199 330 232 320 272 C316 289 306 300 292 303 C302 266 277 241 278 207 C250 219 207 219 182 204 C183 242 163 260 167 287 C140 280 127 262 133 235 C140 201 128 177 143 140 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="hair-back-blue" fill="#BED5F5" d="M156 167 C169 197 161 224 154 242 C149 258 153 271 167 287 C138 278 125 254 136 225 C144 203 138 185 156 167 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="hair-back-mint" fill="#ACEBD5" d="M294 117 C322 143 304 180 309 209 C312 229 325 246 318 270 C291 250 284 222 290 192 C295 165 283 144 294 117 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="body-torso">
+      <path id="torso-skin" fill="#FFF0E4" d="M220 190 L220 207 C211 211 195 214 190 225 C185 239 201 253 204 267 L202 289 Q232 306 263 289 L262 269 C265 253 280 235 273 223 C268 214 253 211 245 207 L245 190 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="tail-assembly">
+      <g id="tail-fin-left">
+        <path id="fin-left-shape" fill="#ACEBD5" d="M348 400 C325 378 330 346 375 334 C370 353 379 379 359 398 Q354 403 348 400 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path id="fin-left-detail" fill="none" stroke-width="2.5" d="M352 391 Q351 367 366 349" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="tail-fin-right">
+        <path id="fin-right-shape" fill="#A8DCD9" d="M349 397 C376 378 407 391 428 422 C404 418 379 439 358 419 Q349 410 349 397 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path id="fin-right-detail" fill="none" stroke-width="2.5" d="M360 405 Q385 403 411 417" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="tail">
+        <path id="tail-shape" fill="#78B5B6" d="M203 279 Q231 288 263 279 C274 301 272 326 257 347 C242 368 237 386 254 402 C281 428 325 409 347 392 Q357 390 359 400 C337 433 295 465 251 448 C204 431 188 397 195 365 C199 344 211 330 209 313 C208 299 198 289 203 279 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path id="tail-highlight" fill="#A9DDCE" stroke="none" d="M218 302 C238 331 209 355 211 384 C214 420 249 443 282 436 C244 435 225 409 228 384 C231 356 250 334 243 308 Z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <g id="outline-details" fill="none" stroke-width="2.5">
+          <path id="waist-detail" d="M207 290 Q232 299 261 290" fill="none" stroke="#603D49" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <path id="scales-upper" d="M220 317 Q226 325 232 317 Q238 325 244 317" fill="none" stroke="#603D49" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <path id="scales-lower" d="M212 339 Q218 347 224 339 Q230 347 236 339" fill="none" stroke="#603D49" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <path id="tail-curve-detail" d="M243 418 Q263 438 292 428" fill="none" stroke="#603D49" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+      </g>
+    </g>
+    <g id="arm-left">
+      <path id="arm-left-skin" fill="#FFF0E4" d="M194 218 C183 217 179 231 177 243 C175 253 165 261 159 267 C153 274 158 281 165 279 C184 273 197 257 201 240 C204 229 204 222 194 218 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="hand-left-detail" fill="none" stroke-width="2.5" d="M159 269 L166 270" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="arm-right">
+      <path id="arm-right-skin" fill="#FFF0E4" d="M271 219 C281 217 284 228 289 239 C293 248 301 249 307 244 L316 237 C321 234 326 240 323 246 C315 262 299 270 287 261 C275 252 268 241 265 231 Q263 223 271 219 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="hand-right-detail" fill="none" stroke-width="2.5" d="M313 243 L317 247" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="shell-top">
+      <path id="shell-left" fill="#D9C4EF" d="M232 239 C221 223 207 222 201 231 C197 240 208 251 220 251 Q229 251 232 245 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="shell-right" fill="#C3D5F3" d="M233 239 C244 223 258 222 264 231 C268 240 257 251 245 251 Q236 251 233 245 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <g id="shell-ridges" fill="none" stroke-width="2">
+        <path d="M224 245 L211 232 M220 247 L206 240 M242 245 L255 232 M246 247 L260 240" id="shell-ridges-path-01" fill="none" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <path id="shell-center" fill="#F5C8E7" d="M233 237 Q240 242 233 248 Q226 242 233 237 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="face-head">
+      <path id="head-skin" fill="#FFF0E4" d="M173 121 C173 81 208 72 239 78 C278 80 295 108 294 141 C293 173 266 200 235 201 C200 203 172 176 173 143 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <g id="face-details">
+        <g id="cheeks" fill="#F7C8E4" stroke="none">
+          <ellipse cx="195" cy="157" rx="12" ry="8" id="cheeks-ellipse-01" fill="#F7C8E4" stroke="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <ellipse cx="274" cy="157" rx="12" ry="8" id="cheeks-ellipse-02" fill="#F7C8E4" stroke="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="eyes-open" fill="#603D49" stroke="none">
+          <ellipse cx="207" cy="139" rx="4.8" ry="6" id="eyes-open-ellipse-01" fill="#603D49" stroke="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <ellipse cx="263" cy="139" rx="4.8" ry="6" id="eyes-open-ellipse-02" fill="#603D49" stroke="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <circle cx="205.5" cy="137" r="1.5" fill="#FFFFFF" id="eyes-open-circle-01" stroke="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <circle cx="261.5" cy="137" r="1.5" fill="#FFFFFF" id="eyes-open-circle-02" stroke="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <path id="nose" fill="none" stroke="#BD9994" stroke-width="2.5" d="M234 151 L237 152" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path id="mouth" fill="none" stroke-width="3" d="M226 164 Q234 173 243 163" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="hair-front">
+      <path id="fringe-pink" fill="#F4C6E9" d="M160 123 C151 95 174 62 211 59 C248 52 280 67 296 95 C274 113 242 110 224 88 C214 113 187 126 160 123 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="fringe-sweep" fill="#F4C6E9" d="M224 88 C242 63 278 75 295 94 C311 111 310 130 300 143 C293 115 255 126 224 88 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="side-lock-mint" fill="#ACEBD5" d="M164 111 C184 117 179 146 164 166 C152 182 151 197 154 209 C132 198 133 169 143 149 C149 136 146 119 164 111 Z" stroke="#603D49" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="hair-strand-detail" fill="none" stroke-width="2.5" d="M181 99 Q196 97 205 83 M255 88 Q276 87 287 103" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="bubbles-sparkles" fill="none" stroke-width="2.5">
+      <circle id="bubble-large" cx="354" cy="180" r="9" stroke="#82BABB" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <circle id="bubble-small" cx="369" cy="156" r="4" stroke="#82BABB" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path id="sparkle" fill="#F4C6E9" d="M117 303 Q117 313 107 314 Q117 315 117 325 Q118 315 128 314 Q118 313 117 303 Z" stroke="#603D49" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+  </g>
+</svg>

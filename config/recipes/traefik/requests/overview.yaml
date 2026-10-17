@@ -1,0 +1,8 @@
+schema_version: 1
+id: traefik.overview
+provider: traefik
+method: GET
+path: /api/overview
+query: {}
+effect: read
+ttl_s: 60

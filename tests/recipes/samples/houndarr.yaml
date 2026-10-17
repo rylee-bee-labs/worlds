@@ -1,0 +1,24 @@
+# Bodies are made up in an assumed shape: the real /api/v1/widget keys are unknown.
+cards:
+  houndarr:
+    - name: normal
+      responses:
+        widget:
+          status: ok
+          recentActions: 3
+      expect:
+        state: healthy
+        values: {}
+    - name: unavailable
+      responses:
+        widget:
+          __status: 500
+      expect:
+        state: unavailable
+        values: {}
+    - name: empty
+      responses:
+        widget: {}
+      expect:
+        state: healthy
+        values: {}

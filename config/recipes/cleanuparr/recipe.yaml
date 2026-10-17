@@ -1,0 +1,12 @@
+schema_version: 1
+name: cleanuparr
+title: Cleanuparr
+summary: Whether the media cleanup service is reachable.
+status: ready
+note: >-
+  The /api/v2/stats response shape is unknown, so no statistics are mapped and
+  the card reads healthy while the service answers. Sample bodies are made up in
+  an assumed shape, not recorded from a live instance.
+verified: false
+env:
+  - CLEANUPARR_API_KEY

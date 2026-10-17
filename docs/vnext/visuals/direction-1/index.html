@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Both widths &middot; Worlds visual direction 1 (mockup)</title>
+<style>
+/* Direction 1 gallery. Inline, no build step, no network. Shares the
+   direction's palette so the frames read as part of the same direction. */
+:root{
+  --ink:#0C1A1E;--hull:#13262B;--panel:#1A3238;--line:#557F86;
+  --foam:#EAF4F1;--mist:#BFD6D2;--sea:#6FD8C2;--amber:#FFC773;--focus:#FFD166;
+  --tap:44px;--radius:16px;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--ink);color:var(--foam);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px;line-height:1.55;overflow-wrap:break-word;
+}
+a{color:var(--sea)}
+.skip{position:absolute;left:8px;top:-120px;z-index:10;background:var(--sea);
+  color:#07201C;padding:12px 16px;border-radius:10px;font-weight:600;text-decoration:none;
+  min-height:var(--tap);display:flex;align-items:center}
+.skip:focus{top:8px}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--focus);outline-offset:3px;border-radius:8px}
+a:focus{outline:3px solid var(--focus);outline-offset:3px}
+.shell{max-width:1180px;margin:0 auto;padding:0 16px 64px}
+@media (min-width:900px){.shell{padding:0 32px 80px}}
+.masthead{border-bottom:1px solid var(--line);padding:18px 0 14px;margin-bottom:22px}
+.brand{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0}
+.brand__name{font-size:1.1rem;font-weight:600}
+.brand__dir{font-size:.82rem;color:var(--mist)}
+.mockup{display:inline-flex;align-items:center;border:2px solid var(--amber);
+  color:var(--amber);border-radius:999px;padding:4px 12px;font-size:.72rem;
+  font-weight:700;letter-spacing:.16em}
+h1{font-size:1.75rem;line-height:1.2;margin:0 0 10px}
+h2{font-size:1.2rem;line-height:1.2;margin:0 0 6px}
+h3{font-size:1rem;line-height:1.2;margin:0}
+p{margin:0}
+.lede{color:var(--mist);max-width:64ch;margin-bottom:28px}
+.state{margin:0 0 40px;padding:0 0 28px;border-bottom:1px solid var(--line)}
+.state__head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;margin-bottom:4px}
+.state__link{display:inline-flex;align-items:center;min-height:var(--tap);
+  padding:6px 0;font-weight:600}
+.state p{color:var(--mist);font-size:.94rem;max-width:64ch;margin-bottom:14px}
+.frames{display:grid;gap:16px}
+@media (min-width:900px){.frames{grid-template-columns:390px minmax(0,1fr)}}
+figure{margin:0;min-width:0}
+figcaption{
+  font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mist);margin-bottom:6px;
+}
+.frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--hull)}
+iframe{display:block;border:0;width:100%;background:var(--ink)}
+.phone iframe{height:1180px}
+.wide{overflow-x:auto}
+.wide iframe{width:1440px;height:900px}
+.note{border:1px solid var(--line);border-radius:var(--radius);padding:16px;
+  background:var(--hull);color:var(--mist);font-size:.94rem;margin-bottom:28px}
+.note strong,.note b{color:var(--foam)}
+.foot{margin-top:40px;border-top:1px solid var(--line);padding-top:22px;color:var(--mist);font-size:.88rem}
+.foot h2{font-size:1rem;color:var(--foam);margin-bottom:8px}
+.foot p + p{margin-top:10px}
+.foot strong{color:var(--foam)}
+.footlink{display:inline-flex;align-items:center;min-height:var(--tap);padding:2px 0}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;transition-duration:.001ms !important;
+    scroll-behavior:auto !important}
+}
+@media (prefers-contrast:more){.frame,.note{border-width:2px}}
+@media (forced-colors:active){.frame,.note,.mockup{border:2px solid CanvasText}}
+</style>
+</head>
+<body>
+<a class="skip" href="#states">Skip to the states</a>
+<div class="shell">
+
+<header class="masthead">
+  <p class="brand">
+    <span class="brand__name">Worlds</span>
+    <span class="brand__dir">visual direction 1 &mdash; the shoreline</span>
+    <span class="mockup">MOCKUP</span>
+  </p>
+</header>
+
+<h1>The shoreline, at both widths</h1>
+<p class="lede">Four states, one responsive page each. The phone frame is the page at 390&nbsp;px. The
+wide frame is the same file at 1440&nbsp;px &mdash; it scrolls sideways inside its own frame, so this
+page itself never scrolls sideways.</p>
+
+<div class="note">
+  <p><strong>MOCKUP &mdash; not a prototype, and not approved.</strong> Every service, owning system
+  and address below is invented for the mockup. Nothing was fetched from a provider and no value shown
+  is a real result. Outbound links point at reserved <code>.invalid</code> addresses.</p>
+</div>
+
+<main id="states">
+
+<section class="state" aria-labelledby="s1">
+  <div class="state__head">
+    <h2 id="s1">1 &middot; Quiet day</h2>
+    <a class="state__link" href="01-quiet-day.html">Open this state on its own &rarr;</a>
+  </div>
+  <p>Several services, all fine, nothing waiting. The waterline is empty on purpose, and that
+  emptiness is the message.</p>
+  <div class="frames">
+    <figure>
+      <figcaption>Phone &middot; 390px</figcaption>
+      <div class="frame phone">
+        <iframe src="01-quiet-day.html" title="Quiet day at 390 pixels wide" loading="lazy"></iframe>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>Desktop &middot; 1440px &mdash; scroll sideways inside this frame</figcaption>
+      <div class="frame wide">
+        <iframe src="01-quiet-day.html" title="Quiet day at 1440 pixels wide" loading="lazy"></iframe>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="state" aria-labelledby="s2">
+  <div class="state__head">
+    <h2 id="s2">2 &middot; Needs you</h2>
+    <a class="state__link" href="02-needs-you.html">Open this state on its own &rarr;</a>
+  </div>
+  <p>One service wants a human decision, and links out to the system that owns it. Worlds does not
+  take the decision over.</p>
+  <div class="frames">
+    <figure>
+      <figcaption>Phone &middot; 390px</figcaption>
+      <div class="frame phone">
+        <iframe src="02-needs-you.html" title="Needs you at 390 pixels wide" loading="lazy"></iframe>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>Desktop &middot; 1440px &mdash; scroll sideways inside this frame</figcaption>
+      <div class="frame wide">
+        <iframe src="02-needs-you.html" title="Needs you at 1440 pixels wide" loading="lazy"></iframe>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="state" aria-labelledby="s3">
+  <div class="state__head">
+    <h2 id="s3">3 &middot; Stale and unknown</h2>
+    <a class="state__link" href="03-stale-unknown.html">Open this state on its own &rarr;</a>
+  </div>
+  <p>One source is too old to trust and one has never answered. Both are named in words, kept apart,
+  and never rounded up to &ldquo;broken&rdquo;.</p>
+  <div class="frames">
+    <figure>
+      <figcaption>Phone &middot; 390px</figcaption>
+      <div class="frame phone">
+        <iframe src="03-stale-unknown.html" title="Stale and unknown at 390 pixels wide" loading="lazy"></iframe>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>Desktop &middot; 1440px &mdash; scroll sideways inside this frame</figcaption>
+      <div class="frame wide">
+        <iframe src="03-stale-unknown.html" title="Stale and unknown at 1440 pixels wide" loading="lazy"></iframe>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="state" aria-labelledby="s4">
+  <div class="state__head">
+    <h2 id="s4">4 &middot; No services</h2>
+    <a class="state__link" href="04-no-services.html">Open this state on its own &rarr;</a>
+  </div>
+  <p>First run: no services, no providers. The page says what already works and how to add the first
+  service, instead of apologising for being empty.</p>
+  <div class="frames">
+    <figure>
+      <figcaption>Phone &middot; 390px</figcaption>
+      <div class="frame phone">
+        <iframe src="04-no-services.html" title="No services at 390 pixels wide" loading="lazy"></iframe>
+      </div>
+    </figure>
+    <figure>
+      <figcaption>Desktop &middot; 1440px &mdash; scroll sideways inside this frame</figcaption>
+      <div class="frame wide">
+        <iframe src="04-no-services.html" title="No services at 1440 pixels wide" loading="lazy"></iframe>
+      </div>
+    </figure>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <h2>What this page is</h2>
+  <p>One gallery for the direction, plus four self-contained states. Each state file stands on its
+  own: inline CSS, no build step, no external network, no JavaScript.</p>
+  <p><strong>MOCKUP &mdash; not a prototype, and not approved.</strong> See
+  <a class="footlink" href="README.md">README.md</a> for who this suits, its risks, and what a Connect API would have to
+  supply.</p>
+</footer>
+
+</div>
+</body>
+</html>

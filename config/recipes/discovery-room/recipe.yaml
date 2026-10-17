@@ -1,0 +1,9 @@
+schema_version: 1
+name: discovery-room
+title: A discovery room
+summary: A room that finds things for you. Its cards appear on Home under "Your life"; its actions must be adopted by you before they can run.
+status: room
+note: "A room/0 service maps its own cards, needs and actions, so installing writes the provider only and invents no card files. Pass --base-url with the real address; the your-person-id placeholder is replaced in your private config."
+verified: false
+env:
+  - DISCOVERY_ROOM_TOKEN

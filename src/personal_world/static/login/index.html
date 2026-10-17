@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#161a30">
+<title>Sign in — Worlds</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #12100e;
+    --panel: #1c1814;
+    --ink: #f4efe6;
+    --ink-soft: #c9c0b2;
+    --accent: #d4a057;
+    --line: #3a332b;
+    --danger: #ff9b8a;
+    --focus: #8fd0ff;
+    --radius: 14px;
+    --gap: 16px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(1200px 600px at 50% -10%, #241d15 0%, var(--bg) 60%);
+    color: var(--ink);
+    font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    padding: 24px;
+  }
+  .skip-link {
+    position: absolute; left: -9999px; top: 8px;
+    background: var(--panel); color: var(--ink);
+    padding: 10px 16px; border-radius: 8px; z-index: 10;
+  }
+  .skip-link:focus { left: 8px; }
+  main {
+    width: 100%;
+    max-width: 420px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+  .brand { color: var(--accent); font-weight: 600; letter-spacing: 0.02em; margin: 0 0 4px; }
+  h1 { font-size: 1.5rem; margin: 0 0 8px; }
+  .lede { color: var(--ink-soft); margin: 0 0 20px; }
+  .sso { width: 100%; }
+  #oidc-block { margin: 0 0 20px; }
+  button {
+    min-height: 48px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: var(--accent);
+    color: #1a1409;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button:hover { filter: brightness(1.05); }
+  button[disabled] { opacity: 0.6; cursor: progress; }
+  details.code-block {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    margin-top: 4px;
+  }
+  details.code-block > summary {
+    cursor: pointer;
+    color: var(--ink-soft);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  details.code-block[open] > summary { margin-bottom: 12px; }
+  form { display: grid; gap: var(--gap); }
+  label { font-weight: 600; }
+  input[type="password"], input[type="text"] {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    background: #14110e;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font: inherit;
+  }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .error {
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin: 0 0 16px;
+  }
+  .alt { margin: 16px 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+  .hint { margin: 8px 0 0; color: var(--ink-soft); font-size: 0.9rem; }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<main id="main">
+  <p class="brand">Worlds</p>
+  <h1>Sign in</h1>
+
+  <p id="error" class="error" role="alert" hidden></p>
+  <details id="error-detail" class="code-block" hidden>
+    <summary class="hint">Operator detail</summary>
+    <span class="hint" id="error-detail-code"></span>
+  </details>
+
+  <!-- Passkey-first: shown when this world has SSO configured. -->
+  <div id="oidc-block" hidden>
+    <p class="lede">Sign in with your account — no password to remember.</p>
+    <button type="button" id="oidc-btn" class="sso" aria-describedby="sso-hint">Sign in with your account</button>
+    <p class="hint" id="sso-hint">Uses your passkey where your provider supports one.</p>
+  </div>
+
+  <!-- Access code: the primary path when there is no SSO, and the fallback
+       (collapsed) when there is. -->
+  <details class="code-block" id="code-block" open>
+    <summary id="code-summary">Use an access code instead</summary>
+    <p class="lede" id="code-lede">Enter the access code for this world to continue.</p>
+    <form id="login-form" novalidate>
+      <div>
+        <label for="token">Access code</label>
+        <input id="token" name="token" type="password" autocomplete="current-password"
+               autocapitalize="off" spellcheck="false" required>
+      </div>
+      <button type="submit" id="submit">Enter</button>
+    </form>
+  </details>
+
+  <p class="alt" id="help">
+    The access code belongs to this world and is set by whoever runs it.
+  </p>
+  <p id="live" class="visually-hidden" role="status" aria-live="polite"></p>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("login-form");
+  var input = document.getElementById("token");
+  var button = document.getElementById("submit");
+  var error = document.getElementById("error");
+  var live = document.getElementById("live");
+  var codeBlock = document.getElementById("code-block");
+  var codeSummary = document.getElementById("code-summary");
+  var codeLede = document.getElementById("code-lede");
+  var help = document.getElementById("help");
+  var oidcBlock = document.getElementById("oidc-block");
+  var oidcBtn = document.getElementById("oidc-btn");
+
+  function showError(message) {
+    var detail = document.getElementById("error-detail");
+    error.textContent = message;
+    error.hidden = false;
+    live.textContent = message;
+    detail.hidden = true;
+  }
+
+  function showErrorWithOperator(message, operatorCode) {
+    var detail = document.getElementById("error-detail");
+    error.textContent = message;
+    if (operatorCode) {
+      // Collapsed by default: the human sentence carries the meaning,
+      // the raw code stays reachable for whoever runs the server.
+      document.getElementById("error-detail-code").textContent = operatorCode;
+      detail.hidden = false;
+    }
+  }
+
+  // Honest messages for a returning OIDC failure (redirected here by the
+  // backend) — never a generic "something went wrong". Every error code
+  // the sign-in flow can emit is mapped to: what happened, whether the
+  // access-code fallback still works, and the operator detail code.
+  // (LANG-044)
+  var params = new URLSearchParams(window.location.search);
+  var authError = params.get("pw_auth_error");
+  if (authError) {
+    var ACCESS = "You can sign in with an access code for this world instead.";
+    var families = {
+      // The provider itself declined or the attempt was interrupted.
+      oidc_provider_denied:
+        "Your sign-in provider declined the sign-in. " + ACCESS,
+      oidc_state_mismatch:
+        "This sign-in took too long or was interrupted. Try again, or " + ACCESS.toLowerCase(),
+      oidc_state_invalid:
+        "This sign-in took too long or was interrupted. Try again, or " + ACCESS.toLowerCase(),
+      oidc_missing_state:
+        "This sign-in took too long or was interrupted. Try again, or " + ACCESS.toLowerCase(),
+      oidc_attempt_expired:
+        "This sign-in attempt expired. Try again, or " + ACCESS.toLowerCase(),
+      oidc_token_expired:
+        "This sign-in attempt expired. Try again, or " + ACCESS.toLowerCase(),
+      // The provider could not be reached or could not finish.
+      oidc_unreachable:
+        "Your sign-in provider could not be reached. Try again in a moment, or " + ACCESS.toLowerCase(),
+      oidc_verification_unavailable:
+        "Your sign-in provider could not finish the sign-in. Try again in a moment, or " + ACCESS.toLowerCase(),
+      oidc_key_not_found:
+        "Your sign-in provider could not finish the sign-in. Try again in a moment, or " + ACCESS.toLowerCase(),
+      oidc_token_exchange_failed:
+        "Your provider could not complete the sign-in. Try again, or " + ACCESS.toLowerCase(),
+      // Instance-side provider configuration.
+      oidc_not_configured:
+        "Sign-in with a provider is not set up on this instance. " + ACCESS,
+      oidc_misconfigured:
+        "Sign-in with a provider is not configured correctly on this " +
+        "instance. Tell whoever runs it that the provider settings need " +
+        "checking. " + ACCESS,
+      oidc_identity_not_mapped:
+        "That account is not linked to this world yet. " + ACCESS +
+        " Tell whoever runs this world to link it.",
+      // Verified provider response but the sign-in could not be trusted
+      // or completed (token/key/claim failures).
+      oidc_alg_unsupported:
+        "Your provider's sign-in response uses a format this server cannot verify. " + ACCESS,
+      oidc_bad_signature:
+        "Your provider's sign-in response uses a format this server cannot verify. " + ACCESS,
+      oidc_key_unsupported:
+        "Your provider's sign-in response uses a format this server cannot verify. " + ACCESS,
+      oidc_key_ambiguous:
+        "Your provider's sign-in response uses a format this server cannot verify. " + ACCESS,
+      oidc_id_token_encrypted:
+        "Your provider's sign-in response uses a format this server cannot verify. " + ACCESS,
+      oidc_id_token_malformed:
+        "Your provider's sign-in response was incomplete or unreadable. Try again, or " + ACCESS.toLowerCase(),
+      oidc_no_id_token:
+        "Your provider did not return a sign-in response. Try again, or " + ACCESS.toLowerCase(),
+      oidc_bad_issuer:
+        "Your sign-in provider did not match the one configured on this instance. Tell whoever runs it. " + ACCESS,
+      oidc_bad_audience:
+        "That account is not for this world. " + ACCESS,
+      oidc_bad_nonce:
+        "The sign-in response did not match this browser's attempt. Try again, or " + ACCESS.toLowerCase(),
+      oidc_bad_iat:
+        "Your provider's sign-in response is outside its valid time window. Try again, or " + ACCESS.toLowerCase(),
+      oidc_token_not_yet_valid:
+        "Your provider's sign-in response is not valid yet. Try again in a moment, or " + ACCESS.toLowerCase()
+    };
+    var message = families[authError] ||
+      ("Sign-in did not complete. Try again, or " + ACCESS.toLowerCase());
+    showErrorWithOperator(message, authError);
+    codeBlock.open = true;
+  }
+
+  function localSubmit(event) {
+    event.preventDefault();
+    var token = input.value.trim();
+    if (!token) {
+      showError("Enter your access code to continue.");
+      input.focus();
+      return;
+    }
+    error.hidden = true;
+    button.disabled = true;
+    button.textContent = "Checking…";
+    fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: token })
+    })
+      .then(function (res) {
+        if (res.ok) {
+          window.location.assign("/");
+          return null;
+        }
+        if (res.status === 401) {
+          showError("That code did not match. Check it and try again.");
+        } else if (res.status === 503) {
+          showError("Sign-in is not set up on this instance yet.");
+        } else {
+          showError("The server could not sign you in right now. Try again in a moment.");
+        }
+        return null;
+      })
+      .catch(function () {
+        showError("Could not reach the server. Check your connection and try again.");
+      })
+      .finally(function () {
+        button.disabled = false;
+        button.textContent = "Enter";
+        input.focus();
+        input.select();
+      });
+  }
+  form.addEventListener("submit", localSubmit);
+
+  // Passkey-first when the operator has configured a provider: the SSO
+  // button becomes the primary action and the access code folds away.
+  fetch("/api/auth/oidc/status", { headers: { Accept: "application/json" } })
+    .then(function (res) { return res.ok ? res.json() : null; })
+    .then(function (body) {
+      var data = body && body.data ? body.data : null;
+      if (!data || data.status !== "configured" || !data.login_available) return;
+      var label = data.display_name ? "Sign in with " + data.display_name
+                                    : "Sign in with your account";
+      oidcBtn.textContent = label;
+      oidcBlock.hidden = false;
+      codeBlock.open = false;
+      codeSummary.textContent = "Use an access code instead";
+      codeLede.hidden = true;
+      help.hidden = true;
+      oidcBtn.focus();
+      oidcBtn.addEventListener("click", function () {
+        window.location.assign(data.login_path || "/api/auth/oidc/login");
+      });
+    })
+    .catch(function () { /* local sign-in still works */ });
+
+  if (!authError) input.focus();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+schema_version: 1
+id: qbittorrent
+name: qBittorrent
+kind: http
+base_url: http://qbittorrent.lan.example:8080
+auth:
+  type: cookie_session
+  login_path: /api/v2/auth/login
+  secret_ref: env:QBITTORRENT_CREDENTIALS
+network:
+  lan: true
+timeout_s: 5
+max_bytes: 1048576

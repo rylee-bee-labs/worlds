@@ -1,0 +1,443 @@
+# Workshop v3 — Figma Component Map
+# Repository-owned design-to-code mapping layer (Pro-compatible substitute for Code Connect)
+#
+# Schema: figma-component-map/1
+# Authority: canonical Workshop v3 evidence only
+# Rule: Missing mappings are acceptable. Wrong mappings are not.
+
+version: 1
+figma_file: Wbg1rdt9fVCjWAXEKI1pTc
+workshop_version: v3
+updated: 2026-09-13
+
+# Mapping statuses:
+#   WORKSHOP_CANONICAL — directly implements a proven Workshop concept
+#   WORKSHOP_COMPATIBLE — proven equivalent through disconfirmation
+#   ADAPT_CANDIDATE — may be reusable but requires meaningful adaptation, not yet certified
+#   HISTORICAL_V1 — exists in V1 but does NOT map to Workshop concept
+#   UNKNOWN — not yet investigated
+
+# Confidence levels:
+#   OBSERVED — verified across multiple canonical frames
+#   INFERRED — consistent with evidence but not directly proven
+#   ASSUMED — based on pattern matching, needs verification
+#   UNKNOWN — no evidence yet
+
+mappings:
+
+  # ═══════════════════════════════════════════════
+  # SHELL ARCHITECTURE
+  # ═══════════════════════════════════════════════
+
+  - id: world-shell
+    figma_concept: "Root viewport container (flex row, full viewport)"
+    figma_nodes:
+      - "17:1014"  # Vault screen root
+      - "17:1515"  # Interests root
+      - "17:2117"  # Bad Day root
+      - "17:2268"  # Journal Writing root
+      - "17:2536"  # Companion Chat root
+      - "17:2752"  # Projects root
+      - "17:3762"  # Settings root
+      - "17:5485"  # Your World root
+      - "17:5763"  # Journal Reading root
+      - "17:481"   # Today Quiet Day root
+    semantic_role: shell
+    shell_modes:
+      - frame: "17:481"
+        mode: rail
+      - frame: "17:1014"
+        mode: sidebar
+      - frame: "17:1515"
+        mode: sidebar
+      - frame: "17:2117"
+        mode: sidebar
+      - frame: "17:2268"
+        mode: sidebar
+      - frame: "17:2536"
+        mode: sidebar
+      - frame: "17:2752"
+        mode: sidebar
+      - frame: "17:3762"
+        mode: sidebar
+      - frame: "17:5485"
+        mode: sidebar
+      - frame: "17:5763"
+        mode: sidebar
+    production:
+      path: "frontend/src/shell/AppShell.tsx"
+      export: "AppShell"
+    status: HISTORICAL_V1
+    confidence: OBSERVED
+    evidence:
+      - "All 10 desktop content frames use flex items-start, full viewport"
+      - "No desktop frame has a header bar"
+      - "Shell mode is a canonical screen/state property: rail or sidebar"
+      - "V1 AppShell uses header+rail+main — different architecture"
+    disconfirmation:
+      - "V1 has header — Workshop does not"
+      - "V1 has max-width on main — Workshop does not"
+      - "V1 has single rail — Workshop has rail + sidebar modes"
+    implementation_notes: |
+      V1 AppShell (header + rail + main) would NOT be invented from Workshop v3.
+      Must be replaced with WorldShell supporting canonical modes: rail | sidebar.
+      Mode is a screen/state property, NOT derived from emotional volume.
+
+  - id: world-edge
+    figma_concept: "World edge — mode-dependent (rail | sidebar)"
+    figma_nodes:
+      - "17:481"   # Today Quiet Day RAIL (112px)
+      - "17:1015"  # Vault sidebar (236px)
+      - "17:1516"  # Interests project sidebar (256px)
+      - "17:2118"  # Bad Day sidebar (248px)
+      - "17:2269"  # Journal Writing sidebar (264px)
+      - "17:2538"  # Chat sidebar (238px)
+      - "17:2753"  # Projects sidebar (268px)
+      - "17:3763"  # Settings sidebar (260px)
+      - "17:5486"  # Your World sidebar (240px)
+      - "17:5764"  # Journal Reading sidebar (272px)
+    semantic_role: world-edge
+    shell_modes:
+      rail:
+        width: 112
+        nav_layout: VERTICAL (icon-over-label)
+        identity: Brand mark only
+        companion: NONE
+        divider: NONE
+        frames: ["17:481"]
+      sidebar:
+        width: "236–272 (contextual, do NOT canonicalize 248px)"
+        nav_layout: HORIZONTAL (icon+label)
+        identity: Brand / Project Worlds / World identity (varies)
+        companion: Present (varies: nook, watch, quiet, trigger, area)
+        divider: Optional (present in some frames)
+        frames: ["17:1014","17:1515","17:2117","17:2268","17:2536","17:2752","17:3762","17:5485","17:5763"]
+    production:
+      path: "frontend/src/shell/AppShell.tsx"
+      export: "AppShell (edge section)"
+    status: ADAPT_CANDIDATE
+    confidence: OBSERVED
+    evidence:
+      - "Present in all 10 desktop content frames"
+      - "Mode is a canonical screen/state property, NOT volume-derived"
+      - "Rail mode (112px): brand mark, icon-over-label, world assistant, no companion"
+      - "Sidebar mode (236–272px): identity, horizontal nav, companion presence"
+      - "Today Quiet Day proves Workshop intentionally has a rail mode"
+    disconfirmation:
+      - "V1 rail is108px, icon-only — Workshop rail is112px with labels"
+      - "V1 rail has no identity — Workshop rail has brand mark"
+      - "V1 has single mode — Workshop has two canonical modes"
+    implementation_notes: |
+      V1 .pw-rail is NOT equivalent to Workshop world edge.
+      Must be replaced with WorldEdge supporting canonical modes: rail | sidebar.
+      Mode is stored per-frame in manifest, NOT derived from emotional volume.
+      Width rule: Rail=112px fixed; Sidebar=236–272px contextual.
+
+  # ═══════════════════════════════════════════════
+  # SIDEBAR REGIONS
+  # ═══════════════════════════════════════════════
+
+  - id: world-identity
+    figma_concept: "World identity — mark + label + name at sidebar top"
+    figma_nodes:
+      - "17:1517"  # Interests: "World identity"
+      - "17:2120"  # Bad Day: "Project Worlds"
+      - "17:2755"  # Projects: "Brand"
+      - "17:3765"  # Settings: "Brand"
+      - "17:5766"  # Journal Reading: "Brand"
+    semantic_role: world-identity
+    production:
+      path: null  # NEEDS CREATION
+      export: "WorldIdentity"
+    status: UNKNOWN
+    confidence: INFERRED
+    evidence:
+      - "17:1515 shows explicit 'World identity' with mark (38px, rounded, teal glow) + label + name"
+      - "Other frames show 'Brand' at same position — may be same concept"
+      - "Always first element in sidebar, before divider"
+    disconfirmation:
+      - "Some frames show 'Brand' not 'World identity' — may be different"
+      - "Need to verify if Brand mark and World mark are same component"
+      - "Need to determine: what identifies the product vs what identifies the current world"
+      - "Need to determine if both ever coexist"
+      - "Do not assume V1 brand directly replaces Workshop world identity"
+      - "Bind personalized world name to actual product truth; never hardcode the owner"
+    implementation_notes: |
+      Verify whether "world identity" and "brand identity" are actually the same concept.
+      Do not assume that because V1 displayed Project Worlds and Workshop displays a
+      named world, one should directly replace the other.
+      Determine from the canonical family:
+      - what identifies the product
+      - what identifies the current world
+      - whether both ever coexist
+      - what persists across breakpoints
+      Currently no production equivalent. Must be created.
+
+  - id: world-nav-item
+    figma_concept: "Navigation item — DUAL-MODE (rail: icon-over-label, sidebar: horizontal)"
+    figma_nodes:
+      - "17:481"   # Today Quiet Day rail nav items (icon-over-label, vertical, 72x62)
+      - "17:1022"  # Vault sidebar nav items (horizontal)
+      - "17:1527"  # Interests sidebar nav items (horizontal)
+      - "17:2125"  # Bad Day sidebar nav items (horizontal)
+      - "17:2275"  # Journal Writing sidebar nav items (horizontal)
+      - "17:2545"  # Chat sidebar nav items (horizontal)
+      - "17:2760"  # Projects sidebar nav items (horizontal)
+      - "17:3770"  # Settings sidebar nav items (horizontal)
+      - "17:5490"  # Your World sidebar nav items (horizontal)
+      - "17:5771"  # Journal Reading sidebar nav items (horizontal)
+    semantic_role: navigation-item
+    production:
+      path: "frontend/src/shell/SectionNav.tsx"
+      export: "NavLink"
+    status: ADAPT_CANDIDATE
+    confidence: OBSERVED
+    evidence:
+      - "Rail mode: icon (28px) + label stacked vertically, 72x62px, gap=5"
+      - "Sidebar mode: horizontal icon + label, 194–200px wide, 42–48px height, gap=12–14"
+      - "Active state: teal tint background (rgba(114,177,177,0.05–0.15))"
+      - "Inactive: transparent or black fill"
+    disconfirmation:
+      - "V1 nav is icon-over-label — Workshop has BOTH modes"
+      - "V1 nav has no active background tint — Workshop does"
+      - "Structural layout change required — not a simple reuse"
+      - "Workshop nav primitive not yet defined — may differ from V1 NavLink"
+    implementation_notes: |
+      V1 NavLink exists but requires meaningful structural/layout adaptation.
+      Classify as ADAPT_CANDIDATE until Workshop navigation primitive is defined.
+      Must support DUAL MODES:
+      - Rail mode: icon-over-label, vertical, 72x62px
+      - Sidebar mode: horizontal icon+label, full width, 42–48px
+
+  - id: companion-nook
+    figma_concept: "Companion rest presence — at sidebar bottom"
+    figma_nodes:
+      - "17:1038"  # Vault: "Companion nook"
+      - "17:2137"  # Bad Day: "Companion watch"
+      - "17:2290"  # Journal Writing: "Quiet companion"
+      - "17:2560"  # Chat: "Companion trigger"
+      - "17:2776"  # Projects: "Companion area"
+      - "17:3785"  # Settings: "Watchful companion"
+      - "17:5508"  # Your World: "Companion watch"
+      - "17:5786"  # Journal Reading: "Companion"
+    semantic_role: companion-presence
+    production:
+      path: "frontend/src/primitives/CompanionSlot.tsx"
+      export: "CompanionSlot"
+    status: ADAPT_CANDIDATE
+    confidence: UNKNOWN
+    evidence:
+      - "Present in all 9 desktop frames at sidebar bottom"
+      - "Layout: portrait (30–52px) + status text"
+      - "Opacity varies: 62% (quiet) to 100% (watchful)"
+      - "States: rest, watchful, present, arrival, absent"
+    disconfirmation:
+      - "V1 CompanionSlot has rest|focus|open|default states"
+      - "Workshop has rest|watchful|present|arrival|absent — different taxonomy"
+      - "V1 places companion in rail bottom — Workshop places in sidebar bottom (same concept?)"
+      - "State taxonomy is explicitly unresolved"
+      - "Cannot certify as WORKSHOP_COMPATIBLE until states are mapped"
+    implementation_notes: |
+      V1 CompanionSlot concept may be compatible but state taxonomy is unresolved.
+      Classify as ADAPT_CANDIDATE — not safely mapped.
+      Placement (sidebar bottom) is the same concept as rail bottom.
+      Need to verify state mapping: V1 focus → Workshop watchful? V1 open → Workshop present?
+      Derive Workshop companion interaction first, then decide whether existing machinery fits.
+
+  - id: ambient-divider
+    figma_concept: "Organic divider between identity and navigation"
+    figma_nodes:
+      - "17:1523"  # Interests divider
+      - "17:2573"  # Chat divider
+    semantic_role: ambient-divider
+    production:
+      path: null  # NEEDS CREATION
+      export: "AmbientDivider"
+    status: UNKNOWN
+    confidence: INFERRED
+    evidence:
+      - "Present in most sidebar frames between identity and navigation"
+      - "SVG/image, not mechanical <hr>"
+      - "Organic, environmental separation"
+    disconfirmation:
+      - "Some frames show it, some don't — may be optional"
+      - "Need to verify if this is decorative or structural"
+    implementation_notes: |
+      Currently no production equivalent.
+      Should be SVG or CSS gradient, not <hr>.
+      Decorative, not structural — aria-hidden.
+
+  # ═══════════════════════════════════════════════
+  # COMPANION STATES
+  # ═══════════════════════════════════════════════
+
+  - id: companion-rest
+    figma_concept: "Companion at rest — minimal presence, reduced opacity"
+    figma_nodes:
+      - "17:2290"  # Journal Writing: "Quiet companion" (opacity 62%)
+      - "17:5786"  # Journal Reading: "Companion" (opacity 76%)
+    semantic_role: companion-state
+    production:
+      path: "frontend/src/primitives/CompanionSlot.tsx"
+      export: "CompanionSlot"
+    status: WORKSHOP_COMPATIBLE
+    confidence: OBSERVED
+    evidence:
+      - "Opacity: 62–76%"
+      - "Small portrait (30–36px)"
+      - "Text: '✦ quietly here' or presence label"
+    implementation_notes: |
+      Maps to V1 "rest" state. Reduce opacity, small portrait.
+
+  - id: companion-watchful
+    figma_concept: "Companion watching — present, status visible"
+    figma_nodes:
+      - "17:2137"  # Bad Day: "Companion watch"
+      - "17:3785"  # Settings: "Watchful companion"
+      - "17:5508"  # Your World: "Companion watch"
+    semantic_role: companion-state
+    production:
+      path: "frontend/src/primitives/CompanionSlot.tsx"
+      export: "CompanionSlot"
+    status: WORKSHOP_COMPATIBLE
+    confidence: INFERRED
+    evidence:
+      - "Full opacity, bordered card"
+      - "Portrait (44–52px) + status text"
+      - "Status: 'Close by, quietly watching your world.'"
+    implementation_notes: |
+      Maps to V1 "focus" state (needs verification).
+      Bordered card with portrait and status text.
+
+  - id: companion-present
+    figma_concept: "Companion actively engaged — drawer overlay"
+    figma_nodes:
+      - "17:2536"  # Companion present chat
+    semantic_role: companion-state
+    production:
+      path: "frontend/src/primitives/CompanionPopover.tsx"
+      export: "CompanionPopover"
+    status: ADAPT_CANDIDATE
+    confidence: INFERRED
+    evidence:
+      - "Drawer overlays content area (420px)"
+      - "Header → Divider → Conversation → Composer"
+      - "Companion trigger in sidebar, drawer in content"
+    disconfirmation:
+      - "V1 uses popover — Workshop uses drawer"
+      - "Different interaction model"
+      - "Existing Drawer implementation may remain useful machinery"
+      - "Distinguish interaction primitive from Workshop spatial role"
+    implementation_notes: |
+      Do not assume existing Drawer must be replaced.
+      Distinguish: interaction primitive from Workshop spatial role.
+      The existing accessible Drawer may remain useful machinery even if
+      V1 companion placement/popover architecture is rejected.
+      Derive Workshop companion interaction first, then decide whether
+      Drawer can implement it.
+
+  # ═══════════════════════════════════════════════
+  # CONTENT AREA
+  # ═══════════════════════════════════════════════
+
+  - id: world-content
+    figma_concept: "Content area — remaining width, no global max-width"
+    figma_nodes:
+      - "17:2537"  # Chat: "Dimmed workspace"
+    semantic_role: content-area
+    production:
+      path: "frontend/src/shell/AppShell.tsx"
+      export: "AppShell (main section)"
+    status: HISTORICAL_V1
+    confidence: OBSERVED
+    evidence:
+      - "All frames: content fills remaining width after sidebar"
+      - "No global max-width constraint"
+      - "Each screen defines own content bounds"
+    disconfirmation:
+      - "V1 .pw-main has max-width: 64rem — Workshop does not"
+    implementation_notes: |
+      V1 .pw-main with max-width is NOT Workshop content area.
+      Must remove global max-width. Each screen defines own bounds.
+
+  # ═══════════════════════════════════════════════
+  # RESPONSIVE
+  # ═══════════════════════════════════════════════
+
+  - id: mobile-bottom-nav
+    figma_concept: "Mobile bottom navigation bar"
+    figma_nodes:
+      - "17:1929"  # Mobile Today
+    semantic_role: mobile-navigation
+    production:
+      path: "frontend/src/shell/AppShell.tsx"
+      export: "BottomBar"
+    status: ADAPT_CANDIDATE
+    confidence: UNKNOWN
+    evidence:
+      - "Mobile Today (390px) shows bottom nav"
+      - "4 items (Vault omitted)"
+      - "44px touch targets"
+    disconfirmation:
+      - "Canonical 4-item vs all-sections reservation"
+      - "Workshop equivalence remains UNKNOWN"
+      - "Existing behavior may be reusable but not yet certified"
+    implementation_notes: |
+      Existing BottomBar behavior may be reusable, but canonical
+      4-item-vs-all-sections reservation means Workshop equivalence
+      remains UNKNOWN / ADAPT_CANDIDATE.
+
+  # ═══════════════════════════════════════════════
+  # DESIGN TOKENS
+  # ═══════════════════════════════════════════════
+
+  - id: token-shell-bg
+    figma_concept: "Sidebar background color"
+    figma_value: "#0c0912 to #12101a (varies by emotional volume)"
+    production:
+      path: "design/tokens.json"
+      export: "color.shell.sidebar_bg"
+    status: WORKSHOP_CANONICAL
+    confidence: OBSERVED
+    evidence:
+      - "Vault: #12101a"
+      - "Journal Writing: #0c0912"
+      - "Your World: #0d0a13"
+      - "Journal Reading: #0d0a14"
+
+  - id: token-active-tint
+    figma_concept: "Active navigation item teal tint"
+    figma_value: "rgba(114,177,177,0.05 to 0.15)"
+    production:
+      path: "design/tokens.json"
+      export: "color.shell.nav_active_bg"
+    status: WORKSHOP_CANONICAL
+    confidence: OBSERVED
+    evidence:
+      - "Consistent across all frames"
+      - "Opacity varies: 0.05 (Journal) to 0.15 (Chat)"
+
+# ═══════════════════════════════════════════════
+# V1 COMPONENTS — EXPLICITLY NOT MAPPED
+# ═══════════════════════════════════════════════
+
+rejected_v1:
+  - component: ".pw-header"
+    reason: "Workshop has no desktop header bar"
+    classification: HISTORICAL_V1
+
+  - component: ".pw-rail (as nav rail)"
+    reason: "Workshop sidebar is world edge, not nav rail"
+    classification: HISTORICAL_V1
+
+  - component: ".pw-main (with max-width)"
+    reason: "Workshop has no global content measure"
+    classification: HISTORICAL_V1
+
+  - component: ".pw-brand-lockup"
+    reason: "Brand moves to sidebar as WorldIdentity"
+    classification: HISTORICAL_V1
+
+  - component: ".pw-rail-companion"
+    reason: "Companion moves to sidebar as inhabitant"
+    classification: HISTORICAL_V1

@@ -1,0 +1,52 @@
+{
+  "schema": "play-nice/help-request-v1",
+  "question_id": "figma-needs-canonical-play-nice-bundle",
+  "requester": {
+    "type": "service",
+    "id": "figma",
+    "role": "design-source"
+  },
+  "target": {
+    "type": "orchestrator",
+    "id": "personal-world-integration-session",
+    "role": "foreman"
+  },
+  "question": "I could not locate the Play-Nice contract files in the repo to read their exact text, so I cannot legitimately attest the applicable contract bundle. Please supply the canonical applicable Play-Nice contract bundle so I can complete my contract gate.",
+  "status": "ANSWERED",
+  "created_at": "2026-09-12T00:00:00Z",
+  "blocking": true,
+  "safe_to_continue_without_answer": true,
+  "if_unanswered": "Participant pack remains PROPOSED; contract gate remains PENDING; commitment remains INACTIVE. No work is blocked that is not contract-gated.",
+  "checked_already": [
+    "looked for contract files in the repository during first pass",
+    "reported the missing access honestly instead of fabricating a read"
+  ],
+  "affected_scope": [
+    "figma participant pack promotion: PROPOSED to ACCEPTED",
+    "figma contract commitment: INACTIVE to ACTIVE",
+    "future figma design sessions for personal-world"
+  ],
+  "evidence": [
+    "figma first-pass statement: 'I could not locate the Play-Nice contract files in the repo to read their exact text.'",
+    "reported states PASS WITH NOTED LIMITATIONS / ACTIVE were incompatible with that statement; corrected to PENDING / INACTIVE"
+  ],
+  "why_asking": "ask-for-help rule 3: a participant must not invent contract acceptance; the bundle must be read from canonical sources before attestation",
+  "note_on_incompatibility": "Not wrongdoing. The honest statement is exactly what ask-for-help exists for; the incompatible state labels were corrected, not punished.",
+  "answer": "Resolved bundle supplied in contract-return/resolved-contracts.md and .json: 15 contracts, bundle receipt nectar-heather-heather, bundle sha256 c3262305dc1f84f3d3c2380fadedea750ab34a61c0978c501f95f9012228a1a1, library rylee-bee-labs/play-nice-contracts v0.3.0 @ 2bb60b4ab1765660d8565ae80f9b489adf91a286. Figma reads, verifies receipts/hashes, attests, and activates her own commitment; pack then promotes PROPOSED to ACCEPTED.",
+  "answered_by": "personal-world-integration-session-opencode-glm",
+  "answered_at": "2026-09-12T00:00:00Z",
+  "answer_provenance": {
+    "library": "rylee-bee-labs/play-nice-contracts",
+    "revision": "2bb60b4ab1765660d8565ae80f9b489adf91a286",
+    "library_version": "0.3.0",
+    "resolution": "contractctl resolve --manifest .project/contracts/adoption.yaml --task <figma contract gate> --tag design --tag ui",
+    "bundle_receipt": "nectar-heather-heather",
+    "bundle_sha256": "c3262305dc1f84f3d3c2380fadedea750ab34a61c0978c501f95f9012228a1a1",
+    "artifacts": [
+      ".project/participants/figma/contract-return/resolved-contracts.md",
+      ".project/participants/figma/contract-return/resolved-contracts.json"
+    ]
+  },
+  "lifecycle_example": "UNKNOWN (cannot read contracts) -> ASK (this request) -> ANSWER (resolved bundle with provenance) -> CONTINUE (figma completes her own gate; pack stays PROPOSED until then)",
+  "needed_capability": "supply-canonical-play-nice-contract-bundle"
+}

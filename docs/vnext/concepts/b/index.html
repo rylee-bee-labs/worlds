@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-motion="system">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Worlds · The Garden map · MOCKUP</title>
+<meta name="description" content="Mockup concept B for Worlds vNext: a spatial garden map where each connected world is a spot. Synthetic data. Not approved, not deployed.">
+<style>
+/* ------------------------------------------------------------------ tokens
+   Rylee-Bee Design System, Mulberry & Mint. The same colour values and roles
+   the v3.1 prototype uses, copied here so this file stands alone. Dark first.
+   Layout and motion handles are prefixed --b- (concept B) so nothing here
+   implies it is the shipped handle name. */
+:root{
+  --space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-2xl:3rem;--space-3xl:4rem;
+  --radius-sm:.25rem;--radius-md:.5rem;--radius-lg:1rem;--radius-full:999rem;
+  --type-micro:.75rem;--type-small:.875rem;--type-label:.875rem;--type-body:1rem;--type-lead:1.25rem;--type-h1:1.5rem;
+  --b-target:2.75rem;--b-hairline:.0625rem;--b-frame-line:.125rem;--b-ring:.1875rem;
+  --b-pane:23rem;--b-measure:44rem;
+  /* The one place a screen's side gutter is decided. Every band of chrome
+     and every screen reads it, so nothing can sit against the screen edge by
+     accident. It is never below --space-md (16px) on a phone. */
+  --b-gutter:var(--space-lg);
+  /* How far a spot may be nudged off its cell to stop the garden reading as a
+     table. Deliberately smaller than half the .spots gap (--space-lg), so a
+     nudged spot can never reach its neighbour however the text wraps. */
+  --b-nudge:6px;
+  --b-ease:cubic-bezier(.2,0,0,1);--b-dur:150ms;--b-dur-sheet:200ms;--b-dur-stamp:280ms;--b-lift:-.125rem;
+  --b-display-page:2.5rem;--b-display-section:1.85rem;
+  --b-serif:"Young Serif",Georgia,"Times New Roman",serif;
+  --b-sans:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",Verdana,sans-serif;
+}
+:root,:root[data-theme="dark"]{
+  --surface-base:#291d30;--surface-raised:#352640;--surface-sunken:#1f1625;
+  --text-primary:#f5ecf2;--text-soft:#dacad9;--border-line:#8b7791;--border-line-strong:#b09ab3;
+  --action-primary:#a7e6ce;--action-on-primary:#291d30;--focus-ring:#c4f5e2;
+  --status-needs-you:#f6cea2;--status-working:#a9d4ff;--status-held:#dcc2f7;--status-done:#c3e79b;
+  --status-failed:#ffa8b4;--status-unknown:#cbbcce;
+  --accent-mint:#a7e6ce;--accent-apricot:#f6cea2;--accent-lilac:#dcc2f7;--accent-honey:#e8c56a;
+  --status-healthy:#c3e79b;--status-stale:#f6cea2;--status-unavailable:#ffa8b4;--status-not_configured:#cbbcce;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --surface-base:#f7f1f4;--surface-raised:#fffafc;--surface-sunken:#ece1e8;
+  --text-primary:#291d30;--text-soft:#5c4a62;--border-line:#8b7791;--border-line-strong:#5c4a62;
+  --action-primary:#1f5c47;--action-on-primary:#fffafc;--focus-ring:#291d30;
+  --status-needs-you:#8a4a12;--status-working:#2d5a8a;--status-held:#6a4a8f;--status-done:#3f6b1f;
+  --status-failed:#9b3346;--status-unknown:#5c4a62;
+  --accent-mint:#1f5c47;--accent-apricot:#8a4a12;--accent-lilac:#6a4a8f;--accent-honey:#7a5208;
+  --status-healthy:#3f6b1f;--status-stale:#8a4a12;--status-unavailable:#9b3346;--status-not_configured:#5c4a62;
+  color-scheme:light;
+}
+@media (prefers-reduced-motion:reduce){
+  :root{--b-dur:0ms;--b-dur-sheet:0ms;--b-dur-stamp:0ms;--b-lift:0rem}
+}
+:root[data-motion="reduce"]{
+  --b-dur:0ms;--b-dur-sheet:0ms;--b-dur-stamp:0ms;--b-lift:0rem;
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+
+/* ------------------------------------------------------------------- base */
+*{box-sizing:border-box}
+html{background:var(--surface-base);color:var(--text-primary);font-family:var(--b-sans);-webkit-text-size-adjust:100%}
+body{margin:0;line-height:1.55;overflow-wrap:anywhere}
+h1,h2,h3{font-family:var(--b-serif);font-weight:400;line-height:1.15;margin:0}
+h1{font-size:var(--b-display-page)}
+h2{font-size:var(--b-display-section)}
+h3{font-size:var(--type-lead)}
+p{margin:0 0 var(--space-sm)}
+img{max-width:100%}
+:focus-visible{outline:var(--b-ring) solid var(--focus-ring);outline-offset:2px;border-radius:var(--radius-sm)}
+.skip{position:absolute;left:var(--b-gutter);top:-12rem;z-index:60;min-height:var(--b-target);display:inline-flex;align-items:center;background:var(--action-primary);color:var(--action-on-primary);padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-weight:700;text-decoration:none}
+.skip:focus{top:var(--space-sm)}
+.muted{color:var(--text-soft)}
+.small{font-size:var(--type-small)}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ----------------------------------------------------------------- chrome */
+.topbar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);padding:var(--space-sm) var(--b-gutter);background:var(--surface-raised);border-bottom:var(--b-hairline) solid var(--border-line)}
+.wordmark{font-family:var(--b-serif);font-size:var(--type-h1);line-height:1}
+.mockup{font-size:var(--type-micro);font-weight:700;letter-spacing:.09em;border:var(--b-hairline) solid var(--accent-mint);color:var(--accent-mint);padding:var(--wv-pad-tight,.125rem) var(--space-sm);border-radius:var(--radius-sm)}
+.topbar .who{margin-left:auto;display:flex;align-items:center;gap:var(--space-sm);font-size:var(--type-small);color:var(--text-soft)}
+.age{font-variant-numeric:tabular-nums}
+/* The nav is a wrapping grid, not a scrolling strip: a tab is never clipped
+   at the screen edge and never needs a scroll affordance to be reachable.
+   Below 48rem four tabs fit on one row at 390px; below that they wrap onto a
+   second row rather than losing "Settings" off the right edge. */
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(4.5rem,1fr));gap:var(--space-xs);padding:var(--space-xs) var(--b-gutter);background:var(--surface-base);border-bottom:var(--b-hairline) solid var(--border-line)}
+.tab{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);min-height:var(--b-target);padding:var(--space-sm);border:var(--b-hairline) solid transparent;border-radius:var(--radius-full);background:transparent;color:var(--text-primary);font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.tab:hover{background:var(--surface-raised);border-color:var(--border-line)}
+.tab[aria-current="page"]{background:var(--surface-raised);border-color:var(--action-primary);font-weight:700}
+main{display:block;padding:var(--space-lg) var(--b-gutter) var(--space-3xl)}
+main:focus{outline:none}
+footer.contentinfo{padding:var(--space-lg) var(--b-gutter);border-top:var(--b-hairline) solid var(--border-line);color:var(--text-soft);font-size:var(--type-small)}
+.shell{max-width:90rem;margin:0 auto}
+@media (min-width:48rem){.tabs{display:flex}.tab{padding:var(--space-sm) var(--space-md)}}
+
+/* --------------------------------------------------------------- controls */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);min-height:var(--b-target);padding:var(--space-sm) var(--space-md);border:var(--b-hairline) solid var(--border-line-strong);border-radius:var(--radius-full);background:var(--surface-raised);color:var(--text-primary);font:inherit;font-size:var(--type-label);font-weight:600;cursor:pointer;text-decoration:none;transition:background var(--b-dur) var(--b-ease),border-color var(--b-dur) var(--b-ease)}
+.btn:hover{border-color:var(--action-primary)}
+.btn.primary{background:var(--action-primary);color:var(--action-on-primary);border-color:var(--action-primary);font-weight:700}
+.btn.primary:hover{background:var(--text-primary);color:var(--surface-base);border-color:var(--text-primary)}
+.btn.quiet-danger:hover{background:var(--surface-sunken);border-color:var(--status-unavailable)}
+.btn[aria-disabled="true"]{background:var(--surface-sunken);color:var(--text-soft);border-style:dashed;cursor:not-allowed}
+.field{display:flex;flex-direction:column;gap:var(--space-xs);margin-bottom:var(--space-md)}
+.field > span{font-weight:600}
+input[type="text"],select{min-height:var(--b-target);padding:var(--space-sm) var(--space-md);background:var(--surface-sunken);color:var(--text-primary);border:var(--b-hairline) solid var(--border-line-strong);border-radius:var(--radius-md);font:inherit}
+.check{display:flex;gap:var(--space-md);align-items:flex-start;min-height:var(--b-target);padding:var(--space-sm) var(--space-md);background:var(--surface-sunken);border-radius:var(--radius-md);cursor:pointer;margin-bottom:var(--space-xs)}
+.check input{width:1.5rem;height:1.5rem;margin:.125rem 0 0;accent-color:var(--action-primary);flex:none}
+.check .c-label{font-weight:600}
+.check .c-note{display:block;font-size:var(--type-small);color:var(--text-soft)}
+.seg{display:flex;flex-wrap:wrap;gap:var(--space-xs)}
+.seg button{min-height:var(--b-target);padding:var(--space-xs) var(--space-md);border:var(--b-hairline) solid var(--border-line-strong);border-radius:var(--radius-full);background:var(--surface-sunken);color:var(--text-primary);font:inherit;font-size:var(--type-small);font-weight:600;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--surface-raised);border-color:var(--action-primary);color:var(--text-primary)}
+.statebar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);padding:var(--space-sm) var(--space-md);border:var(--b-hairline) dashed var(--border-line-strong);border-radius:var(--radius-lg);margin-bottom:var(--space-lg)}
+.statebar .label{font-size:var(--type-small);font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text-soft)}
+.chip{display:inline-flex;align-items:center;gap:var(--space-xs);padding:var(--wv-pad-tight,.125rem) var(--space-sm);border:var(--b-hairline) solid currentColor;border-radius:var(--radius-full);font-size:var(--type-small);font-weight:700;white-space:nowrap}
+.c-healthy{color:var(--status-healthy)}
+.c-needs_you{color:var(--status-needs-you)}
+.c-stale{color:var(--status-stale)}
+.c-unavailable{color:var(--status-unavailable)}
+.c-unknown{color:var(--status-unknown)}
+.c-not_configured{color:var(--status-not_configured)}
+.note{background:var(--surface-raised);border:var(--b-hairline) solid var(--border-line-strong);border-radius:var(--radius-lg);padding:var(--space-md) var(--space-lg);margin-bottom:var(--space-lg)}
+.strip{display:flex;flex-wrap:wrap;gap:var(--space-sm) var(--space-md);align-items:center;padding:var(--space-sm) var(--space-lg);background:var(--surface-raised);border-bottom:var(--b-frame-line) solid var(--status-stale);font-weight:600;margin-bottom:var(--space-lg)}
+.well{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--space-xl);align-items:center;padding:var(--space-xl);border:var(--b-frame-line) dashed var(--border-line-strong);border-radius:var(--radius-lg);background:var(--surface-sunken)}
+.well p:last-child{margin-bottom:0}
+.well img{width:5.5rem;height:5.5rem;object-fit:contain}
+.skel{display:grid;gap:var(--space-md);padding:var(--space-lg);border:var(--b-frame-line) dashed var(--border-line-strong);border-radius:var(--radius-lg)}
+.skel-row{height:var(--b-target);background:var(--surface-sunken);border-radius:var(--radius-md)}
+.dotimg{width:3.25rem;height:3.25rem;object-fit:contain;flex:none}
+
+/* ------------------------------------------------------------ the garden */
+.screen-head{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-lg);margin-bottom:var(--space-md)}
+.screen-head h1{margin:0}
+.screen-head .rest{display:flex;align-items:center;gap:var(--space-sm);margin-left:auto}
+/* Home is a garden: a drawn ground with the spots laid on it in cells. The
+   cells, not hand-placed percentages, are what keeps two labels off each
+   other. A percentage-placed spot can collide at some width and not at
+   another; a grid cell cannot collide at any width, at any text size. */
+.garden{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-lg);align-items:start}
+.map{position:relative;background:var(--surface-sunken);border:var(--b-hairline) solid var(--border-line);border-radius:var(--radius-lg);overflow:hidden}
+.map > svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.spots{position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:var(--space-lg);padding:var(--space-lg)}
+/* a small nudge per spot so the garden is not a table. Every nudge is bounded
+   by --b-nudge, which is under half the 1.5rem gap, so neighbouring spots
+   always keep at least .75rem of clear ground however a label wraps. */
+.n1{--nx:calc(var(--b-nudge) * -1);--ny:5px}
+.n2{--nx:var(--b-nudge);--ny:-4px}
+.n3{--nx:0rem;--ny:var(--b-nudge)}
+.n4{--nx:-5px;--ny:calc(var(--b-nudge) * -1)}
+.n5{--nx:5px;--ny:3px}
+.n6{--nx:-2px;--ny:-2px}
+.spot{position:relative;display:grid;justify-items:center;gap:var(--space-xs);width:100%;max-width:11rem;min-height:var(--b-target);padding:var(--space-sm);background:var(--surface-raised);border:var(--b-hairline) solid var(--border-line-strong);border-radius:var(--radius-lg);color:var(--text-primary);font:inherit;cursor:pointer;text-align:center;transform:translate(var(--nx,0rem),var(--ny,0rem))}
+.spot:hover{border-color:var(--action-primary);transform:translate(var(--nx,0rem),calc(var(--ny,0rem) + var(--b-lift)))}
+.spot[aria-pressed="true"]{border:var(--b-frame-line) solid var(--action-primary);background:var(--surface-raised)}
+.spot img{width:2.5rem;height:2.5rem;object-fit:contain}
+.spot .spot-name{font-family:var(--b-serif);font-size:var(--type-body);line-height:1.15}
+/* a chip wraps inside its cell instead of spilling out of it and over the
+   spot in the next row -- the collision the phone render showed. */
+.spot .chip{font-size:var(--type-micro);white-space:normal;text-align:center}
+.spot .sel{font-size:var(--type-micro);font-weight:700;color:var(--accent-mint)}
+.plot-empty{position:relative;display:grid;justify-items:center;gap:var(--space-xs);width:100%;max-width:11rem;min-height:var(--b-target);padding:var(--space-sm);background:transparent;border:var(--b-frame-line) dashed var(--border-line-strong);border-radius:var(--radius-lg);color:var(--text-soft);font:inherit;font-size:var(--type-small);font-weight:600;cursor:pointer;text-align:center;transform:translate(var(--nx,0rem),var(--ny,0rem))}
+.plot-empty:hover{color:var(--text-primary);border-color:var(--action-primary)}
+/* the empty garden: one centred note, and no spots to collide with it */
+.map-note{position:relative;z-index:1;display:grid;place-items:center;min-height:15rem;padding:var(--space-xl);text-align:center}
+.legend{display:flex;flex-wrap:wrap;gap:var(--space-sm) var(--space-lg);margin-top:var(--space-md);font-size:var(--type-small);color:var(--text-soft)}
+
+/* The card. It is never an overlay: it is a pane beside the map when there is
+   room for a pane (68rem and up) and a sheet-shaped panel directly under the
+   map everywhere else, so no map label can ever sit on top of card text. */
+.detail{position:static;scroll-margin-top:var(--space-lg);background:var(--surface-raised);border:var(--b-hairline) solid var(--border-line);border-radius:var(--radius-lg);padding:var(--space-lg)}
+.detail h2{font-size:var(--b-display-section)}
+.detail .head{display:flex;align-items:flex-start;gap:var(--space-md);margin-bottom:var(--space-sm)}
+.detail .head img{width:2.5rem;height:2.5rem;object-fit:contain}
+.detail .kind{display:block;color:var(--text-soft);font-size:var(--type-small)}
+.detail h3{margin-top:var(--space-sm);font-size:var(--type-body)}
+.receipt{margin-top:var(--space-lg);border:var(--b-frame-line) solid var(--border-line-strong);border-radius:var(--radius-md);padding:var(--space-md)}
+.receipt h3{font-family:var(--b-sans);font-size:var(--type-small);letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);margin-bottom:var(--space-sm)}
+.station{background:var(--surface-sunken);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-md);margin-bottom:var(--space-xs)}
+.station b{display:block;font-size:var(--type-small);letter-spacing:.04em;text-transform:uppercase;color:var(--text-soft)}
+.station:last-child{margin-bottom:0}
+.actions{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-lg)}
+/* the handle and the open/close control only exist on the stacked layout */
+.sheet-bar{display:none}
+
+/* -------------------------------------------------------------- connect */
+.flow{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-lg);align-items:start}
+@media (min-width:60rem){.flow{grid-template-columns:17rem minmax(0,1fr)}}
+.steps{list-style:none;margin:0;padding:0;counter-reset:step}
+.steps li{counter-increment:step}
+.step-link{display:flex;gap:var(--space-sm);align-items:center;width:100%;min-height:var(--b-target);padding:var(--space-sm) var(--space-md);margin-bottom:var(--space-xs);background:var(--surface-raised);border:var(--b-hairline) solid var(--border-line);border-radius:var(--radius-md);color:var(--text-primary);font:inherit;text-align:left;cursor:pointer}
+.step-link:hover{border-color:var(--action-primary)}
+.step-link[aria-current="step"]{border-color:var(--action-primary);font-weight:700}
+.step-link .n{font-family:var(--b-serif);font-size:var(--type-lead);min-width:1.5rem;color:var(--text-soft)}
+.step-link[aria-current="step"] .n{color:var(--accent-mint)}
+.step-panel{background:var(--surface-raised);border:var(--b-hairline) solid var(--border-line);border-radius:var(--radius-lg);padding:var(--space-lg)}
+.cardlist{display:grid;gap:var(--space-md);margin:var(--space-md) 0}
+.cand{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--space-md);width:100%;min-height:var(--b-target);padding:var(--space-md);background:var(--surface-sunken);border:var(--b-hairline) solid var(--border-line-strong);border-radius:var(--radius-lg);color:var(--text-primary);font:inherit;text-align:left;cursor:pointer}
+.cand:hover{border-color:var(--action-primary)}
+.cand[aria-pressed="true"]{border-color:var(--action-primary)}
+.cand img{width:2.5rem;height:2.5rem;object-fit:contain}
+.cand .c-name{font-family:var(--b-serif);font-size:var(--type-lead);display:block}
+.caps{display:block;margin:var(--space-xs) 0 0;padding-left:1.25rem;color:var(--text-soft);font-size:var(--type-small)}
+.cap-item{display:block;margin-bottom:var(--space-xs)}
+.stamp{display:inline-flex;align-items:center;gap:var(--space-sm);font-family:var(--b-serif);text-transform:uppercase;letter-spacing:.1em;font-size:var(--type-lead);color:var(--status-done);transform:rotate(-4deg);animation:land var(--b-dur-stamp) var(--b-ease) both}
+.stamp img{width:4rem;height:4rem;object-fit:contain}
+@keyframes land{from{opacity:0;transform:rotate(-8deg) scale(.9)}to{opacity:1;transform:rotate(-4deg) scale(1)}}
+
+/* --------------------------------------------------------------- memory */
+.fact{border:var(--b-hairline) solid var(--border-line);border-radius:var(--radius-lg);padding:var(--space-md) var(--space-lg);margin-bottom:var(--space-md);background:var(--surface-raised)}
+.fact h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--space-sm);font-size:var(--type-body);font-family:var(--b-serif)}
+.fact .value{font-size:var(--type-lead);display:block;margin:var(--space-xs) 0}
+.fact dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--space-xs) var(--space-md);margin:var(--space-sm) 0 0;font-size:var(--type-small)}
+.fact dt{color:var(--text-soft)}
+.fact dd{margin:0}
+.servicegroup{margin-bottom:var(--space-xl)}
+.servicegroup>h2{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-sm);font-size:var(--type-h1)}
+
+/* ------------------------------------------------------------- settings */
+.secnav{display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-bottom:var(--space-lg)}
+.secnav .tab{font-size:var(--type-small)}
+
+/* --------------------------------------------------------------- stacked
+   Below 68rem the garden and the card are one column: map, then card. The
+   card is a sheet in shape (handle, rounded top, own border) but it sits in
+   the flow under the map, so there is no overlay, no z-index race and nothing
+   for a map label to show through. At 68rem and up there is room for the map
+   on the left and a sticky pane on the right, which is the desktop layout. */
+@media (max-width:67.99rem){
+  .sheet-bar{display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-sm)}
+  .sheet-bar .handle{width:3rem;height:.25rem;border-radius:var(--radius-full);background:var(--border-line-strong);flex:none}
+  body.sheet-closed .detail .sheet-body{display:none}
+}
+@media (min-width:68rem){
+  .garden{grid-template-columns:minmax(0,1fr) var(--b-pane)}
+  .detail{position:sticky;top:var(--space-lg)}
+}
+
+/* ---------------------------------------------------------------- phone */
+@media (max-width:47.99rem){
+  /* 16px of clear air down each side of every screen and every band. */
+  :root{--b-gutter:var(--space-md)}
+  /* two cells across keeps six spots to three rows instead of a long ladder;
+     minmax(0,1fr) lets a cell shrink with the text inside it rather than
+     pushing the map wider than the screen. */
+  .spots{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-lg);padding:var(--space-md)}
+  .detail{padding:var(--space-md)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <span class="wordmark">Worlds</span>
+  <span class="mockup">MOCKUP · concept B · the garden map</span>
+  <span class="who"><img class="dotimg" src="../../prototype/art/dot.webp" alt="" width="52" height="52"><span class="age" id="top-age">checked 24s ago</span></span>
+</header>
+<nav class="tabs" id="tabs" aria-label="Worlds screens"></nav>
+<main id="main" tabindex="-1">
+  <div class="shell" id="screen"></div>
+</main>
+<footer class="contentinfo">
+  <div class="shell">
+    <p><b>MOCKUP.</b> One of several concepts for Rylee to compare. Nothing here is approved, deployed or wired to a service. Every name, reading and time is synthetic and made for this page.</p>
+    <p>Concept B reads: <a href="../../worlds-design.md">worlds-design.md</a> · <a href="../../full-design-brief.md">full-design-brief.md</a> · <a href="../../connect-contract.md">the Connect contract</a> · <a href="README.md">what is distinct about B</a></p>
+  </div>
+</footer>
+<p class="visually-hidden" role="status" aria-live="polite" id="say"></p>
+<p class="visually-hidden" role="alert" id="loud"></p>
+<script>
+"use strict";
+/* ---------------------------------------------------------------- helpers
+   Every node here is built with createElement and textContent. Nothing in this
+   file assigns HTML from a string, so no string can reach the DOM as markup. */
+function h(tag, attrs, kids){
+  const n = document.createElement(tag);
+  if (attrs) for (const k in attrs){
+    const v = attrs[k];
+    if (v === null || v === undefined || v === false) continue;
+    if (k === "text") n.textContent = String(v);
+    else if (v === true) n.setAttribute(k, "");
+    else n.setAttribute(k, String(v));
+  }
+  if (kids) for (const kid of [].concat(kids)){
+    if (kid === null || kid === undefined || kid === false) continue;
+    n.appendChild(typeof kid === "string" ? document.createTextNode(kid) : kid);
+  }
+  return n;
+}
+function s(tag, attrs, kids){
+  const n = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  if (attrs) for (const k in attrs){
+    const v = attrs[k];
+    if (v === null || v === undefined || v === false) continue;
+    if (k === "text") n.textContent = String(v);
+    else n.setAttribute(k, String(v));
+  }
+  if (kids) for (const kid of [].concat(kids)) n.appendChild(kid);
+  return n;
+}
+const ART = "../../prototype/art/";
+const img = function(file, alt, cls){
+  return h("img", {src: ART + file, alt: alt || "", class: cls || "dotimg", loading: "lazy"});
+};
+function say(msg){ document.getElementById("say").textContent = msg; }
+function loud(msg){ document.getElementById("loud").textContent = ""; window.setTimeout(function(){ document.getElementById("loud").textContent = msg; }, 30); }
+
+/* ----------------------------------------------------------------- voice */
+const WORDS = {
+  healthy:         {word: "Healthy",       glyph: "✓"},
+  needs_you:       {word: "Needs you",     glyph: "▲"},
+  stale:           {word: "Stale",         glyph: "◷"},
+  unavailable:     {word: "Unavailable",   glyph: "✕"},
+  unknown:         {word: "Unknown",       glyph: "?"},
+  not_configured:  {word: "Not connected", glyph: "—"}
+};
+function chip(state, extraWord){
+  const w = WORDS[state] || {word: "Unknown", glyph: "?"};
+  return h("span", {class: "chip c-" + state}, [w.glyph + " " + w.word + (extraWord ? " · " + extraWord : "")]);
+}
+
+/* ------------------------------------------------------------- fake data */
+const SPOTS = [
+  {id: "note-nook", name: "Note Nook", kind: "Notes", app: "the Nook app", art: "icon-notes-sync.webp",
+   nudge: "n1", state: "needs_you",
+   line: "3 notes are waiting to upload.",
+   added: "Waiting to upload: 3 notes.  Owner action needed.",
+   fact: {label: "Waiting to upload", value: "3 notes"}, checked: "24s ago",
+   scope: "Scoped to 2 capabilities: notes.read, notes.sync-status"},
+  {id: "shelf-stack", name: "Shelf Stack", kind: "Media library", app: "the Shelf app", art: "icon-media-shelf.webp",
+   nudge: "n2", state: "healthy",
+   line: "12 new this week.",
+   added: null,
+   fact: {label: "Added this week", value: "12 items"}, checked: "41s ago",
+   scope: "Scoped to 3 capabilities: shelf.read, shelf.count, shelf.import-status"},
+  {id: "garden-cam", name: "Garden Cam", kind: "Camera", app: "the Cam app", art: "icon-garden-camera.webp",
+   nudge: "n3", state: "unknown",
+   line: "No current reading. Not guessing.",
+   added: "The camera is asleep. Only the Cam app can wake it.",
+   fact: {label: "Motion", value: "Unknown"}, checked: "2h ago",
+   scope: "Unscoped (older connection): this reference can be used for anything Garden Cam offers."},
+  {id: "front-porch", name: "Front Porch", kind: "Home sensor", app: "the Home app", art: "icon-front-door.webp",
+   nudge: "n4", state: "healthy",
+   line: "Quiet since 6am.",
+   added: null,
+   fact: {label: "Front door", value: "Locked"}, checked: "9s ago",
+   scope: "Scoped to 1 capability: door.read",
+   proposal: "Proposed action: unlock the porch door. Not active. An agent can't do this from Worlds."},
+  {id: "cloud-bank", name: "Cloud Bank", kind: "Backups", app: "the Bank app", art: "icon-nightly-backup.webp",
+   nudge: "n5", state: "stale",
+   line: "Last good backup is past its daily window.",
+   added: "No change seen since 09:12 UTC. Showing the last known value.",
+   fact: {label: "Last good backup", value: "9h ago", lastKnown: true}, checked: "9h ago",
+   scope: "Scoped to 2 capabilities: backup.read, backup.status"},
+  {id: "rain-gauge", name: "Rain Gauge", kind: "Weather", app: "the Weather app", art: "icon-local-weather.webp",
+   nudge: "n6", empty: true,
+   line: "No instance yet. Nothing has been read."}
+];
+const spot = function(id){ return SPOTS.filter(function(p){ return p.id === id; })[0]; };
+
+const FACTS = [
+  {service: "shelf-stack", name: "Shelf Stack", state: "healthy", items: [
+    {label: "Added this week", value: "12 items", state: "healthy", source: "local", age: "checked 41s ago", agent: "see it", human: "act on it in the Shelf app"},
+    {label: "On the shelf", value: "184 items", state: "healthy", source: "external", age: "checked 41s ago", agent: "see it", human: "act on it in the Shelf app"},
+    {label: "Last import", value: "2 days ago", state: "stale", source: "external", age: "checked 2 days ago", note: "No change seen since 2 days ago.", agent: "see the last known value", human: "re-run the import in the Shelf app"}
+  ]},
+  {service: "note-nook", name: "Note Nook", state: "needs_you", scope: "Scoped to 2 capabilities", items: [
+    {label: "Waiting to upload", value: "3 notes", state: "healthy", source: "external", age: "checked 24s ago", agent: "see it", human: "upload it in the Nook app"},
+    {label: "Last successful sync", value: "2 days ago", state: "stale", source: "external", age: "checked 2 days ago", note: "No change seen since 2 days ago.", agent: "see the last known value", human: "sync it in the Nook app"},
+    {label: "Provider reachable", value: "Unavailable", state: "unavailable", source: "external", age: "checked 24s ago", note: "The provider timed out on the last try.", agent: "cannot see it", human: "fix it in the Nook app"}
+  ]},
+  {service: "garden-cam", name: "Garden Cam", state: "unknown", scope: "Unscoped (older connection)", items: [
+    {label: "Motion", value: "Unknown", state: "unknown", source: "none", age: "never checked",
+     note: "Can't see it. The camera is asleep. Only the Cam app can wake it.", agent: "cannot see it", human: "wake it in the Cam app"}
+  ]},
+  {service: "cloud-bank", name: "Cloud Bank", state: "stale", scope: "Scoped to 2 capabilities", items: [
+    {label: "Last good backup", value: "9h ago", state: "stale", source: "external", age: "checked 9h ago", note: "No change seen since 09:12 UTC. Showing the last known value.", agent: "see the last known value", human: "start a backup in the Bank app"}
+  ]}
+];
+
+const CANDIDATES = [
+  {id: "note-nook", name: "Note Nook", kind: "Notes", app: "the Nook app", art: "icon-notes-sync.webp",
+   auth: "Auth: needed", authKnown: true,
+   caps: [{id: "notes.read", label: "Read notes"}, {id: "notes.sync-status", label: "Read sync status"}],
+   summary: "Two things it is said to offer. Nothing is verified until a test runs."},
+  {id: "shelf-stack-2", name: "Shelf Stack 2", kind: "Media library", app: "the Shelf app", art: "icon-media-shelf.webp",
+   auth: "Auth: needed", authKnown: true,
+   caps: [{id: "shelf.read", label: "Read the shelf"}, {id: "shelf.count", label: "Count items"}, {id: "shelf.import-status", label: "Read import status"}],
+   summary: "A second Shelf, beside the one already in the garden."},
+  {id: "rain-gauge", name: "Rain Gauge", kind: "Weather", app: "the Weather app", art: "icon-local-weather.webp",
+   auth: "Auth: unknown", authKnown: false, legacy: true,
+   caps: [{id: "weather.read", label: "Read the gauge"}],
+   summary: "An older connection with no capability list. What it can read is unknown, so nothing is offered."},
+  {id: "mystery-box", name: "Unnamed service", kind: "Unknown kind", app: "an app Worlds has not seen", art: "icon-generic.webp",
+   auth: "Auth: unknown", authKnown: false,
+   caps: [],
+   summary: "It answered a read-only probe with a name Worlds does not recognise. Showing it as it came."}
+];
+
+/* ------------------------------------------------------------------ state */
+const STATES = [
+  {id: "first-run", label: "First run"},
+  {id: "loading",   label: "Loading"},
+  {id: "error",     label: "Error / unknown"},
+  {id: "full",      label: "Full"}
+];
+const state = {
+  route: "home",
+  view: {home: "full", connect: "full", memory: "full", settings: "full"},
+  selected: "note-nook",
+  sheetClosed: false,
+  connect: {step: 1, candidate: "note-nook", ref: "", scope: {a: true, b: true}, tested: null, failNext: false, refTouched: false, chosen: {a: true, b: true, c: false}, published: false},
+  settingsSection: "references",
+  memoryFilter: "all"
+};
+const ROUTES = [
+  {id: "home",     label: "Home"},
+  {id: "connect",  label: "Connect"},
+  {id: "memory",   label: "Memory"},
+  {id: "settings", label: "Settings"}
+];
+
+/* ------------------------------------------------------------------- bits */
+function screenHead(title, sub, mood){
+  return h("div", {class: "screen-head"}, [
+    h("h1", {text: title}),
+    sub ? h("p", {class: "muted", text: sub}) : null,
+    h("div", {class: "rest"}, [
+      mood ? img(mood, "Dot, resting") : null,
+      h("span", {class: "small muted", text: "checked 24s ago"})
+    ])
+  ]);
+}
+function stateBar(view){
+  const wrap = h("div", {class: "statebar"}, [h("span", {class: "label", id: "state-label-" + view, text: "Mock state for this screen"})]);
+  const group = h("div", {class: "seg", role: "group", "aria-labelledby": "state-label-" + view});
+  for (const st of STATES){
+    const b = h("button", {type: "button", "aria-pressed": state.view[view] === st.id ? "true" : "false", text: st.label,
+      onclick: function(){ state.view[view] = st.id; render(); say(st.label + " state. " + ROUTES.filter(function(r){ return r.id === view; })[0].label + " screen."); }});
+    group.appendChild(b);
+  }
+  wrap.appendChild(group);
+  wrap.appendChild(h("span", {class: "small muted", text: "Synthetic data. Nothing here talks to a service."}));
+  return wrap;
+}
+function skel(rows, label){
+  const box = h("div", {class: "skel"}, [h("p", {class: "muted", text: label})]);
+  for (let i = 0; i < rows; i++) box.appendChild(h("div", {class: "skel-row"}));
+  return box;
+}
+function well(art, title, body, actions){
+  return h("div", {class: "well"}, [
+    img(art, "", "dotimg"),
+    h("div", null, [h("h2", {text: title}), body, actions ? h("div", {class: "actions"}, actions) : null])
+  ]);
+}
+
+/* ------------------------------------------------------- the map backdrop */
+function mapBackdrop(){
+  const svg = s("svg", {viewBox: "0 0 100 100", preserveAspectRatio: "none", "aria-hidden": "true", focusable: "false"});
+  svg.appendChild(s("rect", {x: 0, y: 0, width: 100, height: 100, fill: "var(--surface-sunken)"}));
+  svg.appendChild(s("path", {d: "M2 34 Q 30 40 52 30 T 98 24", fill: "none", stroke: "var(--border-line)", "stroke-width": "1.4", "stroke-linecap": "round", "stroke-opacity": ".55"}));
+  svg.appendChild(s("path", {d: "M20 98 Q 34 70 52 60 T 96 52", fill: "none", stroke: "var(--border-line)", "stroke-width": "1.4", "stroke-linecap": "round", "stroke-opacity": ".55"}));
+  svg.appendChild(s("ellipse", {cx: 84, cy: 82, rx: 13, ry: 9, fill: "var(--status-working)", "fill-opacity": ".22", stroke: "var(--status-working)", "stroke-opacity": ".7"}));
+  svg.appendChild(s("circle", {cx: 12, cy: 86, r: 7, fill: "var(--accent-apricot)", "fill-opacity": ".2", stroke: "var(--accent-apricot)", "stroke-opacity": ".7"}));
+  svg.appendChild(s("circle", {cx: 40, cy: 88, r: 5, fill: "var(--accent-lilac)", "fill-opacity": ".22", stroke: "var(--accent-lilac)", "stroke-opacity": ".7"}));
+  for (let x = 4; x < 100; x += 8){
+    svg.appendChild(s("circle", {cx: x, cy: 2.4, r: .9, fill: "var(--border-line)", "fill-opacity": ".7"}));
+  }
+  return svg;
+}
+
+/* ------------------------------------------------------------ home screen */
+function renderHome(){
+  const view = state.view.home;
+  const out = [screenHead("Your garden", "Home is a place. Every service is a spot you can walk to.", "dot.webp"), stateBar("home")];
+
+  if (view === "loading"){
+    out.push(skel(4, "Opening the garden…"));
+    out.push(h("div", {class: "legend"}, [h("span", {text: "No spinners in this mockup. Words only, then the garden appears."})]));
+    return out;
+  }
+
+  if (view === "first-run"){
+    out.push(well("empty-counter.webp", "Quiet here.",
+      h("div", null, [
+        h("p", {text: "Nothing is in the garden yet. Connect a service and its spot appears here, with what it can read and what Worlds does with it."}),
+        h("p", {class: "muted small", text: "Dot is asleep because there is nothing to look after."})
+      ]),
+      [h("a", {class: "btn primary", href: "#/connect", text: "Connect a service"})]));
+    out.push(dashedMap("The garden is drawn. No spots in it yet."));
+    return out;
+  }
+
+  const strip = view === "error"
+    ? h("p", {class: "strip", role: "status"}, ["Couldn't reach the garden just now. Showing what was last known, with times."])
+    : h("p", {class: "strip"}, ["2 need you · checked 24s ago"]);
+  out.push(strip);
+
+  const map = dashedMap("");
+  map.appendChild(mapBackdrop());
+
+  const list = h("div", {class: "spots", "aria-label": "Spots in the garden"});
+  const visible = SPOTS.filter(function(p){ return !(view === "error" && p.empty); });
+  for (const p of visible){
+    if (p.empty){
+      const btn = h("button", {type: "button", class: "plot-empty " + p.nudge, onclick: function(){ go("connect"); }},
+        [img(p.art, "", "dotimg"), h("span", {text: p.name}), h("span", {class: "small", text: "Not connected · nothing read"})]);
+      list.appendChild(btn);
+      continue;
+    }
+    const shown = view === "error" ? "unknown" : p.state;
+    const extra = (view === "error" && p.state !== "unknown") ? "last known" : "";
+    const isSel = state.selected === p.id;
+    const btn = h("button", {type: "button", class: "spot " + p.nudge, "aria-pressed": isSel ? "true" : "false",
+      "aria-label": p.name + ", " + SPOT_STATE_TEXT(shown) + ". Open its card.",
+      onclick: function(){ state.selected = p.id; state.sheetClosed = false; render(); focusDetail(); say(p.name + " selected. " + SPOT_STATE_TEXT(shown)); }},
+      [img(p.art, ""),
+       h("span", {class: "spot-name", text: p.name}),
+       chip(shown, extra),
+       h("span", {class: "small muted", text: p.fact.label + ": " + p.fact.value}),
+       isSel ? h("span", {class: "sel", text: "✓ Selected"}) : null]);
+    list.appendChild(btn);
+  }
+  map.appendChild(list);
+  out.push(h("div", {class: "garden"}, [map, detailPane(view)]));
+
+  out.push(h("div", {class: "legend"}, [
+    h("span", {text: "Every spot says its state in words, never in colour alone."}),
+    h("span", {text: "Worlds reads. It never acts on a service's behalf."})
+  ]));
+  return out;
+}
+function SPOT_STATE_TEXT(st){
+  if (st === "healthy") return "Healthy";
+  if (st === "needs_you") return "Needs you";
+  if (st === "stale") return "Stale, showing the last known value";
+  if (st === "unavailable") return "Unavailable";
+  return "Unknown, no current reading";
+}
+/* The map is a drawn ground. Spots go into the .spots grid on top of it;
+   the note only ever appears on a map that has no spots on it, so the two can
+   never fight for the same ground. */
+function dashedMap(note){
+  const map = h("div", {class: "map"});
+  if (note) map.appendChild(h("p", {class: "map-note small muted", text: note}));
+  return map;
+}
+function detailPane(view){
+  const p = spot(state.selected);
+  const pane = h("div", {class: "detail", id: "detail", "aria-labelledby": "detail-title"});
+  const body = h("div", {class: "sheet-body"});
+
+  if (!p || p.empty){
+    body.appendChild(h("h2", {id: "detail-title", tabindex: "-1", text: "No spot chosen"}));
+    body.appendChild(h("p", {class: "muted", text: "Pick a spot on the map. Its card opens here."}));
+    pane.appendChild(body);
+    return pane;
+  }
+
+  const shown = view === "error" ? "unknown" : p.state;
+  const bar = h("div", {class: "sheet-bar"}, [
+    h("span", {class: "handle", "aria-hidden": "true"}),
+    h("button", {type: "button", class: "btn", "aria-expanded": state.sheetClosed ? "false" : "true", text: state.sheetClosed ? "Open card" : "Close card",
+      onclick: function(){ state.sheetClosed = !state.sheetClosed; document.body.classList.toggle("sheet-closed", state.sheetClosed); render(); }})
+  ]);
+  pane.appendChild(bar);
+
+  body.appendChild(h("div", {class: "head"}, [
+    img(p.art, ""),
+    h("div", null, [
+      h("h2", {id: "detail-title", tabindex: "-1", text: p.name}),
+      h("span", {class: "kind", text: p.kind + " · kept by " + p.app})
+    ])
+  ]));
+  body.appendChild(h("p", null, [chip(shown, (shown === "stale" || (shown === "unknown" && view === "error")) ? "last known" : ""), " ", h("span", {class: "small muted", text: p.checked})]));
+  body.appendChild(h("p", {class: "muted", text: shown === "unknown" ? "No current reading. Not guessing." : p.line}));
+  if (shown !== "unknown" && p.added) body.appendChild(h("p", {class: "small muted", text: p.added}));
+
+  body.appendChild(h("h3", {text: "What is here"}));
+  body.appendChild(h("p", null, [h("span", {class: "small muted", text: p.fact.label + ": "}),
+    h("span", {text: p.fact.value + (p.fact.lastKnown ? " (last known)" : "")})]));
+  body.appendChild(h("p", {class: "small muted", text: p.scope}));
+
+  if (p.proposal){
+    body.appendChild(h("h3", {text: "Proposed"}));
+    body.appendChild(h("p", {class: "small", text: p.proposal}));
+    body.appendChild(h("p", {class: "small muted", text: "There is no button to run it here, on purpose. A person can only act in " + p.app + "."}));
+  }
+
+  body.appendChild(h("div", {class: "receipt"}, [
+    h("h3", {text: "Receipt"}),
+    h("div", {class: "station"}, [h("b", {text: "Source"}), h("span", {text: p.app + " · " + p.checked})]),
+    h("div", {class: "station"}, [h("b", {text: "Worlds"}), h("span", {text: "Reference held, never the secret. Worlds locked nothing."})]),
+    h("div", {class: "station"}, [h("b", {text: "Agent / Human"}), h("span", {text: "An agent can read this fact. A person acts on it in " + p.app + "."})])
+  ]));
+
+  if (p.id === "front-porch"){
+    body.appendChild(h("h3", {text: "Ask Home to do something"}));
+    body.appendChild(h("p", {class: "small", text: "Not available yet. Approvals aren't connected, so nothing was sent."}));
+    body.appendChild(h("p", {class: "small muted", text: "This link opens the Home app. Worlds never records an approval it did not receive."}));
+    body.appendChild(h("div", {class: "actions"}, [h("span", {class: "btn", "aria-disabled": "true", text: "Ask Project Home to review"}), h("a", {class: "btn", href: "#/memory", text: "Open the Home app's notes in Memory"})]));
+  } else {
+    body.appendChild(h("div", {class: "actions"}, [
+      h("button", {type: "button", class: "btn", text: "Check now", onclick: function(){ say("Checked just now. Nothing changed."); }}),
+      h("a", {class: "btn", href: "#/memory", text: "See every fact"}),
+      h("button", {type: "button", class: "btn quiet-danger", text: "Disconnect " + p.name, onclick: function(){ loud("Disconnecting " + p.name + " is not wired in this concept. The garden keeps its spot until it is."); }})
+    ]));
+  }
+  pane.appendChild(body);
+  return pane;
+}
+function focusDetail(){
+  const t = document.getElementById("detail-title");
+  if (t) t.focus();
+}
+
+/* --------------------------------------------------------- connect screen */
+const STEP_NAMES = ["Discover", "Reference", "Test", "Preview", "Choose", "Publish"];
+function renderConnect(){
+  const view = state.view.connect;
+  const c = state.connect;
+  const out = [screenHead("Connect", "Pick a service. See what it can read. Give it a reference. Try it. Get a receipt.", "dot-curious.webp"), stateBar("connect")];
+
+  if (view === "first-run"){
+    out.push(well("dot-welcome.webp", "Nothing here yet.",
+      h("div", null, [
+        h("p", {text: "Your garden has no spots. Connecting one puts a spot on the map, with a receipt you can check later."}),
+        h("p", {class: "muted small", text: "Nothing is saved until you publish. Leaving now asks nothing."})
+      ]),
+      [h("button", {type: "button", class: "btn primary", text: "Start with Discover", onclick: function(){ state.connect.step = 1; state.view.connect = "full"; render(); }})]));
+    return out;
+  }
+  if (view === "loading"){
+    out.push(h("p", {class: "strip", role: "status"}, ["Discovering. Reading only."]));
+    out.push(skel(3, "Looking for services Worlds can offer. No reference has been used."));
+    return out;
+  }
+  if (view === "error"){
+    out.push(h("p", {class: "strip", role: "status"}, ["Couldn't look. Nothing changed. Try again."]));
+    out.push(h("div", {class: "note"}, [
+      h("h2", {text: "Two candidates answered, and Worlds is honest about both"}),
+      h("p", {text: "An unnamed service replied to a read-only probe. It is listed with its own words and no capabilities, because an empty list is what is known — not a list to fill in."}),
+      h("p", {class: "small muted", text: "Rain Gauge is an older connection with no capability list. Auth: unknown. Worlds will not pretend otherwise."}),
+      h("div", {class: "actions"}, [h("button", {type: "button", class: "btn", text: "Try again", onclick: function(){ state.view.connect = "full"; render(); say("Looking again."); }})])
+    ]));
+    return out;
+  }
+
+  const rail = h("ol", {class: "steps", role: "list", "aria-label": "Connect steps"});
+  STEP_NAMES.forEach(function(name, i){
+    const n = i + 1;
+    const li = h("li", null, [
+      h("button", {type: "button", class: "step-link", "aria-current": c.step === n ? "step" : null,
+        onclick: function(){ state.connect.step = n; render(); }}, [
+        h("span", {class: "n", text: String(n)}),
+        h("span", {text: name}),
+        n < c.step || (n === 6 && c.published) ? h("span", {class: "small muted", text: "done"}) : null
+      ])
+    ]);
+    rail.appendChild(li);
+  });
+
+  const panel = h("div", {class: "step-panel"});
+  panel.appendChild(h("p", {class: "small muted", text: "Step " + c.step + " of 6 · " + STEP_NAMES[c.step - 1]}));
+  panel.appendChild(connectStep(c.step));
+  out.push(h("div", {class: "flow"}, [rail, panel]));
+  return out;
+}
+function connectStep(n){
+  const c = state.connect;
+  if (n === 1) return stepDiscover();
+  if (n === 2) return stepReference();
+  if (n === 3) return stepTest();
+  if (n === 4) return stepPreview();
+  if (n === 5) return stepChoose();
+  return c.published ? receipt() : stepPublish();
+}
+function stepDiscover(){
+  const box = h("div", null, [
+    h("h2", {text: "Pick a service"}),
+    h("p", {class: "muted small", text: "Looking only. No reference has been used and nothing has changed. Each candidate is a proposal, not a fact — Worlds has read nothing yet."})
+  ]);
+  const list = h("div", {class: "cardlist"});
+  for (const cand of CANDIDATES){
+    const caps = h("span", {class: "caps"});
+    if (cand.caps.length) for (const cap of cand.caps) caps.appendChild(h("span", {class: "cap-item", text: cap.label + " · unverified"}));
+    else caps.appendChild(h("span", {class: "cap-item", text: "What it can read is unknown. Nothing is offered."}));
+    const btn = h("button", {type: "button", class: "cand", "aria-pressed": state.connect.candidate === cand.id ? "true" : "false",
+      onclick: function(){ state.connect.candidate = cand.id; state.connect.ref = ""; state.connect.tested = null; state.connect.published = false; state.connect.step = 2; render(); say(cand.name + " chosen. Next: the reference."); }},
+      [img(cand.art, "", "dotimg"),
+       h("span", null, [
+         h("span", {class: "c-name", text: cand.name}),
+         h("span", {class: "small muted", text: cand.kind + " · kept by " + cand.app}),
+         h("span", {class: "small", text: "Not connected · no reading"}),
+         h("span", {class: "small", style: "display:block", text: cand.authKnown ? cand.auth : cand.auth + " — ask " + cand.app + " what it needs"}),
+         caps,
+         h("span", {class: "small muted", style: "display:block", text: cand.summary})
+       ])]);
+    list.appendChild(btn);
+  }
+  box.appendChild(list);
+  box.appendChild(h("p", {class: "small muted", text: "Shelf Stack is already in the garden. Choosing Shelf Stack 2 makes a second spot, not a second copy of the same facts."}));
+  return box;
+}
+function stepReference(){
+  const c = state.connect;
+  const box = h("div", null, [h("h2", {text: "Give it a reference, not a secret"})]);
+  if (c.candidate === "rain-gauge"){
+    box.appendChild(h("p", {class: "strip", role: "status"}, ["Unscoped (older connection). This reference can be used for anything Rain Gauge offers. Narrow scope to change that."]));
+  }
+  const input = h("input", {type: "text", id: "ref-input", value: c.ref, placeholder: "ref://name", autocomplete: "off",
+    "aria-describedby": "ref-help",
+    oninput: function(e){ state.connect.ref = e.target.value; },
+    onblur: checkRef});
+  const help = h("p", {class: "small muted", id: "ref-help", text: c.refTouched === "refused" ? "That looks like a secret. The field was cleared and nothing was saved. Worlds only ever keeps a name." : c.refTouched === "bad" ? "Not a reference. Use ref://name." : c.refTouched === "ok" ? "Looks like a reference. Worlds stores the name, never the secret." : "Use the form ref://name. Checked when you leave the field."});
+  box.appendChild(h("div", {class: "field"}, [h("span", {text: "Credential reference"}), input, help]));
+
+  const caps = h("div", null, [
+    h("h3", {text: "What the reference may be sent for"}),
+    h("p", {class: "small muted", text: "This is about what the reference can be used for. It is not what appears on your counter — that comes later, in Choose."})
+  ]);
+  ["notes.read", "notes.sync-status"].forEach(function(id, i){
+    const key = i === 0 ? "a" : "b";
+    const id2 = "scope-" + key;
+    caps.appendChild(h("label", {class: "check", for: id2}, [
+      h("input", {type: "checkbox", id: id2, checked: c.scope[key],
+        onchange: function(e){ state.connect.scope[key] = e.target.checked; render(); }}),
+      h("span", null, [h("span", {class: "c-label", text: id}),
+        h("span", {class: "c-note", text: i === 0 ? "Read notes in Note Nook." : "Read when the last sync finished."})])
+    ]));
+  });
+  box.appendChild(caps);
+  box.appendChild(h("p", {class: "small", text: "Worlds will send this reference only when reading: " + Object.keys(c.scope).filter(function(k){ return c.scope[k]; }).map(function(k){ return k === "a" ? "notes.read" : "notes.sync-status"; }).join(", ") + "."}));
+  const scoped = c.scope.a || c.scope.b;
+  const ready = /^(ref:\/\/)?[a-z0-9][a-z0-9-]{0,48}$/i.test(c.ref.trim()) && scoped;
+  box.appendChild(h("div", {class: "actions"}, [
+    h("button", {type: "button", class: "btn", text: "Back", onclick: function(){ state.connect.step = 1; render(); }}),
+    h("button", {type: "button", class: "btn primary", "aria-disabled": ready ? null : "true", text: "Next: the safe test",
+      onclick: function(){ if (!ready){ loud("Tick at least one capability and enter a reference first."); return; } state.connect.step = 3; render(); }})
+  ]));
+  return box;
+}
+function checkRef(e){
+  const v = e.target.value.trim();
+  const secretish = /^(sk-|ghp_|xox[baprs]-)|^[A-Za-z0-9+/]{40,}={0,2}$/.test(v) || /^(PW_|OIDC_)|BOOTSTRAP/.test(v);
+  if (v && secretish){
+    state.connect.ref = "";
+    state.connect.refTouched = "refused";
+    render();
+    loud("That looks like a secret. The field was cleared and nothing was saved.");
+    const again = document.getElementById("ref-input");
+    if (again) again.focus();
+    return;
+  }
+  if (!v){ state.connect.refTouched = null; render(); return; }
+  state.connect.refTouched = /^(ref:\/\/)?[a-z0-9][a-z0-9-]{0,48}$/i.test(v) ? "ok" : "bad";
+  render();
+}
+function stepTest(){
+  const c = state.connect;
+  const box = h("div", null, [
+    h("h2", {text: "Try one safe read"}),
+    h("p", {class: "muted small", text: "One read, inside the scope you just chose. Nothing on Note Nook is changed by reading it. The reference is sent only within that scope."})
+  ]);
+  box.appendChild(h("p", {class: "small muted", text: "Reference in use: " + (c.ref || "ref://note-nook") + " · scoped to " + Object.keys(c.scope).filter(function(k){ return c.scope[k]; }).length + " capabilities"}));
+  if (c.tested === "running"){
+    box.appendChild(h("p", {role: "status", text: "Testing… one read, inside scope."}));
+  } else if (c.tested === "passed"){
+    box.appendChild(h("p", {role: "status", text: "Passed. 3 facts read in 120ms (simulated). Nothing on Note Nook was changed."}));
+    box.appendChild(h("p", {class: "small muted", text: "Try 1 of 3 used."}));
+  } else if (c.tested === "failed"){
+    box.appendChild(h("p", {role: "status", text: "Didn't go through. The provider timed out. Your reference is kept."}));
+    box.appendChild(h("p", {class: "small muted", text: "Last tried 12s ago · try 1 of 3. Nothing was blamed on you and nothing changed."}));
+  }
+  box.appendChild(h("label", {class: "check", for: "fail-next"}, [
+    h("input", {type: "checkbox", id: "fail-next", checked: c.failNext,
+      onchange: function(e){ state.connect.failNext = e.target.checked; state.connect.tested = null; render(); }}),
+    h("span", null, [h("span", {class: "c-label", text: "Make the next test fail (mock)"}),
+      h("span", {class: "c-note", text: "For looking at the failure path without waiting for a real timeout."})])
+  ]));
+  box.appendChild(h("div", {class: "actions"}, [
+    h("button", {type: "button", class: "btn", text: "Back", onclick: function(){ state.connect.step = 2; render(); }}),
+    c.tested === "passed"
+      ? h("button", {type: "button", class: "btn primary", text: "Next: see the facts", onclick: function(){ state.connect.step = 4; render(); }})
+      : h("button", {type: "button", class: "btn primary", text: c.tested === "running" ? "Testing…" : "Run the safe test",
+          "aria-disabled": c.tested === "running" ? "true" : null,
+          onclick: function(){
+            state.connect.tested = "running"; render();
+            window.setTimeout(function(){
+              state.connect.tested = state.connect.failNext ? "failed" : "passed";
+              render();
+              say(state.connect.tested === "passed" ? "Test passed. Three facts read. Nothing changed." : "Test did not go through. The provider timed out.");
+            }, 700);
+          }})
+  ]));
+  return box;
+}
+function stepPreview(){
+  const box = h("div", null, [
+    h("h2", {text: "What it actually said"}),
+    h("p", {class: "muted small", text: "Read for real now, in this mockup. Each fact keeps its own state. They are never merged into one happy answer."}),
+    h("p", {class: "small", text: "The two capabilities above now read verified."})
+  ]);
+  const list = h("div", {class: "cardlist"});
+  [
+    {label: "Local notes waiting to upload", value: "3 notes", state: "healthy"},
+    {label: "Last successful sync", value: "2 days ago", state: "stale"},
+    {label: "Provider reachable", value: "Unavailable", state: "unavailable"}
+  ].forEach(function(f){
+    list.appendChild(h("div", {class: "fact"}, [
+      h("h3", null, [f.label, chip(f.state)]),
+      h("span", {class: "value", text: f.value}),
+      h("p", {class: "small muted", text: f.state === "stale" ? "No change seen since 2 days ago. Last known value." : f.state === "unavailable" ? "The provider timed out on the last try. The last good value is kept and labelled." : "Checked 24s ago · from Note Nook."})
+    ]));
+  });
+  box.appendChild(list);
+  box.appendChild(h("div", {class: "actions"}, [
+    h("button", {type: "button", class: "btn", text: "Back", onclick: function(){ state.connect.step = 3; render(); }}),
+    h("button", {type: "button", class: "btn primary", text: "Next: choose what shows", onclick: function(){ state.connect.step = 5; render(); }})
+  ]));
+  return box;
+}
+function stepChoose(){
+  const c = state.connect;
+  const box = h("div", null, [
+    h("h2", {text: "Choose what shows on the garden"}),
+    h("p", {class: "muted small", text: "This is a different list from the reference scope above. This one decides what appears on your counter and what an agent can read."})
+  ]);
+  [["a", "Waiting to upload", "3 notes, Live"], ["b", "Last successful sync", "Stale, last known"], ["c", "Provider reachable", "Unavailable"]].forEach(function(f){
+    const id3 = "choose-" + f[0];
+    box.appendChild(h("label", {class: "check", for: id3}, [
+      h("input", {type: "checkbox", id: id3, checked: c.chosen[f[0]],
+        onchange: function(e){
+          const others = Object.keys(c.chosen).filter(function(k){ return k !== f[0] && c.chosen[k]; });
+          if (!e.target.checked && !others.length){ loud("Keep at least one. The last tick stays until you choose another."); render(); return; }
+          c.chosen[f[0]] = e.target.checked; render();
+        }}),
+      h("span", null, [h("span", {class: "c-label", text: f[1]}), h("span", {class: "c-note", text: f[2]})])
+    ]));
+  });
+  const kept = Object.keys(c.chosen).filter(function(k){ return c.chosen[k]; }).map(function(k){ return ({a: "Waiting to upload", b: "Last successful sync", c: "Provider reachable"})[k]; });
+  box.appendChild(h("p", {text: "Shown, and visible to agents: " + kept.join(", ") + "."}));
+  box.appendChild(h("p", {class: "small muted", text: "Anything left out is kept out, and named as kept out later. It is not deleted anywhere."}));
+  box.appendChild(h("div", {class: "actions"}, [
+    h("button", {type: "button", class: "btn", text: "Back", onclick: function(){ state.connect.step = 4; render(); }}),
+    h("button", {type: "button", class: "btn primary", text: "Next: publish", onclick: function(){ state.connect.step = 6; render(); }})
+  ]));
+  return box;
+}
+function stepPublish(){
+  const c = state.connect;
+  const kept = Object.keys(c.chosen).filter(function(k){ return c.chosen[k]; }).map(function(k){ return ({a: "Waiting to upload", b: "Last successful sync", c: "Provider reachable"})[k]; });
+  const box = h("div", null, [
+    h("h2", {text: "Publish, if you are happy"}),
+    h("p", {class: "muted small", text: "Nothing has been saved yet. Publishing is the first step that writes anything, and it writes a spot on the map and a reference name."}),
+    h("div", {class: "note"}, [
+      h("h3", {text: "This will add"}),
+      h("p", {text: "A spot called Note Nook to your garden, with " + kept.length + " fact" + (kept.length === 1 ? "" : "s") + ": " + kept.join(", ") + "."}),
+      h("p", {class: "small muted", text: "A reference name, " + (c.ref || "ref://note-nook") + ", scoped to " + Object.keys(c.scope).filter(function(k){ return c.scope[k]; }).length + " capabilities. Never the secret."})
+    ])
+  ]);
+  box.appendChild(h("div", {class: "actions"}, [
+    h("button", {type: "button", class: "btn", text: "Back", onclick: function(){ state.connect.step = 5; render(); }}),
+    h("button", {type: "button", class: "btn primary", text: "Publish Note Nook",
+      onclick: function(){
+        state.connect.published = true;
+        state.view.home = "full";
+        state.selected = "note-nook";
+        render();
+        loud("Note Nook is here. The receipt is on screen.");
+      }})
+  ]));
+  return box;
+}
+function receipt(){
+  return h("div", null, [
+    h("h2", {text: "Note Nook is here."}),
+    h("p", {class: "stamp"}, [img("stamp.webp", "", "dotimg"), "Connected"]),
+    h("p", {class: "muted small", text: "Its spot is on the map. Dot carried it over."}),
+    h("div", {class: "receipt"}, [
+      h("h3", {text: "Receipt"}),
+      h("div", {class: "station"}, [h("b", {text: "Source"}), h("span", {text: "the Nook app · 3 facts read in one safe test · nothing changed on it"})]),
+      h("div", {class: "station"}, [h("b", {text: "Worlds"}), h("span", {text: "Reference held, never the secret. Connected just now. Worlds locked nothing."})]),
+      h("div", {class: "station"}, [h("b", {text: "Agent / Human"}), h("span", {text: "An agent can read the 2 chosen facts. A person acts in the Nook app."})])
+    ]),
+    h("div", {class: "actions"}, [
+      h("button", {type: "button", class: "btn primary", text: "Open Note Nook's spot", onclick: function(){ state.view.home = "full"; state.selected = "note-nook"; go("home"); }}),
+      h("button", {type: "button", class: "btn", text: "Add one more", onclick: function(){ state.connect.step = 1; state.connect.published = false; render(); }}),
+      h("a", {class: "btn", href: "#/settings", text: "Manage the reference in Settings"})
+    ])
+  ]);
+}
+
+/* ---------------------------------------------------------- memory screen */
+function renderMemory(){
+  const view = state.view.memory;
+  const out = [screenHead("Memory", "Every fact in the garden, with where it came from and who can do what.", "dot.webp"), stateBar("memory")];
+
+  if (view === "loading"){
+    out.push(skel(3, "Fetching facts…"));
+    return out;
+  }
+  if (view === "first-run"){
+    out.push(well("empty-ledger.webp", "No facts yet.",
+      h("div", null, [
+        h("p", {text: "Memory is a trail of facts, not an inventory. Connect a service and its facts land here, one row each, saying who can see them and who can act on them."}),
+        h("p", {class: "muted small", text: "Nothing is written down until a fact has been read from somewhere."})
+      ]),
+      [h("a", {class: "btn primary", href: "#/connect", text: "Connect a service"})]));
+    return out;
+  }
+
+  if (view === "error"){
+    out.push(h("p", {class: "strip", role: "status"}, ["Couldn't reach two services. Showing what was last known, with times."]));
+  }
+
+  const sel = h("select", {id: "mem-filter", "aria-label": "Filter facts by service",
+    onchange: function(e){ state.memoryFilter = e.target.value; render(); }},
+    [h("option", {value: "all", text: "All services", selected: state.memoryFilter === "all" ? "selected" : null})].concat(
+      FACTS.map(function(g){ return h("option", {value: g.service, text: g.name, selected: state.memoryFilter === g.service ? "selected" : null}); })));
+  out.push(h("div", {class: "field", style: "max-width:18rem"}, [h("span", {text: "Show"}), sel]));
+
+  const groups = FACTS.filter(function(g){ return state.memoryFilter === "all" || g.service === state.memoryFilter; });
+  if (!groups.length){
+    out.push(well("dot-peek.webp", "No matches.",
+      h("div", null, [h("p", {text: "That service has no facts in the garden."}),
+        h("div", {class: "actions"}, [h("button", {type: "button", class: "btn", text: "Clear the filter", onclick: function(){ state.memoryFilter = "all"; render(); }})])])));
+    return out;
+  }
+
+  for (const g of groups){
+    const group = h("section", {class: "servicegroup", "aria-labelledby": "grp-" + g.service}, [
+      h("h2", {id: "grp-" + g.service}, [g.name, " ", chip(view === "error" ? "unknown" : g.state), h("span", {class: "small muted", text: g.scope || "Scoped to 3 capabilities"})])
+    ]);
+    for (const f of g.items){
+      const shown = view === "error" ? "unknown" : f.state;
+      const row = h("article", {class: "fact"}, [
+        h("h3", null, [f.label, chip(shown, f.state === "stale" && view !== "error" ? "last known" : "")]),
+        h("span", {class: "value", text: shown === "unknown" ? "Unknown" : f.value}),
+        shown === "unknown" ? h("p", {class: "small muted", text: "Can't see it. " + (f.note || "Needs the owning app to answer.") + " Worlds will not guess a number."})
+          : (f.note ? h("p", {class: "small muted", text: f.note}) : null),
+        h("dl", null, [
+          h("dt", {text: "Source"}), h("dd", {text: f.source === "local" ? "Worlds, from the last import" : f.source === "external" ? g.name + "'s own app" : "Nothing yet"}),
+          h("dt", {text: "Checked"}), h("dd", {text: shown === "unknown" ? "never checked" : f.age}),
+          h("dt", {text: "Agent can"}), h("dd", {text: shown === "unknown" ? "nothing — it cannot see this" : f.agent}),
+          h("dt", {text: "Human can"}), h("dd", {text: f.human})
+        ])
+      ]);
+      group.appendChild(row);
+    }
+    out.push(group);
+  }
+  out.push(h("p", {class: "small muted", text: "This session only. Nothing here is written down for later, and no row is ever edited by Worlds on its own."}));
+  return out;
+}
+
+/* -------------------------------------------------------- settings screen */
+function renderSettings(){
+  const view = state.view.settings;
+  const SECTIONS = [["references", "References"], ["feed", "Live feed"], ["comfort", "Motion and text"], ["activity", "Activity"], ["about", "About"]];
+  const out = [screenHead("Settings", "References, comfort, and what this mockup does and does not keep.", "dot.webp"), stateBar("settings")];
+
+  if (view === "loading"){
+    out.push(skel(3, "Fetching settings…"));
+    return out;
+  }
+
+  const nav = h("div", {class: "secnav", role: "navigation", "aria-label": "Settings sections"});
+  for (const sec of SECTIONS){
+    nav.appendChild(h("button", {type: "button", class: "tab", "aria-current": state.settingsSection === sec[0] ? "page" : null,
+      text: sec[1], onclick: function(){ state.settingsSection = sec[0]; render(); }}));
+  }
+  out.push(nav);
+
+  const panel = h("div", {class: "step-panel"});
+  if (state.settingsSection === "references") panel.appendChild(sectionReferences(view));
+  else if (state.settingsSection === "feed") panel.appendChild(sectionFeed());
+  else if (state.settingsSection === "comfort") panel.appendChild(sectionComfort());
+  else if (state.settingsSection === "activity") panel.appendChild(sectionActivity(view));
+  else panel.appendChild(sectionAbout(view));
+  out.push(panel);
+  return out;
+}
+function sectionReferences(view){
+  const box = h("div", null, [h("h2", {text: "Credential references"}), h("p", {class: "muted small", text: "References only, never secrets. A reference is a name for a secret kept somewhere else."})]);
+  if (view === "first-run"){
+    box.appendChild(well("empty-counter.webp", "No references.",
+      h("div", null, [h("p", {text: "Connecting a service adds one. Until then there is nothing to show here, and nothing stored."}),
+        h("div", {class: "actions"}, [h("a", {class: "btn primary", href: "#/connect", text: "Connect a service"})])])));
+    return box;
+  }
+  if (view === "error"){
+    box.appendChild(h("p", {class: "strip", role: "status"}, ["Couldn't save that. Nothing changed. Try again."]));
+  }
+  [["Note Nook", "ref://note-nook", "Scoped to 2 capabilities: notes.read, notes.sync-status"],
+   ["Shelf Stack", "ref://shelf-stack", "Scoped to 3 capabilities: shelf.read, shelf.count, shelf.import-status"],
+   ["Garden Cam", "ref://garden-cam", "Unscoped (older connection): this reference can be used for anything Garden Cam offers."],
+   ["Cloud Bank", "ref://cloud-bank", "Held, unused — Cloud Bank was disconnected."]].forEach(function(r){
+    box.appendChild(h("div", {class: "fact"}, [
+      h("h3", {text: r[0]}),
+      h("span", {class: "value", text: r[1]}),
+      h("p", {class: "small", text: r[2]}),
+      h("div", {class: "actions"}, [
+        h("button", {type: "button", class: "btn", text: "Test again", onclick: function(){ say("Test passed. Three facts read. Nothing changed."); }}),
+        h("a", {class: "btn", href: "#/connect", text: r[2].indexOf("Unscoped") === 0 ? "Narrow scope" : "Change scope"}),
+        h("button", {type: "button", class: "btn", text: "Replace", onclick: function(){ loud("Replace opens the same checks as Connect: a name, never a secret."); }}),
+        h("button", {type: "button", class: "btn quiet-danger", text: "Remove", onclick: function(){ loud("Removing drops the reference. Worlds cannot revoke the app's own key."); }})
+      ])
+    ]));
+  });
+  box.appendChild(h("p", {class: "small muted", text: "Removing a reference is not the same as disconnecting a service. Remove drops the name; disconnect stops showing it and keeps the name."}));
+  return box;
+}
+function sectionFeed(){
+  const box = h("div", null, [h("h2", {text: "Live feed"}), h("p", {class: "muted small", text: "How often Worlds re-reads, and what it says about times."})]);
+  box.appendChild(h("div", {class: "seg", role: "group", "aria-label": "Live feed"}, [
+    h("button", {type: "button", "aria-pressed": "true", text: "Live · checked 24s ago"}),
+    h("button", {type: "button", "aria-pressed": "false", text: "Paused"})
+  ]));
+  box.appendChild(h("p", {text: "Live means a real check, with a time. Never checked means Unknown, and Unknown says so."}));
+  box.appendChild(h("p", {class: "small muted", text: "Pausing stops the re-reads. It does not hide facts, and it does not change any state word."}));
+  return box;
+}
+function sectionComfort(){
+  const root = document.documentElement;
+  const mk = function(label, opts, current, onPick){
+    const group = h("div", {class: "seg", role: "group", "aria-label": label});
+    opts.forEach(function(o){
+      group.appendChild(h("button", {type: "button", "aria-pressed": o === current ? "true" : "false", text: o,
+        onclick: function(){ onPick(o); render(); say(label + ": " + o); }}));
+    });
+    return group;
+  };
+  const box = h("div", null, [
+    h("h2", {text: "Motion and text"}),
+    h("p", {class: "muted small", text: "Reduced motion removes the animation. It never removes the data."}),
+    h("h3", {text: "Motion"}),
+    mk("Motion", ["Follow system", "Reduce always"], root.dataset.motion === "reduce" ? "Reduce always" : "Follow system", function(v){ root.dataset.motion = v === "Reduce always" ? "reduce" : "system"; }),
+    h("h3", {text: "Text size"}),
+    h("p", {text: "Worlds follows your browser's text size. Zoom to 200% and everything reflows; nothing is clipped."}),
+    h("h3", {text: "Theme"}),
+    mk("Theme", ["Dark", "Light"], root.dataset.theme === "light" ? "Light" : "Dark", function(v){ root.dataset.theme = v.toLowerCase(); })
+  ]);
+  return box;
+}
+function sectionActivity(view){
+  const box = h("div", null, [h("h2", {text: "Activity"}), h("p", {class: "muted small", text: "This session only. Nothing is kept after you close the page, and nothing is written to disk."})]);
+  if (view === "first-run"){
+    box.appendChild(well("empty-ledger.webp", "Quiet so far.", h("p", {text: "Nothing has happened yet in this session. The first line appears when a spot is checked, connected or opened."})));
+    return box;
+  }
+  const lines = view === "error"
+    ? ["Couldn't load the session ledger. Nothing was lost — there was nothing to lose."]
+    : ["14:02 · Note Nook · Connected. Reference held, never the secret.",
+       "13:58 · Note Nook · Safe test passed. 3 facts read. Nothing changed on it.",
+       "13:57 · Cloud Bank · Went Stale (simulated). Last known value kept."];
+  const list = h("ul", {style: "list-style:none;padding:0;margin:0"});
+  for (const line of lines){
+    list.appendChild(h("li", {class: "fact"}, [h("span", {text: line}), h("span", {class: "small muted", style: "display:block", text: "Times are UTC and synthetic."})]));
+  }
+  box.appendChild(list);
+  box.appendChild(h("p", {class: "small muted", text: "Activity records what Worlds did and what an owner did elsewhere. It never records a secret, because a secret never reaches the browser."}));
+  return box;
+}
+function sectionAbout(view){
+  const box = h("div", null, [
+    h("h2", {text: "About this mockup"}),
+    h("p", null, [h("b", {text: "MOCKUP. "}), "Concept B, the garden map. One of several concepts to compare side by side. Nothing here is approved, deployed or connected to a real service."]),
+    h("h3", {text: "Data"}),
+    h("p", {text: "Synthetic names only: Note Nook, Shelf Stack, Front Porch, Cloud Bank, Garden Cam, Rain Gauge. No reading here came from anywhere."}),
+    h("h3", {text: "What this concept is honest about"}),
+    h("ul", null, [
+      h("li", {text: "Unscoped is labelled unscoped, in Connect and in Settings, with a way to narrow it."}),
+      h("li", {text: "Unknown says Unknown. No number is invented and no blank is dressed up."}),
+      h("li", {text: "Approvals are not connected. Nothing claims one was sent."}),
+      h("li", {text: "A proposal has no Run button, on purpose."}),
+      h("li", {text: "A reference is a name. The secret never enters the page."})
+    ]),
+    h("h3", {text: "Reads with"}),
+    h("ul", null, [
+      h("li", null, [h("a", {href: "../../worlds-design.md", text: "worlds-design.md"}), " — the v3.1 design this differs from."]),
+      h("li", null, [h("a", {href: "../../connect-contract.md", text: "the Connect contract"}), " — the verbs and the boundaries the Connect screen follows."]),
+      h("li", null, [h("a", {href: "README.md", text: "this concept's README"}), " — what is distinct, and the known gaps."])
+    ])
+  ]);
+  if (view === "error"){
+    box.appendChild(h("p", {class: "small muted", text: "One thing this concept cannot show yet: how a stale fact settles while you are looking at it. See the README's known gaps."}));
+  }
+  return box;
+}
+
+/* ------------------------------------------------------------- navigation */
+function go(route){
+  state.route = route;
+  location.hash = "#/" + route;
+  render();
+}
+function buildTabs(){
+  const nav = document.getElementById("tabs");
+  nav.textContent = "";
+  for (const r of ROUTES){
+    nav.appendChild(h("a", {class: "tab", href: "#/" + r.id, "aria-current": state.route === r.id ? "page" : null, text: r.label}));
+  }
+}
+function render(){
+  const host = document.getElementById("screen");
+  host.textContent = "";
+  let kids;
+  if (state.route === "home") kids = renderHome();
+  else if (state.route === "connect") kids = renderConnect();
+  else if (state.route === "memory") kids = renderMemory();
+  else kids = renderSettings();
+  for (const k of kids) host.appendChild(k);
+  document.title = "Worlds · " + ROUTES.filter(function(r){ return r.id === state.route; })[0].label + " · MOCKUP";
+  document.getElementById("top-age").textContent = state.route === "settings" && state.settingsSection === "feed" ? "Live · checked 24s ago" : "checked 24s ago";
+  buildTabs();
+  document.body.classList.toggle("sheet-closed", state.sheetClosed);
+}
+function routeFromHash(){
+  const raw = (location.hash || "#/home").replace(/^#\/?/, "");
+  const id = raw.split("/")[0];
+  return ROUTES.filter(function(r){ return r.id === id; }).length ? id : "home";
+}
+window.addEventListener("hashchange", function(){
+  const next = routeFromHash();
+  state.route = next;
+  state.sheetClosed = false;
+  render();
+  say(ROUTES.filter(function(r){ return r.id === next; })[0].label + " screen.");
+  document.getElementById("main").focus();
+});
+render();
+</script>
+</body>
+</html>

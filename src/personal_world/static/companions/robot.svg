@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Personal World — little helper robot</title>
+  <desc id="desc">A mint and powder-blue round-edged robot with a cream face screen, heart panel, little boots and a raised claw hand.</desc>
+  <g id="robot-pet" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <g id="antenna">
+      <path d="M256 137 L256 107" fill="none" id="antenna-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <circle cx="256" cy="96" r="11" fill="#F4C6DF" id="antenna-circle-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="leg-left">
+      <rect x="207" y="344" width="22" height="29" rx="8" fill="#DDCEF0" id="leg-left-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <rect x="185" y="364" width="49" height="22" rx="10" fill="#BED5F5" id="leg-left-rect-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="leg-right">
+      <rect x="283" y="344" width="22" height="29" rx="8" fill="#DDCEF0" id="leg-right-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <rect x="278" y="364" width="49" height="22" rx="10" fill="#BED5F5" id="leg-right-rect-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="arm-left">
+      <path d="M186 274 Q161 277 154 301 L141 307" fill="none" stroke-width="16" id="arm-left-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M186 274 Q161 277 154 301 L141 307" fill="none" stroke="#DDCEF0" stroke-width="8" id="arm-left-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M143 293 Q121 290 125 310 Q129 328 146 321" fill="#B8E4D5" id="arm-left-path-03" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="arm-right">
+      <path d="M326 277 Q352 274 359 250 L363 234" fill="none" stroke-width="16" id="arm-right-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M326 277 Q352 274 359 250 L363 234" fill="none" stroke="#DDCEF0" stroke-width="8" id="arm-right-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M351 234 Q337 215 354 205 L362 216 L367 200 Q386 205 379 225 Q375 235 365 238 Z" fill="#B8E4D5" id="arm-right-path-03" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="body">
+      <rect x="181" y="252" width="150" height="100" rx="27" fill="#B8E4D5" id="body-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <g id="chest-panel">
+        <rect x="219" y="278" width="75" height="47" rx="13" fill="#FAE8BC" id="chest-panel-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M256 310 C230 295 246 285 256 295 C268 284 282 297 256 310 Z" fill="#F4C6DF" id="chest-panel-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="ear-left">
+      <rect x="145" y="175" width="23" height="47" rx="9" fill="#DDCEF0" id="ear-left-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="ear-right">
+      <rect x="344" y="175" width="23" height="47" rx="9" fill="#DDCEF0" id="ear-right-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="head">
+      <rect x="161" y="132" width="190" height="124" rx="35" fill="#BED5F5" id="head-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <g id="screen">
+        <rect x="181" y="152" width="150" height="82" rx="23" fill="#FFF4DF" id="screen-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="face">
+        <g id="eye-left">
+          <ellipse cx="224" cy="181" rx="5" ry="7" fill="#603D49" stroke="none" id="eye-left-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="eye-right">
+          <ellipse cx="288" cy="181" rx="5" ry="7" fill="#603D49" stroke="none" id="eye-right-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="cheeks">
+          <ellipse cx="215" cy="199" rx="11" ry="7" fill="#F4C6DF" stroke="none" id="cheeks-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <ellipse cx="297" cy="199" rx="11" ry="7" fill="#F4C6DF" stroke="none" id="cheeks-ellipse-02" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="mouth">
+          <path d="M247 201 Q256 211 266 201" fill="none" stroke-width="3.5" id="mouth-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+      </g>
+      <g id="head-highlight">
+        <path d="M182 143 L209 143" fill="none" stroke="#F1F6FF" stroke-width="5" id="head-highlight-path-01" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="outline-details">
+      <path d="M196 334 L211 334 M302 334 L317 334" fill="none" stroke-width="2.5" id="outline-details-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="sparkles">
+      <path d="M113 165 Q113 176 102 177 Q113 178 113 189 Q114 178 124 177 Q114 176 113 165 Z" fill="#FAE8BC" id="sparkles-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M399 277 Q399 288 388 289 Q399 290 399 301 Q400 290 410 289 Q400 288 399 277 Z" fill="#DDCEF0" id="sparkles-path-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Worlds concept A · MOCKUP</title>
+<style>
+/* Concept A — "The Counter, extended". Same house language as the v3.1 prototype:
+   Rylee-Bee Design System tokens (Mulberry & Mint), one block per mode. MOCKUP. */
+:root{--space-xs:.25rem;--space-sm:.5rem;--space-md:1rem;--space-lg:1.5rem;--space-xl:2rem;--space-2xl:3rem;--radius-sm:.25rem;--radius-md:.5rem;--radius-lg:1rem;--radius-full:999rem;--type-micro:.75rem;--type-small:.875rem;--type-label:.875rem;--type-body:1rem;--type-lead:1.25rem;--type-h1:1.5rem}
+:root,:root[data-theme="dark"]{--surface-base:#291d30;--surface-raised:#352640;--surface-sunken:#1f1625;--text-primary:#f5ecf2;--text-soft:#dacad9;--border-line:#8b7791;--border-line-strong:#b09ab3;--action-primary:#a7e6ce;--action-on-primary:#291d30;--focus-ring:#c4f5e2;--status-needs-you:#f6cea2;--status-done:#c3e79b;--status-failed:#ffa8b4;--status-unknown:#cbbcce;--status-healthy:#c3e79b;--status-stale:#f6cea2;--status-unavailable:#ffa8b4;--status-not_configured:#cbbcce;--accent-mint:#a7e6ce;--accent-apricot:#f6cea2;--accent-lilac:#dcc2f7;color-scheme:dark}
+:root[data-theme="light"]{--surface-base:#f7f1f4;--surface-raised:#fffafc;--surface-sunken:#ece1e8;--text-primary:#291d30;--text-soft:#5c4a62;--border-line:#8b7791;--border-line-strong:#5c4a62;--action-primary:#1f5c47;--action-on-primary:#fffafc;--focus-ring:#291d30;--status-needs-you:#8a4a12;--status-done:#3f6b1f;--status-failed:#9b3346;--status-unknown:#5c4a62;--status-healthy:#3f6b1f;--status-stale:#8a4a12;--status-unavailable:#9b3346;--status-not_configured:#5c4a62;--accent-mint:#1f5c47;--accent-apricot:#8a4a12;--accent-lilac:#6a4a8f;color-scheme:light}
+:root[data-theme="high-contrast"]{--surface-base:#170f1b;--surface-raised:#291d30;--surface-sunken:#0f0912;--text-primary:#fffafd;--text-soft:#f5ecf2;--border-line:#fffafd;--border-line-strong:#fffafd;--action-primary:#c4f5e2;--action-on-primary:#170f1b;--focus-ring:#fffafd;--status-needs-you:#ffd9b0;--status-done:#d6f5b0;--status-failed:#ffc2cb;--status-unknown:#f5ecf2;--status-healthy:#d6f5b0;--status-stale:#ffd9b0;--status-unavailable:#ffc2cb;--status-not_configured:#f5ecf2;--accent-mint:#c4f5e2;--accent-apricot:#ffd9b0;--accent-lilac:#e8d6ff;color-scheme:dark}
+:root[data-theme="low-stimulation"]{--surface-base:#291d30;--surface-raised:#30233a;--surface-sunken:#1f1625;--text-primary:#ece4ea;--text-soft:#cbbfca;--border-line:#8b7791;--border-line-strong:#a593a8;--action-primary:#7fc4aa;--action-on-primary:#1f1625;--focus-ring:#a7e6ce;--status-needs-you:#e3c09a;--status-done:#b3d394;--status-failed:#e9a2ac;--status-unknown:#bfb2c2;--status-healthy:#b3d394;--status-stale:#bfb2c2;--status-unavailable:#e9a2ac;--status-not_configured:#bfb2c2;--accent-mint:#9bd3bd;--accent-apricot:#e3c09a;--accent-lilac:#c9b4e0;color-scheme:dark}
+/* Worlds-local handles: layout and motion only, no colour. */
+:root{--wv-target-min:2.75rem;--wv-hairline:.0625rem;--wv-frame-line:.125rem;--wv-ring-width:.1875rem;--wv-pad-tight:.125rem;--wv-rail-w:13rem;--wv-scene-w:17.5rem;--wv-scene-sm:10rem;--wv-icon-sm:2rem;--wv-icon-lg:2.5rem;--wv-glyph-sm:1rem;--wv-glyph:1.25rem;--wv-glyph-lg:1.5rem;--wv-dot:4.75rem;--wv-dot-sm:3.25rem;--wv-display-page:2.5rem;--wv-display-section:1.85rem;--wv-ease:cubic-bezier(.2,0,0,1);--wv-dur-state:150ms;--wv-serif:"Young Serif",Georgia,"Times New Roman",serif;--wv-sans:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",Verdana,sans-serif}
+@media(max-width:47.99rem){:root{--wv-dot:3.25rem}}
+@media(prefers-reduced-motion:reduce){:root{--wv-dur-state:0ms}}
+:root[data-motion="reduce"]{--wv-dur-state:0ms}
+*{box-sizing:border-box}
+html{background:var(--surface-base);color:var(--text-primary);font-family:var(--wv-sans);font-size:100%;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-base);font-size:var(--type-body);line-height:1.55;overflow-wrap:anywhere}
+h1,h2,h3{font-family:var(--wv-serif);font-weight:400;line-height:1.15;margin:0;color:var(--text-primary)}
+h1{font-size:var(--wv-display-page);letter-spacing:-.02em}
+h2{font-size:var(--wv-display-section);letter-spacing:-.01em}
+h3{font-size:var(--type-lead)}
+h1:focus,h2:focus,h3:focus,main:focus{outline:none}
+p{margin:var(--space-xs) 0}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:var(--type-small);overflow-wrap:anywhere}
+ul,ol{margin:0;padding:0}
+.muted{color:var(--text-soft)}
+.micro{font-size:var(--type-small)}
+.num{font-variant-numeric:tabular-nums}
+.sr-only{position:absolute;width:var(--wv-hairline);height:var(--wv-hairline);margin:calc(-1 * var(--wv-hairline));padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus-visible{outline:var(--wv-ring-width) solid var(--focus-ring);outline-offset:var(--wv-ring-width)}
+button,input,select{font:inherit;color:inherit}
+[hidden]{display:none!important}
+.skip{position:fixed;left:var(--space-md);top:-10rem;white-space:nowrap;z-index:50;min-height:var(--wv-target-min);display:inline-flex;align-items:center;background:var(--action-primary);color:var(--action-on-primary);padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);font-weight:600;text-decoration:none}
+.skip:focus{top:var(--space-md)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);min-height:var(--wv-target-min);padding:var(--space-sm) var(--space-md);border:var(--wv-hairline) solid var(--border-line-strong);border-radius:var(--radius-full);background:var(--surface-raised);color:var(--text-primary);font-size:var(--type-label);font-weight:600;letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:background var(--wv-dur-state) var(--wv-ease),border-color var(--wv-dur-state) var(--wv-ease),color var(--wv-dur-state) var(--wv-ease)}
+.btn:hover{background:var(--surface-sunken);border-color:var(--action-primary)}
+.btn:active{transform:translateY(var(--wv-hairline))}
+:root[data-motion="reduce"] .btn:active{transform:none}
+@media(prefers-reduced-motion:reduce){.btn:active{transform:none}}
+.btn.primary{background:var(--action-primary);color:var(--action-on-primary);border-color:var(--action-primary)}
+.btn.primary:hover{background:var(--text-primary);color:var(--surface-base);border-color:var(--text-primary)}
+.btn.danger{color:var(--status-failed);border-color:var(--status-failed)}
+.btn.danger:hover{background:var(--status-failed);color:var(--surface-base)}
+.btn.sm{min-height:var(--wv-target-min);padding:var(--space-xs) var(--space-md);font-size:var(--type-small)}
+.btn[aria-pressed="true"].tog{border-color:var(--action-primary)}
+.link{display:inline-flex;align-items:center;min-height:var(--wv-target-min);color:var(--text-primary);text-decoration:underline;text-underline-offset:var(--space-xs);text-decoration-thickness:var(--wv-hairline);background:none;border:0;cursor:pointer;padding:0;font-size:inherit}
+.actions{display:flex;gap:var(--space-sm);flex-wrap:wrap;align-items:center;margin-top:var(--space-lg)}
+.actions.tight{margin-top:var(--space-sm)}
+/* shell */
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:var(--space-md);padding:var(--space-sm) var(--space-lg);background:var(--surface-raised);border-bottom:var(--wv-hairline) solid var(--border-line)}
+.brand{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);min-width:0}
+.wordmark{white-space:nowrap;font-family:var(--wv-serif);font-size:var(--type-h1);margin:0;line-height:1}
+.mockup{white-space:nowrap;flex:none;font-size:var(--type-micro);font-weight:700;letter-spacing:.09em;border:var(--wv-hairline) solid var(--accent-mint);color:var(--accent-mint);padding:var(--wv-pad-tight) var(--space-sm);border-radius:var(--radius-sm)}
+.concept-tag{font-size:var(--type-small);color:var(--text-soft)}
+.app{display:grid;grid-template-columns:var(--wv-rail-w) minmax(0,1fr)}
+.rail{background:var(--surface-sunken);border-right:var(--wv-hairline) solid var(--border-line)}
+.rail-in{position:sticky;top:4.5rem;height:calc(100dvh - 4.5rem);padding:var(--space-lg) var(--space-sm);display:flex;flex-direction:column;gap:var(--space-xs);overflow:auto}
+.nav-item{position:relative;display:flex;align-items:center;gap:var(--space-sm);min-height:var(--wv-target-min);padding:var(--space-sm) var(--space-md);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none;border:var(--wv-hairline) solid transparent;font-weight:600;background:transparent;cursor:pointer;font-size:var(--type-body);width:100%;text-align:left}
+.nav-item svg{width:var(--wv-glyph-lg);height:var(--wv-glyph-lg);flex:none}
+.nav-item:hover{background:var(--surface-raised);border-color:var(--border-line)}
+.nav-item[aria-current="page"]{background:var(--surface-raised);border-color:var(--action-primary);font-weight:700}
+.tabbar{display:none}
+main{padding:var(--space-xl);width:100%;max-width:92rem;margin:0 auto;min-width:0}
+.page-head{display:flex;gap:var(--space-lg);align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-bottom:var(--space-xl)}
+.state-wrap{display:grid;gap:var(--space-xs);justify-items:start}
+.state-hint{font-size:var(--type-small);color:var(--text-soft)}
+.state-switch{display:flex;gap:var(--space-sm);flex-wrap:wrap}
+.state-btn{min-height:var(--wv-target-min);padding:var(--space-xs) var(--space-md);border-radius:var(--radius-full);border:var(--wv-hairline) solid var(--border-line-strong);background:var(--surface-sunken);cursor:pointer;font-weight:600;font-size:var(--type-small);color:var(--text-primary)}
+.state-btn:hover{border-color:var(--action-primary)}
+.state-btn[aria-pressed="true"]{border-color:var(--action-primary);font-weight:700;background:var(--surface-raised)}
+.content{min-width:0}
+.content.fade>*{animation:tick var(--wv-dur-state) var(--wv-ease)}
+@keyframes tick{from{opacity:0}to{opacity:1}}
+:root[data-motion="reduce"] .content.fade>*{animation:none}
+@media(prefers-reduced-motion:reduce){.content.fade>*{animation:none}}
+/* chips, art, dot, stamp */
+.chip{display:inline-flex;align-items:center;gap:var(--space-xs);font-size:var(--type-small);font-weight:700;line-height:1.2}
+.chip svg{width:var(--wv-glyph-sm);height:var(--wv-glyph-sm);flex:none;stroke-width:2}
+.c-healthy,.c-live{color:var(--status-healthy)}
+.c-needs_attention{color:var(--status-needs-you)}
+.c-stale{color:var(--status-stale)}
+.c-unavailable{color:var(--status-unavailable)}
+.c-unknown{color:var(--status-unknown)}
+.c-not_configured{color:var(--status-not_configured)}
+.c-done{color:var(--status-done)}
+.c-failed{color:var(--status-failed)}
+.c-other{color:var(--text-soft)}
+.dot{height:var(--wv-dot);width:auto;flex:none;display:block}
+.dot.sm{height:var(--wv-dot-sm)}
+.sico{width:var(--wv-icon-sm);height:var(--wv-icon-sm);object-fit:contain;flex:none;display:block}
+.sico.lg{width:var(--wv-icon-lg);height:var(--wv-icon-lg)}
+.scene{width:min(var(--wv-scene-w),100%);height:auto;display:block}
+.empty .scene{max-width:40%}
+.stamp{display:inline-flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) var(--space-md);color:var(--status-done);font-family:var(--wv-serif);text-transform:uppercase;letter-spacing:.1em;font-size:var(--type-lead);transform:rotate(-4deg)}
+.stamp img{width:var(--wv-icon-lg);height:auto;flex:none}
+.sim{display:inline-block;font-size:var(--type-micro);font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:var(--wv-hairline) solid var(--border-line-strong);border-radius:var(--radius-full);padding:0 var(--space-sm);color:var(--text-soft);margin-left:var(--space-xs)}
+.fresh{display:flex;align-items:center;gap:var(--space-sm);margin:0 0 var(--space-md);color:var(--text-soft)}
+.status-line{margin:0 0 var(--space-lg)}
+.status-line .cnt{font-weight:700;color:var(--status-needs-you)}
+.upd{color:var(--status-done);font-weight:700}
+/* wells, skeleton */
+.empty{display:grid;grid-template-columns:auto 1fr;gap:var(--space-xl);align-items:center;padding:var(--space-xl);border:var(--wv-frame-line) dashed var(--border-line-strong);border-radius:var(--radius-lg);color:var(--text-soft)}
+.empty h2{color:var(--text-primary)}
+.empty p{max-width:28ch}
+.empty .actions{margin-top:var(--space-md)}
+.skel{display:grid;gap:var(--space-md);padding:var(--space-lg);border:var(--wv-frame-line) dashed var(--border-line-strong);border-radius:var(--radius-lg)}
+.skel-row{height:var(--wv-target-min);background:var(--surface-sunken);border-radius:var(--radius-md)}
+/* counter */
+.home-grid{display:grid;grid-template-columns:minmax(min(16rem,100%),23rem) minmax(0,1fr);gap:var(--space-xl);align-items:start}
+.slips{list-style:none;display:grid;gap:var(--space-md)}
+.slip{display:block;width:100%;text-align:left;padding:var(--space-lg);border-radius:var(--radius-lg);background:var(--surface-raised);border:var(--wv-frame-line) solid var(--border-line);color:var(--text-primary);cursor:pointer;transition:transform var(--wv-dur-state) var(--wv-ease),border-color var(--wv-dur-state) var(--wv-ease)}
+.slip:hover,.slip[aria-pressed="true"]{transform:translateY(-.125rem);border-color:var(--action-primary)}
+:root[data-motion="reduce"] .slip:hover,:root[data-motion="reduce"] .slip[aria-pressed="true"]{transform:none}
+@media(prefers-reduced-motion:reduce){.slip:hover,.slip[aria-pressed="true"]{transform:none}}
+.slip-name{display:block;font-family:var(--wv-serif);font-size:var(--type-lead);line-height:1.2}
+.slip-kind{display:block;font-size:var(--type-small);color:var(--text-soft)}
+.slip-reason{display:block;margin-top:var(--space-sm);color:var(--text-soft)}
+.slip-peek{display:grid;gap:var(--space-xs);margin-top:var(--space-md);padding-top:var(--space-md);border-top:var(--wv-hairline) solid var(--border-line)}
+.peek-val{font-size:var(--type-lead);font-weight:700;line-height:1.25}
+.peek-lbl{font-size:var(--type-small);color:var(--text-soft)}
+.slip-foot{display:flex;justify-content:space-between;gap:var(--space-sm);margin-top:var(--space-sm);font-size:var(--type-small);color:var(--text-soft)}
+.sel-word{display:inline-flex;white-space:nowrap;flex:none;gap:var(--space-xs);align-items:center;color:var(--accent-mint);font-weight:700;font-size:var(--type-small)}
+.detail{min-width:0}
+.svc-head{display:flex;justify-content:space-between;gap:var(--space-lg);align-items:flex-start;flex-wrap:wrap;margin-bottom:var(--space-lg)}
+.svc-title{font-size:var(--wv-display-page);letter-spacing:-.02em;min-width:0}
+.meta{display:flex;gap:var(--space-md);flex-wrap:wrap;align-items:center;color:var(--text-soft);margin-top:var(--space-sm)}
+.facts-list{list-style:none;display:grid;gap:var(--space-sm);margin:0 0 var(--space-lg)}
+.fact{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-md);align-items:center;width:100%;min-height:var(--wv-target-min);text-align:left;padding:var(--space-md);background:var(--surface-raised);border:var(--wv-hairline) solid var(--border-line);border-radius:var(--radius-lg);cursor:pointer;transition:border-color var(--wv-dur-state) var(--wv-ease)}
+.fact:hover,.fact[aria-pressed="true"]{border-color:var(--action-primary)}
+.fact[aria-pressed="true"]{border-width:var(--wv-frame-line)}
+.fact-label{font-size:var(--type-small);color:var(--text-soft)}
+.fact-val{display:grid;justify-items:end;text-align:right;gap:var(--wv-pad-tight);min-width:0}
+.fact-val strong{font-size:var(--type-lead);line-height:1.25}
+.receipt{background:var(--surface-raised);border:var(--wv-frame-line) solid var(--border-line-strong);border-radius:var(--radius-lg);padding:var(--space-xl)}
+.receipt-head{margin-bottom:var(--space-lg)}
+.receipt-head .val{font-size:var(--type-h1);font-weight:700;margin:var(--space-xs) 0 0;line-height:1.2}
+.stations{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(12rem,100%),1fr));gap:var(--space-md)}
+.station{background:var(--surface-sunken);border-radius:var(--radius-md);padding:var(--space-md);min-width:0}
+.station h3{font-size:var(--type-lead);display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-sm)}
+.st-line{display:block;margin-top:var(--space-sm);font-size:var(--type-small)}
+.perm{margin-top:var(--space-sm)}
+.perm-line{font-size:var(--type-small)}
+.sees{margin-top:var(--space-lg);padding-top:var(--space-md);border-top:var(--wv-hairline) solid var(--border-line)}
+/* connect flow */
+.card{background:var(--surface-raised);border:var(--wv-hairline) solid var(--border-line);border-radius:var(--radius-lg);padding:var(--space-lg);margin-bottom:var(--space-md)}
+.card-head{display:flex;gap:var(--space-sm);align-items:baseline;flex-wrap:wrap}
+.step-n{display:inline-grid;place-items:center;width:var(--wv-icon-sm);height:var(--wv-icon-sm);border-radius:var(--radius-full);border:var(--wv-frame-line) solid var(--border-line);font-weight:700;font-size:var(--type-small);flex:none;align-self:center}
+.says{color:var(--text-soft);margin:var(--space-sm) 0}
+.cand{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:var(--surface-sunken);border:var(--wv-frame-line) solid var(--border-line);border-radius:var(--radius-lg);margin-bottom:var(--space-sm)}
+.cand.chosen{border-color:var(--action-primary)}
+.cand ul{list-style:none;margin-top:var(--space-xs);font-size:var(--type-small);color:var(--text-soft);display:grid;gap:var(--space-xs)}
+.checks{display:grid;gap:var(--space-sm);border:0;padding:0;margin:var(--space-md) 0;min-width:0}
+.checks legend{font-weight:700;padding:0;margin-bottom:var(--space-sm)}
+.check{display:flex;gap:var(--space-md);align-items:center;min-height:var(--wv-target-min);padding:var(--space-sm) var(--space-md);background:var(--surface-sunken);border-radius:var(--radius-md);cursor:pointer}
+.check input{width:var(--wv-glyph-lg);height:var(--wv-glyph-lg);margin:0;accent-color:var(--action-primary);flex:none}
+.field{display:grid;gap:var(--space-sm);max-width:40rem}
+input[type=text]{width:100%;min-height:var(--wv-target-min);border:var(--wv-hairline) solid var(--border-line-strong);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-md);background:var(--surface-sunken);color:var(--text-primary)}
+.panel{background:var(--surface-sunken);border-radius:var(--radius-md);padding:var(--space-lg);margin:var(--space-md) 0}
+.panel .actions{margin-top:var(--space-md)}
+.unscoped-note{background:var(--surface-sunken);border:var(--wv-hairline) solid var(--border-line);border-radius:var(--radius-md);padding:var(--space-md);margin:var(--space-md) 0}
+.receipt-lines{list-style:none;display:grid;gap:var(--space-xs);margin:var(--space-md) 0}
+/* memory */
+.mem-tools{display:flex;gap:var(--space-md);flex-wrap:wrap;align-items:end;margin-bottom:var(--space-lg)}
+select{min-height:var(--wv-target-min);border:var(--wv-hairline) solid var(--border-line-strong);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-md);background:var(--surface-sunken);color:var(--text-primary)}
+input[type=search]{width:100%;min-height:var(--wv-target-min);border:var(--wv-hairline) solid var(--border-line-strong);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-md);background:var(--surface-sunken);color:var(--text-primary)}
+.mem-group{margin-bottom:var(--space-lg);background:var(--surface-sunken);border-radius:var(--radius-lg);padding:var(--space-md)}
+.mem-group summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:var(--space-md);align-items:center;flex-wrap:wrap;min-height:var(--wv-target-min)}
+.mem-group summary::-webkit-details-marker{display:none}
+.mem-body{margin-top:var(--space-md);display:grid;gap:var(--space-sm)}
+.mrow{background:var(--surface-raised);border:var(--wv-hairline) solid var(--border-line);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-md)}
+.mrow-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-sm) var(--space-md);align-items:center;min-height:var(--wv-target-min)}
+.mrow .r{text-align:right;display:grid;gap:var(--wv-pad-tight);justify-items:end}
+.mrow-val{font-size:var(--type-lead);font-weight:700;line-height:1.25}
+.mrow-meta{font-size:var(--type-small);color:var(--text-soft);display:grid;gap:var(--wv-pad-tight);padding-top:var(--space-xs)}
+/* settings */
+.set-sec{background:var(--surface-raised);border:var(--wv-hairline) solid var(--border-line);border-radius:var(--radius-lg);padding:var(--space-xl);margin-bottom:var(--space-lg)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:var(--space-md);flex-wrap:wrap;padding:var(--space-md) 0;border-bottom:var(--wv-hairline) solid var(--border-line)}
+.row:last-child{border-bottom:0}
+.row>div{min-width:0;flex:1 1 14rem}
+.row .actions{margin:0}
+.ref{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:var(--type-small)}
+.radios{display:flex;gap:var(--space-sm);flex-wrap:wrap;border:0;padding:0;margin:0}
+.radios label{display:inline-flex;align-items:center;gap:var(--space-sm);min-height:var(--wv-target-min);padding:var(--space-xs) var(--space-md);border:var(--wv-hairline) solid var(--border-line-strong);border-radius:var(--radius-full);background:var(--surface-base);cursor:pointer}
+.radios label:has(input:checked){border-color:var(--action-primary);font-weight:700}
+.radios input{accent-color:var(--action-primary);width:var(--wv-glyph);height:var(--wv-glyph)}
+.radios input:focus-visible{outline:var(--wv-ring-width) solid var(--focus-ring);outline-offset:var(--wv-ring-width)}
+/* phone */
+@media(max-width:47.99rem){
+ body{padding-bottom:calc(3.5rem + env(safe-area-inset-bottom))}
+ .topbar{padding:var(--space-sm) var(--space-md);gap:var(--space-sm)}
+ .app{display:block}
+ .rail{display:none}
+ main{padding:var(--space-lg) var(--space-md) calc(3.5rem + 2 * var(--space-2xl))}
+ .page-head{display:block}
+ .state-wrap{margin-top:var(--space-md)}
+ .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(4,1fr);min-height:calc(3.5rem + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:var(--surface-raised);border-top:var(--wv-hairline) solid var(--border-line)}
+ .tabbar .nav-item{flex-direction:column;border-radius:0;gap:var(--wv-pad-tight);font-size:var(--type-small);justify-content:center;min-height:var(--wv-target-min);padding:var(--space-xs);width:auto}
+ .tabbar .nav-item[aria-current="page"]{border-color:transparent;border-top:var(--space-xs) solid var(--action-primary);background:var(--surface-sunken)}
+ .home-grid{display:block}
+ .stations{grid-template-columns:1fr}
+ .receipt{padding:var(--space-lg)}
+ .empty{grid-template-columns:1fr;justify-items:start;padding:var(--space-lg)}
+ .empty .scene{max-width:60%}
+ .set-sec{padding:var(--space-lg)}
+ .mrow-top{grid-template-columns:1fr}
+ .mrow .r{justify-items:start;text-align:left}
+}
+/* Forced colors: authored accents drop, so each role maps to a system colour. Words carry every state. */
+@media(forced-colors:active){
+ html,body{background:Canvas;color:CanvasText}
+ h1,h2,h3,.wordmark,.chip,.mockup,.slip-name,.peek-val,.stamp,.sel-word,.upd,.nav-item,.btn,.link,.mrow-val,.state-btn,.step-n{color:CanvasText}
+ .muted,.says,.slip-kind,.slip-reason,.peek-lbl,.st-line,.meta,.state-hint,.concept-tag,.mrow-meta{color:GrayText}
+ a,.link{color:LinkText}
+ .btn{background:ButtonFace;color:ButtonText;border-color:ButtonText}
+ .btn.primary{background:Highlight;color:HighlightText;border-color:Highlight}
+ .slip,.fact,.receipt,.card,.cand,.check,.panel,.mrow,.set-sec,.empty,.skel,.unscoped-note,.mem-group,.state-btn[aria-pressed="true"]{background:Canvas;border-color:ButtonText}
+ .nav-item[aria-current="page"],.state-btn[aria-pressed="true"],.slip[aria-pressed="true"],.fact[aria-pressed="true"],.radios label:has(input:checked),.cand.chosen{background:Highlight;color:HighlightText;border-color:Highlight}
+ :focus-visible{outline:var(--wv-ring-width) solid Highlight;outline-offset:var(--wv-ring-width)}
+ .mockup{border-color:CanvasText}
+ img{forced-color-adjust:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to Worlds</a>
+<header class="topbar">
+  <div class="brand">
+    <span class="mockup" title="MOCKUP: synthetic data, not a product">MOCKUP</span>
+    <p class="wordmark">Worlds</p>
+    <span class="concept-tag">Concept A · The Counter, extended · sample data</span>
+  </div>
+</header>
+<div class="app">
+  <nav class="rail" aria-label="Screens" id="rail"></nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <h1 id="page-title" tabindex="-1">Your counter</h1>
+      <div class="state-wrap">
+        <p class="state-hint" id="state-hint">Mock data state — switch to compare.</p>
+        <div class="state-switch" id="state-switch" role="group" aria-label="Mock data state"></div>
+      </div>
+    </div>
+    <div class="content" id="content"></div>
+  </main>
+</div>
+<nav class="tabbar" aria-label="Screens" id="tabbar"></nav>
+<div class="sr-only" id="live" role="status" aria-live="polite"></div>
+<script>
+(()=>{'use strict';
+/* Concept A mockup: one screen at a time, four mock data states each. All DOM is built with
+   createElement, so no interpolated string ever becomes markup (CodeQL's rule from #328). */
+
+const ART_BASE='../../prototype/art/';
+const NS='http://www.w3.org/2000/svg';
+
+function el(tag,attrs,...kids){
+  const n=document.createElement(tag);
+  if(attrs)for(const[k,v]of Object.entries(attrs)){
+    if(v==null||v===false)continue;
+    if(k==='class')n.className=v;
+    else if(k==='text')n.textContent=v;
+    else if(k==='listen')for(const[ev,fn]of Object.entries(v))n.addEventListener(ev,fn);
+    else n.setAttribute(k,v===true?'':String(v));
+  }
+  for(const kid of kids.flat()){if(kid==null)continue;n.append(kid.nodeType?kid:document.createTextNode(String(kid)))}
+  return n;
+}
+function art(name,cls){
+  return el('img',{class:('dot '+ (cls||'')).trim(),src:ART_BASE+name+'.webp',alt:'', 'aria-hidden':'true'});
+}
+function sico(name,cls){return el('img',{class:('sico '+(cls||'')).trim(),src:ART_BASE+name+'.webp',alt:'','aria-hidden':'true'})}
+
+/* line glyphs: a check, an alert triangle, a clock, an x, a question mark, a dash */
+const GL={
+  check:[['path',{d:'M3.5 8.5l3 3 6-7'}]],
+  alert:[['path',{d:'M8 2.5l6 10.5H2z'}],['path',{d:'M8 6.5v3M8 11.2v.1'}]],
+  clock:[['circle',{cx:8,cy:8,r:6}],['path',{d:'M8 4.5V8l2.5 1.5'}]],
+  x:[['circle',{cx:8,cy:8,r:6}],['path',{d:'M5.8 5.8l4.4 4.4M10.2 5.8l-4.4 4.4'}]],
+  q:[['circle',{cx:8,cy:8,r:6}],['path',{d:'M6.2 6.3a1.9 1.9 0 013.6.7c0 1.2-1.8 1.4-1.8 2.6M8 11.6v.1'}]],
+  dash:[['circle',{cx:8,cy:8,r:6}],['path',{d:'M5.5 8h5'}]]
+};
+function glyph(name,cls){
+  const s=document.createElementNS(NS,'svg');
+  s.setAttribute('viewBox','0 0 16 16');s.setAttribute('aria-hidden','true');
+  s.setAttribute('fill','none');s.setAttribute('stroke','currentColor');s.setAttribute('stroke-width','1.7');
+  s.setAttribute('stroke-linecap','round');s.setAttribute('stroke-linejoin','round');
+  if(cls)s.setAttribute('class',cls);
+  for(const[t,a]of (GL[name]||GL.dash)){
+    const e=document.createElementNS(NS,t);
+    for(const[k,v]of Object.entries(a))e.setAttribute(k,v);
+    s.append(e);
+  }
+  return s;
+}
+const NAV_IC={
+  home:[['path',{d:'M3 9.5L10 3l7 6.5V17H3z'}],['path',{d:'M8 17v-5h4v5'}]],
+  connect:[['path',{d:'M7 3v4M13 3v4M5 7h10v3a5 5 0 01-10 0zM10 15v3'}]],
+  memory:[['path',{d:'M4 3.5h8a3 3 0 013 3V17H7a3 3 0 01-3-3z'}],['path',{d:'M4 14a3 3 0 013-3h8'}]],
+  settings:[['circle',{cx:10,cy:10,r:2.5}],['path',{d:'M10 2.5v2.2M10 15.3v2.2M2.5 10h2.2M15.3 10h2.2M4.7 4.7l1.6 1.6M13.7 13.7l1.6 1.6M4.7 15.3l1.6-1.6M13.7 6.3l1.6-1.6'}]]
+};
+function navGlyph(name){
+  const s=document.createElementNS(NS,'svg');
+  s.setAttribute('viewBox','0 0 20 20');s.setAttribute('aria-hidden','true');
+  s.setAttribute('fill','none');s.setAttribute('stroke','currentColor');s.setAttribute('stroke-width','1.7');
+  s.setAttribute('stroke-linecap','round');s.setAttribute('stroke-linejoin','round');
+  for(const[t,a]of NAV_IC[name]){
+    const e=document.createElementNS(NS,t);
+    for(const[k,v]of Object.entries(a))e.setAttribute(k,v);
+    s.append(e);
+  }
+  return s;
+}
+
+/* state words: the closed vocabulary. A state not in the map prints as its own word. */
+const WORDS={
+  healthy:['check','Healthy'],live:['check','Live'],needs_attention:['alert','Needs you'],
+  stale:['clock','Stale'],unavailable:['x','Unavailable'],unknown:['q','Unknown'],
+  not_configured:['dash','Not configured'],done:['check','Done'],failed:['x','Failed']
+};
+function chip(state,extra){
+  const w=WORDS[state];
+  const span=el('span',{class:'chip '+(w?'c-'+state:'c-other')});
+  span.append(glyph(w?w[0]:'dash'));
+  span.append(el('span',{text:w?w[1]:state}));
+  if(extra)span.append(extra);
+  return span;
+}
+const simPill=()=>el('span',{class:'sim',title:'simulated'},el('span',{'aria-hidden':'true',text:'sim'}),el('span',{class:'sr-only',text:' simulated'}));
+
+/* ---------- mock data (synthetic, obviously fake) ---------- */
+const OWNERS={
+  'front-door':{app:'Home',label:'Open Home app'},
+  'media-shelf':{app:'Media',label:'Open Media app'},
+  'nightly-backup':{app:'Settings',label:'Open Backup settings'},
+  'garden-camera':{app:'Home',label:'Open Home cameras'},
+  'notes-sync':{app:'Memory',label:'Open Memory app'},
+  'studio-printer':{app:'Studio',label:'Open Studio app'}
+};
+const SERVICES=[
+  {id:'front-door',name:'Front Door',kind:'home access',icon:'icon-front-door',state:'needs_attention',
+   summary:'Back door unlocked longer than usual.',reason:'Your call. Nothing acts on its own.',age:'checked 24s ago',
+   scope:'Scoped to 3 capabilities',provenance:'Connected in first run · reference only, never the secret.',
+   facts:[
+    {label:'Back door',value:'unlocked',state:'live',age:'checked 24s ago',source:'From this device',
+     agent:'see it',human:'act on it in the Home app',hReason:'Locking changes the real door. Yours to decide.'},
+    {label:'Unlocked for',value:'47 minutes',state:'live',age:'checked 24s ago',source:'From this device',
+     agent:'see it',human:'act on it in the Home app'},
+    {label:'Guest code last used by',value:'visitor-3',state:'live',age:'checked 4m ago',source:'From this device',
+     agent:'no access',aReason:'Who it was is human-only.',human:'see it'}
+   ]},
+  {id:'media-shelf',name:'Media Shelf',kind:'media library',icon:'icon-media-shelf',state:'healthy',
+   summary:'Reachable. Index current.',age:'checked 28s ago',
+   scope:'Unscoped (older connection)',unscoped:true,provenance:'Connected 2:24 PM UTC · reference only, never the secret.',
+   facts:[
+    {label:'Items in library',value:'1,284 items',state:'live',age:'checked 28s ago',source:'From this device',
+     agent:'see it',human:'edit the local copy'},
+    {label:'Played in the last 7 days',value:'12 items',state:'live',age:'checked 28s ago',source:'From this device',
+     agent:'see it',human:'edit the local copy'}
+   ]},
+  {id:'nightly-backup',name:'Nightly Backup',kind:'backup',icon:'icon-nightly-backup',state:'stale',
+   summary:'Last good backup is past its daily window.',age:'checked 8h ago',
+   scope:'Scoped to 1 capability',provenance:'Connected 2:24 PM UTC · reference only, never the secret.',
+   facts:[
+    {label:'Last successful backup',value:'Oct 9, 6:00 AM UTC',state:'stale',age:'checked 8h ago',source:'From this device',
+     agent:'see it',human:'edit the local copy',staleLine:'No change seen since Oct 9, 6:00 AM UTC.'}
+   ]},
+  {id:'garden-camera',name:'Garden Camera',kind:'camera',icon:'icon-garden-camera',state:'unknown',
+   summary:'No reading since a restart. Nothing invented.',age:'never checked',
+   scope:'Scoped to 2 capabilities',provenance:'Connected 2:24 PM UTC · reference only, never the secret.',
+   facts:[
+    {label:'Last frame',value:'Unknown',state:'unknown',age:'never checked',source:'No source answered',
+     agent:'no access',aReason:"Agent can't claim a detection while the source is unknown.",human:'see it',
+     unknownLine:'No current reading. Not guessing. Stopped answering. Needs the owning app to answer.'}
+   ]}
+];
+const CONNECT_SERVICE={
+  id:'notes-sync',name:'Notes Sync',kind:'notes sync',icon:'icon-notes-sync',
+  caps:['Provider reachable','Local notes waiting to upload','Last successful sync'],
+  keptOut:'Provider reachable',
+  provenance:'Connected 2:24 PM UTC · reference only, never the secret.'
+};
+const CANDIDATES=[
+  Object.assign({},CONNECT_SERVICE,{note:'Not connected · no reading',auth:'Auth: unknown',chosen:true}),
+  {id:'studio-printer',name:'Studio Printer',kind:'printer',icon:'icon-studio-printer',
+   note:'Not connected · no reading',auth:'Auth: unknown'}
+];
+
+/* ---------- app state ---------- */
+const STATES=[['first','First run'],['loading','Loading'],['error','Error'],['full','Full']];
+const SCREENS={
+  home:{title:'Your counter',render:renderHome},
+  connect:{title:'Connect',render:renderConnect},
+  memory:{title:'Agent facts',render:renderMemory},
+  settings:{title:'Settings',render:renderSettings}
+};
+const S={screen:'home',state:{home:'full',connect:'full',memory:'full',settings:'full'},
+        sel:'front-door',fact:{},live:true};
+
+const live=document.getElementById('live');
+function say(text){live.textContent='';live.textContent=text}
+
+/* ---------- shell ---------- */
+function buildNav(){
+  const rail=document.getElementById('rail'),tabbar=document.getElementById('tabbar');
+  rail.textContent='';tabbar.textContent='';
+  for(const id of Object.keys(SCREENS)){
+    const label=SCREENS[id].title==='Your counter'?'Home':SCREENS[id].title;
+    const mk=()=>el('button',{class:'nav-item',type:'button','data-screen':id,listen:{click:()=>go(id)}},
+      navGlyph(id),el('span',{text:label}));
+    const r=mk();r.setAttribute('aria-current',S.screen===id?'page':'false');
+    if(S.screen!==id)r.removeAttribute('aria-current');
+    rail.append(r);
+    const t=mk();if(S.screen===id)t.setAttribute('aria-current','page');else t.removeAttribute('aria-current');
+    tabbar.append(t);
+  }
+}
+function buildSwitcher(){
+  const sw=document.getElementById('state-switch');
+  sw.textContent='';
+  sw.setAttribute('aria-label','Mock data state for '+SCREENS[S.screen].title);
+  for(const[k,label]of STATES){
+    const b=el('button',{class:'state-btn',type:'button','aria-pressed':String(S.state[S.screen]===k),
+      listen:{click:()=>setState(k)}},label);
+    sw.append(b);
+  }
+}
+function sayMock(){say('Mockup. Nothing changes.')}
+
+/* ---------- shared pieces ---------- */
+function freshLine(dotArt,text){
+  return el('p',{class:'fresh'},art(dotArt,'sm'),el('span',{text}));
+}
+function emptyWell(o){
+  const w=el('div',{class:'empty'});
+  const left=el('div',{class:'empty-art'});
+  if(o.dot)left.append(art(o.dot));
+  w.append(left);
+  const right=el('div',{},el('h2',{text:o.h}),el('p',{text:o.p}));
+  if(o.scene)right.append(el('p',{},el('img',{class:'scene',src:ART_BASE+o.scene+'.webp',alt:'','aria-hidden':'true'})));
+  if(o.actions)right.append(el('div',{class:'actions'},o.actions));
+  w.append(right);
+  return w;
+}
+function skel(text,n){
+  const w=el('div',{class:'skel'},el('p',{class:'muted',text}));
+  for(let i=0;i<n;i++)w.append(el('div',{class:'skel-row'}));
+  return w;
+}
+function errWell(h,p,btnText){
+  return el('div',{class:'empty'},
+    el('div',{},art('dot-tucked')),
+    el('div',{},el('h2',{text:h}),el('p',{text:p}),
+      el('div',{class:'actions'},el('button',{class:'btn',type:'button',listen:{click:sayMock}},btnText))));
+}
+function slipButton(svc,selected){
+  const peek=svc.facts[0];
+  const b=el('button',{class:'slip',type:'button','aria-pressed':String(selected),
+    'aria-label':svc.name+', '+stateWord(svc.state)+', '+svc.age+(selected?', selected':'')},
+    el('span',{class:'slip-name',text:svc.name}),
+    el('span',{class:'slip-kind',text:svc.kind}));
+  if(selected)b.append(el('span',{class:'sel-word'},glyph('check'),el('span',{text:'Selected'})));
+  b.append(chip(svc.state));
+  if(svc.reason)b.append(el('span',{class:'slip-reason',text:svc.reason}));
+  b.append(el('span',{class:'slip-reason',text:svc.summary}));
+  b.append(el('span',{class:'slip-peek'},
+    el('span',{class:'peek-val',text:peek.value}),
+    el('span',{class:'peek-lbl',text:peek.label+(peek.state!=='live'?' · last known':'')})));
+  b.append(el('span',{class:'slip-foot'},el('span',{text:svc.age}),el('span',{text:'sample'})));
+  return b;
+}
+function stateWord(state){return WORDS[state]?WORDS[state][1]:state}
+function factRow(f,selected){
+  return el('button',{class:'fact',type:'button','aria-pressed':String(selected),
+    'aria-label':f.label+', '+stateWord(f.state)+', '+f.age},
+    el('span',{class:'fact-label',text:f.label}),
+    el('span',{class:'fact-val'},el('strong',{text:f.value}),chip(f.state)));
+}
+function station(title,lines){
+  const st=el('div',{class:'station'},el('h3',{text:title}));
+  for(const l of lines){
+    if(l.chip)st.append(el('span',{class:'st-line'},l.chip));
+    else st.append(el('span',{class:'st-line muted',text:l.text}));
+  }
+  return st;
+}
+function receipt(f,svc){
+  const r=el('section',{class:'receipt','aria-label':'Receipt for '+f.label});
+  r.append(el('div',{class:'receipt-head'},
+    el('h3',{text:'Where it came from'}),
+    el('p',{class:'val',text:f.value})));
+  const stations=el('div',{class:'stations'});
+  stations.append(station('Source',[
+    {chip:el('span',{class:'st-line'},chip(f.state),el('span',{text:' '+f.age}))},
+    {text:f.source}
+  ]));
+  const wLines=[{text:'Shared as '+f.label+'.'},{text:svc.provenance}];
+  if(svc.unscoped)wLines.push({text:'Unscoped (older connection). Can be used for anything it offers.'});
+  else wLines.push({text:svc.scope});
+  if(f.staleLine)wLines.push({text:f.staleLine});
+  if(f.unknownLine)wLines.push({text:f.unknownLine});
+  stations.append(station('Worlds',wLines));
+  const permLines=[{text:'Agent can: '+f.agent+(f.aReason?' — '+f.aReason:'')},
+                   {text:'Human can: '+f.human+(f.hReason?' — '+f.hReason:'')}];
+  stations.append(station('Agent / Human',permLines));
+  r.append(stations);
+  if(svc.unscoped)r.append(el('div',{class:'actions tight'},
+    el('button',{class:'btn sm',type:'button',listen:{click:sayMock}},'Narrow scope')));
+  return r;
+}
+
+/* ---------- Home ---------- */
+function renderHome(state){
+  const f=document.createDocumentFragment();
+  if(state==='first'){
+    f.append(freshLine('dot','Nothing connected.'));
+    f.append(emptyWell({dot:'dot-asleep',scene:'empty-counter',h:'Quiet here.',p:'Connect something?',
+      actions:[el('button',{class:'btn primary',type:'button',listen:{click:()=>go('connect')}},'Connect a service')]}));
+    return f;
+  }
+  if(state==='loading')return f.append(skel('Fetching the counter…',3)),f;
+  if(state==='error'){
+    f.append(errWell("Couldn't load this.","Your services and references weren't changed.",'Try again'));
+    return f;
+  }
+  /* full */
+  f.append(freshLine('dot','Dot rests. checked 24s ago.'));
+  const needs=SERVICES.filter(s=>s.state==='needs_attention').length;
+  f.append(el('p',{class:'status-line'},
+    el('strong',{class:'cnt',text:needs+(needs===1?' needs you':' need you')}),el('span',{text:' · checked 24s ago'})));
+  const grid=el('div',{class:'home-grid'});
+  const list=el('ul',{class:'slips','aria-label':'Services'});
+  for(const svc of SERVICES){
+    list.append(el('li',{},slipButton(svc,S.sel===svc.id)));
+  }
+  const col=el('div',{},list);
+  grid.append(col);
+  const svc=SERVICES.find(s=>s.id===S.sel)||SERVICES[0];
+  const detail=el('div',{class:'detail'});
+  const head=el('div',{class:'svc-head'});
+  head.append(el('div',{class:'svc-id'},
+    sico(svc.icon,'lg'),
+    el('div',{},el('h2',{class:'svc-title',text:svc.name}),
+      el('div',{class:'meta'},chip(svc.state),
+        el('span',{text:'Owned by '+OWNERS[svc.id].app}),
+        el('span',{class:'num',text:svc.age})))));
+  detail.append(head);
+  const facts=el('ul',{class:'facts-list','aria-label':'Facts'});
+  const selIdx=S.fact[svc.id]||0;
+  svc.facts.forEach((fa,i)=>facts.append(el('li',{},factRow(fa,i===selIdx))));
+  detail.append(facts);
+  detail.append(receipt(svc.facts[selIdx]||svc.facts[0],svc));
+  detail.append(el('p',{class:'sees muted',
+    text:svc.id==='front-door'?"Agent sees: the door's state. Not who used the guest code."
+      :'Agent sees what this fact shows. Nothing else.'}));
+  grid.append(detail);
+  f.append(grid);
+  return f;
+}
+
+/* ---------- Connect ---------- */
+function candidateCard(c){
+  const card=el('div',{class:'cand'+(c.chosen?' chosen':'')});
+  card.append(sico(c.icon,'lg'));
+  const body=el('div',{},
+    el('p',{},el('strong',{text:c.name}),el('span',{class:'muted',text:' · '+c.kind+' · owned by the '+(OWNERS[c.id]?OWNERS[c.id].app:'Studio')+' app'})),
+    el('p',{class:'muted micro',text:c.note}));
+  if(c.chosen)body.append(el('p',{},el('span',{class:'sel-word'},glyph('check'),el('span',{text:'Chosen'}))));
+  body.append(el('p',{class:'micro'},el('span',{class:'muted',text:c.auth+' — never shown as none.'})));
+  if(c.caps){
+    const ul=el('ul');
+    for(const cap of c.caps)ul.append(el('li',{},el('span',{text:cap}),el('span',{class:'sim',title:'not yet checked'},el('span',{'aria-hidden':'true',text:'unverified'}))));
+    body.append(ul);
+  }
+  card.append(body);
+  return card;
+}
+function connectBeats(withFailure){
+  const beats=[];
+  beats.push({n:'1',h:'Pick a service',body:()=>[
+    el('p',{class:'says',text:'Looking only. No credential sent. Nothing changed.'}),
+    candidateCard(CANDIDATES[0]),
+    candidateCard(CANDIDATES[1]),
+    el('p',{class:'muted micro',text:'Already at the counter · 4'})
+  ]});
+  beats.push({n:'2',h:'What it can read',body:()=>[
+    el('p',{class:'says',text:'Read-only. A write cannot even be expressed here.'}),
+    el('ul',{class:'cx-list'},
+      ...CONNECT_SERVICE.caps.map(c=>el('li',{class:'mrow'},el('div',{class:'mrow-top'},
+        el('span',{text:c}),el('span',{class:'r muted micro',text:'GET only'})))))
+  ]});
+  beats.push({n:'3',h:'The scope it asks for',body:()=>[
+    el('div',{class:'field'},
+      el('label',{for:'cx-ref',text:'Credential reference'}),
+      el('input',{id:'cx-ref',type:'text',value:'ref://notes-sync',readonly:'readonly'}),
+      el('p',{class:'muted micro',text:'A name pointing to a secret kept elsewhere. Worlds stores the name only.'})),
+    (()=>{const fs=el('fieldset',{class:'checks'},el('legend',{text:'May be used for'}));
+      for(const cap of CONNECT_SERVICE.caps){
+        fs.append(el('label',{class:'check'},el('input',{type:'checkbox',checked:true}),el('span',{text:cap})));
+      }
+      return fs;})(),
+    el('p',{text:'Used only to read: '+CONNECT_SERVICE.caps.join(', ')+'.'}),
+    el('p',{class:'muted',text:'Scope only. What shows on the counter comes later.'}),
+    el('div',{class:'unscoped-note'},
+      el('p',{},el('strong',{text:'Media Shelf is older: Unscoped.'}),' ',el('span',{text:'Its reference can be used for anything it offers.'})),
+      el('div',{class:'actions tight'},el('button',{class:'btn sm',type:'button',listen:{click:sayMock}},'Narrow scope')))
+  ]});
+  const testBody=()=>withFailure?[
+    el('p',{},chip('failed'),el('span',{text:" Didn't go through."})),
+    el('p',{class:'muted',text:'Provider timed out.'}),
+    el('p',{class:'muted',text:'Reference kept. Try again.'}),
+    el('p',{class:'muted micro num',text:'try 2 of 3'}),
+    el('div',{class:'actions tight'},el('button',{class:'btn',type:'button',listen:{click:sayMock}},'Try again'))
+  ]:[
+    el('p',{},chip('done'),el('span',{text:' Passed. 3 facts read. Nothing changed.'})),
+    el('p',{class:'muted',text:'The reference went only to the ticked capabilities.'}),
+    el('div',{class:'actions tight'},el('button',{class:'btn',type:'button',listen:{click:sayMock}},'Run safe test'))
+  ];
+  beats.push({n:'4',h:'Try it',body:()=>[el('div',{class:'panel'},...testBody())]});
+  beats.push({n:'5',h:'Choose what to show',body:()=>[
+    (()=>{const fs=el('fieldset',{class:'checks'},el('legend',{text:'Shown on the counter'}));
+      for(const cap of CONNECT_SERVICE.caps){
+        const on=cap!==CONNECT_SERVICE.keptOut;
+        fs.append(el('label',{class:'check'},el('input',{type:'checkbox',...(on?{checked:true}:{})}),el('span',{text:cap})));
+      }
+      return fs;})(),
+    el('p',{text:'Shown, and visible to agents: Local notes waiting to upload, Last successful sync.'}),
+    el('p',{class:'muted',text:'1 fact kept out. Your choice. Kept out: Provider reachable.'})
+  ]});
+  return beats;
+}
+function renderConnect(state){
+  const f=document.createDocumentFragment();
+  if(state==='first'){
+    f.append(freshLine('dot','Nothing saved until Publish.'));
+    f.append(el('p',{class:'says',text:'Looking only. No credential sent. Nothing changed.'}));
+    f.append(candidateCard(CANDIDATES[0]));
+    f.append(candidateCard(CANDIDATES[1]));
+    f.append(el('p',{class:'muted micro',text:'Already at the counter · 4'}));
+    return f;
+  }
+  if(state==='loading'){
+    f.append(skel('Fetching facts…',3));
+    f.append(el('p',{class:'muted',text:'Reading 2 of 3 facts.'}));
+    return f;
+  }
+  if(state==='error'){
+    f.append(freshLine('dot','Nothing saved until Publish.'));
+    const beats=connectBeats(true);
+    f.append(beatCard(beats[3]));
+    f.append(el('p',{class:'muted micro',text:'Studio Printer · Auth: unknown — never shown as none.'}));
+    return f;
+  }
+  /* full: the whole flow, one beat per card */
+  f.append(freshLine('dot','Nothing saved until Publish.'));
+  const beats=connectBeats(false);
+  for(const b of beats.slice(0,5))f.append(beatCard(b));
+  /* beat 6: the receipt and the Connected stamp */
+  const card=el('section',{class:'card'});
+  card.append(el('div',{class:'card-head'},el('span',{class:'step-n','aria-hidden':'true',text:'6'}),el('h2',{text:'Receipt'})));
+  card.append(el('div',{class:'actions tight'},el('span',{class:'stamp'},el('img',{src:ART_BASE+'stamp.webp',alt:'','aria-hidden':'true'}),el('span',{text:'Connected'})),art('dot-settled','sm'),el('span',{class:'upd',text:'Notes Sync is here.'})));
+  const rec=el('div',{class:'panel'});
+  rec.append(el('p',{text:'Added to your counter.'}));
+  const lines=el('ul',{class:'receipt-lines'});
+  lines.append(el('li',{text:'Published: Local notes waiting to upload, Last successful sync.'}));
+  lines.append(el('li',{class:'muted',text:'Kept out: Provider reachable. Your choice.'}));
+  lines.append(el('li',{class:'muted',text:CONNECT_SERVICE.provenance}));
+  lines.append(el('li',{class:'muted',text:'Scoped to 3 capabilities'}));
+  rec.append(lines);
+  card.append(rec);
+  card.append(el('div',{class:'actions'},
+    el('button',{class:'btn primary',type:'button',listen:{click:()=>go('home')}},'See the counter'),
+    el('button',{class:'btn',type:'button',listen:{click:sayMock}},'Add one more')));
+  f.append(card);
+  return f;
+}
+function beatCard(b){
+  const card=el('section',{class:'card'});
+  card.append(el('div',{class:'card-head'},el('span',{class:'step-n','aria-hidden':'true',text:b.n}),el('h2',{text:b.h})));
+  for(const node of b.body())card.append(node);
+  return card;
+}
+
+/* ---------- Memory ---------- */
+function memRow(fact){
+  const row=el('div',{class:'mrow'});
+  row.append(el('div',{class:'mrow-top'},
+    el('span',{class:'fact-label',text:fact.label}),
+    el('span',{class:'r'},el('span',{class:'mrow-val',text:fact.value}),chip(fact.state))));
+  const meta=el('div',{class:'mrow-meta'});
+  meta.append(el('span',{class:'num',text:fact.age+' · '+fact.source}));
+  meta.append(el('span',{text:'Agent can: '+fact.agent+(fact.aReason?' — '+fact.aReason:'')}));
+  meta.append(el('span',{text:'Human can: '+fact.human}));
+  if(fact.unknownLine)meta.append(el('span',{class:'muted',text:fact.unknownLine}));
+  row.append(meta);
+  return row;
+}
+function renderMemory(state){
+  const f=document.createDocumentFragment();
+  if(state==='first'){
+    f.append(freshLine('dot','checked 28s ago'));
+    f.append(emptyWell({dot:'dot-asleep',h:'No facts yet.',p:'Connect a service.',
+      actions:[el('button',{class:'btn primary',type:'button',listen:{click:()=>go('connect')}},'Connect a service')]}));
+    return f;
+  }
+  if(state==='loading')return f.append(skel('Fetching facts…',3)),f;
+  if(state==='error'){
+    f.append(errWell("Couldn't load this.","Your services and references weren't changed.",'Try again'));
+    return f;
+  }
+  /* full: a trail, one list of every fact, owners linked */
+  f.append(freshLine('dot','checked 28s ago'));
+  const tools=el('div',{class:'mem-tools'});
+  const sel=el('select',{'aria-label':'Filter by service'});
+  sel.append(el('option',{text:'All services',value:'all',selected:true}));
+  for(const svc of SERVICES)sel.append(el('option',{text:svc.name,value:svc.id}));
+  sel.addEventListener('change',sayMock);
+  tools.append(sel);
+  const find=el('input',{type:'search','aria-label':'Find a fact',placeholder:'Find a fact'});
+  find.addEventListener('input',sayMock);
+  tools.append(el('div',{class:'field'},find));
+  f.append(tools);
+  for(const svc of SERVICES){
+    const group=el('details',{class:'mem-group',open:true});
+    const sum=el('summary',{});
+    sum.append(el('span',{},el('strong',{text:svc.name}),el('span',{class:'muted',text:' · '+svc.kind})));
+    const right=el('span',{},chip(svc.state),
+      el('span',{class:'muted micro num',text:svc.age}));
+    sum.append(right);
+    group.append(sum);
+    const body=el('div',{class:'mem-body'});
+    body.append(el('p',{class:'micro'},el('span',{class:'muted',text:(svc.unscoped?'Unscoped (older connection)':svc.scope)+' · '}),
+      el('button',{class:'link',type:'button',listen:{click:sayMock}},OWNERS[svc.id].label)));
+    for(const fact of svc.facts)body.append(memRow(fact));
+    group.append(body);
+    f.append(group);
+  }
+  return f;
+}
+
+/* ---------- Settings ---------- */
+function svcRow(svc){
+  const row=el('div',{class:'row'});
+  row.append(el('div',{},el('strong',{text:svc.name}),el('span',{class:'muted',text:' · '}),
+    chip(svc.state),el('span',{class:'muted micro num',text:svc.age})));
+  row.append(el('div',{class:'actions'},
+    el('button',{class:'btn sm',type:'button',listen:{click:sayMock}},'Rename'),
+    el('button',{class:'btn sm',type:'button',listen:{click:sayMock}},'Test again'),
+    el('button',{class:'btn sm danger',type:'button',listen:{click:sayMock}},'Disconnect '+svc.name)));
+  return row;
+}
+function renderSettings(state){
+  const f=document.createDocumentFragment();
+  if(state==='first'){
+    f.append(freshLine('dot','Your install. Nothing else.'));
+    f.append(emptyWell({dot:null,scene:'empty-ledger',h:'Quiet here.',p:'Connect something?',
+      actions:[el('button',{class:'btn primary',type:'button',listen:{click:()=>go('connect')}},'Connect a service')]}));
+    f.append(el('h2',{class:'card-head',text:'Credential references'}));
+    f.append(el('p',{class:'muted',text:'No references. Connecting adds one.'}));
+    return f;
+  }
+  if(state==='loading')return f.append(skel('Fetching settings…',3)),f;
+  if(state==='error'){
+    f.append(freshLine('dot','Your install. Nothing else.'));
+    const sec=el('section',{class:'set-sec'});
+    sec.append(el('h2',{text:'Live feed'}));
+    sec.append(el('p',{},el('strong',{class:'c-failed',text:"Couldn't save that."}),' ',el('span',{text:'Nothing changed. Try again.'})));
+    const sel=el('select',{'aria-label':'Check every'});
+    for(const t of['5s','10s','30s'])sel.append(el('option',{text:t,value:t,...(t==='30s'?{selected:true}:{})}));
+    sec.append(el('div',{class:'field'},el('label',{text:'Check every'}),sel));
+    sec.append(el('div',{class:'actions'},el('button',{class:'btn',type:'button',listen:{click:sayMock}},'Try again')));
+    f.append(sec);
+    return f;
+  }
+  /* full */
+  f.append(freshLine('dot','Your install. Nothing else.'));
+
+  const services=el('section',{class:'set-sec','aria-labelledby':'set-services'});
+  services.append(el('h2',{id:'set-services',text:'Connected services'}));
+  for(const svc of SERVICES.slice(0,3))services.append(svcRow(svc));
+  services.append(el('p',{class:'muted micro',text:'Disconnect keeps the reference. Removing it is a separate step.'}));
+  f.append(services);
+
+  const refs=el('section',{class:'set-sec','aria-labelledby':'set-refs'});
+  refs.append(el('h2',{id:'set-refs',text:'Credential references'}));
+  refs.append(el('p',{class:'muted',text:'References only, never secrets.'}));
+  const r1=el('div',{class:'row'});
+  r1.append(el('div',{},el('p',{class:'ref',text:'ref://notes-sync'}),
+    el('p',{class:'muted micro',text:'Scoped to 3 capabilities: Provider reachable, Local notes waiting to upload, Last successful sync'})));
+  r1.append(el('div',{class:'actions'},
+    el('button',{class:'btn sm',type:'button',listen:{click:sayMock}},'Test again'),
+    el('button',{class:'btn sm',type:'button',listen:{click:sayMock}},'Change scope')));
+  refs.append(r1);
+  const r2=el('div',{class:'row'});
+  r2.append(el('div',{},el('p',{class:'ref',text:'ref://media-shelf'}),
+    el('p',{class:'muted micro',text:'Unscoped (older connection). Can be used for anything it offers.'})));
+  r2.append(el('div',{class:'actions'},el('button',{class:'btn sm',type:'button',listen:{click:sayMock}},'Narrow scope')));
+  refs.append(r2);
+  const r3=el('div',{class:'row'});
+  r3.append(el('div',{},el('p',{class:'ref',text:'ref://studio-printer'}),
+    el('p',{class:'muted micro',text:'Held, unused. The Studio app is untouched.'})));
+  r3.append(el('div',{class:'actions'},el('button',{class:'btn sm danger',type:'button',listen:{click:sayMock}},'Remove')));
+  refs.append(r3);
+  f.append(refs);
+
+  const feed=el('section',{class:'set-sec','aria-labelledby':'set-live'});
+  feed.append(el('h2',{id:'set-live',text:'Live feed'}));
+  const liveBtn=el('button',{class:'btn tog',type:'button','aria-pressed':String(S.live),listen:{click:toggleLive}},S.live?'Live':'Paused');
+  feed.append(el('div',{class:'row'},el('div',{},el('p',{text:'The feed'}),el('p',{class:'muted micro',text:'Ages only. Data never stops.'})),liveBtn));
+  const cad=el('fieldset',{class:'checks'},el('legend',{text:'Check every'}));
+  for(const t of['5s','10s','30s']){
+    const id='cad-'+t;
+    cad.append(el('label',{class:'check',for:id},el('input',{id,type:'radio',name:'cadence',value:t,...(t==='5s'?{checked:true}:{})}),el('span',{text:t})));
+  }
+  feed.append(cad);
+  feed.append(el('p',{class:'muted micro',text:'Mock clock. Real time is not used.'}));
+  f.append(feed);
+
+  const look=el('section',{class:'set-sec','aria-labelledby':'set-look'});
+  look.append(el('h2',{id:'set-look',text:'Motion and appearance'}));
+  const theme=el('fieldset',{class:'checks'},el('legend',{text:'Theme'}));
+  for(const t of['dark','light','high-contrast','low-stimulation']){
+    const id='theme-'+t,label=t.replace('-',' ');
+    theme.append(el('label',{class:'check',for:id},el('input',{id,type:'radio',name:'theme',value:t,...(t==='dark'?{checked:true}:{})}),el('span',{text:label})));
+  }
+  theme.addEventListener('change',e=>{document.documentElement.dataset.theme=e.target.value;say('Theme: '+e.target.value.replace('-',' ')+'.')});
+  look.append(theme);
+  const motion=el('fieldset',{class:'checks'},el('legend',{text:'Motion'}));
+  motion.append(el('label',{class:'check',for:'mo-follow'},el('input',{id:'mo-follow',type:'radio',name:'motion',value:'follow',checked:true}),el('span',{text:'Follow system'})));
+  motion.append(el('label',{class:'check',for:'mo-reduce'},el('input',{id:'mo-reduce',type:'radio',name:'motion',value:'reduce'}),el('span',{text:'Reduce always'})));
+  motion.addEventListener('change',e=>{
+    if(e.target.value==='reduce')document.documentElement.dataset.motion='reduce';
+    else delete document.documentElement.dataset.motion;
+    say('Less motion. Same data.');
+  });
+  look.append(motion);
+  look.append(el('p',{class:'muted micro',text:'Reduced motion removes animation, not data.'}));
+  f.append(look);
+
+  const about=el('section',{class:'set-sec','aria-labelledby':'set-about'});
+  about.append(el('h2',{id:'set-about',text:'About'}));
+  about.append(el('p',{text:'MOCKUP. Synthetic data only.'}));
+  about.append(el('p',{class:'muted',text:'Nothing here touches a network. References only, never secrets.'}));
+  about.append(el('p',{class:'muted',text:'Concept A: the v3.1 prototype language, kept, and carried onto Connect, Memory and Settings.'}));
+  f.append(about);
+  return f;
+}
+function toggleLive(e){
+  S.live=!S.live;
+  e.currentTarget.setAttribute('aria-pressed',String(S.live));
+  e.currentTarget.textContent=S.live?'Live':'Paused';
+  say(S.live?'Live feed on.':'Paused. Freshness frozen.');
+}
+
+/* ---------- render ---------- */
+function renderContent(){
+  const content=document.getElementById('content');
+  content.classList.remove('fade');
+  content.textContent='';
+  const frag=SCREENS[S.screen].render(S.state[S.screen]);
+  content.append(frag);
+  /* restart the fade so a state change reads as a change */
+  void content.offsetWidth;
+  content.classList.add('fade');
+}
+function setState(k){
+  if(S.state[S.screen]===k)return;
+  S.state[S.screen]=k;
+  buildSwitcher();
+  renderContent();
+  say(SCREENS[S.screen].title+' — '+STATES.find(s=>s[0]===k)[1].toLowerCase()+' data.');
+}
+function go(screen){
+  if(S.screen===screen)return;
+  S.screen=screen;
+  document.getElementById('page-title').textContent=SCREENS[screen].title;
+  document.title=SCREENS[screen].title+' · Worlds concept A · MOCKUP';
+  buildNav();
+  buildSwitcher();
+  renderContent();
+  document.getElementById('page-title').focus();
+}
+/* clicks inside content that pick a service or a fact */
+document.getElementById('content').addEventListener('click',e=>{
+  const slip=e.target.closest('.slip');
+  if(slip){
+    const name=slip.querySelector('.slip-name').textContent;
+    const svc=SERVICES.find(s=>s.name===name);
+    if(svc&&S.sel!==svc.id){S.sel=svc.id;delete S.fact[svc.id];renderContent();say('Selected '+svc.name+'.')}
+    return;
+  }
+  const fact=e.target.closest('.fact');
+  if(fact){
+    const label=fact.querySelector('.fact-label').textContent;
+    const svc=SERVICES.find(s=>s.id===S.sel)||SERVICES[0];
+    const idx=svc.facts.findIndex(x=>x.label===label);
+    if(idx>=0){S.fact[svc.id]=idx;renderContent()}
+  }
+});
+/* wire the state switcher once; nav rebuilt per screen */
+buildNav();
+buildSwitcher();
+renderContent();
+document.getElementById('page-title').textContent=SCREENS[S.screen].title;
+})();
+</script>
+</body>
+</html>

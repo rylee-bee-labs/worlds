@@ -1,0 +1,108 @@
+# Figma's contract attestation — fill each task_impact sentence, then write this file
+# to .project/participants/figma/attestation.yaml. Every other field is pre-filled
+# from the verified resolved bundle. Delete this header once filled.
+
+format: CONTRACT_ATTESTATION v1
+bundle:
+  revision: 2bb60b4ab1765660d8565ae80f9b489adf91a286
+  receipt: nectar-heather-heather
+loaded:
+  - contract_id: ask-for-help
+    version: 1.0.0
+    sha256: 24fb30eca1b66b13a866ddbfb13b134aac85f20508f3828c34178fc7fe796cf0
+    receipt: vellum-harbor-quill
+    status: ACCEPTED
+  - contract_id: design-source-and-fidelity
+    version: 1.0.0
+    sha256: 328b38134433cdd436b04aaf01c9fe73c3450942afd5ae05cd5c7c3381dd8035
+    receipt: heather-ledger-juniper
+    status: ACCEPTED
+  - contract_id: explicit-state
+    version: 1.0.0
+    sha256: d3520caaba163cd170a4f23d568142286ccaf694cc5c5f2e59d5f1f607127e5f
+    receipt: driftwood-thicket-jetty
+    status: ACCEPTED
+  - contract_id: human-reliability
+    version: 1.0.0
+    sha256: 854e5165520f7d9c3172bbea31f29d8510ba4614ecf67a833976e35e41f1f68d
+    receipt: dell-maple-anchor
+    status: ACCEPTED
+  - contract_id: low-vision-and-reflow
+    version: 1.0.0
+    sha256: 2fbd6a44ba04fcc47d24546e1e0f9cdab85a4c7f1d336b1abee38b0024fcfd7d
+    receipt: dell-echo-quay
+    status: ACCEPTED
+  - contract_id: migraine-and-sensory-safety
+    version: 1.0.0
+    sha256: aec5a96e8fed0e8cbffe7ef7c9054c1ba66ba1cd6e00c081ffeff23c2889ce9e
+    receipt: fathom-opal-zenith
+    status: ACCEPTED
+  - contract_id: motion-and-feedback
+    version: 1.0.0
+    sha256: ec40b904e085aa2260f6446cb9a06d34be9a0e2ff2380303c3023218bd0cab69
+    receipt: gable-fern-velvet
+    status: ACCEPTED
+  - contract_id: provenance-and-audit
+    version: 1.0.0
+    sha256: c9bfec4b0102fcaa0deca3a11b0d2c3025638a6a8852cd23c08169b72c975307
+    receipt: window-prairie-gatehouse
+    status: ACCEPTED
+  - contract_id: recovery-and-reversibility
+    version: 1.0.0
+    sha256: d0e07dd26de36a4a72972e6a7edaf34c3dfcd190441b7c10fe769b705d03ed2b
+    receipt: meadow-fathom-aster
+    status: ACCEPTED
+  - contract_id: secrets
+    version: 1.0.0
+    sha256: 24bd70bc77453d9f4b4f3b35732d2af35d77354a6835986d383f4899bf3e6915
+    receipt: prairie-latch-gatehouse
+    status: ACCEPTED
+  - contract_id: stable-truth-replaceable-machinery
+    version: 1.0.0
+    sha256: bf5964edbc90dcdfd03f9c6d1c65f058f91143525c8e983169b575dda4731b7b
+    receipt: quiet-bramble-fable
+    status: ACCEPTED
+  - contract_id: themes-and-personalization
+    version: 1.0.0
+    sha256: 74d0a5bad6fda3dcf64e8e9282731acd37918c4654a2c6174894143dd51cbef9
+    receipt: cinder-opal-window
+    status: ACCEPTED
+  - contract_id: truth-and-evidence
+    version: 1.0.0
+    sha256: 634cf3e11234fd83be585a7eb5a09bb38bc0fee3be011c184d3fafe4cb7eff2e
+    receipt: wren-loam-sail
+    status: ACCEPTED
+  - contract_id: visual-fidelity-and-composition
+    version: 1.0.0
+    sha256: c915c7d643846a81e1ac55879114e9f586ad6178c1a28387a1ab34d535abb478
+    receipt: vellum-fen-cedar
+    status: ACCEPTED
+  - contract_id: web-ui
+    version: 1.0.0
+    sha256: f9f51dc0e3022c7eb1a273f5b70ab2fe49a67667dfa11b9c27aacafa8fff815b
+    receipt: thicket-willow-rill
+    status: ACCEPTED
+task_impact:
+  - "ask-for-help: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "design-source-and-fidelity: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "explicit-state: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "human-reliability: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "low-vision-and-reflow: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "migraine-and-sensory-safety: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "motion-and-feedback: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "provenance-and-audit: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "recovery-and-reversibility: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "secrets: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "stable-truth-replaceable-machinery: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "themes-and-personalization: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "truth-and-evidence: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "visual-fidelity-and-composition: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+  - "web-ui: FILL IN — one concrete sentence: how does this contract change what you do as Personal World's design participant?"
+gate: PASS        # only if you actually find no material conflict, having read the text
+
+# commitment (for the acceptance flow, not this schema): after gate PASS, you activate
+# CONTRACT COMMITMENT: ACTIVE in your own operational commitment — e.g. via
+#   contractctl commit --manifest .project/contracts/adoption.yaml --task "<your design task>" \
+#     --tag design --tag ui --impact <contract_id>=<sentence> ...
+# and update participant.yaml acceptance: status: accepted, contract_gate: PASS,
+# contract_commitment: ACTIVE.

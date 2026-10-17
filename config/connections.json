@@ -1,0 +1,18 @@
+{
+  "$schema": "personal-world/connections/1",
+  "source_control": {
+    "search_paths": [
+      "/data/repos/personal-world"
+    ]
+  },
+  "connections": [
+    {
+      "type": "ollama",
+      "name": "worlds-local-brain",
+      "capability": "reasoning",
+      "base_url": "http://ollama:11434",
+      "model": "qwen3:1.7b",
+      "timeout": 120
+    }
+  ]
+}

@@ -1,0 +1,752 @@
+{
+  "schema": "personal-world/icon-system/1",
+  "grid": 24,
+  "stroke": 2,
+  "strokeLinecap": "round",
+  "strokeLinejoin": "round",
+  "icons": [
+    {
+      "name": "today",
+      "component": "Icon/Navigation/Today",
+      "category": "navigation",
+      "file": "svg/navigation--today.svg",
+      "semantic": "today",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "chat",
+      "component": "Icon/Navigation/Chat",
+      "category": "navigation",
+      "file": "svg/navigation--chat.svg",
+      "semantic": "chat",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "worlds",
+      "component": "Icon/Navigation/Worlds",
+      "category": "navigation",
+      "file": "svg/navigation--worlds.svg",
+      "semantic": "worlds",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "journal",
+      "component": "Icon/Navigation/Journal",
+      "category": "navigation",
+      "file": "svg/navigation--journal.svg",
+      "semantic": "journal",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "projects",
+      "component": "Icon/Navigation/Projects",
+      "category": "navigation",
+      "file": "svg/navigation--projects.svg",
+      "semantic": "projects",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "settings",
+      "component": "Icon/Navigation/Settings",
+      "category": "navigation",
+      "file": "svg/navigation--settings.svg",
+      "semantic": "settings",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "add",
+      "component": "Icon/Actions/Add",
+      "category": "actions",
+      "file": "svg/actions--add.svg",
+      "semantic": "add",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "edit",
+      "component": "Icon/Actions/Edit",
+      "category": "actions",
+      "file": "svg/actions--edit.svg",
+      "semantic": "edit",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "delete",
+      "component": "Icon/Actions/Delete",
+      "category": "actions",
+      "file": "svg/actions--delete.svg",
+      "semantic": "delete",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "search",
+      "component": "Icon/Actions/Search",
+      "category": "actions",
+      "file": "svg/actions--search.svg",
+      "semantic": "search",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "filter",
+      "component": "Icon/Actions/Filter",
+      "category": "actions",
+      "file": "svg/actions--filter.svg",
+      "semantic": "filter",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "download",
+      "component": "Icon/Actions/Download",
+      "category": "actions",
+      "file": "svg/actions--download.svg",
+      "semantic": "download",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "upload",
+      "component": "Icon/Actions/Upload",
+      "category": "actions",
+      "file": "svg/actions--upload.svg",
+      "semantic": "upload",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "share",
+      "component": "Icon/Actions/Share",
+      "category": "actions",
+      "file": "svg/actions--share.svg",
+      "semantic": "share",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "refresh",
+      "component": "Icon/Actions/Refresh",
+      "category": "actions",
+      "file": "svg/actions--refresh.svg",
+      "semantic": "refresh",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "more",
+      "component": "Icon/Actions/More",
+      "category": "actions",
+      "file": "svg/actions--more.svg",
+      "semantic": "more",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "grid",
+      "component": "Icon/View-Layout/Grid",
+      "category": "view-layout",
+      "file": "svg/view-layout--grid.svg",
+      "semantic": "grid",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "list",
+      "component": "Icon/View-Layout/List",
+      "category": "view-layout",
+      "file": "svg/view-layout--list.svg",
+      "semantic": "list",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "columns",
+      "component": "Icon/View-Layout/Columns",
+      "category": "view-layout",
+      "file": "svg/view-layout--columns.svg",
+      "semantic": "columns",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "sidebar",
+      "component": "Icon/View-Layout/Sidebar",
+      "category": "view-layout",
+      "file": "svg/view-layout--sidebar.svg",
+      "semantic": "sidebar",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "expand",
+      "component": "Icon/View-Layout/Expand",
+      "category": "view-layout",
+      "file": "svg/view-layout--expand.svg",
+      "semantic": "expand",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "collapse",
+      "component": "Icon/View-Layout/Collapse",
+      "category": "view-layout",
+      "file": "svg/view-layout--collapse.svg",
+      "semantic": "collapse",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "zoom-in",
+      "component": "Icon/View-Layout/Zoom In",
+      "category": "view-layout",
+      "file": "svg/view-layout--zoom-in.svg",
+      "semantic": "zoom in",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "zoom-out",
+      "component": "Icon/View-Layout/Zoom Out",
+      "category": "view-layout",
+      "file": "svg/view-layout--zoom-out.svg",
+      "semantic": "zoom out",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "world",
+      "component": "Icon/World-Content/World",
+      "category": "world-content",
+      "file": "svg/world-content--world.svg",
+      "semantic": "world",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "lore",
+      "component": "Icon/World-Content/Lore",
+      "category": "world-content",
+      "file": "svg/world-content--lore.svg",
+      "semantic": "lore",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "memory",
+      "component": "Icon/World-Content/Memory",
+      "category": "world-content",
+      "file": "svg/world-content--memory.svg",
+      "semantic": "memory",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "story",
+      "component": "Icon/World-Content/Story",
+      "category": "world-content",
+      "file": "svg/world-content--story.svg",
+      "semantic": "story",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "bookmark",
+      "component": "Icon/World-Content/Bookmark",
+      "category": "world-content",
+      "file": "svg/world-content--bookmark.svg",
+      "semantic": "bookmark",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "tag",
+      "component": "Icon/World-Content/Tag",
+      "category": "world-content",
+      "file": "svg/world-content--tag.svg",
+      "semantic": "tag",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "link",
+      "component": "Icon/World-Content/Link",
+      "category": "world-content",
+      "file": "svg/world-content--link.svg",
+      "semantic": "link",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "send",
+      "component": "Icon/Chat-Ai/Send",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--send.svg",
+      "semantic": "send",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "stop",
+      "component": "Icon/Chat-Ai/Stop",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--stop.svg",
+      "semantic": "stop",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "voice",
+      "component": "Icon/Chat-Ai/Voice",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--voice.svg",
+      "semantic": "voice",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "attach",
+      "component": "Icon/Chat-Ai/Attach",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--attach.svg",
+      "semantic": "attach",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "agent",
+      "component": "Icon/Chat-Ai/Agent",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--agent.svg",
+      "semantic": "agent",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "tools",
+      "component": "Icon/Chat-Ai/Tools",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--tools.svg",
+      "semantic": "tools",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "sources",
+      "component": "Icon/Chat-Ai/Sources",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--sources.svg",
+      "semantic": "sources",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "code",
+      "component": "Icon/Chat-Ai/Code",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--code.svg",
+      "semantic": "code",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "ideas",
+      "component": "Icon/Chat-Ai/Ideas",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--ideas.svg",
+      "semantic": "ideas",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "actions",
+      "component": "Icon/Chat-Ai/Actions",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--actions.svg",
+      "semantic": "actions",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "context",
+      "component": "Icon/Chat-Ai/Context",
+      "category": "chat-ai",
+      "file": "svg/chat-ai--context.svg",
+      "semantic": "context",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "success",
+      "component": "Icon/Status-Feedback/Success",
+      "category": "status-feedback",
+      "file": "svg/status-feedback--success.svg",
+      "semantic": "success",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "warning",
+      "component": "Icon/Status-Feedback/Warning",
+      "category": "status-feedback",
+      "file": "svg/status-feedback--warning.svg",
+      "semantic": "warning",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "error",
+      "component": "Icon/Status-Feedback/Error",
+      "category": "status-feedback",
+      "file": "svg/status-feedback--error.svg",
+      "semantic": "error",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "info",
+      "component": "Icon/Status-Feedback/Info",
+      "category": "status-feedback",
+      "file": "svg/status-feedback--info.svg",
+      "semantic": "info",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "loading",
+      "component": "Icon/Status-Feedback/Loading",
+      "category": "status-feedback",
+      "file": "svg/status-feedback--loading.svg",
+      "semantic": "loading",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "offline",
+      "component": "Icon/Status-Feedback/Offline",
+      "category": "status-feedback",
+      "file": "svg/status-feedback--offline.svg",
+      "semantic": "offline",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "notification",
+      "component": "Icon/Status-Feedback/Notification",
+      "category": "status-feedback",
+      "file": "svg/status-feedback--notification.svg",
+      "semantic": "notification",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "person",
+      "component": "Icon/People-Community/Person",
+      "category": "people-community",
+      "file": "svg/people-community--person.svg",
+      "semantic": "person",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "people",
+      "component": "Icon/People-Community/People",
+      "category": "people-community",
+      "file": "svg/people-community--people.svg",
+      "semantic": "people",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "community",
+      "component": "Icon/People-Community/Community",
+      "category": "people-community",
+      "file": "svg/people-community--community.svg",
+      "semantic": "community",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "heart",
+      "component": "Icon/People-Community/Heart",
+      "category": "people-community",
+      "file": "svg/people-community--heart.svg",
+      "semantic": "heart",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "message",
+      "component": "Icon/People-Community/Message",
+      "category": "people-community",
+      "file": "svg/people-community--message.svg",
+      "semantic": "message",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "mention",
+      "component": "Icon/People-Community/Mention",
+      "category": "people-community",
+      "file": "svg/people-community--mention.svg",
+      "semantic": "mention",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "calendar",
+      "component": "Icon/Time-Organization/Calendar",
+      "category": "time-organization",
+      "file": "svg/time-organization--calendar.svg",
+      "semantic": "calendar",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "clock",
+      "component": "Icon/Time-Organization/Clock",
+      "category": "time-organization",
+      "file": "svg/time-organization--clock.svg",
+      "semantic": "clock",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "history",
+      "component": "Icon/Time-Organization/History",
+      "category": "time-organization",
+      "file": "svg/time-organization--history.svg",
+      "semantic": "history",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "pin",
+      "component": "Icon/Time-Organization/Pin",
+      "category": "time-organization",
+      "file": "svg/time-organization--pin.svg",
+      "semantic": "pin",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "archive",
+      "component": "Icon/Time-Organization/Archive",
+      "category": "time-organization",
+      "file": "svg/time-organization--archive.svg",
+      "semantic": "archive",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "sort",
+      "component": "Icon/Time-Organization/Sort",
+      "category": "time-organization",
+      "file": "svg/time-organization--sort.svg",
+      "semantic": "sort",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "desktop",
+      "component": "Icon/System-Device/Desktop",
+      "category": "system-device",
+      "file": "svg/system-device--desktop.svg",
+      "semantic": "desktop",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "mobile",
+      "component": "Icon/System-Device/Mobile",
+      "category": "system-device",
+      "file": "svg/system-device--mobile.svg",
+      "semantic": "mobile",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "keyboard",
+      "component": "Icon/System-Device/Keyboard",
+      "category": "system-device",
+      "file": "svg/system-device--keyboard.svg",
+      "semantic": "keyboard",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "accessibility",
+      "component": "Icon/System-Device/Accessibility",
+      "category": "system-device",
+      "file": "svg/system-device--accessibility.svg",
+      "semantic": "accessibility",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "theme",
+      "component": "Icon/System-Device/Theme",
+      "category": "system-device",
+      "file": "svg/system-device--theme.svg",
+      "semantic": "theme",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "lock",
+      "component": "Icon/System-Device/Lock",
+      "category": "system-device",
+      "file": "svg/system-device--lock.svg",
+      "semantic": "lock",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24"
+    },
+    {
+      "name": "rylee-mermaid",
+      "component": "Icon/Companion/the operator Mermaid",
+      "category": "companion",
+      "file": "svg/companion--rylee-mermaid.svg",
+      "semantic": "decorative companion identity",
+      "color": "canonical companion palette",
+      "viewBox": "0 0 24 24",
+      "source": "design/assets/mermaid-source-rig-v2.svg"
+    },
+    {
+      "name": "little-helper",
+      "component": "Icon/Companion/Little Helper",
+      "category": "companion",
+      "file": "svg/companion--little-helper.svg",
+      "semantic": "decorative companion identity",
+      "color": "canonical companion palette",
+      "viewBox": "0 0 24 24",
+      "source": "design/assets/companions/robot/robot-source-rig.svg"
+    },
+    {
+      "name": "world-tree-squirrel",
+      "component": "Icon/Companion/World Tree Squirrel",
+      "category": "companion",
+      "file": "svg/companion--world-tree-squirrel.svg",
+      "semantic": "decorative companion identity",
+      "color": "canonical companion palette",
+      "viewBox": "0 0 24 24",
+      "source": "design/assets/companions/world-tree-squirrel/world-tree-squirrel-source-rig.svg"
+    },
+    {
+      "name": "tacos-morning-paper",
+      "component": "Icon/Companion/Tacos Morning Paper",
+      "category": "companion",
+      "file": "svg/companion--tacos-morning-paper.svg",
+      "semantic": "decorative companion identity",
+      "color": "canonical companion palette",
+      "viewBox": "0 0 24 24",
+      "source": "design/assets/companions/taco-news-truck/taco-news-truck-source-rig.svg"
+    },
+    {
+      "name": "personal-world",
+      "component": "Icon/Companion/Personal World",
+      "category": "companion",
+      "file": "svg/companion--personal-world.svg",
+      "semantic": "decorative companion identity",
+      "color": "canonical companion palette",
+      "viewBox": "0 0 24 24",
+      "source": "design/assets/companions/personal-world/personal-world-source-rig.svg"
+    },
+    {
+      "name": "close",
+      "component": "Icon/Actions/Close",
+      "category": "actions",
+      "file": "svg/actions--close.svg",
+      "semantic": "close",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    },
+    {
+      "name": "external",
+      "component": "Icon/Actions/External",
+      "category": "actions",
+      "file": "svg/actions--external.svg",
+      "semantic": "external",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    },
+    {
+      "name": "back",
+      "component": "Icon/Navigation/Back",
+      "category": "navigation",
+      "file": "svg/navigation--back.svg",
+      "semantic": "back",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    },
+    {
+      "name": "chevron-right",
+      "component": "Icon/Navigation/ChevronRight",
+      "category": "navigation",
+      "file": "svg/navigation--chevron-right.svg",
+      "semantic": "chevron-right",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    },
+    {
+      "name": "chevron-down",
+      "component": "Icon/Navigation/ChevronDown",
+      "category": "navigation",
+      "file": "svg/navigation--chevron-down.svg",
+      "semantic": "chevron-down",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    },
+    {
+      "name": "check",
+      "component": "Icon/Status-Feedback/Check",
+      "category": "status-feedback",
+      "file": "svg/status-feedback--check.svg",
+      "semantic": "check",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    },
+    {
+      "name": "key",
+      "component": "Icon/System-Device/Key",
+      "category": "system-device",
+      "file": "svg/system-device--key.svg",
+      "semantic": "key",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    },
+    {
+      "name": "door",
+      "component": "Icon/World-Content/Door",
+      "category": "world-content",
+      "file": "svg/world-content--door.svg",
+      "semantic": "door",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    },
+    {
+      "name": "sparkle",
+      "component": "Icon/World-Content/Sparkle",
+      "category": "world-content",
+      "file": "svg/world-content--sparkle.svg",
+      "semantic": "sparkle",
+      "color": "currentColor",
+      "viewBox": "0 0 24 24",
+      "added": "2026-09-26"
+    }
+  ]
+}

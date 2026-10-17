@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#291d30" />
+    <!-- Home Screen install (docs/NOTIFICATIONS.md): on iOS these two
+         lines are what makes "Add to Home Screen" open Worlds as its
+         own app named Worlds — the only shape in which iPhone delivers
+         Web Push. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Worlds" />
+    <!-- viewport-fit=cover: required for env(safe-area-inset-*) to report
+         non-zero insets on notched/edge-to-edge devices; the chrome in
+         world.css + App.tsx pads itself by those insets (a11y §2.7). -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Worlds</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

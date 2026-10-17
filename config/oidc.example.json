@@ -1,0 +1,7 @@
+{
+  "issuer": "https://auth.example.com",
+  "client_id": "project-worlds",
+  "client_secret_env": "OIDC_CLIENT_SECRET",
+  "scopes": ["openid", "profile", "email"],
+  "display_name": "SSO"
+}

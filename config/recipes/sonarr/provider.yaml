@@ -1,0 +1,13 @@
+schema_version: 1
+id: sonarr
+name: Sonarr
+kind: http
+base_url: http://sonarr.lan.example:8989
+auth:
+  type: header
+  header_name: X-Api-Key
+  secret_ref: env:SONARR_API_KEY
+network:
+  lan: true
+timeout_s: 5
+max_bytes: 1048576

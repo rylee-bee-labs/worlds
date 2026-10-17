@@ -1,0 +1,9 @@
+schema_version: 1
+id: github-public
+name: GitHub (public, read-only)
+kind: http
+base_url: https://api.github.com
+network:
+  lan: false
+timeout_s: 8
+max_bytes: 1048576

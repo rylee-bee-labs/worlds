@@ -1,0 +1,9 @@
+schema_version: 1
+id: sonarr-refresh-series
+request: sonarr.refresh-series
+name: Refresh all series
+access: write
+approval: always
+scope: sonarr
+idempotency: none
+exposed: false

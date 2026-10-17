@@ -1,0 +1,27 @@
+schema_version: 1
+id: music
+title: Music
+icon: music
+group: life
+request: lidarr.calendar
+view: stat
+meaning:
+  concept: Which albums are due out soon and who they are by.
+  short: What music is coming out?
+  full: The albums with a release in the next month, with the next one and its artist named. Lidarr supplies the list; nothing is added here.
+fields:
+  - path: "$"
+    label: New albums
+    format: count
+  - path: "$[0].title"
+    label: Next album
+    format: text
+  - path: "$[0].artist.artistName"
+    label: By
+    format: text
+  - path: "$[0].releaseDate"
+    label: Out
+    format: relative_time
+meter:
+  type: marks
+  items: "$[*].title"

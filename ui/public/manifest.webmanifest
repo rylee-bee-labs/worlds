@@ -1,0 +1,36 @@
+{
+  "name": "Worlds",
+  "short_name": "Worlds",
+  "description": "Your life and your projects in one place: what changed, what needs you, and what can wait.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#291d30",
+  "theme_color": "#291d30",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "share_title",
+      "text": "share_text",
+      "url": "share_url"
+    }
+  }
+}

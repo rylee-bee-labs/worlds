@@ -1,0 +1,29 @@
+schema_version: 1
+id: reading
+title: Reading
+icon: book
+group: life
+requests:
+  - grimmory.library
+  - grimmory.wanted
+view: stat
+meaning:
+  concept: How many books are in the library and how many are still wanted.
+  short: What's in the library?
+  full: >-
+    Counts the books the library holds, the authors it lists, and the books it is
+    still looking for. Every number comes from the service itself; a number it does
+    not report reads unknown.
+fields:
+  - path: $.library.total
+    label: In library
+    format: number
+    unit: books
+  - path: $.library.authors
+    label: Authors
+    format: number
+    unit: authors
+  - path: $.wanted.total
+    label: Wanted
+    format: number
+    unit: wanted

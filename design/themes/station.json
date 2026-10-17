@@ -1,0 +1,92 @@
+{
+  "_comment": "Station theme — optional pack; also the generator's :root fallback (the first-run default is starfield, 2026-09-25). Warm, lived-in space station. Deep navy/indigo structure with amber, cream, wood, gold, green, coral practical light.",
+  "_author": "Project Worlds (canonical)",
+
+  "surface": {
+    "void":     "#080B14",
+    "canvas":   "#0C101C",
+    "hull":     "#131926",
+    "panel":    "#1E2636",
+    "elevated": "#273144",
+    "raised":   "#2D3A4E"
+  },
+
+  "accent": {
+    "primary":     "#72b1b1",
+    "on_primary":  "#0a2830",
+    "secondary":   "#C47D6D",
+    "warm":        "#D4A057",
+    "warm_soft":   "rgba(212, 160, 87, 0.16)",
+    "gold":        "#C9A227",
+    "gold_soft":   "rgba(201, 162, 39, 0.14)",
+    "green":       "#6A9A66",
+    "green_soft":  "rgba(106, 154, 102, 0.16)",
+    "coral":       "#C47D6D",
+    "coral_soft":  "rgba(196, 125, 109, 0.14)",
+    "teal":        "#5A9E9E",
+    "teal_soft":   "rgba(90, 158, 158, 0.14)",
+    "lavender":    "#9B8EC4",
+    "lavender_soft": "rgba(155, 142, 196, 0.14)"
+  },
+
+  "text": {
+    "primary":   "#EDE7DB",
+    "secondary": "#CDC6B8",
+    "muted":     "#A29A8C"
+  },
+
+  "border": {
+    "subtle": "rgba(232, 220, 200, 0.10)",
+    "strong": "rgba(232, 220, 200, 0.18)",
+    "hover":  "rgba(232, 220, 200, 0.20)"
+  },
+
+  "spacing": {
+    "xs":  "4px",
+    "sm":  "8px",
+    "md":  "12px",
+    "lg":  "16px",
+    "xl":  "24px",
+    "2xl": "32px",
+    "3xl": "48px",
+    "4xl": "64px"
+  },
+
+  "radius": {
+    "sm":   "10px",
+    "md":   "16px",
+    "lg":   "24px",
+    "full": "9999px"
+  },
+
+  "shadow": {
+    "soft": "0 2px 16px rgba(0,0,0,0.22), 0 0 40px rgba(212,160,87,0.04)",
+    "warm": "0 4px 24px rgba(212,160,87,0.12), 0 0 60px rgba(212,160,87,0.06)",
+    "glow": "0 0 20px rgba(212,160,87,0.18), 0 0 40px rgba(212,160,87,0.08)"
+  },
+
+  "typography": {
+    "font_sans":  "'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif",
+    "font_serif": "Georgia, 'Times New Roman', 'Palatino Linotype', serif",
+    "font_mono":  "'SF Mono', 'Cascadia Code', Consolas, monospace",
+    "size_h1":    "clamp(30px, 4.4vw, 44px)",
+    "size_lead":  "18px",
+    "size_body":  "16px",
+    "size_small": "14px",
+    "size_micro": "13px",
+    "size_label": "13px"
+  },
+
+  "density": {
+    "comfortable": {
+      "pad_main":  "24px",
+      "gap_main":  "16px",
+      "gap_block": "24px"
+    },
+    "compact": {
+      "pad_main":  "16px",
+      "gap_main":  "12px",
+      "gap_block": "16px"
+    }
+  }
+}

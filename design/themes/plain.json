@@ -1,0 +1,92 @@
+{
+  "_comment": "Plain theme — optional pack (first-release default 2026-09-22, superseded by starfield 2026-09-25). Warm-neutral charcoal surfaces, teal #72B1B1 primary, amber #D4A057 as the rare highlight (owner decision 2026-09-22 flips the draft's amber-primary Q1), Young Serif display headings, dark-warm only. Evolves the generic theme direction, warmed — no new lineage. See design/PLAIN-DEFAULT-THEME-DRAFT.md.",
+  "_author": "Project Worlds (owner decisions 2026-09-21, 2026-09-22)",
+
+  "surface": {
+    "void":     "#0D0C0B",
+    "canvas":   "#141211",
+    "hull":     "#181514",
+    "panel":    "#1C1917",
+    "elevated": "#23201D",
+    "raised":   "#2C2724"
+  },
+
+  "accent": {
+    "primary":     "#72B1B1",
+    "on_primary":  "#0C2A2A",
+    "secondary":   "#D4A057",
+    "warm":        "#D4A057",
+    "warm_soft":   "rgba(212, 160, 87, 0.14)",
+    "gold":        "#C9A227",
+    "gold_soft":   "rgba(201, 162, 39, 0.14)",
+    "green":       "#6A9A66",
+    "green_soft":  "rgba(106, 154, 102, 0.16)",
+    "coral":       "#C47D6D",
+    "coral_soft":  "rgba(196, 125, 109, 0.14)",
+    "teal":        "#72B1B1",
+    "teal_soft":   "rgba(114, 177, 177, 0.14)",
+    "lavender":    "#9B8EC4",
+    "lavender_soft": "rgba(155, 142, 196, 0.14)"
+  },
+
+  "text": {
+    "primary":   "#ECE7DF",
+    "secondary": "#C2BBB1",
+    "muted":     "#98918A"
+  },
+
+  "border": {
+    "subtle": "rgba(236, 231, 223, 0.10)",
+    "strong": "rgba(236, 231, 223, 0.18)",
+    "hover":  "rgba(236, 231, 223, 0.22)"
+  },
+
+  "spacing": {
+    "xs":  "4px",
+    "sm":  "8px",
+    "md":  "12px",
+    "lg":  "16px",
+    "xl":  "24px",
+    "2xl": "32px",
+    "3xl": "48px",
+    "4xl": "64px"
+  },
+
+  "radius": {
+    "sm":   "10px",
+    "md":   "14px",
+    "lg":   "24px",
+    "full": "9999px"
+  },
+
+  "shadow": {
+    "soft": "0 10px 30px rgba(0,0,0,0.28), 0 0 28px rgba(212,160,87,0.06)",
+    "warm": "0 4px 24px rgba(212,160,87,0.10), 0 0 60px rgba(212,160,87,0.05)",
+    "glow": "0 0 20px rgba(212,160,87,0.18), 0 0 40px rgba(212,160,87,0.06)"
+  },
+
+  "typography": {
+    "font_sans":  "'Instrument Sans', system-ui, -apple-system, sans-serif",
+    "font_serif": "'Young Serif', Georgia, serif",
+    "font_mono":  "'SF Mono', 'Cascadia Code', ui-monospace, monospace",
+    "size_h1":    "clamp(30px, 4.4vw, 44px)",
+    "size_lead":  "18px",
+    "size_body":  "16px",
+    "size_small": "14px",
+    "size_micro": "13px",
+    "size_label": "13px"
+  },
+
+  "density": {
+    "comfortable": {
+      "pad_main":  "24px",
+      "gap_main":  "16px",
+      "gap_block": "24px"
+    },
+    "compact": {
+      "pad_main":  "16px",
+      "gap_main":  "12px",
+      "gap_block": "16px"
+    }
+  }
+}

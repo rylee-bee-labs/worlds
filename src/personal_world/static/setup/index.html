@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en" data-theme="starfield">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#161a30">
+<title>Set up Worlds</title>
+<link rel="stylesheet" href="/setup/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <img class="brand-mark" src="/assets/crew/256/sol-mark.webp" alt="" aria-hidden="true">
+  <p class="brand">Worlds</p>
+  <p class="brand-note">first light</p>
+</header>
+
+<main id="main" class="layout">
+  <!-- The portal: decoration only. Every fact is in the card beside it. -->
+  <div class="portal" id="portal" aria-hidden="true">
+    <div class="portal-art">
+      <img class="portal-room" src="/assets/crew/512/room-worlds.webp" alt="">
+      <img class="portal-sol" src="/assets/crew/256/sol-mark.webp" alt="">
+    </div>
+    <p class="eyebrow">FIRST LIGHT</p>
+    <p class="portal-line">Shall we make this place yours?</p>
+  </div>
+
+  <div class="card">
+    <h1 class="page-title">Set up Worlds</h1>
+    <div class="progress-wrap">
+      <ol class="dots" id="dots" aria-hidden="true">
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+      </ol>
+      <p id="progress" class="progress">Step 1 of 6: First light</p>
+    </div>
+    <p id="live" class="visually-hidden" role="status" aria-live="polite"></p>
+
+    <!-- Step 1: welcome -->
+    <section class="step" id="step-welcome" aria-labelledby="h-welcome">
+      <h2 id="h-welcome">Welcome to your World.</h2>
+      <p class="lead">Worlds is one calm place for everything you’re building
+        and everything you want to keep: your projects, your notes, and the
+        rooms you connect. It runs on <strong>your</strong> server, and
+        everything here belongs to you. Services you connect later receive
+        only the requests you choose to make.</p>
+      <ol class="numbered">
+        <li>Worlds gets itself ready while you watch.</li>
+        <li>You choose how to sign in.</li>
+        <li>You make it comfortable: colours, text, motion, crew.</li>
+        <li>You pick a companion, or not.</li>
+        <li>The door opens.</li>
+      </ol>
+      <p class="quiet">You don’t need any technical knowledge. If something
+        goes wrong, this page says what happened and what to try.</p>
+      <div class="actions">
+        <button type="button" class="btn primary big" id="btn-start">Let’s begin →</button>
+        <span class="quiet">About five minutes. You can change everything later.</span>
+      </div>
+    </section>
+
+    <!-- Step 2: invisible provisioning -->
+    <section class="step" id="step-preparing" hidden aria-labelledby="h-preparing">
+      <h2 id="h-preparing">Getting things ready</h2>
+      <p id="prepare-status" class="calm" role="status">
+        <span class="lamp" aria-hidden="true"></span>
+        Lighting the lamps. This usually takes a few seconds, and you
+        don’t need to do anything.
+      </p>
+      <div id="prepare-error" class="alert problem" hidden>
+        <p class="alert-heading"><span aria-hidden="true">⚠</span> Something needs your attention</p>
+        <p id="prepare-error-detail"></p>
+        <button type="button" class="btn" id="btn-retry-prepare">Retry</button>
+      </div>
+    </section>
+
+    <!-- Step 3: auth choice -->
+    <section class="step" id="step-auth" hidden aria-labelledby="h-auth">
+      <h2 id="h-auth">How will you sign in?</h2>
+      <p>Pick one. You can change this later.</p>
+      <fieldset class="choice-set">
+        <legend class="visually-hidden">Sign-in method</legend>
+        <label class="choice" for="auth-local">
+          <input type="radio" id="auth-local" name="auth-choice" value="local" checked>
+          <span class="choice-body">
+            <span class="choice-title">Just me on this device
+              <span class="badge">Recommended</span></span>
+            <span class="choice-desc">No extra accounts or settings. Worlds
+              signs you in automatically on this server. Best if you are the
+              only person using it.</span>
+          </span>
+        </label>
+        <label class="choice" for="auth-oidc">
+          <input type="radio" id="auth-oidc" name="auth-choice" value="oidc">
+          <span class="choice-body">
+            <span class="choice-title">Sign in with my own SSO</span>
+            <span class="choice-desc">Use a sign-in server you already run
+              (OpenID Connect, for example Authelia, Keycloak or Authentik).
+              You’ll need its address and the “client ID” from that
+              server.</span>
+          </span>
+        </label>
+      </fieldset>
+
+      <div id="oidc-fields" class="oidc-fields" hidden>
+        <h3>Your SSO details</h3>
+        <div class="field">
+          <label for="oidc-issuer">Sign-in server address (issuer URL)</label>
+          <input type="url" id="oidc-issuer" name="oidc-issuer"
+                 autocomplete="url" placeholder="https://sso.example.com"
+                 aria-describedby="oidc-issuer-help">
+          <p class="help" id="oidc-issuer-help">The base address of your
+            sign-in server, starting with https://</p>
+        </div>
+        <div class="field">
+          <label for="oidc-client-id">Client ID</label>
+          <input type="text" id="oidc-client-id" name="oidc-client-id"
+                 autocomplete="off" aria-describedby="oidc-client-id-help">
+          <p class="help" id="oidc-client-id-help">The identifier your
+            sign-in server gave to Worlds when you registered it.</p>
+        </div>
+        <div class="field">
+          <label for="oidc-secret-env">Name of the environment variable that holds the client secret</label>
+          <input type="text" id="oidc-secret-env" name="oidc-secret-env"
+                 autocomplete="off" placeholder="PW_OIDC_CLIENT_SECRET"
+                 aria-describedby="oidc-secret-env-help">
+          <p class="help" id="oidc-secret-env-help">Only the
+            <strong>name</strong> of the variable. Never type the secret
+            itself into this page. For example:
+            <code>PW_OIDC_CLIENT_SECRET</code>.</p>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn" id="btn-test-oidc">Test connection</button>
+        </div>
+        <div id="oidc-test-result" class="test-result" role="status" hidden></div>
+      </div>
+
+      <div id="auth-blocking" class="alert problem" hidden>
+        <p class="alert-heading"><span aria-hidden="true">⚠</span> Needs your attention before you continue</p>
+        <ul id="auth-blocking-list"></ul>
+        <div class="actions">
+          <button type="button" class="btn" id="btn-auth-back-from-block">Back</button>
+          <button type="button" class="btn primary" id="btn-auth-continue">Continue anyway</button>
+        </div>
+      </div>
+
+      <div id="auth-warnings" class="alert note" hidden>
+        <p class="alert-heading"><span aria-hidden="true">ℹ</span> Good to know</p>
+        <ul id="auth-warnings-list"></ul>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn" id="btn-auth-back">Back</button>
+        <button type="button" class="btn primary" id="btn-auth-next">Continue</button>
+      </div>
+    </section>
+
+    <!-- Step 4: comfort -->
+    <section class="step" id="step-comfort" hidden aria-labelledby="h-comfort">
+      <h2 id="h-comfort">Make yourself comfortable</h2>
+      <p>Everything here can be changed later in Settings, and it all starts
+        at the calmest, most readable choice.</p>
+
+      <fieldset class="choice-set">
+        <legend>Colours</legend>
+        <label class="choice swatch-choice" for="theme-starfield">
+          <input type="radio" id="theme-starfield" name="theme-choice" value="starfield" checked>
+          <span class="swatch" data-swatch="starfield" aria-hidden="true"></span>
+          <span class="choice-body">
+            <span class="choice-title">Starfield <span class="badge">Default</span></span>
+            <span class="choice-desc">Deep night sky with warm gold.</span>
+          </span>
+        </label>
+        <label class="choice swatch-choice" for="theme-doorways">
+          <input type="radio" id="theme-doorways" name="theme-choice" value="doorways">
+          <span class="swatch" data-swatch="doorways" aria-hidden="true"></span>
+          <span class="choice-body">
+            <span class="choice-title">Doorways</span>
+            <span class="choice-desc">Navy and lamplight, with a painted
+              doorway for each room.</span>
+          </span>
+        </label>
+        <label class="choice swatch-choice" for="theme-plain">
+          <input type="radio" id="theme-plain" name="theme-choice" value="plain">
+          <span class="swatch" data-swatch="plain" aria-hidden="true"></span>
+          <span class="choice-body">
+            <span class="choice-title">Plain</span>
+            <span class="choice-desc">Warm charcoal, quiet and simple.</span>
+          </span>
+        </label>
+        <p class="help">Saved on this device. You’ll see it here as you choose.</p>
+      </fieldset>
+
+      <div class="field toggle-field">
+        <label class="toggle" for="comfort-larger-text">
+          <input type="checkbox" id="comfort-larger-text">
+          <span class="toggle-body">
+            <span class="choice-title">Larger text</span>
+            <span class="choice-desc">Bumps the text size up one step across
+              the whole app.</span>
+          </span>
+        </label>
+      </div>
+      <div class="field toggle-field">
+        <label class="toggle" for="comfort-gentle-motion">
+          <input type="checkbox" id="comfort-gentle-motion">
+          <span class="toggle-body">
+            <span class="choice-title">Gentle animation</span>
+            <span class="choice-desc">Allows short, subtle transitions. Off by
+              default: Worlds is calm and still without it.</span>
+          </span>
+        </label>
+      </div>
+      <div class="field toggle-field">
+        <label class="toggle" for="comfort-crew">
+          <input type="checkbox" id="comfort-crew" checked>
+          <span class="toggle-body">
+            <span class="choice-title">Meet the crew</span>
+            <span class="choice-desc">A small cast of companions keeps you
+              company and looks after rooms. They change how things are
+              phrased, never what’s true. Off means Worlds speaks
+              plainly.</span>
+          </span>
+        </label>
+      </div>
+      <div id="comfort-error" class="alert problem" hidden>
+        <p class="alert-heading"><span aria-hidden="true">⚠</span> Not saved yet</p>
+        <p id="comfort-error-detail"></p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" id="btn-comfort-back">Back</button>
+        <button type="button" class="btn primary" id="btn-comfort-next">Continue</button>
+      </div>
+    </section>
+
+    <!-- Step 5: companion -->
+    <section class="step" id="step-companion" hidden aria-labelledby="h-companion">
+      <h2 id="h-companion">Pick a companion, or don’t</h2>
+      <p>Your companion keeps you company in chat and on the Bridge. Pick
+        nobody and you get the Assistant: the plain voice, with a friendly
+        screen for a face. You can add your own companions later.</p>
+      <fieldset class="choice-set companions">
+        <legend class="visually-hidden">Companion</legend>
+        <div class="companion-grid" id="companion-grid">
+          <label class="companion" for="companion-assistant">
+            <input type="radio" id="companion-assistant" name="companion-choice" value="" checked>
+            <img src="/assets/crew/256/assistant-portrait.webp" alt="" aria-hidden="true">
+            <span class="companion-name">Assistant <span class="badge">Default</span></span>
+            <span class="companion-desc">Plain, brief and kind.</span>
+          </label>
+        </div>
+      </fieldset>
+      <p id="companion-note" class="quiet" hidden></p>
+      <div id="companion-error" class="alert problem" hidden>
+        <p class="alert-heading"><span aria-hidden="true">⚠</span> Not saved yet</p>
+        <p id="companion-error-detail"></p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" id="btn-companion-back">Back</button>
+        <button type="button" class="btn primary" id="btn-companion-next">Continue</button>
+      </div>
+    </section>
+
+    <!-- Step 6: finish -->
+    <section class="step" id="step-finish" hidden aria-labelledby="h-finish">
+      <h2 id="h-finish">Welcome aboard</h2>
+      <p>Here’s what you chose. Everything can be changed later.</p>
+      <dl class="summary" id="finish-summary">
+        <dt>Sign-in</dt><dd id="summary-auth">Just me on this device</dd>
+        <dt>Colours</dt><dd id="summary-theme">Starfield</dd>
+        <dt>Text size</dt><dd id="summary-text">Normal</dd>
+        <dt>Animation</dt><dd id="summary-motion">Calm (no animation)</dd>
+        <dt>Crew</dt><dd id="summary-crew">On</dd>
+        <dt>Companion</dt><dd id="summary-companion">Assistant</dd>
+      </dl>
+      <p id="finish-status" class="calm" role="status" hidden>
+        <span class="lamp" aria-hidden="true"></span> Opening the door…
+      </p>
+      <div id="finish-error" class="alert problem" hidden>
+        <p class="alert-heading"><span aria-hidden="true">⚠</span> Setup could not finish</p>
+        <p id="finish-error-detail"></p>
+        <button type="button" class="btn" id="btn-retry-finish">Try again</button>
+      </div>
+      <div class="actions" id="finish-actions">
+        <button type="button" class="btn" id="btn-finish-back">Back</button>
+        <button type="button" class="btn primary big" id="btn-finish">Open the door →</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>The settings on this page are saved on your server (your colours are
+    saved on this device). The sign-in server address is contacted only when
+    you test or use that connection. This page never asks for a password or a
+    secret value.</p>
+</footer>
+
+<script src="/setup/wizard.js"></script>
+</body>
+</html>

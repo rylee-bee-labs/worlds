@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worlds — The Harbor (MOCKUP) — stale and unknown</title>
+<style>
+  :root{
+    --ink:#11212e; --ink-soft:#3d5163; --paper:#f7f3ea; --paper-2:#fffdf8;
+    --card:#ffffff; --line:#c9d6de; --deep:#0e2a3d; --deep-2:#16405a;
+    --teal:#0f6b6b; --teal-ink:#0b4f4f;
+    --calm:#1c5d3f; --calm-bg:#e2f2e7; --calm-line:#9fc9b1;
+    --signal:#8a3200; --signal-bg:#ffe6cf; --signal-line:#e0a06a;
+    --stale:#5a5344; --stale-bg:#ece7db; --stale-line:#c3b9a3;
+    --unknown:#414b57; --unknown-bg:#e6e9ee; --unknown-line:#adb6c2;
+    --focus:#1747b8; --radius:14px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:400 16px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    overflow-wrap:anywhere}
+  a{color:var(--teal-ink)}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:8px}
+  .skip{position:absolute;left:-9999px;background:#fff;color:var(--ink);padding:12px 16px;z-index:60;border-radius:0 0 10px 0}
+  .skip:focus{left:0;top:0}
+  #frame{container-type:inline-size;max-width:1180px;margin:0 auto;padding:16px}
+  #frame.is-phone{width:390px;max-width:100%;outline:2px dashed var(--line);outline-offset:8px;background:var(--paper-2)}
+  .masthead{background:var(--deep);color:#fff;border-radius:var(--radius);padding:12px 16px}
+  .mast{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+  .brand{margin:0;font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px}
+  .brand-sub{font-weight:400;color:#c6dcea;font-size:14px}
+  .badge{margin:0;background:#ffd166;color:#11212e;font-weight:800;font-size:12px;letter-spacing:.14em;padding:5px 10px;border-radius:999px;text-transform:uppercase}
+  .viewer{display:flex;gap:6px;background:#0a2130;padding:4px;border-radius:999px}
+  .viewer button{min-height:44px;padding:10px 14px;border:1px solid #2c5570;background:transparent;color:#e3f0f8;font:inherit;font-size:14px;border-radius:999px;cursor:pointer}
+  .viewer button[aria-pressed="true"]{background:#ffd166;color:#11212e;border-color:#ffd166;font-weight:700}
+  .page-head{margin:22px 0 6px}
+  h1{font-size:clamp(24px,4.3vw,34px);line-height:1.15;margin:0 0 8px}
+  .lede{margin:0;color:var(--ink-soft);font-size:17px;max-width:64ch}
+  .mockbar{margin:14px 0 2px;padding:10px 14px;border:1px dashed var(--line);border-left:5px solid var(--teal);border-radius:10px;background:var(--paper-2);color:var(--ink-soft);font-size:14px}
+  .h2{font-size:15px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-soft);margin:26px 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:22px;align-items:start}
+  .tide{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:12px;background:linear-gradient(90deg,#e6f1f7,#d7e8f0);border:1px solid var(--line);border-radius:12px}
+  .tide li{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px}
+  .dot{width:10px;height:10px;border-radius:50%;flex:none}
+  .dot.calm{background:var(--calm)}
+  .dot.signal{background:var(--signal)}
+  .dot.stale{background:var(--stale)}
+  .dot.unknown{background:var(--unknown)}
+  .berths{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--line);border-radius:var(--radius);padding:16px}
+  .card.calm{border-left-color:var(--calm)}
+  .card.signal{border-left-color:var(--signal)}
+  .card.stale{border-left-color:var(--stale)}
+  .card.unknown{border-left-color:var(--unknown);border-left-style:dotted}
+  .card-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .card-head h3{margin:0;font-size:19px}
+  .num{font-variant-numeric:tabular-nums;font-weight:800;font-size:13px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px 7px;min-width:34px;text-align:center;flex:none}
+  .status{margin:0 0 8px;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:6px 12px;border-radius:999px;border:1px solid}
+  .status.calm{color:var(--calm);background:var(--calm-bg);border-color:var(--calm-line)}
+  .status.signal{color:var(--signal);background:var(--signal-bg);border-color:var(--signal-line)}
+  .status.stale{color:var(--stale);background:var(--stale-bg);border-color:var(--stale-line)}
+  .status.unknown{color:var(--unknown);background:var(--unknown-bg);border-color:var(--unknown-line)}
+  .meta{margin:0 0 12px;color:var(--ink-soft);font-size:14px}
+  .act{display:flex;flex-wrap:wrap;gap:10px;margin:0}
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;background:var(--deep);color:#fff;text-decoration:none;border-radius:10px;font-weight:700;border:1px solid var(--deep)}
+  .btn:hover{background:var(--deep-2)}
+  .btn.secondary{background:#fff;color:var(--teal-ink);border-color:var(--line)}
+  .btn.secondary:hover{background:var(--paper)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+  .log{list-style:none;margin:0;padding:0}
+  .log li{padding-bottom:12px;margin-bottom:12px;border-bottom:1px dashed var(--line)}
+  .log li:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
+  .log time{display:block;font-variant-numeric:tabular-nums;font-size:13px;font-weight:700;color:var(--ink-soft)}
+  .log p{margin:2px 0 0;font-size:15px}
+  .weather{margin:0;font-size:15px;color:var(--ink-soft)}
+  .weather strong{color:var(--ink)}
+  .weather.alert strong{color:var(--stale)}
+  .terms{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .terms li{font-size:14.5px}
+  .terms b{display:block;font-size:15px}
+  .terms .k-stale b{color:var(--stale)}
+  .terms .k-unknown b{color:var(--unknown)}
+  .foot{margin:30px 0 8px;padding:14px 16px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:13.5px}
+  .foot p{margin:0;max-width:80ch}
+  .foot strong{color:var(--ink)}
+  @container (max-width:760px){
+    .layout{grid-template-columns:minmax(0,1fr);gap:16px}
+    h1{font-size:25px}
+    #frame{padding:12px}
+    .card-head h3{font-size:18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  }
+  @media (prefers-contrast:more){
+    .card,.status,.tide li,.panel{border-width:2px}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div id="frame">
+
+  <header class="masthead">
+    <div class="mast">
+      <p class="brand"><span aria-hidden="true">⚓</span> Worlds <span class="brand-sub">the harbor</span></p>
+      <p class="badge">Mockup</p>
+      <div class="viewer" role="group" aria-label="Preview width">
+        <button type="button" data-view="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" data-view="phone" aria-pressed="false">Phone 390&nbsp;px</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <h1>Two boats are out of sight</h1>
+      <p class="lede">Tuesday 13 October, 08:14. Media library is stale — Worlds heard from it once and has not heard since. Home lights is unknown — Worlds has never heard from it at all. Backups and Project board are calm.</p>
+    </div>
+
+    <p class="mockbar"><strong>MOCKUP.</strong> Everything below is invented sample data for a visual sketch. No real service was contacted and nothing here is a real reading.</p>
+
+    <section aria-labelledby="tide-h">
+      <h2 class="h2" id="tide-h">Last heard from each boat</h2>
+      <ul class="tide">
+        <li><span class="dot stale" aria-hidden="true"></span> Media library — last heard 6&nbsp;h ago</li>
+        <li><span class="dot unknown" aria-hidden="true"></span> Home lights — never heard from</li>
+        <li><span class="dot calm" aria-hidden="true"></span> Backups — heard 6&nbsp;min ago</li>
+        <li><span class="dot calm" aria-hidden="true"></span> Project board — heard 4&nbsp;min ago</li>
+      </ul>
+    </section>
+
+    <div class="layout">
+      <section aria-labelledby="berths-h">
+        <h2 class="h2" id="berths-h">Moored at your dock</h2>
+        <ol class="berths">
+          <li>
+            <article class="card stale">
+              <div class="card-head"><span class="num" aria-hidden="true">01</span><h3>Media library</h3></div>
+              <p class="status stale"><span aria-hidden="true">◐</span> Stale — last heard 6 hours ago</p>
+              <p class="meta">Stale, not calm: Worlds heard from this boat once and has not heard since. It usually reports every 15 minutes, so something has gone quiet. The last reading it gave is 6 hours old and may no longer be true.</p>
+              <p class="act"><a class="btn secondary" href="#">Open Media library <span aria-hidden="true">↗</span></a></p>
+            </article>
+          </li>
+          <li>
+            <article class="card unknown">
+              <div class="card-head"><span class="num" aria-hidden="true">03</span><h3>Home lights</h3></div>
+              <p class="status unknown"><span aria-hidden="true">?</span> Unknown — never connected</p>
+              <p class="meta">Unknown, not calm: Worlds has never heard from this boat. No address has been added for it, so there is nothing to say about how it is doing — and Worlds will not guess.</p>
+              <p class="act"><a class="btn secondary" href="#">Add an address for Home lights</a></p>
+            </article>
+          </li>
+          <li>
+            <article class="card calm">
+              <div class="card-head"><span class="num" aria-hidden="true">02</span><h3>Backups</h3></div>
+              <p class="status calm"><span aria-hidden="true">●</span> Calm — finished overnight</p>
+              <p class="meta">Last heard 6 minutes ago · 1.8 GB stored · next run tonight</p>
+              <p class="act"><a class="btn secondary" href="#">Open Backups <span aria-hidden="true">↗</span></a></p>
+            </article>
+          </li>
+          <li>
+            <article class="card calm">
+              <div class="card-head"><span class="num" aria-hidden="true">04</span><h3>Project board</h3></div>
+              <p class="status calm"><span aria-hidden="true">●</span> Calm — no changes</p>
+              <p class="meta">Last heard 4 minutes ago · 5 open cards, nothing overdue</p>
+              <p class="act"><a class="btn secondary" href="#">Open Project board <span aria-hidden="true">↗</span></a></p>
+            </article>
+          </li>
+        </ol>
+      </section>
+
+      <aside>
+        <h2 class="h2" id="terms-h">What these words mean</h2>
+        <div class="panel" aria-labelledby="terms-h">
+          <ul class="terms">
+            <li class="k-stale"><b>Stale</b> Worlds heard from it before and the reply has gone quiet. The old reading is shown, with the words “stale”, until a fresh one arrives.</li>
+            <li class="k-unknown"><b>Unknown</b> Worlds has never heard from it, or cannot reach it at all. Nothing is claimed about it.</li>
+            <li class="k-stale"><b>Calm</b> Worlds heard from it recently and it reported no problem.</li>
+          </ul>
+        </div>
+
+        <h2 class="h2" id="log-h">Harbormaster's log</h2>
+        <div class="panel">
+          <ol class="log">
+            <li><time datetime="2026-10-13T08:14">08:14</time><p>Media library has missed four expected replies. Marked stale.</p></li>
+            <li><time datetime="2026-10-13T08:08">08:08</time><p>Home lights is on the dock list but has no address. Marked unknown.</p></li>
+            <li><time datetime="2026-10-13T06:02">06:02</time><p>Backups finished overnight. 1.8 GB stored, no errors.</p></li>
+          </ol>
+        </div>
+
+        <h2 class="h2" id="weather-h">Harbor weather</h2>
+        <div class="panel" aria-labelledby="weather-h">
+          <p class="weather alert"><strong>Mixed.</strong> One stale boat, one unknown, two calm. Worlds says which is which in words — it never calls a silent boat “fine”.</p>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="foot">
+      <p>Worlds · visual direction 2, “The Harbor” · <strong>MOCKUP</strong> — a sketch for comparison, not a build. Buttons and links are inert in this mockup; they show where the real interface would go. Sample data only.</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var frame=document.getElementById('frame');
+  var buttons=Array.prototype.slice.call(document.querySelectorAll('.viewer button'));
+  function setView(view){
+    frame.classList.toggle('is-phone', view==='phone');
+    buttons.forEach(function(b){b.setAttribute('aria-pressed', String(b.dataset.view===view));});
+  }
+  buttons.forEach(function(b){b.addEventListener('click',function(){setView(b.dataset.view);});});
+})();
+</script>
+</body>
+</html>

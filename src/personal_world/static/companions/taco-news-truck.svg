@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Personal World — taco truck and newspaper stand</title>
+  <desc id="desc">A mint taco truck that also sells newspapers: pink striped awning, smiling service window, taco roof sign and a lavender rack of folded newspapers.</desc>
+  <g id="taco-news-truck-pet" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <g id="wheel-left">
+      <circle cx="176" cy="364" r="29" fill="#DDCEF0" id="wheel-left-circle-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <circle cx="176" cy="364" r="12" fill="#FAE8BC" id="wheel-left-circle-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="wheel-right">
+      <circle cx="350" cy="364" r="29" fill="#DDCEF0" id="wheel-right-circle-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <circle cx="350" cy="364" r="12" fill="#FAE8BC" id="wheel-right-circle-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="truck-body">
+      <path d="M102 213 Q102 196 119 196 L303 196 Q322 197 334 213 L378 253 Q395 267 395 286 L395 347 Q395 359 382 359 L367 359 Q349 328 332 359 L204 359 Q177 327 150 359 L116 359 Q102 359 102 345 Z" fill="#B8E4D5" id="truck-body-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <g id="body-stripe">
+        <path d="M105 314 L392 314 L392 332 L105 332 Z" fill="#F4C6DF" stroke="none" id="body-stripe-path-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="cab-window">
+      <path d="M310 212 Q318 214 326 223 L363 258 L310 258 Z" fill="#BED5F5" id="cab-window-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M320 226 L343 248" fill="none" stroke="#EFF6FF" stroke-width="4" id="cab-window-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="door">
+      <path d="M305 275 L305 344" fill="none" stroke-width="3" id="door-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M318 283 L331 283" fill="none" stroke-width="4" id="door-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="service-window">
+      <rect x="125" y="218" width="156" height="80" rx="13" fill="#FFF1DB" id="service-window-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <g id="face">
+        <g id="eye-left">
+          <ellipse cx="175" cy="244" rx="5" ry="7" fill="#603D49" stroke="none" id="eye-left-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="eye-right">
+          <ellipse cx="233" cy="244" rx="5" ry="7" fill="#603D49" stroke="none" id="eye-right-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="cheeks">
+          <ellipse cx="166" cy="262" rx="11" ry="7" fill="#F4C6DF" stroke="none" id="cheeks-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <ellipse cx="242" cy="262" rx="11" ry="7" fill="#F4C6DF" stroke="none" id="cheeks-ellipse-02" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="mouth">
+          <path d="M195 264 Q204 274 214 264" fill="none" stroke-width="3.5" id="mouth-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+      </g>
+    </g>
+    <g id="awning">
+      <path d="M119 211 L129 191 L271 191 L289 211 Q278 225 266 213 Q253 226 241 213 Q229 226 216 213 Q204 226 191 213 Q179 226 166 213 Q154 226 141 213 Q128 226 119 211 Z" fill="#F4C6DF" id="awning-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M147 193 L141 212 M171 193 L166 212 M195 193 L191 212 M219 193 L216 212 M243 193 L241 212 M265 193 L266 212" fill="none" stroke="#FFF0DD" stroke-width="9" id="awning-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="serving-counter">
+      <rect x="119" y="295" width="171" height="12" rx="5" fill="#FAE8BC" id="serving-counter-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="taco-sign">
+      <g id="sign-posts">
+        <path d="M179 194 L179 172 M234 194 L234 172" fill="none" id="sign-posts-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="taco-filling">
+        <path d="M151 160 Q145 148 157 143 Q152 129 166 126 Q165 112 181 115 Q190 98 203 109 Q217 98 226 113 Q244 105 249 122 Q265 121 266 138 Q280 144 268 160 Z" fill="#B8E4D5" id="taco-filling-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M166 133 L178 127 M216 119 L224 130 M248 136 L257 142" fill="none" stroke="#D58E95" stroke-width="6" id="taco-filling-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="taco-shell">
+        <path d="M149 153 Q207 112 269 153 L265 168 Q209 194 154 168 Z" fill="#FAE8BC" id="taco-shell-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M170 158 L177 158 M195 167 L203 167 M225 160 L232 160 M247 162 L251 161" fill="none" stroke="#CDA77F" stroke-width="3" id="taco-shell-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="headlight">
+      <rect x="377" y="288" width="14" height="17" rx="4" fill="#FAE8BC" id="headlight-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="bumper">
+      <rect x="385" y="337" width="19" height="12" rx="4" fill="#DDCEF0" id="bumper-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="sparkles">
+      <path d="M94 133 Q94 144 83 145 Q94 146 94 157 Q95 146 105 145 Q95 144 94 133 Z" fill="#DDCEF0" id="sparkles-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M410 204 Q410 215 399 216 Q410 217 410 228 Q411 217 421 216 Q411 215 410 204 Z" fill="#FAE8BC" id="sparkles-path-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="newspaper-rack">
+      <g id="paper-back">
+        <path d="M83 274 L124 264 L139 322 L97 329 Z" fill="#FFF4DF" id="paper-back-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M92 282 L119 275 M95 290 L114 285" fill="none" stroke-width="2.5" id="paper-back-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="paper-front">
+        <rect x="104" y="284" width="45" height="48" rx="3" fill="#FFF9EC" id="paper-front-rect-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M112 293 L141 293" fill="none" stroke-width="3" id="paper-front-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <rect x="112" y="301" width="12" height="12" rx="1" fill="#BED5F5" id="paper-front-rect-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M130 302 L142 302 M130 308 L142 308 M112 319 L141 319" fill="none" stroke-width="2" id="paper-front-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="rack-frame">
+        <path d="M81 316 L154 316 L150 351 L87 351 Z" fill="#DDCEF0" id="rack-frame-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M90 328 L145 328 M90 338 L145 338" fill="none" stroke-width="3" id="rack-frame-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+  </g>
+</svg>

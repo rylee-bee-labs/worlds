@@ -1,0 +1,26 @@
+cards:
+  sign-in:
+    - name: healthy
+      responses:
+        health:
+          status: "OK"
+      expect:
+        state: healthy
+        values:
+          status: "OK"
+    - name: reports an error
+      responses:
+        health:
+          status: "ERROR"
+      expect:
+        state: unknown
+        values:
+          status: "ERROR"
+    - name: unavailable
+      responses:
+        health:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          status: unknown

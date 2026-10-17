@@ -1,0 +1,105 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Env / secrets — never commit
+.env
+.env.*
+!.env.example
+*.key
+*.age
+secrets/**
+!secrets/.gitkeep
+
+# State / data — runtime, not source
+data/
+!ui/src/data/
+*.db
+*.sqlite
+*.sqlite3
+# Local data-directory backups (manual snapshots outside version control)
+data.bak.*/
+
+# Node / frontend build and test output
+node_modules/
+test-results/
+playwright-report/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local agent/tool scratch directories (machine-specific, never project truth)
+.bcode/
+.mimocode/
+# Fossil code-index cache: regenerable, keyed by absolute home paths
+# disposable analysis cache (public-safety: never tracked, paths are machine-local)
+.fossil/
+
+# Local provider configuration, credentials and diagnostic output
+config.local/
+config/connections.local.json
+config/connections.local.json.*
+config/*.local.json
+config/principal.json
+# Frontend: env files may be inlined into the browser bundle; never track them
+frontend/.env*
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+*.log
+*.dump
+*.sql
+*.db-*
+*.sqlite-*
+*.sqlite3-*
+.pytest_tmp/
+# Play-Nice contract session commitment artifacts (contractctl commit):
+# ephemeral, session/role/task-keyed, secret-free but not durable project
+# truth — never committed, per the library's own convention.
+# NOTE: gitignore patterns containing a slash are rooted at this file, so
+# the nested .project copy needs its own rule below.
+.contracts/sessions/
+.contract-commitment.json
+.project/contracts/.contracts/
+
+# Station vNext React build output — generated, never tracked.
+# Rebuild with: scripts/build-app.sh
+src/personal_world/static/app/
+
+# Owner-local Figma export drop: unsorted PNG/SVG exports, a large PDF,
+# and Figma share links. Approved exports are curated into design/screens/
+# and classified in .project/design/CURRENT.md — those are the tracked
+# references. This directory is the owner's working drop, not project truth.
+design/owner/
+
+# Design PNG/SVG/ZIP/dotLottie deliverables are intentional source assets.
+
+# Generated content index (agent-config). Regenerable; binary; contains
+# absolute home paths, so it must never reach a public repo.
+data/content.db
+**/data/content.db
+
+
+
+# runtime agent lock (state, never content)
+.agent/agent-lock.json
+
+# Local, per-person agent settings (never shared)
+CLAUDE.local.md
+.claude/settings.local.json

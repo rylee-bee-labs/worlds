@@ -1,0 +1,45 @@
+cards:
+  books:
+    - name: normal
+      responses:
+        wanted:
+          totalRecords: 3
+          records:
+            - id: 1
+              title: Example Book
+              status: wanted
+        queue:
+          totalRecords: 2
+          records:
+            - id: 2
+              title: Example Book Two
+              size: 1024
+      expect:
+        state: healthy
+        values:
+          wanted: "3 wanted"
+          downloading: "2 in queue"
+    - name: unavailable
+      responses:
+        wanted:
+          __status: 500
+        queue:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          wanted: "unknown"
+          downloading: "unknown"
+    - name: empty
+      responses:
+        wanted:
+          totalRecords: 0
+          records: []
+        queue:
+          totalRecords: 0
+          records: []
+      expect:
+        state: healthy
+        values:
+          wanted: "0 wanted"
+          downloading: "0 in queue"

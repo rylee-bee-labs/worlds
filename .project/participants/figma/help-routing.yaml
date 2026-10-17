@@ -1,0 +1,51 @@
+schema: play-nice/help-routing-v1
+
+participant: figma
+based_on: play-nice/question-v1
+
+# Preserved from Figma's proposal; her 2026-09-12 correction added
+# canonical-token-values to the NOT-routed list (repo tokens are authority,
+# not Figma variables). Human-readable companion: help-routing notes live
+# in interaction.md; this file is the machine-readable routing map.
+
+can_answer:
+  - topic: visual-composition
+    capability: visual-design-composition
+  - topic: frame-reference
+    capability: frame-export
+  - topic: current-vs-superseded-design
+    capability: current-vs-superseded-design-identification
+  - topic: design-token
+    capability: design-token-authoring
+    note: only 4 Figma-side variables; repo tokens govern
+  - topic: component-relationship
+    capability: component-relationship-mapping
+  - topic: responsive-design-guidance
+    capability: responsive-cascade-design
+  - topic: style-consistency
+    capability: style-consistency-review
+  - topic: design-gap-analysis
+    capability: design-gap-analysis
+  - topic: companion-visual-identity
+    capability: companion-visual-identity
+
+cannot_answer:
+  - topic: product-priority
+    owner: the human owner (Rylee)
+  - topic: deployment-state
+    owner: project runtime/ops truth
+  - topic: runtime-health
+    owner: project runtime/ops truth
+  - topic: production-authorization
+    owner: the human owner (Rylee)
+  - topic: security-policy
+    owner: SECURITY.md + the human owner
+  - topic: code-correctness-without-runtime-evidence
+    owner: the implementation + its tests
+  - topic: canonical-token-values
+    owner: design/tokens.json (repo) — never Figma variables
+
+fallback_order:
+  - figma-first-for-her-topics
+  - foreman-or-integrating-session
+  - owner

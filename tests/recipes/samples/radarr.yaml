@@ -1,0 +1,47 @@
+cards:
+  movies:
+    - name: normal
+      responses:
+        calendar:
+          - title: Example Film
+            inCinemas: "2027-02-01T00:00:00Z"
+            digitalRelease: "2027-03-01T00:00:00Z"
+            physicalRelease: "2027-03-15T00:00:00Z"
+          - title: Another Example
+            inCinemas: "2027-02-10T00:00:00Z"
+            digitalRelease: "2027-03-10T00:00:00Z"
+            physicalRelease: "2027-03-20T00:00:00Z"
+        wanted:
+          totalRecords: 4
+          records:
+            - title: Example Film
+      expect:
+        state: healthy
+        values:
+          coming-up: "2"
+          next-film: Example Film
+          missing: 4 wanted
+    - name: empty
+      responses:
+        calendar: []
+        wanted:
+          totalRecords: 0
+          records: []
+      expect:
+        state: healthy
+        values:
+          coming-up: "0"
+          next-film: unknown
+          missing: 0 wanted
+    - name: unavailable
+      responses:
+        calendar:
+          __status: 500
+        wanted:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          coming-up: unknown
+          next-film: unknown
+          missing: unknown

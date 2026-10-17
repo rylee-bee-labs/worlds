@@ -1,0 +1,381 @@
+<!doctype html>
+<!--
+  Worlds Kit — component preview.
+
+  Every `wk-` component, in every variant, on one static page. This is the
+  living reference the tool migrations are checked against. Serve it beside
+  tokens.css / base.css / fonts/ (that is, from the built dist-kit/).
+-->
+<html lang="en" data-theme="starfield">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Worlds Kit — component preview</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="base.css" />
+    <style>
+      /* Preview-page chrome only. Still token-driven. */
+      .preview-section {
+        padding-top: var(--pw-spacing-xl);
+        border-top: 1px solid var(--pw-border-subtle);
+      }
+      .preview-theme {
+        min-width: 12rem;
+      }
+      .preview-theme .wk-select {
+        width: auto;
+      }
+      .preview-banner-grid {
+        display: grid;
+        gap: var(--pw-spacing-md);
+      }
+    </style>
+  </head>
+  <body>
+    <a class="wk-skip-link" href="#main">Skip to main content</a>
+
+    <header class="wk-page">
+      <div class="wk-cluster" style="justify-content: space-between">
+        <div>
+          <h1>Worlds Kit</h1>
+          <p class="wk-hint">Version 0.1.0+c87ed71c66 · built not recorded (content-addressed)</p>
+        </div>
+        <div class="wk-field preview-theme">
+          <label class="wk-label" for="theme-picker">Theme</label>
+          <select class="wk-select" id="theme-picker">
+            <option value="station">Station</option>
+            <option value="daylight">Daylight</option>
+            <option value="doorways">Doorways</option>
+            <option value="moss">Moss</option>
+            <option value="ocean">Ocean</option>
+            <option value="plain">Plain</option>
+            <option value="starfield" selected>Starfield</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="wk-page wk-stack wk-stack--xl">
+      <!-- ── Buttons ─────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-buttons">
+        <h2 id="s-buttons">Buttons</h2>
+        <div class="wk-cluster">
+          <button type="button" class="wk-btn">Default (secondary)</button>
+          <button type="button" class="wk-btn wk-btn--primary">Primary</button>
+          <button type="button" class="wk-btn wk-btn--quiet">Quiet</button>
+          <button type="button" class="wk-btn wk-btn--danger">Danger</button>
+          <button type="button" class="wk-btn" disabled>Disabled</button>
+          <a class="wk-btn wk-btn--primary" href="#s-buttons">Link as button</a>
+        </div>
+        <div class="wk-cluster" style="margin-top: var(--pw-spacing-md)">
+          <button type="button" class="wk-btn wk-btn--large wk-btn--primary">Large button</button>
+        </div>
+        <div style="margin-top: var(--pw-spacing-md); max-width: 24rem">
+          <button type="button" class="wk-btn wk-btn--primary wk-btn--block">Block button</button>
+        </div>
+      </section>
+
+      <!-- ── Icons ───────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-icons">
+        <h2 id="s-icons">Icons (always beside words)</h2>
+        <div class="wk-cluster">
+          <button type="button" class="wk-btn"><svg class="wk-icon wk-icon--sm" aria-hidden="true"><use href="icons.svg#icon-navigation-back"/></svg> Back</button>
+          <a class="wk-btn wk-btn--primary" href="#s-icons">Open Studio <svg class="wk-icon wk-icon--sm" aria-hidden="true"><use href="icons.svg#icon-actions-external"/></svg></a>
+          <button type="button" class="wk-btn wk-btn--quiet"><svg class="wk-icon wk-icon--sm" aria-hidden="true"><use href="icons.svg#icon-status-feedback-check"/></svg> Saved</button>
+        </div>
+        <div class="wk-cluster" style="margin-top: var(--pw-spacing-md)">
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-actions-close"/></svg><code>actions-close</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-actions-external"/></svg><code>actions-external</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-navigation-back"/></svg><code>navigation-back</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-navigation-chevron-right"/></svg><code>navigation-chevron-right</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-navigation-chevron-down"/></svg><code>navigation-chevron-down</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-status-feedback-check"/></svg><code>status-feedback-check</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-status-feedback-success"/></svg><code>status-feedback-success</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-status-feedback-warning"/></svg><code>status-feedback-warning</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-status-feedback-info"/></svg><code>status-feedback-info</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-system-device-key"/></svg><code>system-device-key</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-system-device-lock"/></svg><code>system-device-lock</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-world-content-door"/></svg><code>world-content-door</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-world-content-sparkle"/></svg><code>world-content-sparkle</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-actions-add"/></svg><code>actions-add</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-actions-edit"/></svg><code>actions-edit</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-actions-search"/></svg><code>actions-search</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-navigation-chat"/></svg><code>navigation-chat</code></span>
+          <span class="wk-cluster" style="gap: var(--pw-spacing-xs)"><svg class="wk-icon wk-icon--lg" aria-hidden="true"><use href="icons.svg#icon-people-community-people"/></svg><code>people-community-people</code></span>
+        </div>
+      </section>
+
+      <!-- ── Cards ───────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-cards">
+        <h2 id="s-cards">Cards</h2>
+        <div class="wk-grid">
+          <article class="wk-card">
+            <div class="wk-card__body">
+              <p><span class="wk-chip wk-chip--accent">Needs you</span></p>
+              <h3 class="wk-card__title">A room that needs you</h3>
+              <p><span class="wk-status wk-status--healthy">Healthy</span></p>
+              <p class="wk-card__meta">2 needs · waiting since Sep 25, 6:40 PM · kept by Luna</p>
+              <p>Everything a card says is in words; nothing is left to colour.</p>
+            </div>
+          </article>
+          <article class="wk-card wk-card--raised">
+            <div class="wk-card__body">
+              <p><span class="wk-chip">Quiet</span></p>
+              <h3 class="wk-card__title">A raised corridor row</h3>
+              <p><span class="wk-status wk-status--degraded">Degraded</span></p>
+              <p class="wk-card__meta">Nothing new needs you.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── Chips ───────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-chips">
+        <h2 id="s-chips">Chips</h2>
+        <div class="wk-cluster">
+          <span class="wk-chip">Default</span>
+          <span class="wk-chip wk-chip--accent">Needs you</span>
+        </div>
+      </section>
+
+      <!-- ── Status words ────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-status">
+        <h2 id="s-status">Status (always in words)</h2>
+        <div class="wk-cluster">
+          <span class="wk-status wk-status--healthy">Healthy</span>
+          <span class="wk-status wk-status--degraded">Degraded</span>
+          <span class="wk-status wk-status--unhealthy">Unhealthy</span>
+          <span class="wk-status wk-status--unknown">Unknown</span>
+          <span class="wk-status wk-status--unreachable">Unreachable</span>
+          <span class="wk-status wk-status--incompatible">Incompatible</span>
+        </div>
+      </section>
+
+      <!-- ── Signals ─────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-signals">
+        <h2 id="s-signals">Signals</h2>
+        <div class="wk-stack wk-stack--sm">
+          <div class="wk-signal wk-signal--good" role="status">
+            <span class="wk-signal__dot" aria-hidden="true"></span>
+            <div class="wk-signal__body">
+              <p class="wk-signal__title"><span class="wk-sr-only">Good: </span>All quiet aboard</p>
+              <p class="wk-signal__desc">Nothing needs you right now.</p>
+            </div>
+          </div>
+          <div class="wk-signal wk-signal--update" role="status">
+            <span class="wk-signal__dot" aria-hidden="true"></span>
+            <div class="wk-signal__body">
+              <p class="wk-signal__title"><span class="wk-sr-only">Update: </span>Three new since you last looked</p>
+            </div>
+          </div>
+          <div class="wk-signal wk-signal--waiting" role="status">
+            <span class="wk-signal__dot" aria-hidden="true"></span>
+            <div class="wk-signal__body">
+              <p class="wk-signal__title"><span class="wk-sr-only">Waiting: </span>Two rooms are waiting on you</p>
+              <p class="wk-signal__desc">They can keep waiting; this is a rank, not an alarm.</p>
+            </div>
+          </div>
+          <div class="wk-signal wk-signal--critical" role="status">
+            <span class="wk-signal__dot" aria-hidden="true"></span>
+            <div class="wk-signal__body">
+              <p class="wk-signal__title"><span class="wk-sr-only">Critical: </span>A room stopped answering</p>
+              <p class="wk-signal__desc">Unreachable · last seen Sep 25, 4:12 PM</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Fields ──────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-fields">
+        <h2 id="s-fields">Fields</h2>
+        <form class="wk-grid" onsubmit="return false;">
+          <div class="wk-field">
+            <label class="wk-label" for="f-name">Name</label>
+            <input class="wk-input" id="f-name" type="text" placeholder="A room's name" />
+            <p class="wk-hint">Shown wherever the room appears.</p>
+          </div>
+          <div class="wk-field">
+            <label class="wk-label" for="f-theme">Default theme</label>
+            <select class="wk-select" id="f-theme">
+              <option>starfield</option>
+              <option>doorways</option>
+            </select>
+          </div>
+          <div class="wk-field">
+            <label class="wk-label" for="f-notes">Notes</label>
+            <textarea class="wk-textarea" id="f-notes" rows="3"></textarea>
+          </div>
+          <div class="wk-field">
+            <label class="wk-label" for="f-bad">Address</label>
+            <input class="wk-input" id="f-bad" type="text" value="not a url" aria-describedby="f-bad-error" aria-invalid="true" />
+            <p class="wk-error" id="f-bad-error">That doesn't look like an address.</p>
+          </div>
+        </form>
+      </section>
+
+      <!-- ── Table ───────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-table">
+        <h2 id="s-table">Table</h2>
+        <table class="wk-table">
+          <caption>Where a room's report comes from</caption>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Contract</th>
+              <td>room/0</td>
+            </tr>
+            <tr>
+              <th scope="row">Version</th>
+              <td>1.1.0</td>
+            </tr>
+            <tr>
+              <th scope="row">Last checked</th>
+              <td>Sep 25, 6:40 PM</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ── Tabs ────────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-tabs">
+        <h2 id="s-tabs">Tabs</h2>
+        <div class="wk-tabs" role="tablist" aria-label="Example sections">
+          <button class="wk-tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button">Overview</button>
+          <button class="wk-tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button">Memory</button>
+          <button class="wk-tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button">Settings</button>
+        </div>
+        <div id="panel-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
+          <p>Overview panel. Keyboard users can move between tabs and read the panel.</p>
+        </div>
+        <div id="panel-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden>
+          <p>Memory panel.</p>
+        </div>
+        <div id="panel-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden>
+          <p>Settings panel.</p>
+        </div>
+      </section>
+
+      <!-- ── Drawer ──────────────────────────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-drawer">
+        <h2 id="s-drawer">Drawer</h2>
+        <p class="wk-hint">A non-modal side panel — the page behind stays usable.</p>
+        <button type="button" class="wk-btn" id="drawer-open" aria-haspopup="dialog" aria-expanded="false">
+          Open drawer
+        </button>
+        <dialog class="wk-drawer" id="demo-drawer" aria-labelledby="demo-drawer-title">
+          <div class="wk-drawer__header">
+            <h2 class="wk-drawer__title" id="demo-drawer-title">Studio</h2>
+            <button type="button" class="wk-drawer__close" id="drawer-close" aria-label="Close drawer">
+              <span aria-hidden="true">✕</span>
+            </button>
+          </div>
+          <div class="wk-drawer__body">
+            <p><span class="wk-status wk-status--healthy">Healthy</span></p>
+            <p>Everything the room reported, in words.</p>
+            <pre class="wk-code">contract: room/0
+version: 1.1.0
+commit: 0a7fb10</pre>
+          </div>
+        </dialog>
+      </section>
+
+      <!-- ── Layout, empty, banners, code ────────────────────────────── -->
+      <section class="preview-section" aria-labelledby="s-layout">
+        <h2 id="s-layout">Layout helpers</h2>
+        <div class="wk-cluster">
+          <span class="wk-chip">.wk-page</span>
+          <span class="wk-chip">.wk-stack</span>
+          <span class="wk-chip">.wk-cluster</span>
+          <span class="wk-chip">.wk-grid</span>
+        </div>
+      </section>
+
+      <section class="preview-section" aria-labelledby="s-empty">
+        <h2 id="s-empty">Empty state</h2>
+        <div class="wk-empty">
+          <p class="wk-empty__title">No rooms yet</p>
+          <p class="wk-empty__body">When a room connects, its door appears here, with whatever needs you inside.</p>
+        </div>
+      </section>
+
+      <section class="preview-section" aria-labelledby="s-banners">
+        <h2 id="s-banners">Banners</h2>
+        <div class="preview-banner-grid">
+          <div class="wk-banner wk-banner--info">
+            <p class="wk-banner__title">Heads up</p>
+            <p class="wk-banner__body">A room answered for the first time.</p>
+          </div>
+          <div class="wk-banner wk-banner--warn">
+            <p class="wk-banner__title">Last checked a while ago</p>
+            <p class="wk-banner__body">You're seeing what the rooms said then.</p>
+          </div>
+          <div class="wk-banner wk-banner--error">
+            <p class="wk-banner__title">Couldn't check your rooms</p>
+            <p class="wk-banner__body">Nothing is shown until it answers. Try again in a moment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="preview-section" aria-labelledby="s-code">
+        <h2 id="s-code">Code</h2>
+        <p>Inline <code class="wk-code">room/0</code> detail, and a block:</p>
+        <pre class="wk-code">GET /room/cards → { ok: true, status: 200, data: [...] }</pre>
+      </section>
+    </main>
+
+    <footer class="wk-page">
+      <p class="wk-hint">Worlds Kit — the exportable Worlds design language.</p>
+    </footer>
+
+    <script>
+      // Theme switcher — sets data-theme on <html>; "station" falls back to :root.
+      const picker = document.getElementById("theme-picker");
+      picker.addEventListener("change", () => {
+        document.documentElement.setAttribute("data-theme", picker.value);
+      });
+
+      // Tabs — click/selection semantics (keyboard focus is native buttons).
+      const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      function selectTab(tab) {
+        for (const t of tabs) {
+          const on = t === tab;
+          t.setAttribute("aria-selected", on ? "true" : "false");
+          t.tabIndex = on ? 0 : -1;
+          const panel = document.getElementById(t.getAttribute("aria-controls"));
+          if (panel) panel.hidden = !on;
+        }
+      }
+      for (const t of tabs) t.addEventListener("click", () => selectTab(t));
+
+      // Drawer — non-modal show()/close(), Escape, focus return.
+      const drawer = document.getElementById("demo-drawer");
+      const openBtn = document.getElementById("drawer-open");
+      const closeBtn = document.getElementById("drawer-close");
+      let lastFocus = null;
+      function openDrawer() {
+        lastFocus = document.activeElement;
+        if (!drawer.open) drawer.show();
+        openBtn.setAttribute("aria-expanded", "true");
+        closeBtn.focus();
+      }
+      function closeDrawer() {
+        if (drawer.open) drawer.close();
+        openBtn.setAttribute("aria-expanded", "false");
+        if (lastFocus) lastFocus.focus();
+      }
+      openBtn.addEventListener("click", openDrawer);
+      closeBtn.addEventListener("click", closeDrawer);
+      drawer.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeDrawer();
+        }
+      });
+    </script>
+  </body>
+</html>

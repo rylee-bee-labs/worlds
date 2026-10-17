@@ -1,0 +1,8 @@
+schema_version: 1
+name: gatus
+title: Homelab health
+summary: Whether the homelab checks are passing.
+status: ready
+note: ""
+verified: false
+env: []

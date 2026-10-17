@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "name": "Personal World Design Tokens",
+    "version": "1.0",
+    "description": "Semantic token inventory. Implementation reproduces the design from these tokens. Figma is not a runtime dependency."
+  },
+  "surface": {
+    "canvas": "#0a0810",
+    "panel": "#12101a",
+    "elevated": "#1a1724",
+    "divider": "#2a2538"
+  },
+  "text": {
+    "primary": "#f0eaff",
+    "secondary": "#a397b8",
+    "muted": "#6b5f82"
+  },
+  "accent": {
+    "primary": "#72b1b1",
+    "secondary": "#b57f8b"
+  },
+  "status": {
+    "healthy": "#72b1b1",
+    "warning": "#c4a35a",
+    "error": "#b57f8b",
+    "unknown": "#6b5f82",
+    "stale": "#6b5f82",
+    "unavailable": "#6b5f82"
+  },
+  "focus": {
+    "ring_color": "#72b1b1",
+    "ring_width": "2px",
+    "ring_offset": "2px",
+    "ring_style": "solid"
+  },
+  "targets": {
+    "minimum": "44px",
+    "large": "56px"
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "32px",
+    "2xl": "48px"
+  },
+  "typography": {
+    "heading": {
+      "family": "Young Serif",
+      "usage": "greeting, page title, major expressive headings"
+    },
+    "interface": {
+      "family": "Instrument Sans",
+      "usage": "controls, status, body, navigation, settings, tables, provenance"
+    },
+    "sizes": {
+      "body": "16px",
+      "small": "14px",
+      "caption": "12px"
+    }
+  },
+  "motion": {
+    "off": "no transitions",
+    "reduced": "instant pose switches, subtle fades",
+    "subtle": "max 300ms ease-out transitions"
+  },
+  "companion": {
+    "body": "#72b1b1",
+    "patch": "#83bcc0",
+    "eye": "#f0eaff",
+    "mouth": "rgba(240, 234, 255, 0.6)",
+    "ring": "rgba(114, 177, 177, 0.6)",
+    "glow": "rgba(114, 177, 177, 0.1)",
+    "accent": "#f0eaff"
+  },
+  "high_contrast": {
+    "surface": {
+      "canvas": "#000000",
+      "panel": "#0a0a0a",
+      "elevated": "#1a1a1a",
+      "divider": "#444444"
+    },
+    "text": {
+      "primary": "#ffffff",
+      "secondary": "#cccccc",
+      "muted": "#999999"
+    },
+    "accent": {
+      "primary": "#8dcfcf",
+      "secondary": "#d4969f"
+    },
+    "focus": {
+      "ring_color": "#ffffff"
+    }
+  }
+}

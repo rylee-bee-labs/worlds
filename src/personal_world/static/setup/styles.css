@@ -1,0 +1,449 @@
+/* Worlds — "First light", the first-run setup wizard.
+   Dependency-free, dark by default, WCAG AA contrast (body text well
+   past 7:1 in every palette), 44px targets, visible focus, no motion
+   (the progress dots and the lamp are static). Status is always text +
+   symbol, never colour alone.
+
+   Palettes mirror three theme packs (design/themes/*.json) so the colour
+   choice previews on this page; the app reads the same choice from
+   localStorage "pw-station-theme". */
+
+:root,
+[data-theme="starfield"] {
+  --bg: #0F1119;
+  --void: #0C0D14;
+  --surface: #1A1D2A;
+  --surface-2: #222636;
+  --line: rgba(240, 237, 230, 0.14);
+  --text: #F0EDE6;
+  --muted: #B8B2A6;
+  --accent: #D4A057;
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Atkinson Hyperlegible Next", "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+[data-theme="doorways"] {
+  --bg: #161A30;
+  --void: #0F1226;
+  --surface: #1F2442;
+  --surface-2: #262C4E;
+  --line: rgba(236, 228, 214, 0.16);
+  --text: #ECE4D6;
+  --muted: #D3CAB9;
+  --accent: #E2AB62;
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Atkinson Hyperlegible Next", "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+[data-theme="plain"] {
+  --bg: #141211;
+  --void: #0D0C0B;
+  --surface: #1C1917;
+  --surface-2: #23201D;
+  --line: rgba(236, 231, 223, 0.14);
+  --text: #ECE7DF;
+  --muted: #C2BBB1;
+  --accent: #D4A057;
+  --serif: "Young Serif", Georgia, serif;
+  --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+:root {
+  --ok: #8ce0a3;
+  --problem: #ff9d94;
+  --focus: #ffd88a;
+  --radius: 12px;
+  --radius-lg: 24px;
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: dark; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* Skip link: visible on focus, 44px tall. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: var(--focus);
+  color: var(--void);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Visible focus everywhere. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+/* A radio or checkbox inside a card: ring the whole card. */
+.choice:has(input:focus-visible),
+.toggle:has(input:focus-visible),
+.companion:has(input:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.brand-mark { width: 36px; height: 36px; object-fit: contain; }
+.brand { margin: 0; font-family: var(--serif); font-weight: 600; font-size: 1.15rem; }
+.brand-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Layout: the portal beside the card on wide screens, above it on
+   phones — and only on the welcome step. */
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+.portal {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: none;
+}
+body[data-step="step-welcome"] .portal { display: flex; }
+.portal-art { position: relative; display: flex; justify-content: center; }
+.portal-room { height: min(520px, 60vh); width: auto; }
+.portal-sol {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  width: 34%;
+}
+.eyebrow {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+.portal-line {
+  margin: 0;
+  max-width: 22rem;
+  text-align: center;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.375rem;
+  line-height: 1.35;
+}
+
+.card {
+  width: 100%;
+  max-width: 40rem;
+  padding: 2.25rem 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 900px) {
+  .layout { flex-direction: column; gap: 1.5rem; padding: 1.25rem 1rem 2rem; }
+  .portal-room { height: min(320px, 42vh); }
+  .card { padding: 1.5rem 1.25rem; }
+}
+
+.page-title {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.progress-wrap { margin: 0 0 1.5rem; }
+.dots { display: flex; gap: 6px; align-items: center; list-style: none; margin: 0 0 0.5rem; padding: 0; }
+.dots li { width: 10px; height: 10px; border-radius: 999px; background: var(--line); }
+.dots li.done { background: var(--muted); }
+.dots li.here { width: 26px; background: var(--accent); }
+.progress { margin: 0; color: var(--muted); font-size: 0.9375rem; }
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  line-height: 1.1;
+}
+h3 { font-size: 1.1rem; margin: 1.25rem 0 0.5rem; }
+
+.lead { font-size: 1.0625rem; color: var(--muted); }
+.quiet { color: var(--muted); font-size: 0.9375rem; }
+
+.numbered { list-style: none; counter-reset: step; margin: 1rem 0; padding: 0; }
+.numbered li {
+  counter-increment: step;
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  margin: 0.4rem 0;
+}
+.numbered li::before {
+  content: counter(step);
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 1ch;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.step { animation: none; }
+
+/* Buttons: >= 44px tall, obvious affordance. */
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.6rem 1.25rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--void); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.big { min-height: 52px; padding: 0 1.75rem; font-size: 1.125rem; }
+.btn:disabled { opacity: 0.6; cursor: progress; }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Choice cards (radio group) — the whole card is the 44px+ target. */
+.choice-set { border: 0; margin: 0 0 1rem; padding: 0; }
+.choice-set > legend { font-weight: 700; margin-bottom: 0.5rem; padding: 0; }
+.choice, .toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  min-height: 44px;
+  padding: 0.9rem 1rem;
+  margin: 0 0 0.6rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.choice:hover, .toggle:hover { border-color: var(--accent); }
+.choice:has(input:checked), .toggle:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+.choice input, .toggle input {
+  width: 24px; height: 24px;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+  flex: none;
+}
+.choice-body, .toggle-body { display: block; }
+.choice-title { display: block; font-weight: 700; }
+.choice-desc { display: block; color: var(--muted); font-size: 0.9375rem; }
+
+/* Colour swatches: decoration; the theme's name is the label. */
+.swatch-choice { align-items: center; }
+.swatch {
+  flex: none;
+  width: 44px; height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+.swatch[data-swatch="starfield"] { background: linear-gradient(135deg, #0F1119 55%, #D4A057 55%); }
+.swatch[data-swatch="doorways"] { background: linear-gradient(135deg, #161A30 55%, #E2AB62 55%); }
+.swatch[data-swatch="plain"] { background: linear-gradient(135deg, #141211 55%, #72B1B1 55%); }
+
+.badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.55rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--void);
+  background: var(--accent);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+/* Companions: portraits in portholes, the name always in words. */
+.companion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.75rem;
+}
+.companion {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.companion:hover { border-color: var(--accent); }
+.companion:has(input:checked) { border: 2px solid var(--accent); background: var(--surface-2); }
+.companion input {
+  position: absolute;
+  top: 0.6rem; left: 0.6rem;
+  width: 22px; height: 22px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+.companion img {
+  width: 76px; height: 76px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  background: var(--surface);
+}
+.companion-name { font-weight: 700; }
+.companion-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.4; }
+
+/* Form fields. */
+.field { margin: 0 0 1.1rem; }
+.field label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+.toggle-field { margin: 0; }
+/* A toggle card is a label too: keep its row layout, not the plain
+   field-label block. */
+.field label.toggle { display: flex; font-weight: 400; margin-bottom: 0.6rem; }
+.field input[type="url"],
+.field input[type="text"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.55rem 0.75rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--muted);
+  border-radius: var(--radius);
+}
+.field input:hover { border-color: var(--accent); }
+.help { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.875rem; }
+code {
+  background: var(--surface-2);
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+/* Alerts: symbol + words, never colour alone. */
+.alert {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  border: 2px solid;
+  margin: 1rem 0;
+  background: var(--bg);
+}
+.alert-heading { font-weight: 700; margin: 0 0 0.35rem; }
+.alert p { margin: 0.35rem 0; }
+.alert ul { margin: 0.35rem 0; padding-left: 1.3rem; }
+.alert.problem { border-color: var(--problem); }
+.alert.problem .alert-heading { color: var(--problem); }
+.alert.note { border-color: var(--accent); }
+.alert.note .alert-heading { color: var(--accent); }
+
+.test-result { margin: 0.75rem 0; }
+.test-result p { margin: 0.35rem 0; }
+.test-result .verdict { font-weight: 700; }
+.test-result.reachable .verdict { color: var(--ok); }
+.test-result.unreachable .verdict,
+.test-result.bad_config .verdict { color: var(--problem); }
+.test-result.testing .verdict { color: var(--muted); }
+
+/* Calm busy state: the words carry the meaning; the lamp is a still,
+   decorative dot — nothing spins. */
+.calm { color: var(--muted); }
+.lamp {
+  display: inline-block;
+  width: 0.7em; height: 0.7em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0.6em var(--accent);
+  vertical-align: 0.05em;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+}
+.summary dt { font-weight: 700; }
+.summary dd { margin: 0; color: var(--muted); }
+
+.site-footer {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* OS-level reduced motion always wins (there is nothing to stop). */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,33 @@
+{
+  "source": ["../../design/themes/station.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "src/generated/",
+      "files": [
+        {
+          "destination": "tokens.css",
+          "format": "css/variables",
+          "options": {
+            "selector": ":root",
+            "outputReferences": false
+          }
+        }
+      ],
+      "prefix": "pw",
+      "transforms": ["attribute/cti", "name/kebab"]
+    },
+    "typescript": {
+      "transformGroup": "js",
+      "buildPath": "src/generated/",
+      "files": [
+        {
+          "destination": "tokens.ts",
+          "format": "typescript/es6-declarations"
+        }
+      ],
+      "prefix": "pw",
+      "transforms": ["attribute/cti", "name/camel"]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "personal-world/connections/1",
+  "connections": [
+    {
+      "type": "opencode",
+      "name": "mimo",
+      "capability": "reasoning",
+      "model": "opencode-go/mimo-v2.5",
+      "timeout": 120,
+      "display_name": "MiMo 2.5 (OpenCode)"
+    },
+    {
+      "type": "openai_compat",
+      "name": "mimo-xiaomi",
+      "capability": "reasoning",
+      "base_url": "https://mimo.example.invalid:8081/v1",
+      "model": "mimo-v2.5",
+      "api_key_env": "XIAOMI_MIMO_API_KEY",
+      "timeout": 120,
+      "display_name": "MiMo 2.5 (Xiaomi)"
+    },
+    {
+      "type": "openai_compat",
+      "name": "qwen-local",
+      "capability": "reasoning",
+      "base_url": "http://qwen.example.invalid:8081",
+      "model": "qwen3:8b",
+      "timeout": 120,
+      "display_name": "Qwen (local)"
+    }
+  ]
+}

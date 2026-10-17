@@ -1,0 +1,7 @@
+schema_version: 1
+id: prowlarr.health
+provider: prowlarr
+method: GET
+path: /api/v1/health
+effect: read
+ttl_s: 60

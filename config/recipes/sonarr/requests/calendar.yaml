@@ -1,0 +1,12 @@
+schema_version: 1
+id: sonarr.calendar
+provider: sonarr
+method: GET
+path: /api/v3/calendar
+query:
+  start: "{today}"
+  end: "{today+7d}"
+  includeSeries: "true"
+  unmonitored: "false"
+effect: read
+ttl_s: 60

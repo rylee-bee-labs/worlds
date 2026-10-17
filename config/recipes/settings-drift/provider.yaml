@@ -1,0 +1,11 @@
+schema_version: 1
+id: settings-drift
+name: Settings drift
+kind: http
+base_url: http://settings.lan.example:9898
+auth:
+  type: none
+network:
+  lan: true
+timeout_s: 5
+max_bytes: 1048576

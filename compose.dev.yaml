@@ -1,0 +1,25 @@
+# Local development override. Builds from the current source tree
+# instead of pulling the published image, so a developer can iterate
+# against the Dockerfile and the live code without a GHCR push.
+#
+# Usage:
+#   docker compose -f compose.yaml -f compose.dev.yaml up --build
+#
+# This override is the ONLY place a `build:` clause should appear. The
+# portable base compose.yaml must stay image-only so any host can boot
+# without the source tree.
+
+services:
+  core:
+    build: .
+    image: personal-world:dev
+    # Never reach GHCR for a local build — only the published tags do.
+    pull_policy: never
+    environment:
+      # Loopback-only development bypass, now OPT-IN. It used to default
+      # to "1", which silently authenticated a local caller without a
+      # session; the dev/mirror instance should behave like production, so
+      # request it explicitly when you want it:
+      #   PW_DEV_AUTH_BYPASS=1 docker compose -f compose.yaml -f compose.dev.yaml up
+      # identity.py enforces true-loopback; never for LAN access.
+      PW_DEV_AUTH_BYPASS: ${PW_DEV_AUTH_BYPASS:-}

@@ -1,0 +1,34 @@
+{
+  "format": "CONTRACT OPERATIONAL COMMITMENT v1",
+  "role": "onboarding-experiment",
+  "contract_gate": "PROVISIONAL",
+  "commitment": "PROVISIONAL",
+  "library_version": "v0.6.0",
+  "library_revision": "0cee0652fb6f13c440b1fd9cc5d78fd87cdca8ad",
+  "adoption_file": ".project/contracts/adoption.yaml",
+  "bundle_receipt": "not-applicable",
+  "bundle_sha256": "not-applicable",
+  "bundle_scope": "resolved-set",
+  "task": "Cold-onboard Auto Free into Play-Nice participant-pack framework; profile the routing mode, the Kilo harness, and the actual responding brain; perform one bounded validation task",
+  "task_fingerprint": "auto-free-cold-onboard-2026-09-12",
+  "session_dir": "local",
+  "resolved_contracts": [],
+  "contracts": [],
+  "inherited_bundle": null,
+  "activated_at": null,
+  "provisional_reason": {
+    "contractctl_unavailable": true,
+    "contractctl_note": "contractctl is not installed in the local environment; no play-nice-contracts checkout exists at ~/play-nice-contracts. The contractctl onboard/resolve/validate subcommands cannot be executed.",
+    "attestation_limitation": "Without contractctl, the full task-gate (RESOLVE, READ, VERIFY, TASK IMPACT, CONFLICT CHECK, ATTESTATION, COMMITMENT, ACTIVE, MUTATION) cannot be completed. The participant pack is marked PROVISIONAL per the canonical-freshness escape hatch: 'mark the work PROVISIONAL until reachable.'",
+    "what_was_verified_locally": [
+      "Canonical freshness: git pull --ff-only to 90fcabb (HEAD = origin/main, 0 ahead/0 behind)",
+      "Participant pack validity: validate_participant_packs passes for all known packs (figma, big-pickle, kilo, minimax, glm-5.3-flash) and the new auto-free pack",
+      "Framework validate: personal-world framework validate reports healthy with zero violations",
+      "YAML conformance: all participant.yaml files parse with yaml.safe_load",
+      "ID uniqueness: no two packs share the same id",
+      "Schema namespace: all packs declare schema starting with play-nice/"
+    ],
+    "adoption_pin_unchanged": true,
+    "adoption_pin": "0cee0652fb6f13c440b1fd9cc5d78fd87cdca8ad"
+  }
+}

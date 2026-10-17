@@ -1,0 +1,41 @@
+cards:
+  subtitles:
+    - name: normal
+      responses:
+        wanted-episodes:
+          data:
+            - id: 1
+              title: Example Show
+          total: 4
+        wanted-movies:
+          data: []
+          total: 1
+      expect:
+        state: healthy
+        values:
+          episodes-waiting: "4"
+          films-waiting: "1"
+    - name: unavailable
+      responses:
+        wanted-episodes:
+          __status: 500
+        wanted-movies:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          episodes-waiting: "unknown"
+          films-waiting: "unknown"
+    - name: empty
+      responses:
+        wanted-episodes:
+          data: []
+          total: 0
+        wanted-movies:
+          data: []
+          total: 0
+      expect:
+        state: healthy
+        values:
+          episodes-waiting: "0"
+          films-waiting: "0"

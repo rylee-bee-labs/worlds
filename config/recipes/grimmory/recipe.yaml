@@ -1,0 +1,9 @@
+schema_version: 1
+name: grimmory
+title: Grimmory
+summary: Reading library status.
+status: ready
+note: "The token endpoint /api/v1/auth/token and the library response shapes are assumed from a password-grant API; they were not run against a live instance. The credential is one secret, username:password; the bearer token is kept in memory only and re-fetched once if a read is refused."
+verified: false
+env:
+  - GRIMMORY_CREDENTIALS

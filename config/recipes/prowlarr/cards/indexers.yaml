@@ -1,0 +1,28 @@
+schema_version: 1
+id: indexers
+title: Indexers
+icon: search
+group: machine
+request: prowlarr.health
+view: status
+meaning:
+  concept: Whether the indexers have anything to report.
+  short: Are the indexers healthy?
+  full: The warnings and errors the indexers are reporting right now. No entries means nothing to report; a warning or error means something needs a look.
+fields:
+  - path: "$"
+    label: Problems
+    format: count
+status:
+  path: "$[*].type"
+  mode: any
+  healthy:
+    - ok
+    - notice
+  needs_attention:
+    - warning
+    - error
+  empty: healthy
+meter:
+  type: marks
+  items: "$[*].source"

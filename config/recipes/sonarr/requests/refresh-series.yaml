@@ -1,0 +1,9 @@
+schema_version: 1
+id: sonarr.refresh-series
+provider: sonarr
+method: POST
+path: /api/v3/command
+body:
+  name: RefreshSeries
+effect: write
+ttl_s: 0

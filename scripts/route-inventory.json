@@ -1,0 +1,276 @@
+{
+  "auth_levels": {
+    "any": "principal dependency accepts an owner session or a scoped agent token",
+    "owner": "principal dependency is owner-only: an agent token is refused (403)",
+    "public": "no router-level principal dependency (a handler may still require a session)"
+  },
+  "format": "worlds-route-inventory/1",
+  "routes": [
+    {
+      "auth": "any",
+      "method": "GET",
+      "path": "/api/actions"
+    },
+    {
+      "auth": "any",
+      "method": "POST",
+      "path": "/api/actions/{action_id}/authorizations"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/agent-tokens"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/agent-tokens"
+    },
+    {
+      "auth": "owner",
+      "method": "DELETE",
+      "path": "/api/agent-tokens/{token_id}"
+    },
+    {
+      "auth": "public",
+      "method": "POST",
+      "path": "/api/auth/bootstrap"
+    },
+    {
+      "auth": "public",
+      "method": "POST",
+      "path": "/api/auth/logout"
+    },
+    {
+      "auth": "public",
+      "method": "GET",
+      "path": "/api/auth/oidc/callback"
+    },
+    {
+      "auth": "public",
+      "method": "GET",
+      "path": "/api/auth/oidc/login"
+    },
+    {
+      "auth": "public",
+      "method": "GET",
+      "path": "/api/auth/oidc/step-up"
+    },
+    {
+      "auth": "public",
+      "method": "GET",
+      "path": "/api/auth/session"
+    },
+    {
+      "auth": "public",
+      "method": "POST",
+      "path": "/api/auth/step-up"
+    },
+    {
+      "auth": "any",
+      "method": "GET",
+      "path": "/api/authorizations/{authorization_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/authorizations/{authorization_id}/approve"
+    },
+    {
+      "auth": "any",
+      "method": "POST",
+      "path": "/api/authorizations/{authorization_id}/deny"
+    },
+    {
+      "auth": "any",
+      "method": "POST",
+      "path": "/api/authorizations/{authorization_id}/execute"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/boards/home"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/cards/{card_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/companion/changes"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/companion/context"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/companion/grants"
+    },
+    {
+      "auth": "owner",
+      "method": "DELETE",
+      "path": "/api/companion/grants/{grant_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/companion/grants/{grant_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/companion/health"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/companion/threads"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/companion/threads/{thread_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/companion/turn"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/config/{kind}"
+    },
+    {
+      "auth": "owner",
+      "method": "DELETE",
+      "path": "/api/config/{kind}/{obj_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/config/{kind}/{obj_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "PUT",
+      "path": "/api/config/{kind}/{obj_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/connect/preview"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/connect/try"
+    },
+    {
+      "auth": "any",
+      "method": "POST",
+      "path": "/api/executions/{execution_id}/retry"
+    },
+    {
+      "auth": "any",
+      "method": "GET",
+      "path": "/api/memory/agent/{name}"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/memory/backup"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/memory/export/{table}"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/memory/find"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/memory/history"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/memory/{table}"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/memory/{table}"
+    },
+    {
+      "auth": "owner",
+      "method": "DELETE",
+      "path": "/api/memory/{table}/{row_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/memory/{table}/{row_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "PATCH",
+      "path": "/api/memory/{table}/{row_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/needs-you"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/receipts"
+    },
+    {
+      "auth": "any",
+      "method": "GET",
+      "path": "/api/receipts/{execution_id}"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/rooms"
+    },
+    {
+      "auth": "owner",
+      "method": "GET",
+      "path": "/api/rooms/{provider_id}/actions"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/rooms/{provider_id}/actions/{room_action_id}/adopt"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/rooms/{provider_id}/actions/{room_action_id}/answer"
+    },
+    {
+      "auth": "owner",
+      "method": "POST",
+      "path": "/api/rooms/{provider_id}/changed"
+    },
+    {
+      "auth": "public",
+      "method": "GET",
+      "path": "/healthz"
+    }
+  ],
+  "source": "personal_world.worlds.production:create_app"
+}

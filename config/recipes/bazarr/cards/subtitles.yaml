@@ -1,0 +1,22 @@
+schema_version: 1
+id: subtitles
+title: Subtitles
+icon: subtitles
+group: machine
+requests:
+  - bazarr.wanted-episodes
+  - bazarr.wanted-movies
+view: stat
+meaning:
+  concept: Subtitles that are still missing.
+  short: How many subtitles are waiting.
+  full: >-
+    Counts the episodes and films that still need subtitles. The counts come
+    from the service; a count it does not report reads unknown.
+fields:
+  - path: $.wanted-episodes.total
+    label: Episodes waiting
+    format: number
+  - path: $.wanted-movies.total
+    label: Films waiting
+    format: number

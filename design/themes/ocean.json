@@ -1,0 +1,92 @@
+{
+  "_comment": "Ocean theme — cool, deep, focused. Teal and slate with minimal warmth.",
+  "_author": "Example theme",
+
+  "surface": {
+    "void":     "#060D14",
+    "canvas":   "#0A1219",
+    "hull":     "#0F1923",
+    "panel":    "#152030",
+    "elevated": "#1A2838",
+    "raised":   "#1F3040"
+  },
+
+  "accent": {
+    "primary":     "#5AA8B8",
+    "on_primary":  "#0A2028",
+    "secondary":   "#7A9AAA",
+    "warm":        "#5AA8B8",
+    "warm_soft":   "rgba(90, 168, 184, 0.14)",
+    "gold":        "#7AB8C8",
+    "gold_soft":   "rgba(122, 184, 200, 0.12)",
+    "green":       "#4A9A8A",
+    "green_soft":  "rgba(74, 154, 138, 0.14)",
+    "coral":       "#8A7A9A",
+    "coral_soft":  "rgba(138, 122, 154, 0.12)",
+    "teal":        "#5AA8B8",
+    "teal_soft":   "rgba(90, 168, 184, 0.14)",
+    "lavender":    "#8A9AB8",
+    "lavender_soft": "rgba(138, 154, 184, 0.12)"
+  },
+
+  "text": {
+    "primary":   "#D8E8F0",
+    "secondary": "#A0B8C8",
+    "muted":     "#7d97a8"
+  },
+
+  "border": {
+    "subtle": "rgba(90, 168, 184, 0.10)",
+    "strong": "rgba(90, 168, 184, 0.18)",
+    "hover":  "rgba(90, 168, 184, 0.22)"
+  },
+
+  "spacing": {
+    "xs":  "4px",
+    "sm":  "8px",
+    "md":  "12px",
+    "lg":  "16px",
+    "xl":  "24px",
+    "2xl": "32px",
+    "3xl": "48px",
+    "4xl": "64px"
+  },
+
+  "radius": {
+    "sm":   "8px",
+    "md":   "14px",
+    "lg":   "22px",
+    "full": "9999px"
+  },
+
+  "shadow": {
+    "soft": "0 2px 16px rgba(0,0,0,0.25), 0 0 40px rgba(90,168,184,0.04)",
+    "warm": "0 4px 24px rgba(90,168,184,0.10), 0 0 60px rgba(90,168,184,0.05)",
+    "glow": "0 0 20px rgba(90,168,184,0.16), 0 0 40px rgba(90,168,184,0.06)"
+  },
+
+  "typography": {
+    "font_sans":  "'Avenir Next', 'Segoe UI', system-ui, -apple-system, sans-serif",
+    "font_serif": "Georgia, 'Times New Roman', 'Palatino Linotype', serif",
+    "font_mono":  "'SF Mono', 'Cascadia Code', Consolas, monospace",
+    "size_h1":    "clamp(28px, 4vw, 40px)",
+    "size_lead":  "18px",
+    "size_body":  "16px",
+    "size_small": "14px",
+    "size_micro": "13px",
+    "size_label": "13px"
+  },
+
+  "density": {
+    "comfortable": {
+      "pad_main":  "24px",
+      "gap_main":  "16px",
+      "gap_block": "24px"
+    },
+    "compact": {
+      "pad_main":  "16px",
+      "gap_main":  "12px",
+      "gap_block": "16px"
+    }
+  }
+}

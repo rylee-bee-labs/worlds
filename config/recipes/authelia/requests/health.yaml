@@ -1,0 +1,8 @@
+schema_version: 1
+id: authelia.health
+provider: authelia
+method: GET
+path: /api/health
+query: {}
+effect: read
+ttl_s: 60

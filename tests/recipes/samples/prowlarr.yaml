@@ -1,0 +1,27 @@
+cards:
+  indexers:
+    - name: empty
+      responses:
+        health: []
+      expect:
+        state: healthy
+        values:
+          problems: "0"
+    - name: warning
+      responses:
+        health:
+          - source: Example Indexer
+            type: warning
+            message: The indexer is slow to answer.
+      expect:
+        state: needs_attention
+        values:
+          problems: "1"
+    - name: unavailable
+      responses:
+        health:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          problems: unknown

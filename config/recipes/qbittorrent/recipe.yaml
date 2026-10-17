@@ -1,0 +1,9 @@
+schema_version: 1
+name: qbittorrent
+title: Downloads
+summary: What the download client is fetching right now, and how fast.
+status: ready
+note: "The endpoints /api/v2/auth/login, /api/v2/transfer/info and /api/v2/torrents/info come from the client's web API docs and were not run against a live instance. The credential is one secret, username:password; the session is kept in memory only."
+verified: false
+env:
+  - QBITTORRENT_CREDENTIALS

@@ -1,0 +1,60 @@
+cards:
+  tv:
+    - name: normal
+      responses:
+        calendar:
+          - title: The Long Example
+            seasonNumber: 2
+            episodeNumber: 4
+            airDateUtc: "2027-01-16T08:00:00Z"
+            series:
+              title: Example Show
+          - title: A Second Example
+            seasonNumber: 1
+            episodeNumber: 1
+            airDateUtc: "2027-01-17T08:00:00Z"
+            series:
+              title: Second Example
+          - title: Third Example
+            seasonNumber: 3
+            episodeNumber: 7
+            airDateUtc: "2027-01-18T08:00:00Z"
+            series:
+              title: Third Example
+        queue:
+          totalRecords: 2
+          records:
+            - title: An Example Download
+      expect:
+        state: healthy
+        values:
+          airing-this-week: "3"
+          next-up: Example Show
+          airs: in 1 day
+          downloading: 2 in queue
+    - name: empty
+      responses:
+        calendar: []
+        queue:
+          totalRecords: 0
+          records: []
+      expect:
+        state: healthy
+        values:
+          airing-this-week: "0"
+          next-up: unknown
+          airs: unknown
+          downloading: 0 in queue
+    - name: unavailable
+      responses:
+        calendar:
+          __status: 500
+        queue:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          airing-this-week: unknown
+          next-up: unknown
+          airs: unknown
+          downloading: unknown

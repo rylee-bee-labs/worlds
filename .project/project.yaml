@@ -1,0 +1,35 @@
+schema: play-nice/project-v1
+id: personal-world
+name: Worlds
+
+purpose:
+  summary: >-
+    A calm, accessible personal front door where information, tools, memory,
+    projects and optional providers come together without requiring the person
+    to hold the machinery in working memory. Worlds owns meaning; providers
+    own replaceable mechanics.
+
+ownership:
+  type: human
+  role: owner
+
+contracts:
+  manifest: .project/contracts/adoption.yaml
+
+canonical:
+  current_state: .project/CURRENT.md
+  direction: .project/PLAN.md
+  decisions: .project/DECISIONS.md
+  architecture: docs/adr/0008-front-door.md
+  documentation: docs/INDEX.md
+  security: SECURITY.md
+  accessibility: docs/accessibility/ACCESSIBILITY_CONTRACT.md
+  human_reliability: docs/HUMAN_RELIABILITY_CONTRACT.md
+
+participants:
+  directory: participants
+
+status:
+  vocabulary: play-nice/status-v1
+
+secrets_policy: symbolic-references-only

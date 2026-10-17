@@ -1,0 +1,30 @@
+schema_version: 1
+id: tv
+title: TV
+icon: tv
+group: life
+requests:
+  - sonarr.calendar
+  - sonarr.queue
+view: stat
+meaning:
+  concept: What is airing soon and what is downloading right now.
+  short: What's on TV this week?
+  full: The episodes due in the next week, with the next one named, plus how many items are downloading. Every number is Sonarr's own answer, not a guess made here.
+fields:
+  - path: "$.calendar"
+    label: Airing this week
+    format: count
+  - path: "$.calendar[0].series.title"
+    label: Next up
+    format: text
+  - path: "$.calendar[0].airDateUtc"
+    label: Airs
+    format: relative_time
+  - path: "$.queue.totalRecords"
+    label: Downloading
+    format: number
+    unit: in queue
+meter:
+  type: marks
+  items: "$.calendar[*].series.title"

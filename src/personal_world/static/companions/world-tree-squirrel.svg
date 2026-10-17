@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Personal World — VEFR-inspired book tree and Norse squirrel</title>
+  <desc id="desc">A broad mint world-tree canopy filled with 24 tiny pastel open books as leaves. A smaller Norse-inspired squirrel with cloak, blue cap and messenger satchel sits between two side-spreading roots. There is no downward center root. Warm aubergine outlines and a quiet gold halo.</desc>
+  <g id="world-tree-squirrel-pet" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <g id="world-halo" fill="none" stroke="#DDC58D" stroke-width="3">
+      <circle cx="253" cy="245" r="186" id="world-halo-circle-01" fill="none" stroke="#DDC58D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="tree-roots">
+      <g id="root-left">
+        <path fill="#DFC1AA" d="M240 261 C231 302 214 340 180 361 C149 380 117 378 100 398 C130 395 151 405 174 389 C163 409 144 416 132 427 C168 425 190 414 199 391 C225 374 249 336 253 299 Z" id="root-left-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="root-right">
+        <path fill="#DFC1AA" d="M266 264 C281 302 295 329 322 348 C349 364 377 368 401 390 C372 386 362 385 345 381 C368 400 391 405 402 418 C366 420 342 402 326 382 C291 368 267 338 257 299 Z" id="root-right-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="root-details" fill="none" stroke-width="2.5">
+        <path d="M120 394 Q175 381 199 365 M314 362 Q353 380 380 389" id="root-details-path-01" fill="none" stroke="#603D49" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="tree-crown">
+      <path d="M143 210 C116 213 103 190 115 170 C88 150 106 114 136 115 C137 86 169 71 194 86 C213 59 250 65 263 85 C289 58 325 69 335 96 C369 88 393 111 387 137 C419 155 414 187 389 197 C390 221 365 234 345 225 C319 248 282 235 264 222 C233 247 204 239 190 225 C172 239 146 231 143 210 Z" fill="#B8E4D5" id="tree-crown-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+    <g id="tree-trunk">
+      <path fill="#DFC1AA" d="M228 285 C237 258 239 233 230 214 C217 196 192 200 173 188 C152 175 145 152 145 133 C156 159 168 175 187 177 C180 161 182 147 188 137 C187 157 197 174 215 179 C231 184 239 181 244 174 L244 147 C228 137 214 115 218 99 C224 120 237 129 248 130 C251 109 252 95 250 82 C264 103 264 124 262 143 C279 142 299 124 302 103 C310 127 291 147 264 157 C261 179 263 187 278 184 C303 179 324 167 329 141 C336 157 329 172 322 181 C348 176 362 156 367 138 C371 164 354 189 329 194 C310 199 291 200 280 214 C268 233 273 260 282 285 Z" id="tree-trunk-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <g id="trunk-knot" fill="none" stroke-width="3">
+        <path d="M254 189 C229 207 280 228 256 248 C231 228 279 208 254 189 Z" id="trunk-knot-path-01" fill="none" stroke="#603D49" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M252 251 L251 272" id="trunk-knot-path-02" fill="none" stroke="#603D49" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="book-leaves" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <g id="book-leaf-01" transform="translate(167 103) rotate(-18) scale(0.86)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#DDCEF0" id="book-leaf-01-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-01-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-01-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-01-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-02" transform="translate(199 94) rotate(12) scale(0.77)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#FAE8BC" id="book-leaf-02-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-02-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-02-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-02-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-03" transform="translate(232 88) rotate(-12) scale(0.77)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#BED5F5" id="book-leaf-03-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-03-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-03-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-03-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-04" transform="translate(279 94) rotate(13) scale(0.85)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#F4C6DF" id="book-leaf-04-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-04-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-04-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-04-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-05" transform="translate(315 99) rotate(18) scale(0.84)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#A8D9C5" id="book-leaf-05-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-05-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-05-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-05-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-06" transform="translate(349 115) rotate(-12) scale(0.84)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#DDCEF0" id="book-leaf-06-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-06-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-06-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-06-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-07" transform="translate(132 139) rotate(-24) scale(0.83)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#FAE8BC" id="book-leaf-07-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-07-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-07-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-07-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-08" transform="translate(167 139) rotate(18) scale(0.78)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#BED5F5" id="book-leaf-08-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-08-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-08-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-08-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-09" transform="translate(201 128) rotate(-14) scale(0.83)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#F4C6DF" id="book-leaf-09-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-09-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-09-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-09-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-10" transform="translate(232 151) rotate(14) scale(0.72)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#A8D9C5" id="book-leaf-10-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-10-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-10-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-10-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-11" transform="translate(276 123) rotate(-8) scale(0.72)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#DDCEF0" id="book-leaf-11-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-11-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-11-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-11-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-12" transform="translate(317 138) rotate(13) scale(0.78)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#FAE8BC" id="book-leaf-12-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-12-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-12-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-12-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-13" transform="translate(352 150) rotate(-18) scale(0.79)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#BED5F5" id="book-leaf-13-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-13-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-13-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-13-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-14" transform="translate(382 157) rotate(18) scale(0.83)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#F4C6DF" id="book-leaf-14-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-14-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-14-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-14-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-15" transform="translate(124 178) rotate(-18) scale(0.76)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#A8D9C5" id="book-leaf-15-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-15-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-15-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-15-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-16" transform="translate(150 191) rotate(18) scale(0.78)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#DDCEF0" id="book-leaf-16-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-16-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-16-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-16-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-17" transform="translate(184 211) rotate(-12) scale(0.87)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#FAE8BC" id="book-leaf-17-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-17-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-17-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-17-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-18" transform="translate(207 161) rotate(-13) scale(0.74)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#BED5F5" id="book-leaf-18-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-18-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-18-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-18-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-19" transform="translate(220 210) rotate(16) scale(0.7)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#F4C6DF" id="book-leaf-19-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-19-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-19-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-19-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-20" transform="translate(289 211) rotate(-14) scale(0.75)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#A8D9C5" id="book-leaf-20-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-20-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-20-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-20-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-21" transform="translate(314 211) rotate(12) scale(0.84)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#DDCEF0" id="book-leaf-21-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-21-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-21-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-21-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-22" transform="translate(345 210) rotate(-14) scale(0.86)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#FAE8BC" id="book-leaf-22-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-22-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-22-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-22-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-23" transform="translate(376 195) rotate(19) scale(0.78)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#BED5F5" id="book-leaf-23-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-23-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-23-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-23-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="book-leaf-24" transform="translate(285 167) rotate(-16) scale(0.72)">
+        <path d="M0 -5 Q-7 -11 -15 -9 L-15 10 Q-7 9 0 15 Q7 9 15 10 L15 -9 Q7 -11 0 -5 Z" fill="#F4C6DF" id="book-leaf-24-path-01" stroke="#603D49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 Q-6 -7 -11 -6 L-11 7 Q-5 7 0 11 Q5 7 11 7 L11 -6 Q6 -7 0 -2 Z" fill="#FFF8EA" stroke-width="1.4" id="book-leaf-24-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M0 -2 L0 11" fill="none" stroke-width="1.4" id="book-leaf-24-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M-8 -2 L-4 0 M4 0 L8 -2" fill="none" stroke-width="1.1" stroke="#B79B99" id="book-leaf-24-path-04" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="squirrel" transform="translate(56 74) scale(0.76)">
+      <g id="squirrel-tail">
+        <path d="M283 388 C335 395 371 368 368 333 C365 299 334 293 320 310 C308 289 326 264 349 272 C390 285 403 331 387 368 C374 403 322 430 275 409 Z" fill="#E2B8A3" id="squirrel-tail-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M300 399 C340 406 381 371 377 337 C375 312 352 295 337 308" fill="none" stroke="#F8DDC5" stroke-width="8" id="squirrel-tail-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="cloak-back">
+        <path fill="#C7B3DF" d="M212 313 Q241 296 276 315 C282 338 287 367 303 397 Q285 409 273 400 Q252 415 229 402 Q207 413 186 397 C198 369 197 337 212 313 Z" id="cloak-back-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path fill="none" stroke="#E4D9EF" stroke-width="3" d="M205 344 L198 389 M280 345 L289 390" id="cloak-back-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="squirrel-body">
+        <path d="M214 309 C188 329 189 376 207 399 Q240 421 275 402 C294 386 293 343 275 318 Z" fill="#F2CDBB" id="squirrel-body-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <g id="belly">
+          <path d="M239 333 C213 333 209 369 225 389 Q244 401 263 386 C276 368 267 334 239 333 Z" fill="#FFF0D7" stroke="none" id="belly-path-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+      </g>
+      <g id="foot-left">
+        <path d="M222 392 Q194 383 190 405 Q209 414 230 406 Z" fill="#F2CDBB" id="foot-left-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="foot-right">
+        <path d="M268 393 Q289 385 296 407 Q276 414 257 407 Z" fill="#F2CDBB" id="foot-right-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="cloak-collar">
+        <path fill="#DDCEF0" d="M205 317 Q242 335 278 317 L276 334 Q246 343 208 334 Z" id="cloak-collar-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <g id="cloak-brooch">
+          <circle cx="218" cy="332" r="8" fill="#FAE8BC" stroke-width="3" id="cloak-brooch-circle-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <path d="M214 332 L222 332" fill="none" stroke-width="2" id="cloak-brooch-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+      </g>
+      <g id="squirrel-head">
+        <g id="ear-left">
+          <path d="M201 279 L193 239 Q221 239 231 266 Z" fill="#F2CDBB" id="ear-left-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <path d="M207 264 L203 252 L215 263" fill="#F4C6DF" stroke-width="2" id="ear-left-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="ear-right">
+          <path d="M258 267 Q270 240 289 241 L285 284 Z" fill="#F2CDBB" id="ear-right-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <path d="M272 264 L281 252 L279 268" fill="#F4C6DF" stroke-width="2" id="ear-right-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <path d="M197 294 C196 269 218 260 241 266 C269 257 291 276 289 298 C289 321 266 337 241 334 C215 336 196 317 197 294 Z" fill="#F2CDBB" id="squirrel-head-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <g id="muzzle">
+          <path d="M218 310 C212 295 229 289 241 299 C255 289 273 298 265 313 Q243 330 218 310 Z" fill="#FFF0D7" stroke="none" id="muzzle-path-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="face">
+          <g id="eye-left">
+            <ellipse cx="219" cy="289" rx="5" ry="7" fill="#603D49" stroke="none" id="eye-left-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          </g>
+          <g id="eye-right">
+            <ellipse cx="265" cy="289" rx="5" ry="7" fill="#603D49" stroke="none" id="eye-right-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          </g>
+          <g id="cheeks">
+            <ellipse cx="210" cy="307" rx="11" ry="7" fill="#F4C6DF" stroke="none" id="cheeks-ellipse-01" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+            <ellipse cx="274" cy="307" rx="11" ry="7" fill="#F4C6DF" stroke="none" id="cheeks-ellipse-02" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          </g>
+          <g id="mouth">
+            <path d="M233 309 Q242 319 252 309" fill="none" stroke-width="3.5" id="mouth-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          </g>
+        </g>
+        <g id="nose">
+          <path d="M237 302 Q242 298 247 302 Q242 310 237 302 Z" fill="#603D49" stroke-width="2" id="nose-path-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        </g>
+        <g id="norse-cap">
+          <path fill="#BED5F5" d="M217 275 Q219 253 240 247 Q264 252 270 275 Z" id="norse-cap-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <path d="M241 249 L244 271" fill="none" stroke-width="2.5" id="norse-cap-path-02" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <path fill="#FAE8BC" d="M215 272 Q241 267 271 272 L271 280 Q242 276 215 280 Z" id="norse-cap-path-03" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          <g fill="#603D49" stroke="none" id="norse-cap-g-01">
+            <circle cx="225" cy="275" r="1.5" id="norse-cap-g-01-circle-01" fill="#603D49" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+            <circle cx="244" cy="273" r="1.5" id="norse-cap-g-01-circle-02" fill="#603D49" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+            <circle cx="262" cy="275" r="1.5" id="norse-cap-g-01-circle-03" fill="#603D49" stroke="none" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+          </g>
+        </g>
+      </g>
+      <g id="acorn">
+        <path d="M226 355 L258 355 Q259 377 242 382 Q226 376 226 355 Z" fill="#FAE8BC" id="acorn-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M222 355 Q224 337 242 339 Q260 338 263 355 Z" fill="#BC9CB4" id="acorn-path-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M243 339 L246 331" fill="none" stroke-width="3" id="acorn-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="paw-left">
+        <path d="M211 342 Q232 339 233 356 Q220 366 210 353 Z" fill="#F2CDBB" id="paw-left-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="paw-right">
+        <path d="M271 343 Q250 339 250 356 Q264 367 274 354 Z" fill="#F2CDBB" id="paw-right-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+      <g id="messenger-satchel">
+        <path d="M264 334 L278 372" fill="none" stroke="#603D49" stroke-width="7" id="messenger-satchel-path-01" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M264 334 L278 372" fill="none" stroke="#FAE8BC" stroke-width="3" id="messenger-satchel-path-02" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <rect x="265" y="366" width="27" height="24" rx="5" fill="#DFC1AA" stroke-width="3" id="messenger-satchel-rect-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <path d="M266 372 L279 380 L291 372" fill="none" stroke-width="2.5" id="messenger-satchel-path-03" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+        <circle cx="279" cy="380" r="2" fill="#FAE8BC" stroke-width="1.5" id="messenger-satchel-circle-01" stroke="#603D49" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      </g>
+    </g>
+    <g id="sparkles">
+      <path d="M99 256 Q99 267 88 268 Q99 269 99 280 Q100 269 110 268 Q100 267 99 256 Z" fill="#FAE8BC" id="sparkles-path-01" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+      <path d="M420 234 Q420 245 409 246 Q420 247 420 258 Q421 247 431 246 Q421 245 420 234 Z" fill="#DDCEF0" id="sparkles-path-02" stroke="#603D49" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" />
+    </g>
+  </g>
+</svg>

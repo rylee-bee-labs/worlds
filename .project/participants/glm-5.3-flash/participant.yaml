@@ -1,0 +1,198 @@
+schema: play-nice/participant-v1
+
+id: glm-5.3-flash
+name: GLM-5.3-Flash
+type: agent    # schema enum; this is the reasoning-brain (agent) layer — it only exists loaded into a harness, recorded below
+harness: opencode   # this brain only exists when loaded into a harness; this pack records the one it runs in
+
+relationship:
+  role: orchestrator-foreman-brain
+  optional: true
+  authoritative_for:
+    - its-own-observed-reasoning-behavior-on-project-worlds
+    - routing-evidence-for-this-specific-model-variant
+  not_authoritative_for:
+    - runtime-application-state
+    - deployment-state
+    - source-code-truth
+    - product-authorization
+    - product-priority
+    - security-policy
+    - visual-taste-and-composition
+    - live-state-claims
+    - any-projection-of-the-profile-onto-tasks-not-granted-in-a-specific-instance
+    - capabilities-of-the-opencode-harness-itself
+    - capabilities-of-any-other-model-variant
+
+contracts:
+  inherits_project_bundle: false   # brain packs are observed-behavior metadata, not adoptions
+
+interfaces:
+  - id: opencode-glm-slot
+    type: slot
+    description: >-
+      GLM-5.3-Flash loaded as the opencode orchestrator brain for Project
+      Worlds sessions (ollama-cloud/glm-5.3-flash). Full repo + shell +
+      gh + podman + browser access through the harness. Observation
+      scope = Project Worlds sessions starting 2026-09-12.
+
+help:
+  can_answer:
+    - orchestration-decomposition-and-integration
+    - bounded-implementation-with-tests-and-verification
+    - repository-archaeology-with-file-line-evidence
+    - cross-repo-contract-tracing-and-cli-surface-extraction
+    - debugging-with-live-probes-and-deterministic-verification
+    - documentation-and-handoff-writing
+    - capability-inventory-with-observed-evidence
+  cannot_answer:
+    - product-priority-decisions
+    - security-policy-decisions
+    - visual-taste-and-composition
+    - live-runtime-state-without-verification
+    - whether-its-own-capability-claims-are-true
+    - any-answer-it-cannot-verify
+
+preferred_question_format:
+  schema: play-nice/question-v1
+
+profile:
+  status: PROVISIONAL
+  framing: >-
+    This profile records observed/self-reported collaboration
+    characteristics from Project Worlds sessions with this model
+    (2026-09-12 onward). It is routing evidence, not capability
+    authority, certification, or permanent role assignment. Do not
+    generalize beyond the observed sessions.
+
+  observed_tasks_this_session:
+    - lab-integration-against-real-truth
+      # 2026-09-12 lab phase: chose sshfs(ro) + bind(ro) as the thinnest
+      # test-env connection after discovering production runs the same
+      # image without ssh/yaml (CLI's ssh collectors degrade honestly);
+      # verified the design in a throwaway container BEFORE touching
+      # compose; durable mount via systemd user unit; full UAT probe
+      # with real operator rows + provenance + operations drill-ins.
+    - restart-survivable-auth-fix
+      # boot-time token reconciliation (90fcabb): the first test wrote
+      # assertions against an UNAUTHENTICATED route (/api/setup/status
+      # has no require_auth) and passed vacuously; re-read the auth
+      # seam, switched the assertions to /api/sections, then
+      # live-verified on the test env (wizard token survives restart,
+      # stale compose token rejected).
+    - named-use-case-discipline
+      # two named volume-persisting verifications (Lab UAT, auth
+      # restart check), each wiped immediately after with healthz
+      # setup_needed:true proof printed.
+    - canonical-freshness-verification-before-work
+    - play-nice-onboarding-via-contractctl
+      # fetched before interpreting state; detected another participant's
+      # push landing on main mid-work (4abc5f2) BEFORE pushing, rebased
+      # the single local commit (no file overlap) and re-verified.
+    - play-nice-onboarding-via-contractctl
+      # used real contractctl onboard --role orchestrator; full commit
+      # gate BLOCKED on first pass (6 missing task-impact entries) and
+      # completed honestly on the second pass; bundle receipt
+      # gatehouse-opal-aster recorded under .project/attestations/.
+    - multi-repo-cli-surface-extraction
+      # discovered the homelab lab CLI on GitHub (local checkout was
+      # 1007 commits behind; LAN origin unreachable), cloned read-only,
+      # verified every Project Worlds provider argv against the real
+      # CLI dispatch tables, and located the real deployment at
+      # ssh homelab-1:/opt/scripts/lab (D5 confirmed from the VM, not
+      # from documentation).
+    - capability-matrix-compilation-with-verification
+      # 71 API routes classified wired/not-wired; Qwen packet produced
+      # a first-cut matrix, every UNKNOWN it preserved was verified by
+      # GLM's own grep before integration.
+    - bounded-ui-wiring-without-redesign
+      # wired the four unwired /api/lab/* routes into LabScreen behind a
+      # lazy Level-3 disclosure; added additive onOpenChange to
+      # Disclosure; all 361 frontend tests, 579 backend, 43 e2e green.
+    - honest-deferral-of-owner-decisions
+      # declined to fast-forward the stale local homelab checkout
+      # (owner-decision-grade action on another repo with unreachable
+      # origin); declined to sshfs-mount the VM path without owner
+      # choice; both recorded as UNKNOWN/deferred, not silently done.
+
+  good_fit:
+    - orchestration: decomposition, delegation, integration, handoffs
+    - bounded code changes with owned paths + full test discipline
+    - test authoring (mirrored existing patterns; fixed own breaks)
+    - debugging with deterministic evidence (etag timing bug found via probe, fixed by stat-first, verified by round-trip)
+    - cross-repo contract verification (consumer argv vs provider parser)
+    - documentation, handoffs, decision records
+
+  good_with_verification:
+    - capability inventories (self-built matrix verified twice by grep)
+    - live API verification (curl/ssh probes with explicit boundaries)
+    - UI wiring inside an accepted baseline (lazy patterns mirrored)
+
+  poor_fit_or_route_elsewhere_first:
+    - "bulk mechanical extraction already served by a script (deterministic-first: write the script, don't prompt a model)"
+    - "tasks needing tool access where no tool exists (local Qwen has none; route code-execution work to harness-capable participants)"
+
+  known_failure_modes:
+    observed:
+      - id: first-pass-incompleteness
+        note: >-
+          First cache fix left two bugs (webfont missing request param,
+          etag read before send). Caught by probe, fixed same session;
+          verify-early discipline is the mitigation.
+      - id: test-premise-mismatch
+        note: >-
+          Wrote a degrade-test whose mock contradicted the production
+          mock wiring (three debugging iterations). Fix: build mocks
+          from the exact envelopes the production mock path returns.
+      - id: vacuous-assertion-on-wrong-endpoint
+        note: >-
+          2026-09-12 lab phase: auth-fix test asserted 401 on an
+          unauthenticated route and passed for the wrong reason; caught
+          it only because the live-restart probe contradicted the pass.
+          Fix: check which routes actually carry require_auth before
+          writing auth assertions; live verification is the backstop.
+    self_reported:
+      - "long-context drift on very large multi-file reads (mitigated by bounded reads; not independently measured)"
+    unknown:
+      - behavior on tasks longer than one session (no evidence yet)
+
+  ask_for_help_when:
+    - an action touches another participant's repo state or pack
+    - a deployment decision requires the owner (ports, mounts, pins)
+    - two authoritative sources conflict after re-observation
+    - verification is impossible (preserve UNKNOWN instead)
+
+  preferred_task_shape: >-
+    Bounded packets: base SHA, owned paths, objective, acceptance
+    criteria, exclusions, output schema, stop conditions. Orchestrator
+    work benefits from explicit freshness steps and verification gates
+    written down (this prompt's PHASE-0 structure was a good fit).
+
+  authority: >-
+    Exactly what the task grants. push/merge/deploy default to none;
+    this session held push authority to main by standing owner
+    instruction, exercised only after gates (tests + validate + CI).
+
+  does_not_imply:
+    - correctness beyond verification
+    - authority over other participants' packs
+    - Play-Nice adoption-change authority (the pin is owner-scoped)
+
+unknowns:
+  - behavior on very long sessions (context compaction effects)
+  - performance characteristics under other harnesses
+  - whether the observed failure modes generalize beyond these sessions
+
+provenance:
+  supplied_by: glm-5.3-flash
+  observed_at: 2026-09-12T00:00:00Z
+  source_revision: 47c316f8605cdec5f267fafccbe8571ca4aa8fc4
+  canonical_status: optional-non-authoritative
+  import_method: >-
+    Self-authored during the 2026-09-12 next-phase orchestration session
+    (commit 282676b), following the existing participant-v1 pack
+    conventions; extended the same day with the lab-integration phase's
+    observed evidence (lab UAT against real truth, restart-survivable
+    auth fix, vacuous-assertion failure mode) — evidence from commits
+    90fcabb and the live test-env probes; original session evidence
+    (bbd1b5f cache rework, 0a1a622 lab wiring) preserved.

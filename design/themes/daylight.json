@@ -1,0 +1,83 @@
+{
+  "_comment": "Daylight theme — optional light pack (owner approved 2026-09-26, board \"Theme · a light option\"). Warm paper, never pure white on large surfaces (low glare for migraines); dark stays the default. Primary buttons are deep amber (#8a4f0f) with cream labels because labels use surface.void; links and focus share that amber. Every text and accent colour passes 4.5:1 on every surface (worst pair 4.7:1). Body 16px, labels 13px, like every theme.",
+  "_author": "Project Worlds (owner decision 2026-09-26)",
+  "surface": {
+    "void": "#fffdf8",
+    "canvas": "#f4efe6",
+    "hull": "#ece5d8",
+    "panel": "#fbf8f2",
+    "elevated": "#fffdf8",
+    "raised": "#e9e1d2"
+  },
+  "accent": {
+    "primary": "#8a4f0f",
+    "on_primary": "#fffdf8",
+    "secondary": "#1f6b67",
+    "warm": "#8a4f0f",
+    "warm_soft": "rgba(138, 79, 15, 0.10)",
+    "gold": "#735608",
+    "gold_soft": "rgba(115, 86, 8, 0.10)",
+    "green": "#3d6b39",
+    "green_soft": "rgba(61, 107, 57, 0.10)",
+    "coral": "#9a4a3a",
+    "coral_soft": "rgba(154, 74, 58, 0.10)",
+    "teal": "#1f6b67",
+    "teal_soft": "rgba(31, 107, 103, 0.10)",
+    "lavender": "#574a8c",
+    "lavender_soft": "rgba(87, 74, 140, 0.10)"
+  },
+  "text": {
+    "primary": "#2a2433",
+    "secondary": "#473f4f",
+    "muted": "#5a5263"
+  },
+  "border": {
+    "subtle": "rgba(42, 36, 51, 0.14)",
+    "strong": "rgba(42, 36, 51, 0.26)",
+    "hover": "rgba(42, 36, 51, 0.32)"
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "24px",
+    "2xl": "32px",
+    "3xl": "48px",
+    "4xl": "64px"
+  },
+  "radius": {
+    "sm": "10px",
+    "md": "14px",
+    "lg": "24px",
+    "full": "9999px"
+  },
+  "shadow": {
+    "soft": "0 10px 30px rgba(42,36,51,0.12)",
+    "warm": "0 4px 24px rgba(138,79,15,0.10)",
+    "glow": "0 0 20px rgba(138,79,15,0.14)"
+  },
+  "typography": {
+    "font_sans": "'Atkinson Hyperlegible Next', 'Public Sans', system-ui, sans-serif",
+    "font_serif": "'Fraunces', Georgia, serif",
+    "font_mono": "'JetBrains Mono', ui-monospace, monospace",
+    "size_h1": "clamp(28px, 4vw, 40px)",
+    "size_lead": "18px",
+    "size_body": "16px",
+    "size_small": "14px",
+    "size_micro": "13px",
+    "size_label": "13px"
+  },
+  "density": {
+    "comfortable": {
+      "pad_main": "24px",
+      "gap_main": "16px",
+      "gap_block": "24px"
+    },
+    "compact": {
+      "pad_main": "16px",
+      "gap_main": "12px",
+      "gap_block": "16px"
+    }
+  }
+}

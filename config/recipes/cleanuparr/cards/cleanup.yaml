@@ -1,0 +1,15 @@
+schema_version: 1
+id: cleanup
+title: Cleanup
+icon: broom
+group: machine
+request: cleanuparr.stats
+view: status
+meaning:
+  concept: Whether the cleanup service is answering.
+  short: Reachable means healthy. Nothing more is mapped yet.
+  full: >-
+    The cleanup service's own statistics are not mapped yet, because its
+    response shape has not been checked. While it answers, this card reads
+    healthy; if it cannot be reached, it reads unavailable.
+fields: []

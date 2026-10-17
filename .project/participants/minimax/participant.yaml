@@ -1,0 +1,451 @@
+schema: play-nice/participant-v1
+
+id: minimax
+name: MiniMax-M3
+type: agent    # schema enum; this is the reasoning-brain (agent) layer — it only exists loaded into a harness, recorded below
+harness: kilo        # the brain only exists when loaded into a harness; this pack records the one it ran in
+
+relationship:
+  role: reasoning-brain-loaded-into-kilo-harness
+  optional: true
+  authoritative_for:
+    - its-own-observed-reasoning-behavior-in-this-session
+    - routing-evidence-for-this-specific-model-variant
+  not_authoritative_for:
+    - runtime-application-state
+    - deployment-state
+    - source-code-truth
+    - product-authorization
+    - product-priority
+    - security-policy
+    - visual-taste-and-composition
+    - live-state-claims
+    - any-projection-of-the-profile-onto-tasks-not-granted-in-a-specific-instance
+    - capabilities-of-the-kilo-harness-itself   # that is the kilo pack's job
+    - capabilities-of-any-other-model-variant   # m2.7, gpt-5.6, etc. — see their own packs if they exist
+
+contracts:
+  inherits_project_bundle: false   # brain packs are observed-behavior metadata, not adoptions
+
+interfaces:
+  - id: kilo-brain-slot
+    type: slot
+    description: >-
+      Loaded as the model behind a Kilo TUI session (kilo/minimax/minimax-m3).
+      Observation scope = this Project Worlds onboarding experiment on
+      2026-09-12. Other MiniMax variants (m2.7, etc.) are different brains;
+      do not generalize.
+
+help:
+  can_answer:
+    - bounded-implementation-tasks-with-clear-paths-and-acceptance
+    - documentation-from-a-named-source
+    - structured-extraction
+    - multi-file-investigation-with-evidence
+    - architectural-explanation-from-current-files
+    - session-bootstrap-workflow-design
+  cannot_answer:
+    - product-priority-decisions
+    - security-decisions
+    - visual-taste-and-composition
+    - live-runtime-state-without-verification
+    - whether-its-own-capability-claims-are-true
+    - any-answer-it-cannot-verify
+  preferred_question_format:
+    schema: play-nice/question-v1
+
+profile:
+  status: PROVISIONAL
+  framing: >-
+    This profile records observed/self-reported collaboration
+    characteristics from one Project Worlds onboarding session
+    (2026-09-12, two consecutive turns of work). It is routing evidence,
+    not capability authority, certification, or permanent role
+    assignment. Do not generalize a one-session observation into general
+    MiniMax capability.
+
+  observed_tasks_this_session:
+    - canonical-freshness-verification-before-writing
+      # session start: local HEAD 42389d0 was 21 commits behind origin/main
+      # (ec29e85); turn 2: another 1-commit drift detected and pulled;
+      # the project adoption pin (v0.6.0 @ 0cee065) was honored unchanged
+      # through both updates — repo freshness and contract freshness
+      # treated as separate questions.
+    - efficient-project-truth-discovery-from-a-bounded-file-set
+      # read 7 files (CURRENT.md, project.yaml, adoption.yaml, two
+      # participant packs, README.md, AGENTS.md) — no contractctl, no
+      # blind re-read of 65 contracts.
+    - distinguished-current-repository-state-vs-pinned-contract-adoption
+      # fast-forwarded both times without bumping the Play-Nice pin.
+    - project-local-participant-discovery
+      # detected existing big-pickle and figma packs before writing any
+      # new pack.
+    - asking-before-ambiguous-participant-pack-mutation
+      # surfaced the big-pickle collision via the question tool with 3
+      # options + recommended tag, did not silently overwrite.
+    - sibling-participant-preservation
+      # after the question resolved, left .project/participants/big-pickle/
+      # byte-identical to HEAD; created a new .project/participants/minimax/
+      # alongside it rather than overwriting.
+    - harness-brain-separation
+      # authored two distinct packs (kilo/ and minimax/) with explicit
+      # cross-references and `not_authoritative_for` boundaries that
+      # exclude the other layer's scope.
+    - unknown-preservation-when-contractctl-unavailable
+      # no contract attestation performed; packs marked PROVISIONAL;
+      # no faux verification.
+    - deterministic-self-validation
+      # parsed every new YAML file with PyYAML, diffed canonical files
+      # against HEAD, scanned for secret patterns, ran the project
+      # framework test suite, recorded exact commands + outputs.
+    - schema-format-repair-after-observed-failure
+      # first draft placed markdown table content inside files named
+      # .yaml; deterministic YAML parse failed; repaired by converting
+      # to schema-conformant structured YAML (see
+      # `known_failure_modes.observed[].id: schema-format-adherence`).
+    - respecting-explicit-shared-checkout-mutation-rules
+      # did not `git add -A`, did not auto-commit despite capability,
+      # waited for explicit owner authorization before staging/committing.
+    - completed-a-bounded-onboarding-profile-task-without-modifying-canonical-contracts
+      # adoption.yaml, AGENTS.md, AGENT_CONTRACTS.md, AGENT_POLICY.md,
+      # figma pack, big-pickle pack all byte-identical to HEAD throughout
+      # the session.
+
+  good_fit:
+    - bounded participant-pack authoring from a named schema
+    - multi-file investigation ending in file:line evidence
+    - structured writing with explicit provenance fields
+    - onboarding-orientation tasks (small, well-scoped, evidence-heavy)
+    - asking-good-clarifying-questions-with-options
+    - canonical-state verification before editing
+
+  good_with_verification:
+    - repository archaeology
+    - documentation updates from a named source
+    - long-context synthesis
+    - multi-repo work
+    - contract manifest reasoning (read-only)
+
+  poor_fit_or_route_elsewhere_first:
+    - security-sensitive decisions (route to Frontier-review subagent)
+    - destructive operations (require owner authority; do not silently proceed)
+    - unbounded orchestration
+    - tasks whose scope would require mutating another participant's pack without consent
+    - visual taste / composition
+    - live runtime state claims without a live probe
+
+  ask_for_help_when:
+    - ambiguity could destroy work
+    - another participant pack would be mutated by the work
+    - the answer is owned by a specific human/service/repo
+    - verification is impossible (prefer UNKNOWN over fabrication)
+    - scope would need to expand (prefer DEFERRED)
+    - the loaded brain's identity is in question (harness vs brain conflation)
+    - canonical freshness is unclear (prefer pull + verify before write)
+    - a structured file (YAML/JSON/TOML) needs to match a schema and the parser would catch a format slip
+
+  preferred_task_shape: >-
+    Worker-packet style: base SHA, owned paths, objective, acceptance
+    criteria, exclusions, authority granted, explicit stop conditions.
+    For structured-output tasks: include schema name + validation step
+    (e.g. "produce .yaml matching schema: play-nice/<x>-v1, then run
+    yaml.safe_load to confirm").
+
+  preferred_evidence: >-
+    Re-runnable commands with observed output over reports; observed_at
+    on time-sensitive claims; graded results (CI TESTED vs RUNTIME
+    VERIFIED vs HUMAN ACCEPTED); exact git SHAs not shortened.
+
+  authority: >-
+    Exactly what the task grants. Default: zero mutation authority. The
+    harness exposes tools; the project authorizes their use.
+
+  does_not_imply:
+    - fluency in live state
+    - acting authority
+    - self-rating authority
+    - library acceptance consenting to any specific mutation
+    - capabilities held by other model variants (m2.7, m2, etc.)
+    - capabilities of the kilo harness (those are the kilo pack)
+    - general protected-WIP detection (only sibling-participant preservation was observed in this session)
+    - persistent correctness of structured files without schema/parser validation (see known_failure_modes.observed)
+
+  known_failure_modes:
+    observed:
+      - id: schema-format-adherence
+        summary: >-
+          When creating structured configuration/profile files, MiniMax may initially satisfy the SEMANTIC request while missing the required SERIALIZATION/SCHEMA format. Markdown-table content was placed inside files named `.yaml`; only the deterministic parser caught the slip, not human review of the readable output.
+        evidence: >-
+          This session, observed TWICE across two turns. (1) Turn 1: `.project/participants/kilo/capabilities.yaml` and `.project/participants/kilo/help-routing.yaml` were first written with markdown-style tables; `yaml.safe_load()` raised a parser error on column 1 of line 4/5; both were repaired by rewriting as schema-conformant structured YAML (`play-nice/participant-capabilities-v1` and `play-nice/help-routing-v1`). (2) Turn 2: while updating `.project/participants/minimax/participant.yaml` with the lesson learned above, a folded scalar continuation line was broken across two physical lines with the same indentation as the parent key — `yaml.safe_load()` again failed on the resulting indent mismatch. Repaired by joining the lines into one logical folded paragraph. Both occurrences were caught by a deterministic parser before any commit.
+        observed_at_first: 2026-09-12T17:33:48Z
+        observed_at_second: 2026-09-12T17:46:01Z
+        mitigation:
+          - parse generated YAML / JSON / TOML with a deterministic parser before accepting the file
+          - validate against the named schema when one exists (`schema:` header, jsonschema, etc.)
+          - do NOT treat "the file looks right" as structurally valid
+          - repair BEFORE integration (commit, ingest, downstream use), not after
+          - when writing folded scalars, keep continuation lines indented MORE than the parent key, or keep the whole paragraph on one line
+        generalization_risk: >-
+          This is now TWO observed occurrences in ONE session. Treat as
+          a real failure mode worth guarding against; do NOT assume it
+          generalizes to every structured-file task, every model
+          variant, or every prompt shape. Two instances are stronger
+          than one, but they are still both this session.
+    routing_cautions_unobserved:
+      # Listed for future-session routing only. These were NOT observed
+      # in this session; they are cautions inferred from the broader
+      # literature and prior sessions in other projects. Do not present
+      # them as observed failures of MiniMax.
+      - id: model-reputation-inflation
+        note: >-
+          UNOBSERVED routing caution. Assume capability from marketing
+          claims rather than observed behavior. Not demonstrated in this
+          session; included so future sessions remember to ground
+          capability claims in evidence.
+      - id: context-fabrication
+        note: >-
+          UNOBSERVED routing caution. Invent values to complete a tidy
+          summary when a command was not actually run. Not demonstrated
+          in this session; included as a standing guard.
+      - id: pack-overwrite
+        note: >-
+          UNOBSERVED routing caution. Silently rewrite another
+          participant's pack instead of asking. Not demonstrated in this
+          session — the opposite behavior (asking, then sibling
+          preservation) WAS observed.
+      - id: confirmation-bypass-hunting
+        note: >-
+          UNOBSERVED routing caution. Search for ways to skip the
+          harness's confirmation gate. Not demonstrated in this session;
+          included so future sessions remember that tool availability is
+          not authority.
+      - id: brain-harness-conflation
+        note: >-
+          UNOBSERVED routing caution. Attribute harness capability to
+          the brain or vice versa. Not demonstrated in this session —
+          explicit two-pack separation WAS observed.
+
+  evidence_corrections:
+    # Records corrections to earlier-turn claims that overstated the
+    # evidence. Self-correction is part of evidence discipline.
+    - prior_claim: "MiniMax detects protected WIP — PROVED"
+      correction: >-
+        Narrowed. What was actually demonstrated in this session was
+        sibling participant preservation: MiniMax discovered an
+        existing sibling pack (big-pickle), recognized it as separately
+        owned project-local evidence, asked the owner about how to
+        handle the collision, and left the existing pack byte-identical
+        after the owner chose to create a separate new pack.
+      actual_label: participant-ownership / sibling-preservation — OBSERVED
+      what_remains_unknown: >-
+        General protected-WIP detection (e.g. detecting in-flight work
+        trees, dirty subdirectories, or uncommitted changes across
+        many repos) is UNKNOWN and was NOT demonstrated here.
+
+attestation:
+  clarity: >-
+    This pack is OPTIONAL, NON-AUTHORITATIVE routing metadata assembled
+    from one observed Project Worlds onboarding session (2026-09-12,
+    two consecutive turns). It is NOT a self-attested acceptance gate.
+    No canonical contracts were read or attested in this session —
+    contractctl was not present and the adoption pin (v0.6.0 @
+    0cee065) was honored without modification through two
+    repo-freshness updates. Any real mutation task still requires the
+    full task-gate: RESOLVE, READ applicable canonical sources, VERIFY
+    version/hash/receipt, TASK IMPACT, CONFLICT CHECK, ATTESTATION,
+    COMMITMENT, ACTIVE, MUTATION.
+
+provenance:
+  supplied_by: minimax-session-via-kilo-2026-09-12
+  observed_at: 2026-09-12T17:46:01Z   # updated at turn 2 of this session
+  observed_at_initial: 2026-09-12T17:33:48Z
+  model_id: kilo/minimax/minimax-m3
+  source_revision: 0cee0652fb6f13c440b1fd9cc5d78fd87cdca8ad   # matches project adoption; unchanged across both turns
+  canonical_status: optional-non-authoritative
+  import_method: >-
+    First created 2026-09-12 during a Play-Nice onboarding experiment
+    requested from the MiniMax-m3 brain running in Kilo. Updated
+    2026-09-12T17:46:01Z in turn 2 of the same session to record the
+    observed schema-format failure, correct the overstated protected-WIP
+    claim, and add canonical-freshness evidence. The companion pack
+    `.project/participants/kilo/` records the harness layer; the
+    existing pack `.project/participants/big-pickle/` is left untouched
+    as a separate observation from a different session (different model
+    variant and/or different host per its provenance).
+
+authentication:
+  method: none-recorded
+  secret_reference: none
+
+limitations:
+  - context-scoped-per-session-requires-reloading-project-context
+  - self-claims-are-evidence-not-authority
+  - one-session-evidence-base-do-not-generalize
+  - does-not-represent-other-minimax-variants
+  - does-not-represent-the-kilo-harness
+  - structured-file-output-needs-deterministic-validation-before-acceptance
+
+claims:
+  # Machine-checkable evidence ledger. Each claim has a grade and a
+  # command the reader can re-run to verify the result. Do not
+  # retrofit figma or big-pickle — this is a format the minimax pack
+  # itself owns.
+  - id: canonical-freshness-verified-before-pack-authoring
+    grade: observed
+    observed_at: 2026-09-12T17:33:48Z
+    claim: local checkout was fast-forwarded to the canonical upstream HEAD before any pack authoring
+    evidence:
+      command: git rev-list --left-right --count HEAD...origin/main
+      expected_after_pull: "0	0"
+      captured_after_pull_at_turn_1: "0	0 (post-pull of 21-commit drift)"
+      captured_after_pull_at_turn_2: "0	0 (post-pull of 1-commit drift)"
+  - id: sibling-participant-preservation
+    grade: observed
+    observed_at: 2026-09-12T17:33:48Z
+    claim: discovered existing .project/participants/big-pickle/ and left it byte-identical to HEAD; created a separate sibling pack instead of overwriting
+    evidence:
+      command: git diff --quiet HEAD -- .project/participants/big-pickle/participant.yaml
+      expected_exit_code: 0
+  - id: harness-brain-separation
+    grade: observed
+    observed_at: 2026-09-12T17:33:48Z
+    claim: authored two distinct packs (kilo/ for harness, minimax/ for brain) with explicit not_authoritative_for boundaries excluding the other layer's scope
+    evidence:
+      command: git ls-files .project/participants/kilo .project/participants/minimax
+      expected_non_empty: true
+  - id: deterministic-yaml-validation-caught-format-failure
+    grade: observed
+    observed_at: 2026-09-12T17:33:48Z
+    observed_at_second: 2026-09-12T17:46:01Z
+    claim: yaml.safe_load rejected malformed pack content on two separate occasions this session; both were repaired before commit
+    evidence:
+      command: uv run python -c "import yaml; [yaml.safe_load(p.read_text()) for p in __import__('pathlib').Path('.project/participants').rglob('*.yaml')]"
+      expected_outcome: silent success (no exception)
+      captured_at_turn_2_post_repair: all 10 participant YAML files parse clean
+  - id: framework-test-suite-passed
+    grade: observed
+    observed_at: 2026-09-12T17:33:48Z
+    claim: tests/test_framework.py remained green before and after participant-pack authoring
+    evidence:
+      command: uv run pytest tests/test_framework.py --timeout=30
+      expected_outcome: 33 passed
+      captured: "33 passed in 43.24s"
+  - id: adoption-pin-unchanged-across-session
+    grade: observed
+    observed_at: 2026-09-12T18:12:25Z
+    claim: .project/contracts/adoption.yaml revision pin (0cee065, v0.6.0) was honored unchanged through two repo-freshness updates
+    evidence:
+      command: git log -1 --format=%H -- .project/contracts/adoption.yaml
+      expected_hash_unchanged: 0cee0652fb6f13c440b1fd9cc5d78fd87cdca8ad
+  - id: protected-packs-unchanged
+    grade: observed
+    observed_at: 2026-09-12T18:14:49Z
+    claim: figma and big-pickle participant packs were not modified during this session
+    evidence:
+      command: git diff --quiet HEAD -- .project/participants/figma/participant.yaml .project/participants/figma/attestation.yaml .project/participants/big-pickle/participant.yaml
+      expected_exit_code: 0
+  - id: structured-pack-validator-introduced
+    grade: observed
+    observed_at: 2026-09-12T18:19:32Z
+    claim: src/personal_world/framework.py gained validate_participant_packs(); personal-world framework validate-packs runs it
+    evidence:
+      command: uv run personal-world framework validate-packs --json
+      expected_status: healthy with zero violations
+
+library_proposals:
+  # Proposals derived from observed session friction. NOT adopted here.
+  # NOT project-local contracts. Submit each to
+  # Rylee-Bee/play-nice-contracts separately. Recording them here so a
+  # future session can find them and so a future Play-Nice maintainer
+  # can see what the project actually hit, not what reputation says
+  # should have been hit.
+  based_on_observed_session: 2026-09-12T17:33:48Z..18:14:49Z
+  status: NOT ADOPTED
+  status_detail: |
+    These are friction-derived proposals for the upstream
+    Rylee-Bee/play-nice-contracts library. They are recorded here for
+    traceability, not as a substitute for upstream review. A future
+    session may copy them into a project issue or PR; they MUST NOT
+    be implemented as project-local contracts in this repo.
+  proposals:
+    - id: task-aware-contract-resolution
+      targets_contract: ask-for-help + explicit-state
+      problem: >-
+        Agents cannot know which subset of an adopted contract bundle
+        applies to a given task without re-reading every contract. The
+        canonical library has the resolution logic; projects need a
+        deterministic invocation surface.
+      proposed_shape: >-
+        A canonical CLI / library entry point
+        (e.g. ``play-nice resolve --manifest <path> --task <tag>``)
+        that returns the resolved contract subset with their SHAs, so
+        sessions can cite contracts by ID without re-reading their text.
+      observed_cost: this session never re-read contracts; cited adoption.yaml names only, never their content.
+    - id: richer-structured-participant-evidence
+      targets_contract: truth-and-evidence + provenance-and-audit
+      problem: >-
+        Participant packs currently rely on narrative provenance; a
+        future agent reading the pack has no machine-checkable way to
+        grade each claim. The MiniMax pack now embeds a structured
+        ``claims:`` list with re-runnable commands, but the project-local
+        format is not a project-local contract — it is a candidate for
+        upstream standardization.
+      proposed_shape: >-
+        Extend ``play-nice/participant-v1`` with an optional
+        ``claims:`` list whose entries carry ``grade``, ``observed_at``,
+        ``evidence.command``, and ``evidence.expected_outcome`` — so any
+        downstream validator can re-run the command and grade the claim.
+    - id: participant-collision-semantics
+      targets_contract: mutual-contribution + participation-and-contribution
+      problem: >-
+        When two packs claim the same id or overlapping scope, there is
+        no canonical rule. This session had to invent a question-tool
+        flow to ask the owner; that flow should be a deterministic
+        contract step.
+      proposed_shape: >-
+        A trigger contract that names the collision case explicitly:
+        ``participant-collision: when two packs claim the same id or
+        overlapping scope, surface both with provenance and ask before
+        merging, overwriting, or replacing. Valid outcomes: UPDATE
+        EXISTING, CREATE SIBLING, ABORT / ASK FOR HELP.``
+    - id: structured-pack-format-conformance
+      targets_contract: contract-attestation + stable-truth-replaceable-machinery
+      problem: >-
+        ATTESTATION requires verifying hash and receipt but does not
+        extend that discipline to file-level conformance for the pack
+        itself. This session's dominant observed failure (twice) was a
+        structured file that satisfied the semantic request but failed
+        format validation, caught only by ``yaml.safe_load`` after
+        write.
+      proposed_shape: >-
+        A rule that ``a parse-failing structured pack has not been
+        ATTESTED, regardless of semantic correctness``, with the
+        conformance check expressed as a per-schema declaration rather
+        than per-project parsers.
+    - id: canonical-freshness
+      targets_contract: stable-truth-replaceable-machinery + provenance-and-audit
+      problem: >-
+        ``stable-truth-replaceable-machinery`` says "one canonical
+        current truth; other documents may point to it" but does not
+        say how to verify your local checkout IS that truth before you
+        start pointing at it. This session caught 22 commits of drift
+        across two pulls before any pack authoring.
+      proposed_shape: >-
+        A derived rule that ``before authoring any new project-context
+        artifact, verify the local checkout matches the canonical
+        upstream OR explicitly record why freshness could not be
+        established.`` With an explicit escape hatch for unreachable
+        canonical: ``mark the work PROVISIONAL until reachable``.
+
+unknowns:
+  # Capabilities NOT demonstrated in this session. Listing them here
+  # prevents silent generalization from one onboarding experiment.
+  - behavior-across-multiple-kilo-sessions
+  - long-duration-context-behavior
+  - production-runtime-diagnosis
+  - visual-or-product-judgment
+  - consequential-architecture-decisions
+  - repeated-orchestration-quality
+  - general-protected-wip-detection-unless-separately-demonstrated
+  - schema-format-adherence-on-other-formats-beyond-yaml
+  - performance-under-adversarial-prompts

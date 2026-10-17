@@ -1,0 +1,752 @@
+/*
+ * PROJECT WORLDS — Worlds Kit: base styles
+ * ============================================================================
+ *
+ * The Worlds design language, exportable. Plain CSS — no Tailwind, no build
+ * step for consumers. Vendor this file and tokens.css together:
+ *
+ *   <link rel="stylesheet" href="tokens.css">   <!-- the generated tokens -->
+ *   <link rel="stylesheet" href="base.css">     <!-- this file -->
+ *
+ * Every value references a `var(--pw-*)` design token from tokens.css. There
+ * are no raw colours here (only the keywords `transparent` and `currentColor`);
+ * themes work by setting `data-theme="<name>"` on <html>.
+ *
+ * The class vocabulary is BEM-ish and prefixed `wk-` so it can never collide
+ * with a consuming project's own styles. Each block below names the React
+ * component it was derived from — those components are the source of truth
+ * for how Worlds looks (ui/src/components/World*.tsx, RoomsPanel.tsx,
+ * rooms/*).
+ *
+ * Minimum accessibility (docs/accessibility/ACCESSIBILITY_CONTRACT.md):
+ *   - interactive targets are never smaller than --pw-targets-minimum (44px);
+ *   - focus is always visible (:focus-visible ring, accent-coloured);
+ *   - status is carried in words, never by colour alone;
+ *   - motion is reduced to nothing under prefers-reduced-motion.
+ */
+
+/* ── Fonts ────────────────────────────────────────────────────────────────
+   Source: ui/src/styles/world.css (@font-face block). Only the families the
+   token themes actually name are shipped, with the same fallbacks the tokens
+   declare. `font-display: swap` keeps text readable while a face loads. */
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/AtkinsonHyperlegibleNext-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/AtkinsonHyperlegibleNext-Bold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/fraunces-1.woff2) format('woff2');
+}
+/* Plain's faces (Instrument Sans variable, Young Serif single weight). */
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/instrument-sans-var-latin.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Young Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/young-serif-latin.woff2) format('woff2');
+}
+
+/* Type sizes: every size resolves through max(theme token, minimum). The
+   owner brief (2026-09-25) is body text at least 16px and no label under
+   13px; the kit never renders smaller, whatever a theme's tokens say. */
+
+/* ── Document & body base ─────────────────────────────────────────────────
+   Source: ui/src/styles/world.css (html/body reset). */
+html {
+  background-color: var(--pw-surface-canvas);
+  color: var(--pw-text-primary);
+  font-family: var(--pw-typography-font_sans);
+  font-size: max(var(--pw-typography-size_body), 16px);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+/* ── Headings ─────────────────────────────────────────────────────────────
+   Source: world.css base + theme-scoped serif rules (doorways h1–h3, plain
+   all headings). Every other theme keeps the sans voice. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 var(--pw-spacing-md);
+  color: var(--pw-text-primary);
+  font-family: var(--pw-typography-font_sans);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--pw-typography-size_h1); }
+h2 { font-size: max(var(--pw-typography-size_lead), 18px); }
+h3 { font-size: max(var(--pw-typography-size_body), 16px); }
+h4,
+h5,
+h6 { font-size: max(var(--pw-typography-size_small), 14px); }
+
+/* Doorways: the storybook serif on the top three heading levels. */
+[data-theme="doorways"] h1,
+[data-theme="doorways"] h2,
+[data-theme="doorways"] h3 {
+  font-family: var(--pw-typography-font_serif);
+}
+/* Plain: Young Serif carries the display voice on every heading. */
+[data-theme="plain"] h1,
+[data-theme="plain"] h2,
+[data-theme="plain"] h3,
+[data-theme="plain"] h4,
+[data-theme="plain"] h5,
+[data-theme="plain"] h6 {
+  font-family: var(--pw-typography-font_serif);
+}
+
+/* ── Links ────────────────────────────────────────────────────────────────
+   Source: world.css accent-primary link voice (room "Open" links use the
+   accent for the affordance; the word carries the meaning). */
+a {
+  color: var(--pw-accent-primary);
+  text-underline-offset: 0.15em;
+}
+a:hover {
+  color: var(--pw-text-primary);
+}
+
+/* ── Focus ring ───────────────────────────────────────────────────────────
+   Source: world.css §2.4. Structure is immutable (2px / 2px from the
+   contract tokens); the colour is the theme's accent. */
+:focus-visible {
+  outline: var(--pw-focus-ring_width) solid var(--pw-accent-primary);
+  outline-offset: var(--pw-focus-ring_offset);
+}
+
+@media (prefers-contrast: more) {
+  :focus-visible {
+    outline-color: var(--pw-text-primary);
+  }
+}
+
+/* ── Skip link ────────────────────────────────────────────────────────────
+   Source: world.css §2.6 (.skip-link). Off-screen until focused. */
+.wk-skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--pw-targets-minimum);
+  padding: var(--pw-spacing-sm) var(--pw-spacing-lg);
+  background: var(--pw-surface-elevated);
+  color: var(--pw-accent-primary);
+  border: 2px solid var(--pw-accent-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.wk-skip-link:focus {
+  top: 0;
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────
+   Source: world.css §6.2. The system setting wins; nothing animates. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Visually hidden ──────────────────────────────────────────────────────
+   Source: WorldSignal.tsx / WorldDrawer.tsx use Tailwind's `sr-only` for the
+   spoken status prefix. Same contract, no Tailwind. */
+.wk-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Button ───────────────────────────────────────────────────────────────
+   Source: ui/src/components/WorldButton.tsx. The default (no variant) is
+   WorldButton's `secondary`; `--primary` maps to `primary`, `--quiet` to
+   `ghost`. `--danger` follows the same shape with the coral accent.
+   Targets: min 44px in both axes (§2.1). */
+.wk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--pw-targets-minimum);
+  min-width: var(--pw-targets-minimum);
+  padding: var(--pw-spacing-sm) var(--pw-spacing-lg);
+  border: 1px solid var(--pw-border-subtle);
+  border-radius: var(--pw-radius-sm);
+  background: var(--pw-surface-panel);
+  color: var(--pw-text-primary);
+  font-family: inherit;
+  font-size: max(var(--pw-typography-size_small), 14px);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms, color 150ms, filter 150ms, border-color 150ms;
+}
+.wk-btn:hover {
+  background: var(--pw-surface-elevated);
+}
+.wk-btn:active {
+  background: var(--pw-surface-hull);
+}
+.wk-btn:disabled,
+.wk-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.wk-btn--primary {
+  border-color: transparent;
+  background: var(--pw-accent-warm);
+  color: var(--pw-surface-void);
+}
+.wk-btn--primary:hover {
+  background: var(--pw-accent-warm);
+  filter: brightness(1.1);
+}
+.wk-btn--primary:active {
+  filter: brightness(0.9);
+}
+.wk-btn--quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--pw-text-secondary);
+}
+.wk-btn--quiet:hover {
+  background: var(--pw-accent-warm_soft);
+  color: var(--pw-text-primary);
+}
+.wk-btn--quiet:active {
+  background: var(--pw-accent-teal_soft);
+}
+.wk-btn--danger {
+  border-color: var(--pw-accent-coral);
+  background: var(--pw-accent-coral_soft);
+  color: var(--pw-text-primary);
+}
+.wk-btn--danger:hover {
+  filter: brightness(1.1);
+}
+.wk-btn--danger:active {
+  filter: brightness(0.9);
+}
+.wk-btn--large {
+  min-height: var(--pw-targets-large);
+  padding-inline: var(--pw-spacing-xl);
+}
+.wk-btn--block {
+  width: 100%;
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────────
+   Source: the Doorway room card (RoomsPanel.tsx `Doorway`) — panel surface,
+   subtle border, large radius; `--raised` matches the corridor row
+   (surface-hull, medium radius). */
+.wk-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--pw-border-subtle);
+  border-radius: var(--pw-radius-lg);
+  background: var(--pw-surface-panel);
+  color: var(--pw-text-primary);
+}
+.wk-card--raised {
+  border-radius: var(--pw-radius-md);
+  background: var(--pw-surface-hull);
+}
+.wk-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pw-spacing-sm);
+  padding: var(--pw-spacing-lg);
+}
+.wk-card__title {
+  margin: 0;
+  font-size: max(var(--pw-typography-size_lead), 18px);
+  font-weight: 600;
+  color: var(--pw-text-primary);
+}
+.wk-card__meta {
+  margin: 0;
+  font-size: max(var(--pw-typography-size_micro), 13px);
+  color: var(--pw-text-muted);
+}
+
+/* ── Chip ─────────────────────────────────────────────────────────────────
+   Source: rooms/RoomDrawer.tsx `CHIP` and the Doorway "Needs you" label
+   (uppercase micro label). `--accent` is the warm "Needs you" treatment. */
+.wk-chip {
+  display: inline-block;
+  padding: 2px var(--pw-spacing-sm);
+  border: 1px solid var(--pw-border-subtle);
+  border-radius: var(--pw-radius-sm);
+  font-size: max(var(--pw-typography-size_label), 13px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pw-text-secondary);
+}
+.wk-chip--accent {
+  border-color: var(--pw-accent-warm);
+  background: var(--pw-accent-warm_soft);
+  color: var(--pw-text-primary);
+}
+
+/* ── Status ───────────────────────────────────────────────────────────────
+   Source: rooms/format.ts `STATUS_WORDS` + rooms/parts.tsx `StatusWord`.
+   The WORD is the signal (a11y §1.3) — the dot is a decorative, luminance-free
+   marker. Variants tint only the marker; the text stays at its readable
+   secondary token so contrast holds in every theme. */
+.wk-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pw-spacing-xs);
+  font-size: max(var(--pw-typography-size_micro), 13px);
+  font-weight: 500;
+  color: var(--pw-text-secondary);
+}
+.wk-status::before {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--pw-radius-full);
+  background: var(--pw-text-muted);
+}
+.wk-status--healthy::before { background: var(--pw-accent-green); }
+.wk-status--degraded::before { background: var(--pw-accent-warm); }
+.wk-status--unhealthy::before { background: var(--pw-accent-coral); }
+.wk-status--unknown::before,
+.wk-status--unreachable::before,
+.wk-status--incompatible::before { background: var(--pw-text-muted); }
+
+/* ── Signal ───────────────────────────────────────────────────────────────
+   Source: ui/src/components/WorldSignal.tsx. Four levels, each a soft accent
+   wash plus a luminance-only rank dot (brighter = more urgent). The dot is
+   aria-hidden decoration; the title/description carry the meaning. */
+.wk-signal {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pw-spacing-md);
+  padding: var(--pw-spacing-lg);
+  border: 1px solid var(--pw-border-subtle);
+  border-radius: var(--pw-radius-md);
+  background: var(--pw-surface-panel);
+}
+.wk-signal__dot {
+  flex: none;
+  margin-top: 4px;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: var(--pw-radius-full);
+  background: color-mix(in srgb, var(--pw-text-primary) 20%, transparent);
+}
+.wk-signal__body {
+  min-width: 0;
+  flex: 1;
+}
+.wk-signal__title {
+  margin: 0;
+  font-size: max(var(--pw-typography-size_small), 14px);
+  font-weight: 500;
+  color: var(--pw-text-primary);
+}
+.wk-signal__desc {
+  margin: var(--pw-spacing-xs) 0 0;
+  font-size: max(var(--pw-typography-size_small), 14px);
+  color: var(--pw-text-secondary);
+}
+.wk-signal--good {
+  background: var(--pw-accent-teal_soft);
+  border-color: var(--pw-accent-teal);
+}
+.wk-signal--update {
+  background: var(--pw-accent-warm_soft);
+  border-color: var(--pw-accent-warm);
+}
+.wk-signal--waiting {
+  background: var(--pw-accent-gold_soft);
+  border-color: var(--pw-accent-gold);
+}
+.wk-signal--critical {
+  background: var(--pw-accent-coral_soft);
+  border-color: var(--pw-accent-coral);
+}
+/* Rank dot: luminance only, brighter with urgency. */
+.wk-signal--update .wk-signal__dot { background: color-mix(in srgb, var(--pw-text-primary) 35%, transparent); }
+.wk-signal--waiting .wk-signal__dot { background: color-mix(in srgb, var(--pw-text-primary) 55%, transparent); }
+.wk-signal--critical .wk-signal__dot { background: color-mix(in srgb, var(--pw-text-primary) 80%, transparent); }
+
+/* ── Form fields ──────────────────────────────────────────────────────────
+   Source: the interface's form vocabulary (Settings / Journal / Vault) —
+   raised surface, subtle border, small radius, at least 44px for every control. */
+.wk-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pw-spacing-xs);
+}
+.wk-label {
+  font-size: max(var(--pw-typography-size_small), 14px);
+  font-weight: 600;
+  color: var(--pw-text-primary);
+}
+.wk-hint {
+  font-size: max(var(--pw-typography-size_micro), 13px);
+  color: var(--pw-text-muted);
+}
+/* Error stays in the highest-contrast text token; the coral is a non-text
+   marker so a message is never colour-only and never dips below AA. */
+.wk-error {
+  padding-left: var(--pw-spacing-sm);
+  border-left: 2px solid var(--pw-accent-coral);
+  font-size: max(var(--pw-typography-size_micro), 13px);
+  color: var(--pw-text-primary);
+}
+.wk-input,
+.wk-select,
+.wk-textarea {
+  width: 100%;
+  min-height: var(--pw-targets-minimum);
+  padding: var(--pw-spacing-sm) var(--pw-spacing-md);
+  border: 1px solid var(--pw-border-subtle);
+  border-radius: var(--pw-radius-sm);
+  background: var(--pw-surface-raised);
+  color: var(--pw-text-primary);
+  font-family: inherit;
+  font-size: max(var(--pw-typography-size_body), 16px);
+}
+.wk-select {
+  cursor: pointer;
+}
+.wk-textarea {
+  min-height: calc(var(--pw-targets-minimum) * 2);
+  resize: vertical;
+}
+.wk-input::placeholder,
+.wk-textarea::placeholder {
+  color: var(--pw-text-muted);
+}
+.wk-input:hover,
+.wk-select:hover,
+.wk-textarea:hover {
+  border-color: var(--pw-border-hover);
+}
+.wk-input:disabled,
+.wk-select:disabled,
+.wk-textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Table ────────────────────────────────────────────────────────────────
+   Source: the room drawer's provenance list (rooms/RoomDrawer.tsx `dl`) in
+   tabular form; micro caps headers, subtle row rules. */
+.wk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: max(var(--pw-typography-size_small), 14px);
+  color: var(--pw-text-primary);
+}
+.wk-table caption {
+  margin-bottom: var(--pw-spacing-sm);
+  text-align: left;
+  font-size: max(var(--pw-typography-size_label), 13px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pw-text-muted);
+}
+.wk-table th {
+  padding: var(--pw-spacing-sm) var(--pw-spacing-md);
+  border-bottom: 1px solid var(--pw-border-strong);
+  text-align: left;
+  font-size: max(var(--pw-typography-size_label), 13px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pw-text-muted);
+}
+.wk-table td {
+  padding: var(--pw-spacing-md);
+  border-top: 1px solid var(--pw-border-subtle);
+}
+.wk-table tbody tr:hover {
+  background: var(--pw-surface-hull);
+}
+
+/* ── Tabs ─────────────────────────────────────────────────────────────────
+   Source: the interface's section switching (WorldAreaLink's active
+   treatment: warm on warm_soft), expressed as an ARIA tablist. */
+.wk-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pw-spacing-xs);
+  border-bottom: 1px solid var(--pw-border-subtle);
+}
+.wk-tab {
+  min-height: var(--pw-targets-minimum);
+  padding: var(--pw-spacing-sm) var(--pw-spacing-lg);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--pw-text-secondary);
+  font-family: inherit;
+  font-size: max(var(--pw-typography-size_small), 14px);
+  font-weight: 500;
+  cursor: pointer;
+}
+.wk-tab:hover {
+  color: var(--pw-text-primary);
+}
+.wk-tab[aria-selected="true"] {
+  border-bottom-color: var(--pw-accent-warm);
+  color: var(--pw-accent-warm);
+}
+
+/* ── Drawer ───────────────────────────────────────────────────────────────
+   Source: ui/src/components/WorldDrawer.tsx — a NON-modal <dialog> pinned to
+   the inline end. `show()` (not `showModal()`) keeps the page behind usable;
+   Escape/close handling is the consumer's JS. */
+.wk-drawer {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  margin: 0;
+  max-height: 100%;
+  width: 100%;
+  max-width: 28rem;
+  padding: var(--pw-spacing-xl);
+  border: 0;
+  border-left: 1px solid var(--pw-border-subtle);
+  background: var(--pw-surface-panel);
+  color: var(--pw-text-primary);
+  box-shadow: var(--pw-shadow-soft);
+  overflow-y: auto;
+}
+.wk-drawer:not([open]) {
+  display: none;
+}
+.wk-drawer[open] {
+  display: flex;
+  flex-direction: column;
+}
+.wk-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pw-spacing-md);
+  margin-bottom: var(--pw-spacing-lg);
+}
+.wk-drawer__title {
+  margin: 0;
+  font-family: var(--pw-typography-font_serif);
+  font-size: max(var(--pw-typography-size_lead), 18px);
+  font-weight: 600;
+  color: var(--pw-text-primary);
+}
+.wk-drawer__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--pw-targets-minimum);
+  min-height: var(--pw-targets-minimum);
+  padding: 0;
+  border: 0;
+  border-radius: var(--pw-radius-sm);
+  background: transparent;
+  color: var(--pw-text-secondary);
+  font-family: inherit;
+  font-size: max(var(--pw-typography-size_body), 16px);
+  cursor: pointer;
+}
+.wk-drawer__close:hover {
+  background: var(--pw-accent-teal_soft);
+  color: var(--pw-text-primary);
+}
+.wk-drawer__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pw-spacing-lg);
+}
+
+/* ── Layout helpers ───────────────────────────────────────────────────────
+   Source: the interface's composition (bridge-layout / stacking). Simple,
+   token-driven primitives a consumer page can lean on. */
+/* Padding counts inside a box's width, so width:100% + padding never
+   overflows the viewport. Standard reset; Worlds' Tailwind preflight does
+   the same. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.wk-page {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: var(--pw-spacing-xl);
+}
+@media (max-width: 480px) {
+  .wk-page {
+    padding-inline: 16px; /* phone gutter */
+  }
+}
+.wk-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pw-spacing-lg);
+}
+.wk-stack--sm {
+  gap: var(--pw-spacing-sm);
+}
+.wk-stack--xl {
+  gap: var(--pw-spacing-2xl);
+}
+.wk-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pw-spacing-sm);
+}
+.wk-grid {
+  display: grid;
+  gap: var(--pw-spacing-lg);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+
+/* ── Empty state ──────────────────────────────────────────────────────────
+   Source: RoomsPanel.tsx ("No rooms yet" — dashed arch, plain words). */
+.wk-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--pw-spacing-sm);
+  padding: var(--pw-spacing-2xl) var(--pw-spacing-lg);
+  border: 2px dashed var(--pw-text-muted);
+  border-radius: var(--pw-radius-md);
+  text-align: center;
+}
+.wk-empty__title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--pw-text-primary);
+}
+.wk-empty__body {
+  margin: 0;
+  font-size: max(var(--pw-typography-size_small), 14px);
+  color: var(--pw-text-secondary);
+}
+
+/* ── Banner ───────────────────────────────────────────────────────────────
+   Source: the status notices (RoomsPanel stale line, RegistryNotice).
+   Every variant leads with words; the accent is only a leading edge. */
+.wk-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--pw-spacing-md) var(--pw-spacing-lg);
+  border: 1px solid var(--pw-border-subtle);
+  border-left-width: 4px;
+  border-radius: var(--pw-radius-sm);
+  background: var(--pw-surface-hull);
+}
+.wk-banner__title {
+  margin: 0;
+  font-weight: 600;
+  font-size: max(var(--pw-typography-size_small), 14px);
+  color: var(--pw-text-primary);
+}
+.wk-banner__body {
+  margin: 0;
+  font-size: max(var(--pw-typography-size_small), 14px);
+  color: var(--pw-text-secondary);
+}
+.wk-banner--info { border-left-color: var(--pw-accent-teal); }
+.wk-banner--warn {
+  border-left-color: var(--pw-accent-warm);
+  background: var(--pw-accent-warm_soft);
+}
+.wk-banner--error {
+  border-left-color: var(--pw-accent-coral);
+  background: var(--pw-accent-coral_soft);
+}
+
+/* ── Code ─────────────────────────────────────────────────────────────────
+   Source: WorldSignal.tsx technical detail block; WorldDrawer provenance.
+   Mono, muted, on the hull surface; wraps rather than scrolls sideways. */
+.wk-code {
+  padding: 2px var(--pw-spacing-sm);
+  border: 1px solid var(--pw-border-subtle);
+  border-radius: var(--pw-radius-sm);
+  background: var(--pw-surface-hull);
+  color: var(--pw-text-secondary);
+  font-family: var(--pw-typography-font_mono);
+  font-size: max(var(--pw-typography-size_micro), 13px);
+  overflow-wrap: anywhere;
+}
+pre.wk-code {
+  display: block;
+  padding: var(--pw-spacing-md);
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+/* ── Icons ────────────────────────────────────────────────────────────────
+   One glyph from the Worlds icon library (icons.svg, shipped beside this
+   file), drawn in the text colour. Icons never carry meaning alone: keep
+   the words, and mark the svg aria-hidden="true".
+     <svg class="wk-icon" aria-hidden="true"><use href="icons.svg#icon-actions-close"/></svg> */
+.wk-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: -0.25em;
+  color: currentColor;
+}
+.wk-icon--sm { width: 1em; height: 1em; vertical-align: -0.15em; }
+.wk-icon--lg { width: 1.5em; height: 1.5em; }
+@media (forced-colors: active) {
+  .wk-icon { color: CanvasText; }
+}

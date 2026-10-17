@@ -1,0 +1,123 @@
+schema: play-nice/participant-capabilities-v1
+
+participant: figma
+
+capabilities:
+  - id: visual-design-composition
+    description: >-
+      Design and iterate visual composition for Project Worlds screens
+      (product renamed from "Personal World" 2026-09-12):
+      hierarchy, grouping, density, spacing rhythm, card/list/table choices,
+      companion placement, responsive transformation.
+    inputs:
+      - design brief (docs/history/DESIGN-HANDOFF.md class)
+      - current canonical tokens (design/tokens.json)
+      - accessibility floor (docs/accessibility/ACCESSIBILITY_CONTRACT.md)
+    outputs:
+      - Figma frames (file VATVojyJZT9HKx0CrDS0yr)
+      - frame exports (PNG/SVG)
+  - id: frame-export
+    description: >-
+      Export approved frames to PNG/SVG with stable names. Exports are
+      derived artifacts: repo-tracked copies live under design/; Figma
+      storage itself is never the canonical home.
+    inputs:
+      - frame node IDs (design/handoff/FRAME_INDEX.md vocabulary)
+    outputs:
+      - PNG/SVG files
+  - id: design-token-authoring
+    description: >-
+      Author/maintain Figma variables mirroring the semantic token system.
+      Currently immature: the Figma-side set contains only four variables;
+      design/tokens.json (repo) is the canonical token source and Figma
+      variables are derived from it, never the reverse.
+    inputs:
+      - design/tokens.json
+    outputs:
+      - Figma variables (derived)
+  - id: responsive-cascade-design
+    description: >-
+      Design screen adaptation across the canonical breakpoints
+      (docs/accessibility/RESPONSIVE_RULES.md: >=900 rail / 600-899 banner /
+      <=599 bottom nav).
+    inputs:
+      - core screen frames
+    outputs:
+      - responsive cascade frames
+  - id: companion-visual-identity
+    description: >-
+      Design companion characters, poses, contexts, and theme packs for
+      the five canonical residents (Mermaid, Little Helper Robot,
+      World-tree Squirrel, Tacos & the Morning Paper, Personal World).
+    inputs:
+      - companion architecture (design/COMPANION_INTEGRATION.md)
+    outputs:
+      - companion rigs, pose sheets, theme packs
+  - id: design-gap-analysis
+    description: >-
+      Compare a designed frame against an implemented screen and enumerate
+      what differs in composition (D2), behavior (D3), and experience (D4).
+    inputs:
+      - frame reference + implementation screenshot
+    outputs:
+      - gap analysis (play-nice/question-v1 answer or design notes)
+  - id: style-consistency-review
+    description: >-
+      Review screens against the token system and established composition
+      patterns for consistency drift.
+    inputs:
+      - screen exports, design/tokens.json
+    outputs:
+      - consistency findings
+  - id: component-relationship-mapping
+    description: >-
+      Map which designed components relate to which implemented primitives
+      (Card usage boundaries, section/divider patterns).
+    inputs:
+      - pattern sheets (5:283, 5:449, 5:587)
+    outputs:
+      - component relationship notes
+  - id: theme-pack-design
+    description: >-
+      Design theme packs within the theme-pack framework, honoring the
+      accessibility floor (luminance-only rank encoding, contrast).
+    inputs:
+      - design/THEME_PACK_FRAMEWORK.md
+    outputs:
+      - theme pack frames (e.g. 3:2005 comfortable, 3:2147 high contrast)
+  - id: accessibility-stress-scenario-design
+    description: >-
+      Design edge-case accessibility scenarios (frames 14:914, 4:266)
+      consistent with the canonical accessibility contract.
+    inputs:
+      - docs/accessibility/ACCESSIBILITY_CONTRACT.md
+    outputs:
+      - stress-test frames
+  - id: current-vs-superseded-design-identification
+    description: >-
+      Identify which frames are current vs superseded using the archived
+      index plus project answers (design/CURRENT.md) as routing.
+    inputs:
+      - frame index + .project/design/CURRENT.md
+    outputs:
+      - frame status answers
+  - id: frame-id-inventory
+    description: >-
+      Produce full frame inventories with node IDs (as supplied in the
+      archived FRAME_INDEX.md and her first-pass report).
+    inputs:
+      - live Figma file
+    outputs:
+      - frame inventory
+
+limitations:
+  - no-persistent-cross-session-memory — future sessions must reload project context and participant data
+  - ephemeral-sandbox-filesystem — her session file writes do not persist; content must be relayed or foreman-applied
+  - token system on the Figma side currently contains only four variables — too immature to be a meaningful canonical tokens source
+  - cannot verify runtime behavior, deployment state, or code correctness
+  - cannot read the repository directly — depends on handoffs and exports being supplied
+  - composition fidelity is not machine-checked by token gates; visual comparison (D2) is required
+  - cannot answer product priority, authorization, security, or runtime-health questions
+  - frame 197:902 is not in repo evidence — she must not present it as approved
+  - chat screens carry no recorded approval — treat as unknown until the owner decides
+  - her design authority holds only for explicitly approved frames, never for token values (repo tokens govern)

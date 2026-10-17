@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worlds — The Harbor (MOCKUP) — no services yet</title>
+<style>
+  :root{
+    --ink:#11212e; --ink-soft:#3d5163; --paper:#f7f3ea; --paper-2:#fffdf8;
+    --card:#ffffff; --line:#c9d6de; --deep:#0e2a3d; --deep-2:#16405a;
+    --teal:#0f6b6b; --teal-ink:#0b4f4f;
+    --calm:#1c5d3f; --calm-bg:#e2f2e7; --calm-line:#9fc9b1;
+    --signal:#8a3200; --signal-bg:#ffe6cf; --signal-line:#e0a06a;
+    --stale:#5a5344; --stale-bg:#ece7db; --stale-line:#c3b9a3;
+    --unknown:#414b57; --unknown-bg:#e6e9ee; --unknown-line:#adb6c2;
+    --focus:#1747b8; --radius:14px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:400 16px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    overflow-wrap:anywhere}
+  a{color:var(--teal-ink)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:8px}
+  .skip{position:absolute;left:-9999px;background:#fff;color:var(--ink);padding:12px 16px;z-index:60;border-radius:0 0 10px 0}
+  .skip:focus{left:0;top:0}
+  #frame{container-type:inline-size;max-width:1180px;margin:0 auto;padding:16px}
+  #frame.is-phone{width:390px;max-width:100%;outline:2px dashed var(--line);outline-offset:8px;background:var(--paper-2)}
+  .masthead{background:var(--deep);color:#fff;border-radius:var(--radius);padding:12px 16px}
+  .mast{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+  .brand{margin:0;font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px}
+  .brand-sub{font-weight:400;color:#c6dcea;font-size:14px}
+  .badge{margin:0;background:#ffd166;color:#11212e;font-weight:800;font-size:12px;letter-spacing:.14em;padding:5px 10px;border-radius:999px;text-transform:uppercase}
+  .viewer{display:flex;gap:6px;background:#0a2130;padding:4px;border-radius:999px}
+  .viewer button{min-height:44px;padding:10px 14px;border:1px solid #2c5570;background:transparent;color:#e3f0f8;font:inherit;font-size:14px;border-radius:999px;cursor:pointer}
+  .viewer button[aria-pressed="true"]{background:#ffd166;color:#11212e;border-color:#ffd166;font-weight:700}
+  .page-head{margin:22px 0 6px}
+  h1{font-size:clamp(24px,4.3vw,34px);line-height:1.15;margin:0 0 8px}
+  .lede{margin:0;color:var(--ink-soft);font-size:17px;max-width:64ch}
+  .mockbar{margin:14px 0 2px;padding:10px 14px;border:1px dashed var(--line);border-left:5px solid var(--teal);border-radius:10px;background:var(--paper-2);color:var(--ink-soft);font-size:14px}
+  .h2{font-size:15px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-soft);margin:26px 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px}
+  .layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:22px;align-items:start}
+  .empty-berth{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .empty-berth li{border:2px dashed var(--line);border-radius:var(--radius);background:linear-gradient(180deg,#f3f8fb,#e9f1f5);padding:18px}
+  .empty-title{margin:0 0 6px;font-size:17px;font-weight:700}
+  .empty-title .num{font-variant-numeric:tabular-nums;font-weight:800;font-size:13px;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:8px;padding:2px 7px;margin-right:10px}
+  .empty-berth p{margin:0;color:var(--ink-soft);font-size:15px;max-width:60ch}
+  .chips{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:14px;color:var(--ink)}
+  .note{margin:0 0 10px;padding:12px 14px;background:var(--paper);border:1px solid var(--line);border-radius:10px}
+  .note b{display:block;font-size:14px}
+  .note p{margin:4px 0 0;font-size:15px}
+  .card{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--calm);border-radius:var(--radius);padding:16px}
+  .card-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .card-head h3{margin:0;font-size:19px}
+  .num{font-variant-numeric:tabular-nums;font-weight:800;font-size:13px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px 7px;min-width:34px;text-align:center;flex:none}
+  .status{margin:0 0 8px;display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:6px 12px;border-radius:999px;border:1px solid;color:var(--calm);background:var(--calm-bg);border-color:var(--calm-line)}
+  .meta{margin:0 0 12px;color:var(--ink-soft);font-size:14px}
+  .act{display:flex;flex-wrap:wrap;gap:10px;margin:0}
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;background:var(--deep);color:#fff;text-decoration:none;border-radius:10px;font-weight:700;border:1px solid var(--deep)}
+  .btn:hover{background:var(--deep-2)}
+  .btn.secondary{background:#fff;color:var(--teal-ink);border-color:var(--line)}
+  .btn.secondary:hover{background:var(--paper)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+  .works{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .works li{padding-left:26px;position:relative}
+  .works li::before{content:"●";position:absolute;left:0;color:var(--calm)}
+  .works h3{margin:0 0 4px;font-size:16px}
+  .works p{margin:0;font-size:15px;color:var(--ink-soft)}
+  .weather{margin:0;font-size:15px;color:var(--ink-soft)}
+  .weather strong{color:var(--ink)}
+  .foot{margin:30px 0 8px;padding:14px 16px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:13.5px}
+  .foot p{margin:0;max-width:80ch}
+  .foot strong{color:var(--ink)}
+  @container (max-width:760px){
+    .layout{grid-template-columns:minmax(0,1fr);gap:16px}
+    h1{font-size:25px}
+    #frame{padding:12px}
+    .card-head h3{font-size:18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  }
+  @media (prefers-contrast:more){
+    .card,.status,.panel,.empty-berth li{border-width:2px}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<div id="frame">
+
+  <header class="masthead">
+    <div class="mast">
+      <p class="brand"><span aria-hidden="true">⚓</span> Worlds <span class="brand-sub">the harbor</span></p>
+      <p class="badge">Mockup</p>
+      <div class="viewer" role="group" aria-label="Preview width">
+        <button type="button" data-view="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" data-view="phone" aria-pressed="false">Phone 390&nbsp;px</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <h1>Your harbor is empty — and that's a fine place to start</h1>
+      <p class="lede">No services are moored yet and no AI provider is connected. Worlds still works: your notes, your reminders and a plain place for what matters. Moor a boat whenever you're ready.</p>
+    </div>
+
+    <p class="mockbar"><strong>MOCKUP.</strong> Everything below is invented sample data for a visual sketch. No real service was contacted and nothing here is a real reading.</p>
+
+    <section aria-labelledby="empty-h">
+      <h2 class="h2" id="empty-h">Empty berths</h2>
+      <ol class="empty-berth">
+        <li>
+          <h3 class="empty-title"><span class="num" aria-hidden="true">01</span>No boat here yet</h3>
+          <p>This berth is waiting. When you moor a service — a media library, a set of backups, your home lights — it will sit here with its name and its latest honest state.</p>
+        </li>
+        <li>
+          <h3 class="empty-title"><span class="num" aria-hidden="true">02</span>Nothing to report, and that's the truth</h3>
+          <p>With nothing connected there is nothing to check, so Worlds says nothing rather than something bright and empty. An empty harbor is not an error.</p>
+        </li>
+      </ol>
+    </section>
+
+    <div class="layout">
+      <section aria-labelledby="works-h">
+        <h2 class="h2" id="works-h">What already works, with nothing connected</h2>
+        <div class="panel">
+          <ul class="works">
+            <li><h3>Notes</h3><p>Write something down and it stays. Kept on your machine, no service and no provider needed.</p></li>
+            <li><h3>Reminders</h3><p>“Water the plants on Thursday.” Worlds will hold it and speak up on the day.</p></li>
+            <li><h3>A short list</h3><p>Keep the few links and errands you reach for most, one tap away.</p></li>
+            <li><h3>Your day, in words</h3><p>No invented scores and no fake weather — just what you actually put here.</p></li>
+          </ul>
+        </div>
+
+        <h2 class="h2" id="first-h">When you're ready, moor your first boat</h2>
+        <div class="panel">
+          <div class="note">
+            <b>Example service names — not detected</b>
+            <p>These are just names to show what a berth looks like. Worlds has not scanned your network and has found nothing.</p>
+          </div>
+          <ul class="chips">
+            <li class="chip">Media library</li>
+            <li class="chip">Backups</li>
+            <li class="chip">Home lights</li>
+            <li class="chip">Files</li>
+            <li class="chip">Project board</li>
+          </ul>
+          <p class="act" style="margin-top:14px"><a class="btn" href="#">Add a service</a></p>
+        </div>
+      </section>
+
+      <aside>
+        <h2 class="h2" id="today-h">Today</h2>
+        <div class="panel" aria-labelledby="today-h">
+          <div class="note">
+            <b>Note · 08:02</b>
+            <p>Buy bird seed on the way home.</p>
+          </div>
+          <div class="note">
+            <b>Reminder · Thursday</b>
+            <p>Water the plants.</p>
+          </div>
+        </div>
+
+        <h2 class="h2" id="weather-h">Harbor weather</h2>
+        <div class="panel" aria-labelledby="weather-h">
+          <p class="weather"><strong>Quiet.</strong> Nothing moored, nothing unknown, nothing waiting. Worlds will stay useful and stay honest until you connect something.</p>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="foot">
+      <p>Worlds · visual direction 2, “The Harbor” · <strong>MOCKUP</strong> — a sketch for comparison, not a build. Buttons and links are inert in this mockup; they show where the real interface would go. Sample data only.</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var frame=document.getElementById('frame');
+  var buttons=Array.prototype.slice.call(document.querySelectorAll('.viewer button'));
+  function setView(view){
+    frame.classList.toggle('is-phone', view==='phone');
+    buttons.forEach(function(b){b.setAttribute('aria-pressed', String(b.dataset.view===view));});
+  }
+  buttons.forEach(function(b){b.addEventListener('click',function(){setView(b.dataset.view);});});
+})();
+</script>
+</body>
+</html>

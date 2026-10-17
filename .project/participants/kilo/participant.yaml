@@ -1,0 +1,185 @@
+schema: play-nice/participant-v1
+
+id: kilo
+name: Kilo
+type: other    # schema enum; the harness is an application tool-layer, not an agent — its authority is the tool surface (see relationship.role)
+brain: replaceable    # the reasoning layer is loaded per-session; this pack describes the harness, not any specific model
+
+relationship:
+  role: application-harness / tool-layer
+  optional: true    # schema: pack-level optional is required (required presence is a project-level exception); in practice every Kilo session loads this layer, non-authoritatively
+  authoritative_for:
+    - its-own-tool-surface      # what tools it exposes, in what mode, with what gates
+    - its-own-confirmation-policy
+    - its-own-session-lifecycle
+    - its-own-persistence-behavior
+  not_authoritative_for:
+    - reasoning-quality         # that belongs to whatever brain is loaded
+    - model-strengths-or-failure-modes
+    - task-routing-evidence
+    - runtime-application-state
+    - deployment-state
+    - source-code-truth
+    - product-authorization
+    - product-priority
+    - security-policy
+    - visual-taste-and-composition
+    - any-projection-onto-tasks-not-granted-in-a-specific-instance
+
+contracts:
+  inherits_project_bundle: false   # the harness doesn't itself adopt Play-Nice; only the brain running through it does
+
+interfaces:
+  - id: kilo-cli-tui
+    type: cli
+    description: >-
+      Kilo is a native CLI/TUI (opencode fork, currently v7.5.9). Sessions
+      run inside the TUI on the developer's workstation; the model receives
+      tool calls, the harness mediates execution, file access, and approvals.
+  - id: bash-tool
+    type: tool
+    description: >-
+      Executes shell commands. Many commands are read-only by default;
+      mutating git commands (add, commit, push, merge, checkout, reset,
+      stash) trigger a one-shot confirmation prompt that cannot be saved
+      as an always-allow rule.
+  - id: file-tools
+    type: tool
+    description: >-
+      Read, Glob, Grep, Edit, Write. Working directory is the session's
+      project root by default.
+  - id: git-tools
+    type: tool
+    description: >-
+      Underlying git operations route through the bash tool and inherit
+      its confirmation policy. Tool availability is NOT authorization.
+  - id: mcp-tools
+    type: tool
+    description: >-
+      Connected MCP servers expose additional tools (memory, preferences,
+      synology, proxmox, unifi, dns-traefik, gitea read-side, firecrawl,
+      reddit, context7, figma, kilo-local-recall, etc.). Each MCP server
+      is a separate trust boundary; tool presence is capability, not
+      consent.
+  - id: web-tools
+    type: tool
+    description: >-
+      WebFetch and WebSearch via the configured provider. Authentication
+      for upstream services is out of band and not implied by tool access.
+
+help:
+  can_answer:
+    - which-tools-are-exposed-in-this-session
+    - which-mcp-servers-are-connected
+    - how-confirmation-policy-applies-to-a-given-command-class
+    - what-the-current-working-directory-and-environment-resolve-to
+    - session-lifecycle-questions-restart-recovery-persistence
+  cannot_answer:
+    - which-model-is-best-for-a-given-task
+    - what-a-brain-can-or-cannot-reason-about
+    - product-priority
+    - security-policy
+    - any-answer-about-reasoning-quality
+  preferred_question_format:
+    schema: play-nice/question-v1
+
+capabilities_file: capabilities.md
+interaction_file: interaction.md
+help_routing_file: help-routing.yaml
+onboarding_file: ONBOARDING.md
+
+acceptance:
+  status: not-applicable           # Kilo is a harness, not an agent that adopts contracts
+  contract_gate: not-applicable
+  contract_commitment: not-applicable
+  note: >-
+    The harness exposes tools and a runtime. It does not itself read or
+    attest contracts. The loaded brain is what performs contract adoption;
+    see that brain's participant pack for attestation state. Big-pickle
+    (the prior MiniMax session) and the new minimax pack below are the
+    brain-layer packs; their acceptance state is theirs.
+
+provenance:
+  supplied_by: kilo-session-via-minimax-m3
+  observed_at: 2026-09-12T17:33:48Z
+  session_commitment_bundle: see-.agent/STATE-after-this-session
+  source_revision: 0cee0652fb6f13c440b1fd9cc5d78fd87cdca8ad   # play-nice-contracts v0.6.0 (matches project adoption)
+  canonical_status: observed
+  import_method: >-
+    First created 2026-09-12 by a Play-Nice onboarding experiment
+    requested from the MiniMax-m3 brain running in this Kilo harness. The
+    pack captures observed tool surface and confirmation behavior from
+    this session, not from narrative. The brain layer is profiled
+    separately at .project/participants/minimax/.
+
+authentication:
+  method: none-recorded            # no credentials stored in the harness pack
+  secret_reference: none
+
+limitations:
+  - capability-is-not-authorization
+  - confirmation-prompt-cannot-be-pinned-as-always-allow
+  - context-does-not-persist-across-sessions-unless-explicitly-written
+  - long-jobs-look-frozen-without-explicit-progress
+  - external-system-access-requires-separate-authentication
+
+claims:
+  - id: config-file-location
+    grade: observed
+    observed_at: 2026-09-12T19:15:00Z
+    claim: >-
+      The Kilo harness reads its runtime configuration from
+      ~/.config/kilo/kilo.jsonc (JSONC format with $schema
+      https://app.kilo.ai/config.json)
+    check:
+      command: ls -la ~/.config/kilo/kilo.jsonc
+      expected: file exists
+
+  - id: version-discrepancy
+    grade: observed
+    observed_at: 2026-09-12T19:15:00Z
+    claim: >-
+      The Kilo harness version reported in environment variables
+      (KILOCODE_VERSION=7.6.2) differs from v7.5.9 noted in this pack's
+      capabilities.yaml (created during the prior 2026-09-12 session).
+      This is a version bump between sessions, not a contradiction.
+    check:
+      command: echo $KILOCODE_VERSION
+      expected: 7.6.2
+
+  - id: environment-variables-observed
+    grade: observed
+    observed_at: 2026-09-12T19:15:00Z
+    claim: >-
+      Environment variables KILO=1, KILOCODE_VERSION=7.6.2,
+      KILOCODE_FEATURE=cli, KILO_PROCESS_ROLE=worker,
+      KILO_RUN_ID=<uuid>, KILO_BACKGROUND_PROCESS_PORTS=true are present
+      in the session environment
+    check:
+      command: env | grep -E '^KILO'
+
+  - id: model-field-in-config
+    grade: observed
+    observed_at: 2026-09-12T19:15:00Z
+    claim: >-
+      ~/.config/kilo/kilo.jsonc contains "model": "kilo/minimax/minimax-m3"
+      and "small_model": "kilo/minimax/minimax-m3" — the harness config
+      records a model selection, but the session provider mode is described
+      as "Auto Free" (system prompt: kilo/kilo-auto/free). Whether the config
+      value matches the actual responding model is UNKNOWN (see the
+      auto-free participant pack).
+    check:
+      command: grep '"model"' ~/.config/kilo/kilo.jsonc
+
+  - id: autostash-on-ff-pull
+    grade: observed
+    observed_at: 2026-09-12T19:10:00Z
+    claim: >-
+      `git pull --ff-only origin main` with a dirty working tree (modified
+      minimax/participant.yaml) automatically created an autostash
+      ("Created autostash"), fast-forwarded, then re-applied the stash
+      ("Applied autostash") without data loss
+    check:
+      command: git log --oneline -1
+      expected: 90fcabb
+  - destructive-actions-require-explicit-owner-authority-not-just-tool-access

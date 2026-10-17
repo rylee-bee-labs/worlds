@@ -1,0 +1,10 @@
+schema_version: 1
+name: traefik
+title: Routing
+summary: Whether the routing service has any broken routes.
+status: ready
+note: >-
+  Reads the routing service's own API overview, so that API must be enabled and reachable. The plain-text ping
+  endpoint is not used because Worlds reads JSON only. Shape taken from the Traefik docs, not checked against a live instance.
+verified: false
+env: []

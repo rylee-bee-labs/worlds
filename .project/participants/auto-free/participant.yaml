@@ -1,0 +1,409 @@
+schema: play-nice/participant-v1
+
+id: auto-free
+name: Kilo Auto Free
+type: agent
+harness: kilo
+
+relationship:
+  role: brain-provider-routing-mode
+  optional: true
+  authoritative_for:
+    - its-own-observed-routing-mode-on-this-session
+    - its-own-observed-tool-surface-availability
+    - its-own-observed-confirmation-policy-behavior
+  not_authoritative_for:
+    - runtime-application-state
+    - deployment-state
+    - source-code-truth
+    - product-authorization
+    - product-priority
+    - security-policy
+    - visual-taste-and-composition
+    - live-state-claims
+    - any-projection-of-the-profile-onto-tasks-not-granted-in-a-specific-instance
+    - capabilities-of-the-kilo-harness-itself
+    - capabilities-of-any-other-model-variant
+    - whether-its-own-capability-claims-are-true
+
+contracts:
+  inherits_project_bundle: false
+
+interfaces:
+  - id: kilo-auto-free-session
+    type: slot
+    description: >-
+      The Kilo "Auto Free" brain/provider mode running on this session.
+      The routing tier ("Auto") on the Free plan selects a model
+      automatically; the specific model variant is not self-asserted by
+      the session and is not reliably observable from within.
+
+help:
+  can_answer:
+    - bounded-implementation-tasks-with-clear-paths-and-acceptance
+    - documentation-from-a-named-source
+    - structured-extraction
+    - multi-file-investigation-with-evidence
+    - canonical-freshness-verification
+    - deterministic-self-validation-of-structured-output
+    - asking-clarifying-questions-with-options-before-ambiguous-work
+  cannot_answer:
+    - product-priority-decisions
+    - security-decisions
+    - visual-taste-and-composition
+    - live-runtime-state-without-verification
+    - whether-its-own-capability-claims-are-true
+    - exact-model-identity-at-runtime
+    - whether-different-requests-hit-different-models
+  preferred_question_format:
+    schema: play-nice/question-v1
+
+profile:
+  status: PROVISIONAL
+  framing: >-
+    This profile records the "Auto Free" brain/provider routing mode as
+    observed during a single cold-onboarding experiment session on
+    2026-09-12. "Auto Free" is a Kilo subscription-tier routing mode
+    (Auto tier, Free plan), NOT a specific model name. The Kilo config
+    file specifies kilo/minimax/minimax-m3 as the selected model, but the
+    actual responding model cannot be self-verified from within the
+    session. This pack is routing/navigational evidence, not capability
+    authority, certification, or permanent role assignment. Do not
+    generalize across sessions or assume a one-to-one mapping between
+    the routing mode and a specific model identity.
+
+  observed_tasks_this_session:
+    - canonical-freshness-verification-before-writing
+      # git fetch + rev-list showed local was 4 commits behind origin/main
+      # (4abc5f2 vs 90fcabb); executed git pull --ff-only successfully;
+      # post-pull: 0 0 (HEAD = 90fcabb = origin/main). Dirty minimax pack
+      # preserved through automatic autostash.
+    - play-nice-participant-discovery
+      # listed 5 existing packs (figma, big-pickle, kilo, minimax,
+      # glm-5.3-flash) before writing any new pack; verified no ID
+      # collision for the new auto-free pack.
+    - harness-config-inspection
+      # read ~/.config/kilo/kilo.jsonc; observed model field and MCP
+      # server list; noted config is separate from the routing mode name.
+    - environment-variable-profiling
+      # env | grep revealed KILOCODE_VERSION=7.6.2, KILO=1,
+      # KILO_PROCESS_ROLE=worker, KILO_RUN_ID present.
+    - deterministic-yaml-self-validation
+      # every new YAML file parsed with yaml.safe_load before accepting;
+      # confirmed all participant YAMLs parse clean.
+    - bounded-task-participant-conformance-audit
+      # audited all 5 participant packs for structural conformance to
+      # the participant-v1 shape; verified internal consistency between
+      # README table and on-disk packs.
+    - asking-before-ambiguous-identity
+      # recognized the Auto Free vs minimax identity ambiguity and chose
+      # CREATE SIBLING over UPDATE EXISTING or ABORT; did not silently
+      # overwrite or conflate with the existing minimax pack.
+
+  good_fit:
+    - bounded participant-pack authoring from a named schema
+    - multi-file investigation with file:line evidence
+    - structured writing with provenance fields
+    - onboarding and discovery tasks
+    - deterministic validation of structured output
+    - asking clarifying questions with options
+
+  good_with_verification:
+    - repository archaeology
+    - documentation updates from a named source
+    - canonical freshness verification
+    - structural conformance auditing
+
+  poor_fit_or_route_elsewhere_first:
+    - security-sensitive decisions
+    - destructive operations
+    - unbounded orchestration
+    - visual taste and composition
+    - tasks requiring model identity certainty
+
+  ask_for_help_when:
+    - ambiguity could destroy work
+    - another participant pack would be mutated
+    - the answer is owned by a specific human or service
+    - verification is impossible (prefer UNKNOWN over fabrication)
+    - scope would need to expand (prefer DEFERRED)
+    - model identity is in question (harness vs brain conflation)
+    - canonical freshness is unclear
+
+  preferred_task_shape: >-
+    Worker-packet style: base SHA, owned paths, objective, acceptance
+    criteria, exclusions, authority granted, explicit stop conditions.
+    For structured-output tasks: include schema name and a validation
+    step (e.g. "produce .yaml matching schema: play-nice/participant-v1,
+    then run yaml.safe_load to confirm").
+
+  preferred_evidence: >-
+    Re-runnable commands with observed output over reports; observed_at
+    on time-sensitive claims; graded results (CI TESTED vs RUNTIME
+    VERIFIED vs HUMAN ACCEPTED); exact git SHAs not shortened.
+
+  authority: >-
+    Exactly what the task grants. Default: zero mutation authority. The
+    harness exposes tools; the project authorizes their use.
+
+  does_not_imply:
+    - fluency in live state
+    - acting authority
+    - self-rating authority
+    - library acceptance consenting to any specific mutation
+    - capabilities held by other model variants
+    - capabilities of the kilo harness
+    - a fixed model identity
+
+  known_failure_modes:
+    observed:
+      - id: model-identity-uncertainty
+        summary: >-
+          The brain/provider routing mode name ("Auto Free") does not
+          correspond to a self-declared model identifier within the
+          session. The Kilo config file at ~/.config/kilo/kilo.jsonc
+          specifies "model": "kilo/minimax/minimax-m3", but the system
+          prompt identifies the model as "kilo/kilo-auto/free". Whether
+          these represent the same underlying model is not resolvable
+          from within the session.
+        evidence: >-
+          ~/.config/kilo/kilo.jsonc line 110: "model":
+          "kilo/minimax/minimax-m3"; system prompt: "You are powered by
+          the model named kilo-auto/free. The exact model ID is
+          kilo/kilo-auto/free."
+        observed_at: 2026-09-12T19:12:00Z
+        mitigation:
+          - record the routing mode name as the pack identity, not the config value or the system-prompt value
+          - preserve the contradiction explicitly as UNKNOWN rather than silently picking one
+          - cross-reference the existing minimax pack to record the relationship without conflating identities
+
+  evidence_corrections:
+    - prior_claim: none
+      correction: none
+      actual_label: this is a first-session profile, no prior claims to correct
+      what_remains_unknown: >-
+        Whether the Auto Free routing mode is stable within a session or
+        varies request-to-request; the exact model identifier at runtime;
+        whether the config value (kilo/minimax/minimax-m3) or the system
+        prompt value (kilo/kilo-auto/free) is authoritative.
+
+  evidence:
+    - id: kilo-config-model-observed
+      grade: observed
+      observed_at: 2026-09-12T19:12:00Z
+      claim: >-
+        ~/.config/kilo/kilo.jsonc specifies "model":
+        "kilo/minimax/minimax-m3" and "small_model":
+        "kilo/minimax/minimax-m3"
+      check:
+        command: cat ~/.config/kilo/kilo.jsonc | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('model'), d.get('small_model'))"
+        expected: kilo/minimax/minimax-m3 kilo/minimax/minimax-m3
+    - id: system-prompt-model-ident
+      grade: observed
+      observed_at: 2026-09-12T19:12:00Z
+      claim: >-
+        The system prompt identifies the model as "kilo/kilo-auto/free"
+      check:
+        command: echo "kilo/kilo-auto/free"
+        note: >-
+          Identity is self-reported by the system prompt, not queried
+          from a runtime introspection endpoint; treated as observed
+          self-identification, not verified authority.
+    - id: model-identity-ambiguous
+      grade: unknown
+      observed_at: 2026-09-12T19:12:00Z
+      claim: >-
+        Whether the config model (kilo/minimax/minimax-m3) and the system
+        prompt model (kilo/kilo-auto/free) are the same model is UNKNOWN
+      check:
+        command: echo "no runtime introspection tool available in this session"
+        note: >-
+          No tool exists to query the actual LLM provider endpoint or
+          model name from within the session.
+    - id: canonical-freshness-verified
+      grade: observed
+      observed_at: 2026-09-12T19:10:00Z
+      claim: >-
+        Local checkout fast-forwarded to origin/main HEAD (90fcabb) before
+        any pack authoring; post-pull ahead/behind is 0 0
+      check:
+        command: git rev-list --left-right --count HEAD...origin/main
+        expected: "0\t0"
+    - id: autostash-during-pull
+      grade: observed
+      observed_at: 2026-09-12T19:10:00Z
+      claim: >-
+        git pull --ff-only automatically created an autostash for the
+        dirty minimax pack, fast-forwarded, then re-applied the stash
+      check:
+        command: git log --oneline -1
+        expected: 90fcabb
+    - id: sibling-preservation
+      grade: observed
+      observed_at: 2026-09-12T19:12:00Z
+      claim: >-
+        Discovered existing participant packs (figma, big-pickle, kilo,
+        minimax, glm-5.3-flash) before writing; chose CREATE SIBLING
+        for auto-free rather than overwriting minimax
+      check:
+        command: ls .project/participants/
+    - id: pack-validator-passes
+      grade: observed
+      observed_at: 2026-09-12T19:15:00Z
+      claim: >-
+        personal-world framework validate-packs reports healthy with zero
+        violations after adding the auto-free pack
+      check:
+        command: uv run personal-world framework validate-packs --json
+
+  unknowns:
+    - behavior-across-multiple-kilo-sessions
+    - whether-auto-free-routes-to-different-models-per-request
+    - exact-model-identity-at-runtime
+    - whether-config-value-or-system-prompt-value-is-authoritative
+    - long-duration-context-behavior
+    - production-runtime-diagnosis
+
+  limitations:
+    - context-scoped-per-session-requires-reloading-project-context
+    - self-claims-are-evidence-not-authority
+    - one-session-evidence-base-do-not-generalize
+    - does-not-represent-the-kilo-harness
+    - model-identity-is-not-self-verifiable-from-within-the-session
+    - contractctl-is-not-installed-locally-so-full-attestation-is-not-possible
+
+  cross_references:
+    - project: kilo
+      relationship: >-
+        auto-free runs inside the kilo harness; the kilo pack profiles
+        the harness tool surface, not the brain. See
+        .project/participants/kilo/participant.yaml
+    - project: minimax
+      relationship: >-
+        The Kilo config file specifies kilo/minimax/minimax-m3 as the
+        model. If Auto Free resolves to that model, the minimax pack
+        captures prior observed behavior of that same model variant in
+        a previous session. The two packs are NOT merged: the routing
+        mode identity (auto-free) and the model identity (minimax) are
+        kept separate per the experiment's layer-separation rule.
+        See .project/participants/minimax/participant.yaml
+
+provenance:
+  supplied_by: auto-free-session-via-kilo-2026-09-12
+  observed_at: 2026-09-12T19:12:00Z
+  model_id: kilo/kilo-auto/free
+  config_model_field: kilo/minimax/minimax-m3
+  config_model_field_source: ~/.config/kilo/kilo.jsonc line 110
+  source_revision: 0cee0652fb6f13c440b1fd9cc5d78fd87cdca8ad
+  canonical_status: optional-non-authoritative
+  import_method: >-
+    First created 2026-09-12 during a cold-onboarding experiment into
+    the Play-Nice participant-pack framework. The session's brain/provider
+    mode is described as "Auto Free" by the harness environment. The kilo
+    participant pack (.project/participants/kilo/) records the harness
+    layer; the existing minimax participant pack
+    (.project/participants/minimax/) records a prior session using
+    kilo/minimax/minimax-m3; both are preserved as separate siblings.
+
+authentication:
+  method: none-recorded
+  secret_reference: none
+
+limitations:
+  - context-scoped-per-session-requires-reloading-project-context
+  - self-claims-are-evidence-not-authority
+  - one-session-evidence-base-do-not-generalize
+  - does-not-represent-the-kilo-harness
+  - model-identity-is-not-self-verifiable-from-within-the-session
+  - contractctl-is-not-installed-locally-so-full-attestation-is-not-possible
+  - auto-free-is-a-routing-mode-not-a-fixed-model-identity
+
+library_proposals:
+  based_on_observed_session: 2026-09-12T19:08:54Z..19:21:50Z
+  status: NOT ADOPTED
+  status_detail: >-
+    These are friction-derived observations from the Auto Free cold-onboard
+    experiment. They are recorded for traceability, not as project-local
+    contracts. Submit to Rylee-Bee/play-nice-contracts separately; do NOT
+    implement as project-local contracts in this repo.
+  proposals:
+    - id: contractctl-availability
+      targets_contract: ask-for-help + stable-truth-replaceable-machinery
+      problem: >-
+        The canonical Play-Nice onboarding tool (contractctl) is not
+        installed in the local working environment. Without it, the full
+        attestation path (RESOLVE, READ, VERIFY, ATTTESTATION,
+        COMMITMENT, ACTIVE) cannot be completed; onboarding is forced to
+        PROVISIONAL. The project-local validate-packs provides only coarse
+        checks (YAML parse + schema/id keys + ID uniqueness) and does not
+        resolve or attest contracts.
+      observed_cost: >-
+        This session could not run contractctl resolve or contractctl
+        onboard; the adoption pin was honored unchanged and packs marked
+        PROVISIONAL per the freshness escape hatch.
+      proposed_shape: >-
+        A deterministic onboarding surface that projects can invoke
+        regardless of whether the canonical library checkout is present
+        locally — at minimum, a way to verify the adoption pin revision
+        and lockfile against the live repository and resolve the
+        applicable contract subset for a task.
+      friction_owner: Play-Nice tooling
+      friction_severity: high
+
+    - id: structural-conformance-gap
+      targets_contract: contract-attestation + stable-truth-replaceable-machinery
+      problem: >-
+        The project-local validate_participant_packs validator (in
+        framework.py) only checks YAML parseability, required top-level
+        keys (schema, id), schema namespace, and ID uniqueness. It does
+        NOT validate structural conformance to the full participant-v1
+        schema (missing type, profile, provenance, authentication,
+        limitations all pass silently). A manual structural audit
+        revealed that figma and kilo packs are missing the profile
+        section entirely, glm-5.3-flash is missing authentication and
+        limitations, and big-pickle is missing profile.status.
+      observed_cost: >-
+        4 of 6 existing packs have structural gaps that pass validation
+        without detection; only a manual audit surfaced them.
+      proposed_shape: >-
+        Either extend the project validator with a structural
+        conformance check per participant-v1 (optional fields with
+        defaults, but required fields flagged), or ensure contractctl
+        structural validation runs as part of the project test gate.
+      friction_owner: Project Worlds tooling
+      friction_severity: medium
+
+    - id: runtime-model-identity-observation
+      targets_contract: provenance-and-audit + truth-and-evidence
+      problem: >-
+        The Kilo harness config (kilo.jsonc) specifies a model
+        (kilo/minimax/minimax-m3) but the session provider mode is
+        "Auto Free" (system prompt: kilo/kilo-auto/free). No tool within
+        the session can query the actual responding model identity.
+        This makes it impossible to verify whether the configured model,
+        the routing mode, and the actual responding model are the same.
+      observed_cost: >-
+        The experiment's core goal (profile the responding brain) could
+        not be fully achieved; the actual model is recorded as UNKNOWN.
+      proposed_shape: >-
+        Expose the actual responding model identifier as an observable
+        field within Kilo sessions (e.g. an environment variable or a
+        read-only MCP resource), so participant profiling can record
+        identity with certainty rather than config inference.
+      friction_owner: Kilo / provider
+      friction_severity: high
+
+    - id: harness-version-drift
+      targets_contract: stable-truth-replaceable-machinery
+      problem: >-
+        The kilo participant pack records "v7.5.9" but the actual
+        KILOCODE_VERSION environment variable is 7.6.2. Participant packs
+        are manually authored and do not auto-sync to the harness version.
+      observed_cost: >-
+        Stale version metadata could mislead future sessions about the
+        harness capabilities they should expect.
+      proposed_shape: >-
+        Either auto-inject KILOCODE_VERSION into the harness
+        participant pack, or add a version-drift check to validate-packs.
+      friction_owner: Kilo participant pack
+      friction_severity: low

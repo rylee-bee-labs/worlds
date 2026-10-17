@@ -1,0 +1,949 @@
+# Project Worlds Human Readability — Full Update Handoff
+
+## Assignment
+
+Complete the human-language update across the current Project Worlds checkout.
+
+This is an implementation task, not another high-level audit. Inspect the real code and running product, apply the language improvements that can be made truthfully, update affected tests, and leave a precise implementation receipt.
+
+Use the tone, language, and readability contract in this document as the writing standard.
+
+### Goal
+
+Make Project Worlds easy to understand on the first read, including for someone who is tired, distracted, dyslexic, using a screen reader, or reading a translation.
+
+The product should sound human, calm, warm, capable, and technically honest. Normal interface language should not require knowledge of APIs, providers, internal states, authentication mechanisms, or backend architecture.
+
+### Required sources
+
+Before editing, read:
+
+- `AGENTS.md`;
+- `.project/CURRENT.md`;
+- `.project/DECISIONS.md`;
+- the current accessibility, security, and human-reliability contracts;
+- `.project/LANGUAGE-STRING-INVENTORY.csv`;
+- `.project/LANGUAGE-IMPLEMENTATION-MANIFEST.md`;
+- `.project/LANGUAGE-CONTENT-GUIDE.md`;
+- this entire handoff.
+
+Treat the current checkout and running behavior as the source of truth. The inventory records the audit state and may contain text that another pass has already changed. Verify every target before editing it.
+
+### Scope
+
+Review and update human-facing language across:
+
+- the Station shell and navigation;
+- World, chat, journal, projects, interests, media, lab, Vault, and settings;
+- `/login` and `/setup`;
+- backup and restore;
+- authentication, OIDC, sessions, and fresh identity confirmation;
+- proposal, approval, rejection, and execution flows;
+- loading, empty, stale, unavailable, unknown, not-set-up, disabled, partial-success, and error states;
+- placeholders, validation, confirmations, success messages, and recovery instructions;
+- accessible names, descriptions, headings, landmarks, image alternatives, and live-region announcements;
+- backend-generated messages that can appear in the interface;
+- translation hazards such as concatenated fragments, English-dependent word order, ambiguous dates, embedded markup, and missing plural handling.
+
+### Required work
+
+1. Inspect the current working tree before changing anything. Preserve unrelated work.
+2. Run or inspect the real product where practical. Do not infer interface behavior from stale specifications.
+3. Reconcile the audit inventory and implementation manifest with the current code.
+4. Implement all language changes that current behavior can support truthfully. This task is not limited to rows previously labeled safe for a mechanical model.
+5. Keep technical details available through progressive disclosure. Do not make ordinary use depend on reading them.
+6. Align visible labels with accessible names without making screen-reader text repetitive.
+7. Replace language that is robotic, vague, defensive, blame-oriented, patronizing, falsely reassuring, needlessly whimsical, or dependent on developer vocabulary.
+8. Keep terminology and state language consistent across surfaces.
+9. Update tests that intentionally assert changed user-facing language.
+10. Record behavior problems separately when wording alone cannot solve them.
+
+### Authority and boundaries
+
+You may make wording, accessibility-language, localization-readiness, and narrowly necessary presentation-layer changes required to implement this contract.
+
+Do not:
+
+- invent behavior or capabilities;
+- weaken authentication, authorization, privacy, or security controls;
+- claim that data is saved, synchronized, private, encrypted, current, unchanged, recoverable, or deleted without evidence;
+- imply that an assistant, model, companion, provider, or agent has authority it does not have;
+- redesign the interface;
+- perform unrelated refactoring or cleanup;
+- rewrite historical documents as though history changed;
+- overwrite unrelated working-tree changes;
+- expose secrets, private topology, raw exceptions, or sensitive identifiers.
+
+If language and behavior cannot be made consistent without a meaningful behavior change, do not guess. Record the problem with the exact surface, source file, consequence, and recommended owner decision.
+
+### Completion standard
+
+The task is complete only when:
+
+- every inventoried surface has been reconciled with the current checkout;
+- open manifest findings have been implemented or explicitly deferred with a concrete reason;
+- normal interface language leads with human meaning rather than implementation detail;
+- important actions, scope, consequences, and recovery steps are clear;
+- visible and accessible wording agree;
+- edited strings are translation-ready;
+- security and destructive language is plain and precise;
+- automated checks pass, or environmental blockers are reported accurately;
+- the implementation receipt identifies exactly what remains.
+
+### Validation
+
+Run the repository-required checks, including:
+
+```text
+uv run pytest --timeout=30
+uv run personal-world framework validate --json
+```
+
+Also run:
+
+- syntax checks for every edited JavaScript file;
+- the Station Playwright suite when its browser is available;
+- focused tests for changed authentication, destructive-action, accessible-name, and live-region language;
+- `git diff --check`.
+
+Where practical, read the primary journeys in DOM and screen-reader order. Check sign-in, setup, journal entry, chat, status comprehension, approval, deletion, backup, restore, failure, and retry states.
+
+### Final receipt
+
+Report:
+
+- files changed;
+- manifest IDs completed;
+- surfaces reviewed;
+- terminology standardized;
+- security or destructive wording changed;
+- accessibility and translation issues corrected;
+- tests and validation results;
+- behavior-coupled findings that remain;
+- anything that still requires owner review.
+
+Do not describe an untested path as verified.
+
+---
+
+## Rylee Tone, Language, and Readability Contract
+
+### Status and purpose
+
+This contract defines how human-facing writing should work across Project Worlds.
+
+It applies to:
+
+- product interfaces;
+- setup and sign-in;
+- settings and preferences;
+- chat and assistant messages;
+- empty, loading, stale, unavailable, and error states;
+- security and privacy messages;
+- confirmations and destructive actions;
+- accessibility labels and live-region announcements;
+- documentation, reports, recommendations, and project handoffs.
+
+The goal is not to sound impressive. The goal is to make meaning easy to find.
+
+Writing should feel like it came from a thoughtful, capable human who wants the reader to understand.
+
+**Human. Clear. Warm. Capable. Calm. Technically honest. Accessible.**
+
+---
+
+### Agent quick rules
+
+Before changing human-facing language:
+
+1. Verify what the product actually does.
+2. Say the useful thing first.
+3. Use ordinary words and short sentences.
+4. Name what happened, what changed or did not change, and what the person can do next.
+5. Use one stable term for each concept.
+6. Keep technical detail available after the plain-language explanation.
+7. Never invent certainty, safety, privacy, authority, success, or recovery.
+8. Never blame or talk down to the reader.
+9. Make visible and screen-reader wording agree.
+10. Write complete strings that can be translated.
+11. Keep serious, security-sensitive, and destructive situations plain and calm.
+12. If the behavior itself is confusing, report that separately. Do not hide it with better copy.
+
+When uncertain, stop and record the uncertainty. Do not guess.
+
+---
+
+### Order of authority
+
+When instructions disagree, follow this order:
+
+1. Actual current product behavior
+2. Security, privacy, accessibility, and human-reliability contracts
+3. Durable product decisions and canonical Project Worlds terminology
+4. This tone, language, and readability contract
+5. Surface-specific style, character voice, or decorative personality
+
+Tone never overrides truth, safety, accessibility, or product behavior.
+
+Historical documents describe history. Do not rewrite them as though past decisions or behavior were different.
+
+---
+
+### 1. Human first
+
+Write for a person, not for a parser, ticketing system, compliance document, or AI benchmark.
+
+Prefer:
+
+> Your changes are saved.
+
+Instead of:
+
+> Persistence operation completed successfully.
+
+Prefer:
+
+> Couldn’t connect to your calendar.
+
+Instead of:
+
+> Provider connectivity validation encountered an unsuccessful state.
+
+If people would not naturally say it, reconsider it.
+
+Do not remove precise technical language when it carries useful meaning. Put it in the appropriate layer.
+
+---
+
+### 2. Put the useful thing first
+
+The first sentence should usually tell the reader what matters.
+
+Use this order when it applies:
+
+1. What happened
+2. What it means or what changed
+3. What the person can do next
+4. Technical detail, if useful
+
+Do not make someone read background information before learning why the message exists.
+
+Example:
+
+> Couldn’t save this note. Nothing was added to your journal. Check the connection and try again.
+
+Do not begin with an API name, provider type, internal state, architecture explanation, or diagnostic code unless the surface exists specifically for technical diagnosis.
+
+---
+
+### 3. Keep cognitive load low
+
+- Use short sentences.
+- Prefer one main idea per sentence.
+- Use short paragraphs.
+- Use headings when they help someone find information.
+- Put steps in the order they must happen.
+- Keep related information together.
+- Separate required actions from optional detail.
+- Avoid presenting many nearly identical choices.
+- Do not repeat the same reassurance in multiple places.
+
+Do not compress several decisions, warnings, exceptions, and actions into one sentence merely because it is grammatically possible.
+
+Complex ideas are allowed. Needlessly complex language is not.
+
+Do not depend only on a reading-level score. A short sentence can still be vague, misleading, or full of unfamiliar terms.
+
+---
+
+### 4. Use ordinary words
+
+Choose the simplest accurate word.
+
+Prefer:
+
+- use over utilize;
+- start over initialize, when they mean the same thing;
+- help over facilitate;
+- change over modification, when either works;
+- couldn’t over was unable to;
+- before over prior to;
+- check over validate, when formal validation is not the actual distinction;
+- set up over configure, in the first layer;
+- sign-in service over OIDC issuer, in the first layer.
+
+Technical terminology is appropriate when the term carries necessary meaning.
+
+Do not replace precise language with vague “friendly” language. Plain language and technical accuracy are compatible.
+
+---
+
+### 5. Never talk down to the reader
+
+Simple does not mean childish.
+
+- Do not over-explain obvious concepts.
+- Do not use a teacher voice unless teaching was requested.
+- Do not congratulate someone for routine actions.
+- Do not imply that a task is easy for everyone.
+- Respect the reader’s competence when something goes wrong.
+
+Be careful with:
+
+- “Don’t worry!”
+- “It’s super easy!”
+- “Simply…”
+- “Obviously…”
+- “As you should know…”
+- “Just…” when it minimizes work, risk, pain, or difficulty
+
+These words are not forbidden in every grammatical context. Remove them when they minimize the reader’s experience or hide real effort.
+
+---
+
+### 6. Be warm without becoming syrupy
+
+The voice may have personality. It should not sound corporate, clinical, robotic, or emotionally vacant.
+
+Warmth should come from considerate wording, not excessive reassurance.
+
+Good:
+
+> That didn’t work. Your existing settings are still intact.
+
+Less good:
+
+> Oh no! Don’t worry — everything is totally okay! 💖
+
+The more serious the situation, the calmer and more direct the language should become.
+
+---
+
+### 7. Do not manufacture urgency
+
+Do not create anxiety to increase engagement.
+
+Avoid:
+
+- “Act now” without a real deadline;
+- “Don’t miss out”;
+- “Urgent” when it is not urgent;
+- “You must do this immediately” without a real time constraint;
+- “Needs you” when no meaningful human decision or action is required.
+
+If something is urgent, explain why and name the deadline or consequence.
+
+Quiet is a valid state. Do not turn a calm state into a task.
+
+---
+
+### 8. Do not invent certainty
+
+Say what is known. Say what is not known.
+
+Prefer:
+
+> Project Worlds has not verified this connection yet.
+
+Instead of:
+
+> Your provider should be ready.
+
+Prefer:
+
+> Two causes look likely.
+
+Instead of:
+
+> This is definitely caused by…
+
+Distinguish clearly between:
+
+- saved and validated;
+- requested and completed;
+- proposed and approved;
+- approved and carried out;
+- observed and currently true;
+- empty and unavailable;
+- unknown and healthy;
+- local and synced;
+- private by convention and encrypted;
+- reversible and permanent.
+
+Technical honesty matters more than sounding confident.
+
+---
+
+### 9. Product truth comes first
+
+Language must describe behavior that exists now.
+
+Use success language only after the implementation verifies the result. For example, use “Calendar connected and checked” only after Project Worlds has completed both steps. A request being accepted is not proof that the requested work finished.
+
+Do not invent or exaggerate:
+
+- a capability;
+- a successful result;
+- a security or privacy boundary;
+- encryption;
+- synchronization;
+- assistant or model authority;
+- a recovery path;
+- unchanged state;
+- data freshness;
+- who received a message;
+- who approved or performed an action.
+
+If clear language exposes a confusing workflow or missing behavior, record the behavior problem separately. Do not hide it with polished language.
+
+Copy must not imply that an assistant, companion, model, provider, or agent has authority it does not have.
+
+---
+
+### 10. Errors should help, not scold
+
+An error should answer the useful parts of these questions:
+
+1. What happened?
+2. What changed or did not change?
+3. Can the person recover?
+4. What should they do next?
+5. Where can an expert find technical details?
+
+Never blame the reader.
+
+Avoid:
+
+> Invalid input.
+
+Prefer:
+
+> That address looks incomplete. Check it and try again.
+
+Avoid:
+
+> Authentication failed.
+
+Prefer:
+
+> Couldn’t sign you in with that account. Try again, or use another sign-in method.
+
+Do not promise that nothing changed unless the implementation proves that nothing changed.
+
+Keep raw exceptions, stack traces, private topology, secrets, and internal identifiers out of the default message. Provide safe technical details separately when useful.
+
+---
+
+### 11. Actions should be explicit
+
+Buttons, links, instructions, and calls to action should say what they do.
+
+Prefer:
+
+- Save changes
+- Try connecting again
+- Delete journal entry
+- Create encrypted backup
+- Restore missing files
+- Replace existing files and restore
+- Confirm it’s you
+
+Avoid vague actions when a more specific label fits:
+
+- Continue
+- Confirm
+- Submit
+- Proceed
+- Yes
+- Retry
+
+Generic labels are acceptable only when their result is already unmistakable and no meaningful scope or consequence is hidden.
+
+For destructive actions, the final button should name the destructive action and its object.
+
+---
+
+### 12. Accessibility is part of the language
+
+Writing should be easy to:
+
+- scan;
+- read with dyslexia or attention difficulties;
+- understand with a screen reader;
+- translate;
+- understand without cultural knowledge;
+- revisit while tired, stressed, in pain, or overloaded.
+
+Avoid unnecessary idioms, puns, and long metaphor chains.
+
+Do not put essential meaning only in:
+
+- color;
+- position;
+- punctuation;
+- capitalization;
+- emoji;
+- tone;
+- visual shape;
+- animation.
+
+Avoid instructions such as “click the item on the left.” Name the control instead.
+
+---
+
+### 13. Screen-reader language must agree with the screen
+
+- A control’s accessible name should contain the same key words as its visible label.
+- A link should make sense without the sentence around it.
+- Heading text should describe the section that follows.
+- Labels should remain visible. Do not use placeholder text as the only label.
+- Field errors should be programmatically associated with their fields.
+- Required fields should be identified in words and programmatically.
+- Status announcements should be concise and meaningful.
+- Do not announce the same result repeatedly through several live regions.
+- Do not place operating instructions such as “press to open” inside a button’s accessible name.
+- Hide decorative emoji and symbols from assistive technology.
+- Give informative images meaningful alternatives; give decorative images empty alternatives.
+- Dialog names, visible headings, and trigger labels should describe the same task.
+- A changed state must not be communicated by color alone.
+
+Automated accessibility tools are necessary but insufficient. Important journeys also need keyboard and real screen-reader testing.
+
+---
+
+### 14. Write complete, translatable strings
+
+Write complete sentences instead of assembling fragments in code.
+
+Use named placeholders for changing values.
+
+Avoid:
+
+```text
+"Deleted " + count + " " + itemName
+```
+
+Prefer a complete localizable message:
+
+```text
+{count} journal entries deleted.
+```
+
+Requirements:
+
+- Do not assume English word order.
+- Use the application’s pluralization system.
+- Use locale-aware date, time, number, duration, and list formatting.
+- Avoid ambiguous numeric dates such as `9/10/26`.
+- Keep HTML and presentation markup out of translation strings where practical.
+- Do not split a sentence across several UI elements unless each part stands alone.
+- Do not use a noun as a verb when that usage may be unclear in translation.
+- Avoid abbreviations unless they are explained or universally required by the domain.
+- Avoid puns, idioms, rhyme, and cultural references when they carry essential meaning.
+- Give translators context for placeholders, tone, and where the string appears.
+- Do not build accessible names from fragments whose order depends on English grammar.
+
+Translation must preserve meaning, dignity, and safety—not merely produce grammatical text.
+
+---
+
+### 15. Keep terminology stable
+
+One concept should normally have one name.
+
+Do not casually alternate among terms such as:
+
+- world;
+- workspace;
+- environment;
+- instance;
+- realm;
+
+unless they represent genuinely different concepts.
+
+Canonical Project Worlds terms:
+
+| Meaning | Preferred term |
+|---|---|
+| Product | Project Worlds |
+| Spatial product interface | Station |
+| Main overview | World |
+| Assistant function | World assistant |
+| Character-flavored conversation | Companion chat |
+| Quiet/help control | Help & quiet mode |
+| Encrypted secret storage | Vault |
+| Notes stored only in the browser | Notes on this device |
+
+Do not use **Vault** for unencrypted browser storage.
+
+Do not use **assistant**, **companion**, **model**, **agent**, and **provider** as interchangeable terms. Each has different capabilities and authority.
+
+Consistency lowers cognitive load and improves translation, documentation, support, and accessibility.
+
+---
+
+### 16. Use stable state language
+
+Use one human label for each product state. Keep internal enum names in code and technical details.
+
+| Internal meaning | Human label | Required explanation |
+|---|---|---|
+| healthy | All good | Say when it was checked when time matters. |
+| needs human action | Needs you | Name the decision or action only the person can take. |
+| warning | Worth a look | Explain what may matter and whether it can wait. |
+| unknown | Not known yet | Say what was not observed and how to check again. |
+| unavailable | Can’t connect right now | Name what cannot connect and what still works. |
+| stale | May be out of date | Show when it was last checked. |
+| not configured | Not set up | Offer setup only when a working setup path exists. |
+| disabled | Off | Say whether the reason is known. |
+| loading | Checking… | Name the object when useful. |
+| empty | Context-specific | Claim emptiness only after the relevant source answered. |
+| blocked | One more step is needed | Name the step in human terms. |
+| success | Past-tense result | Name what changed and where. |
+| failure | Couldn’t + action | Explain unchanged state and recovery when known. |
+
+Unknown, unavailable, stale, empty, and healthy are different states. Do not collapse them into one reassuring message.
+
+---
+
+### 17. Whimsy is seasoning
+
+Personality, mascots, world-building, and gentle humor are welcome when they make the experience feel alive.
+
+Whimsy works well for:
+
+- welcomes;
+- verified quiet states;
+- celebrations;
+- companions;
+- exploration;
+- low-risk empty states.
+
+Reduce or remove whimsy for:
+
+- errors;
+- security;
+- authentication problems;
+- destructive actions;
+- data loss;
+- outages;
+- privacy boundaries;
+- serious personal topics.
+
+Never make failure cute. Never let metaphor replace the task, object, consequence, or recovery step.
+
+---
+
+### 18. Avoid corporate and AI language
+
+Do not default to phrases such as:
+
+- seamless experience;
+- unlock;
+- empower;
+- leverage;
+- robust solution;
+- cutting-edge;
+- revolutionary;
+- effortlessly;
+- delve;
+- journey;
+- we’re thrilled to announce;
+- designed with you in mind.
+
+Use concrete language instead.
+
+Do not write a sentence merely because it resembles fashionable product copy.
+
+Avoid repetitive AI habits such as excessive em dashes, defensive reassurance, symmetrical three-part slogans, and announcing that every state is “honest.” Demonstrate honesty through accurate wording.
+
+---
+
+### 19. Use “we” carefully
+
+Project messages should not use an unexplained “we.” It can be unclear whether “we” means the application, its maintainers, a provider, or an assistant.
+
+Prefer:
+
+> Project Worlds couldn’t connect to your calendar.
+
+Or, when the subject is already clear:
+
+> Couldn’t connect to your calendar.
+
+Use “I” only for a clearly identified assistant or character speaking in its own voice. Do not let first-person voice imply observation, memory, action, access, or authority the speaker does not have.
+
+---
+
+### 20. Do not repeat reassurance
+
+Once the reader understands that something is safe, saved, recoverable, private, optional, reversible, or unchanged, move on.
+
+Repeated reassurance sounds defensive and makes important information harder to find.
+
+Say it clearly once, in the place where the information affects a decision.
+
+---
+
+### 21. Serious topics get dignity
+
+When writing about health, identity, accessibility, distress, failure, privacy, or other vulnerable situations:
+
+- be calm;
+- be matter-of-fact;
+- do not become clinical unless precision requires it;
+- do not become sentimental unless the context calls for it;
+- do not treat the reader as fragile;
+- do not turn their situation into inspirational copy;
+- provide useful information;
+- preserve their dignity and agency.
+
+---
+
+### 22. Technical writing should have layers
+
+Use progressive disclosure.
+
+#### First layer: human meaning
+
+Say what is happening and what someone needs to know.
+
+#### Second layer: action
+
+Say what the person can do next.
+
+#### Third layer: technical detail
+
+Provide relevant commands, logs, identifiers, protocols, provider names, architecture, or diagnostic evidence.
+
+An expert should be able to reach the detail. A non-expert should not need the detail to use the product.
+
+Do not delete useful technical information merely to shorten the first layer.
+
+---
+
+### 23. Handoffs should reduce reconstruction
+
+A project handoff should tell the next person:
+
+- where things stand;
+- what is known;
+- what is uncertain;
+- what has already been tried;
+- what changed;
+- what did not change;
+- which decisions remain open;
+- what they may change;
+- what they must not destroy;
+- how to validate the work;
+- how they know they are done.
+
+Do not pad a handoff with history that does not affect the next action.
+
+Label unknowns as unknowns. Do not quietly turn them into assumptions.
+
+Separate verified facts, interpretations, recommendations, and unresolved questions.
+
+---
+
+### 24. Recommendations should explain tradeoffs
+
+Do not overwhelm the reader with many nearly equivalent choices.
+
+Offer meaningful options. Explain the important consequence of each.
+
+When there is a clear technical or practical reason to prefer one choice:
+
+- make a recommendation;
+- explain why;
+- name the main downside;
+- state what would make another choice better.
+
+Do not hide a useful recommendation behind fake neutrality.
+
+---
+
+### 25. Rules for security and destructive actions
+
+Security and destructive language must be plain, serious, and specific.
+
+Before a destructive action, say:
+
+- exactly what will be deleted, replaced, disconnected, or reset;
+- where the affected data is stored;
+- what will remain unchanged;
+- whether the action can be undone;
+- whether a backup or review exists;
+- whether the action happens immediately.
+
+The final action label must name the consequence.
+
+Avoid vague labels such as **Clear everything**, **Confirm**, or **Proceed**.
+
+For authentication and authorization:
+
+- say **Sign in** when authentication is required;
+- say **Confirm it’s you** when a fresh identity check is required;
+- do not expose **step-up**, **gate**, **credential event**, or protocol terminology in the first layer;
+- do not imply that signing in again will help unless it actually will;
+- do not reveal whether a private account, secret, or resource exists when that would weaken security.
+
+---
+
+### 26. Rules for assistants, models, companions, and agents
+
+Language must preserve human authority.
+
+Do not say or imply that an assistant, model, companion, or agent:
+
+- approved its own proposal;
+- made a human decision;
+- completed an action that only the person can authorize;
+- remembers information that was not stored;
+- observed information it did not receive;
+- contacted a service when no request was made;
+- guaranteed an outcome it cannot verify.
+
+Use accurate stages:
+
+- Drafted
+- Proposed
+- Waiting for your review
+- Approved by you
+- Running
+- Completed
+- Couldn’t complete
+
+Do not use language such as “I took care of it” unless the action was actually completed and verified.
+
+---
+
+### 27. Agent implementation procedure
+
+For every proposed change, record:
+
+1. Surface and state
+2. Source file
+3. Exact current text or dynamic pattern
+4. Problem with the current language
+5. Proposed replacement
+6. Evidence that the replacement matches real behavior
+7. Accessibility or translation considerations
+8. Risk and severity
+9. Whether the change is mechanical or requires human review
+10. Validation performed
+
+Agents must not use this contract as permission for unrelated refactoring, visual redesign, behavioral changes, or cleanup.
+
+Agents should escalate instead of guessing when:
+
+- behavior is unclear;
+- data scope is unclear;
+- security or privacy guarantees are unclear;
+- the affected authority boundary is unclear;
+- a destructive consequence cannot be named precisely;
+- the visible label and actual control behavior disagree;
+- wording depends on a product decision that has not been made.
+
+---
+
+### 28. Mechanical-agent boundary
+
+A low-cost implementation agent may:
+
+- apply exact approved replacements;
+- align repeated terminology;
+- fix visible and accessible-label mismatches when the approved wording is explicit;
+- extract complete approved strings into the existing localization system;
+- add tests for exact approved terminology and labels;
+- run documented validation commands.
+
+A low-cost implementation agent must not independently decide:
+
+- security or privacy claims;
+- delete or restore scope;
+- authentication recovery;
+- assistant or model authority;
+- whether data is encrypted, synced, saved, current, or private;
+- whether an operation is reversible;
+- whether prototype content should become product content;
+- whether a behavior should change to match proposed wording.
+
+Those decisions require human or high-judgment review.
+
+---
+
+### 29. Validation requirements
+
+Language work is not complete when strings have merely been replaced.
+
+Validate, as relevant:
+
+- the normal state;
+- loading;
+- empty;
+- stale;
+- unavailable;
+- not set up;
+- disabled;
+- validation errors;
+- network errors;
+- authentication and authorization failures;
+- destructive confirmations;
+- success results;
+- partial success;
+- recovery after retry;
+- keyboard-only operation;
+- screen-reader names, roles, states, descriptions, and announcements;
+- narrow-screen and zoomed layouts when text length changes;
+- locale expansion and long translated strings;
+- plural forms, dates, numbers, lists, and placeholders.
+
+Automated tests can catch regressions. They cannot prove that the writing is understandable.
+
+Important tasks should also be read aloud and tested by people without relying on project documentation.
+
+---
+
+### 30. Final review
+
+Before shipping writing, ask:
+
+- Can a tired person understand this on the first read?
+- Does the first sentence explain why this matters?
+- Is the requested action obvious?
+- Are the consequences and scope clear?
+- Does the message say what changed or did not change?
+- Is anything written mainly to sound smart?
+- Does the wording preserve technical truth?
+- Does it accidentally sound patronizing?
+- Can it be shorter without losing useful meaning?
+- Does one concept have one name?
+- Would it still make sense when translated?
+- Would it make sense when read aloud without visual context?
+- Do the visible label and accessible name agree?
+- Is important meaning being carried only by color, position, punctuation, or tone?
+- Does the assistant or model appear to have authority it does not have?
+- Does the copy promise safety, privacy, success, freshness, or recovery that was not verified?
+
+If an answer exposes a problem, rewrite the text or record the underlying behavior problem.
+
+---
+
+### Voice in one paragraph
+
+Write like a technically capable friend who respects the reader, knows the subject, and does not need to prove it. Be warm but not gushy, concise but not abrupt, simple but not childish, and technically accurate without burying the first sentence in jargon. Tell people what matters first. Make actions, scope, and consequences obvious. Admit uncertainty. Keep serious situations calm. Allow a little personality when the moment supports it. Above all, make the reader spend their energy on what they are trying to accomplish—not on deciphering the writing.
+
+---
+
+### Required instruction for agents
+
+Use this contract together with the current implementation handoff or issue list.
+
+Do not rewrite every string merely to make it different. Change language only when the new wording is clearer, more accurate, more consistent, easier to translate, or more accessible.
+
+Inspect the current code and running behavior before editing. Do not trust stale documentation over implementation evidence.
+
+Preserve technical information through progressive disclosure. Preserve product semantics. Separate wording problems from behavior problems. Report anything that still requires human judgment.
+
+Escalate when behavior, scope, consequences, authority, privacy, security, or product intent cannot be verified. Do not guess. Do not escalate ordinary mechanical work when an approved answer already exists.

@@ -1,0 +1,7 @@
+schema_version: 1
+id: qbittorrent.transfer
+provider: qbittorrent
+method: GET
+path: /api/v2/transfer/info
+effect: read
+ttl_s: 60

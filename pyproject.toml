@@ -1,0 +1,75 @@
+[project]
+name = "personal-world"
+version = "0.1.0"
+description = "A small personal control plane: stable truth, replaceable machinery."
+license = "MPL-2.0"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "pydantic>=2.7,<3",
+  "pyyaml>=6.0,<7",
+  "fastapi>=0.111,<1",
+  "uvicorn>=0.30,<1",
+  # The rooms front door (src/personal_world/rooms.py) reaches outbound
+  # to other small backends concurrently; httpx is a runtime dependency,
+  # not test-only, because GET /api/rooms fetches them in production.
+  "httpx>=0.27,<1",
+  "pywebpush>=2.5,<3",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=9.0.3,<10",
+  "pytest-timeout>=2,<3",
+]
+crypto = [
+  "cryptography>=42.0,<51",
+]
+
+[project.scripts]
+personal-world = "personal_world.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# static/companions/*.svg ship inside the package tree itself; no
+# force-include (a duplicate mapping makes hatchling refuse to build:
+# "A second file is being added to the wheel archive at the same path").
+packages = ["src/personal_world"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+    "ignore::FutureWarning",
+    "ignore::UserWarning",
+]
+
+[dependency-groups]
+dev = [
+    "bandit>=1.9.4",
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# B008 warns about a function call in an argument default. In FastAPI route
+# signatures that call IS the dependency-injection declaration — `Depends(x)`
+# and `Body(...)` are the framework's own contract, evaluated once at import
+# on purpose — so the mutable-default bug the rule hunts for cannot occur.
+# Scoped to the route modules (and the one test that builds a route app) so
+# the rule stays live everywhere else; inline noqa on every route parameter
+# would bury it at the places where it does apply.
+"src/personal_world/worlds/*_routes.py" = ["B008"]
+"src/personal_world/worlds/server.py" = ["B008"]
+"tests/worlds/test_authn.py" = ["B008"]

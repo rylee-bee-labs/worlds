@@ -1,0 +1,7 @@
+schema_version: 1
+id: github-public.vefr-latest-release
+provider: github-public
+method: GET
+path: /repos/rylee-bee-labs/vefr/releases/latest
+effect: read
+ttl_s: 900

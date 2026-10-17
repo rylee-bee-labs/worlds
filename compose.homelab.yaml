@@ -1,0 +1,31 @@
+# Rylee / homelab enrichment override. OPTIONAL. The portable
+# compose.yaml boots and stays useful without this file; this override
+# adds two read-only host bindings that only make sense on the laptop
+# / homelab developer host that has the kilo2/homelab checkout and a
+# Kilo auth file:
+#
+#   - /homelab        → the kilo2/homelab checkout (Lab CLI source)
+#   - /kilo-auth      → the in-container location the quota script
+#                       expects (mirrors $HOME/.local/share/kilo/auth.json)
+#
+# Usage on the laptop:
+#   docker compose -f compose.yaml -f compose.homelab.yaml up -d
+#
+# Anything outside this host should NOT use this override. Both mounts
+# are read-only and the paths are NOT portable.
+
+services:
+  core:
+    volumes:
+      # Lab CLI mount read-only so /api/lab/* can observe homelab state
+      # without duplicating it in the appliance.
+      - /mnt/c/Users/ryleeb/projects/kilo2/homelab:/homelab:ro
+      # Kilo auth file (read-only; keeps the quota widget working in
+      # container; the quota script expects it at $HOME/.local/share/kilo/auth.json)
+      - /mnt/c/Users/ryleeb/.local/share/kilo/auth.json:/root/.local/share/kilo/auth.json:ro
+    environment:
+      # Tell the in-container app where the lab CLI lives. The Python
+      # fallback list already includes /homelab/scripts/lab (see
+      # LAB_CANDIDATES in providers/lab_state.py), so this is a hint,
+      # not a requirement.
+      PW_LAB_CLI: /homelab/scripts/lab

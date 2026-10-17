@@ -1,0 +1,12 @@
+schema_version: 1
+name: houndarr
+title: Houndarr
+summary: What Houndarr has been doing.
+status: ready
+note: >-
+  The /api/v1/widget response shape is unknown, so no activity is mapped and the
+  card reads healthy while the service answers. Sample bodies are made up in an
+  assumed shape, not recorded from a live instance.
+verified: false
+env:
+  - HOUNDARR_API_KEY

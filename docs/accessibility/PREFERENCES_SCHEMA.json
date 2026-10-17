@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "name": "Project Worlds Preference Schema",
+    "version": "1.1",
+    "description": "User comfort preferences. No value combination violates the accessibility floor."
+  },
+  "schema": {
+    "motion": {
+      "type": "enum",
+      "values": ["off", "reduced", "subtle"],
+      "default": "reduced",
+      "description": "off = no nonessential animation, no ambient/idle movement, no decorative pose transitions. reduced (default) = no continuous/ambient animation; instant state/pose changes allowed. subtle = opt-in; transitions <=300ms, ambient movement <=2px where allowed, no pulse/spin/shake/flash. OS prefers-reduced-motion always overrides and suppresses subtle animation. Motion is never required to understand or operate the product."
+    },
+    "contrast": {
+      "type": "enum",
+      "values": ["comfortable", "high"],
+      "default": "comfortable",
+      "description": "comfortable = low-glare WCAG AA. high = added borders, brighter accents. No value drops below AA."
+    },
+    "text_scale": {
+      "type": "number",
+      "default": 1.0,
+      "minimum": 1.0,
+      "maximum": 3.0,
+      "description": "Multiplier on base sizes. Minimum effective body size: 14px * text_scale. Never prevents browser zoom."
+    },
+    "density": {
+      "type": "enum",
+      "values": ["compact", "comfortable", "relaxed"],
+      "default": "comfortable",
+      "description": "compact tightens spacing but never reduces hit areas below 44px. relaxed increases spacing."
+    },
+    "targets": {
+      "type": "enum",
+      "values": ["standard", "large"],
+      "default": "standard",
+      "description": "standard = 44px minimum hit area. large = 56px minimum hit area."
+    },
+    "tone": {
+      "type": "enum",
+      "values": ["warm", "concise", "playful", "formal"],
+      "default": "warm",
+      "description": "Tone register of the ONE Worlds voice across chat + attention surfaces (TRUE-NORTH § Voice, owner ruling 2026-09-22). A phrasing/comfort preference, not an accessibility one: no register may lower the accessibility floor or the honesty floor — facts, statuses, and uncertainty stay exact in every tone, and degraded/model-off states are labeled honestly in whichever tone is active."
+    },
+    "personality_pack": {
+      "type": "enum",
+      "values": ["off", "residents"],
+      "default": "residents",
+      "description": "Optional personality pack (TRUE-NORTH § Voice). residents (default since 2026-09-25) = the character-crew / two-voice personalities (canon: docs/CHARACTER-HANDBOOK.md, docs/COMPANION-CANON.md) layered as flavor on top of the same truth rules. off = the one Worlds voice. No value removes the honesty floor or any accessibility requirement."
+    }
+  },
+  "defaults": {
+    "motion": "reduced",
+    "contrast": "comfortable",
+    "text_scale": 1.0,
+    "density": "comfortable",
+    "targets": "standard",
+    "tone": "warm",
+    "personality_pack": "residents"
+  },
+  "resolution_hierarchy": [
+    "Platform / assistive requirement (highest priority)",
+    "Project Worlds accessibility floor",
+    "User comfort preference",
+    "Decorative enhancement (lowest priority)"
+  ],
+  "constraints": [
+    "A lower layer may never violate a requirement above it.",
+    "OS prefers-reduced-motion overrides the motion preference.",
+    "Browser zoom is never disabled.",
+    "No combination of values violates WCAG 2.1 AA."
+  ]
+}

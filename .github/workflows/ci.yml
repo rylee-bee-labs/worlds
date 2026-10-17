@@ -1,0 +1,162 @@
+name: ui-ci
+
+# CI for the Station vNext UI (ui/, React + Vite + Vitest + oxlint).
+#
+# Why this exists: validate.yml (same repo) gates the Python backend,
+# docker compose, the interface's Playwright suite (ui/e2e via the
+# browser job), and the security/framework suites — but it never
+# typechecks, lints, unit-tests, or builds ui/ on every PR. This
+# workflow closes that gap; it does not replace validate.yml.
+#
+# STATUS: armed. `ui` is a REQUIRED check, so it runs on EVERY PR (a
+# path filter here would leave backend-only PRs blocked forever waiting
+# for a check that never starts). When a PR doesn't touch ui/ or this
+# file, the job reports success after the "Did ui/ change?" step and
+# skips the rest. Pushes to main stay path-filtered.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - "ui/**"
+      - ".github/workflows/ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ui-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  # Honest-claims gate. A strong claim (a count, a pass/fail, a "nothing
+  # found") must ship the command that produced it and the observed output.
+  # The policy is owned by ci-harness and fetched at the revision pinned here,
+  # so there is exactly one copy of it in the estate rather than one per repo.
+  #
+  # policy-revision MUST equal the SHA in the uses: line below. There is no
+  # context property that exposes a reusable workflow's own ref, so the SHA is
+  # stated twice; the template verifies after checkout that the tree it fetched
+  # really is this commit, and prints both.
+  claims:
+    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-claims-policy.yml@697df0d496aefd87ca35a9f6b7fd159276f8a858
+    with:
+      policy-revision: a0c82129374ab551cd4dee7efd7b46c04f1be5eb
+      runs-on: ${{ vars.CI_RUNNER_LIGHT || vars.CI_RUNNER || 'ubuntu-latest' }}
+  ui:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ui
+    steps:
+      # Action pins reused from validate.yml (same-repo convention:
+      # full SHA + version comment, persist-credentials off).
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Did ui/ change?
+        id: changes
+        working-directory: .
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ "$EVENT" != "pull_request" ]; then echo "ui=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if git diff --name-only "$BASE...$HEAD" | grep -qE '^(ui/|\.github/workflows/ci\.yml$)'; then
+            echo "ui=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ui=false" >> "$GITHUB_OUTPUT"
+            echo "No ui/ changes in this PR; the UI checks are skipped and this check passes."
+          fi
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        if: steps.changes.outputs.ui == 'true'
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: ui/package-lock.json
+
+      - name: Install
+        if: steps.changes.outputs.ui == 'true'
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Chromium for the Vitest Storybook project
+        if: steps.changes.outputs.ui == 'true'
+        # vite.config.ts defines two vitest projects: 'unit' (jsdom) and
+        # 'storybook' (browser mode via @vitest/browser-playwright,
+        # chromium). Without this step `vitest run` fails to launch a
+        # browser for the storybook project.
+        run: npx playwright install --with-deps chromium
+
+      - name: Token drift gate
+        if: steps.changes.outputs.ui == 'true'
+        # src/generated/tokens.{css,ts} are committed; regeneration must be
+        # a no-op. A non-empty diff means generated output drifted from
+        # design/themes/*.json (or someone hand-edited the generated files).
+        # Pathspec resolves relative to ui/, i.e. ui/src/generated/.
+        run: |
+          npm run tokens:generate
+          git diff --exit-code src/generated
+
+      - name: Worlds kit drift gate + preview checks
+        if: steps.changes.outputs.ui == 'true'
+        # ui/dist-kit is committed for other tool UIs to vendor; a rebuild
+        # must be a no-op, and the preview must stay accessible at 390/1440.
+        run: |
+          npm run kit:check
+          npm run kit:test:e2e
+
+      - name: Typecheck
+        if: steps.changes.outputs.ui == 'true'
+        run: npx tsc -b
+
+      - name: Lint
+        if: steps.changes.outputs.ui == 'true'
+        run: npm run lint
+
+      - name: Unit + Storybook tests (vitest)
+        if: steps.changes.outputs.ui == 'true'
+        run: npx vitest run
+
+      - name: Build
+        if: steps.changes.outputs.ui == 'true'
+        run: npm run build
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ENABLE AFTER wave-1 lands (owner decision D5)
+#
+# axe + Storybook gate. Held back because ui/src stories and the theme
+# cascade are still moving in wave-1; arming it now would gate the repo
+# on a known-red suite. When D5 approves it, uncomment the job — its
+# vitest invocation overlaps the storybook project in the ui job above,
+# so consider moving that project down here at the same time.
+#
+#   storybook-axe:
+#     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: ui
+#     steps:
+#       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+#         with:
+#           persist-credentials: false
+#       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+#         with:
+#           node-version: "22"
+#           cache: npm
+#           cache-dependency-path: ui/package-lock.json
+#       - name: Install
+#         run: npm ci --no-audit --no-fund
+#       - name: Install Chromium (axe runs in a browser)
+#         run: npx playwright install --with-deps chromium
+#       - name: Build Storybook
+#         run: npm run build-storybook
+#       - name: axe checks via Storybook addon-a11y (vitest browser project)
+#         run: npx vitest run --project storybook
+# ─────────────────────────────────────────────────────────────────────────────

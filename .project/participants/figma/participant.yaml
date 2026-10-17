@@ -1,0 +1,103 @@
+schema: play-nice/participant-v1
+
+id: figma
+name: Figma
+type: design-service
+
+relationship:
+  role: design-source
+  optional: true
+  authoritative_for:
+    - visual-composition         # explicitly approved frames only
+    - hierarchy
+    - spacing-and-proportion
+    - frame-relationships
+    - approved-design-references
+    - explicitly-designated-visual-tokens
+  not_authoritative_for:
+    - runtime-application-state
+    - deployment-state
+    - source-code-truth
+    - product-authorization
+    - api-behavior
+    - security-policy
+    - accessibility-requirements-that-conflict-with-literal-visual-choices
+    - product-priority
+    - token-canonicality        # design/tokens.json is canonical; Figma variables are derived
+    - canonical-token-values    # figma's own correction: repo token VALUES govern, not her variable collection
+
+contracts:
+  inherits_project_bundle: true  # figma's correction: she accepts the project's resolved bundle
+
+interfaces:
+  - id: figma-web-app
+    description: >-
+      Visual design source for Project Worlds (product renamed from
+      "Personal World" 2026-09-12; same file, unaffected). File VATVojyJZT9HKx0CrDS0yr.
+      Frame exports land as repo-tracked SVG/PNG under design/ and as local
+      exports outside the repo (see references.yaml).
+  - id: export-frames
+    description: >-
+      Frame export to PNG/SVG on request. Approved frames listed in
+      design/handoff/FRAME_INDEX.md (archived index — treat statuses there
+      as historical; design/CURRENT.md answers current questions).
+
+help:
+  can_answer:
+    - visual-composition
+    - frame-reference
+    - current-vs-superseded-design
+    - design-token
+    - component-relationship
+    - responsive-design-guidance
+    - style-consistency
+    - design-gap-analysis
+    - companion-visual-identity
+  cannot_answer:
+    - product-priority
+    - deployment-state
+    - runtime-health
+    - production-authorization
+    - security-policy
+    - code-correctness-without-runtime-evidence
+    - canonical-token-values   # figma's correction: repo tokens are authority, not Figma variables
+  preferred_question_format:
+    schema: play-nice/question-v1
+
+capabilities_file: capabilities.yaml
+interaction_file: interaction.md
+references_file: references.yaml
+help_routing_file: help-routing.yaml
+
+acceptance:
+  status: accepted             # figma's claim, 2026-09-12; promoted by foreman after disk verification of her two consistent reports
+  contract_gate: PASS          # her claim, stated twice; bundle identifiers verified against the return package
+  contract_commitment: ACTIVE   # her claim; the one open item is her task-impact sentence TEXT (see attestation.yaml)
+  note: >-
+    Figma read all 15 contracts of bundle nectar-heather-heather and
+    reported PASS/ACTIVE. Her filesystem writes did not persist (recorded
+    limitation); the foreman applied her fully-specified corrections to
+    disk with provenance. COMPLETE: all 15 task-impact sentences relayed by
+    figma 2026-09-12 (9 + 6 in two passes, her exact words) and applied
+    verbatim in attestation.yaml. Her gate is fully her own.
+
+provenance:
+  supplied_by: figma
+  observed_at: 2026-09-12T00:00:00Z
+  source_revision: 2bb60b4ab1765660d8565ae80f9b489adf91a286
+  canonical_status: observed
+  import_method: >-
+    Original pack reconstructed by the integration session from the task
+    handoff (figma's first pass); corrected 2026-09-12 by applying figma's
+    own specified deltas (inherits_project_bundle, canonical-token-values
+    boundary, restructured files) relayed via conversation, because her
+    sandbox filesystem is ephemeral. Authorship of the corrections is
+    hers; disk application is the foreman's.
+
+authentication:
+  method: none-recorded
+  secret_reference: none       # no credentials are stored in this pack
+
+limitations:
+  - no-persistent-cross-session-memory  # future sessions must reload project context and participant data
+  - ephemeral-sandbox-filesystem        # file writes from her sessions do not persist; relay content or have the foreman apply it

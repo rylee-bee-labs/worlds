@@ -1,0 +1,51 @@
+name: uat-live
+
+# Real-browser UAT (docs guide: docs/guides/agent-driven-uat.md, estate
+# root, no remote): real mouse/touch/keyboard interaction plus axe-core,
+# against a live Worlds instance, read-only (every non-GET /api request
+# is aborted and recorded, never sent). PW_UAT_URL/PW_UAT_TOKEN must be
+# repo secrets or variables, never inlined here -- see SECURITY.md and
+# tests/test_public_safety.py, which fail closed on tracked topology.
+#
+# Deliberately its own workflow file, separate from validate.yml: it is
+# NOT a required branch-protection check (informational, a read-only
+# walk against live prod that can go red for reasons unrelated to the
+# PR under review -- prod being briefly unreachable, a stale deploy).
+# publish-image.yml gates on validate's own conclusion
+# (workflow_run.conclusion == 'success'); if uat-live's job lived inside
+# validate.yml, a red uat-live would fail that conclusion too and block
+# every future image publish -- including the exact fix uat-live needs
+# deployed to go green. Keeping it a separate workflow means its result
+# never touches validate's conclusion.
+
+on:
+  # Manual only (2026-09-29). This walk targets a live Worlds that is internal-only, so it is not reachable from
+  # GitHub-hosted runners, and running it on every push and PR would fail ("Couldn't reach
+  # Worlds at all.") while spending Actions minutes. Run the same walk locally from a machine that
+  # can reach the instance:
+  #   cd ui && PW_UAT_URL=... PW_UAT_TOKEN=... PW_UAT_OUT=/tmp/uat npx playwright test -c playwright.uat.config.ts
+  # This trigger stays for a runner that can reach the target (e.g. if Worlds is ever made reachable).
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uat-live-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  uat-live:
+    permissions:
+      actions: write
+    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-uat.yml@697df0d496aefd87ca35a9f6b7fd159276f8a858  # ci-harness main, pinned 2026-10-15
+    with:
+      working-directory: "ui"
+      uat-url: ${{ vars.PW_UAT_URL }}
+      read-only: true
+      uat-command: >-
+        npx playwright install --with-deps chromium &&
+        PW_UAT_URL="$UAT_URL" PW_UAT_TOKEN="$UAT_TOKEN" PW_UAT_OUT=uat-out
+        npx playwright test -c playwright.uat.config.ts
+    secrets:
+      uat-token: ${{ secrets.PW_UAT_TOKEN }}

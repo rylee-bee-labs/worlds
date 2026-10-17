@@ -1,0 +1,32 @@
+schema_version: 1
+id: downloads
+title: Downloads
+icon: download
+group: life
+requests:
+  - qbittorrent.downloads
+  - qbittorrent.transfer
+view: stat
+meaning:
+  concept: What the download client is fetching, at what speed, and whether it is connected.
+  short: What's downloading?
+  full: The number of items the client is handling plus the current down and up speeds, taken straight from the client's own answers.
+fields:
+  - path: "$.downloads"
+    label: Downloading
+    format: count
+  - path: "$.transfer.dl_info_speed"
+    label: Down
+    format: number
+    unit: B/s
+  - path: "$.transfer.up_info_speed"
+    label: Up
+    format: number
+    unit: B/s
+  - path: "$.transfer.connection_status"
+    label: Connection
+    format: text
+status:
+  path: $.transfer.connection_status
+  healthy: ["connected"]
+  needs_attention: ["disconnected", "firewalled"]

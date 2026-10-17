@@ -1,0 +1,11 @@
+schema_version: 1
+id: radarr.calendar
+provider: radarr
+method: GET
+path: /api/v3/calendar
+query:
+  start: "{today}"
+  end: "{today+30d}"
+  unmonitored: "false"
+effect: read
+ttl_s: 60

@@ -1,0 +1,7 @@
+schema_version: 1
+id: grimmory.wanted
+provider: grimmory
+method: GET
+path: /api/v1/wanted
+effect: read
+ttl_s: 120

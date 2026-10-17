@@ -1,0 +1,83 @@
+cards:
+  homelab-health:
+    - name: all checks passing
+      responses:
+        statuses:
+          - name: Example site
+            group: Web
+            key: example-site
+            results:
+              - success: true
+                status: "200"
+                duration: 12000000
+                timestamp: "2026-10-01T11:55:00Z"
+              - success: true
+                status: "200"
+                duration: 9000000
+                timestamp: "2026-10-01T12:00:00Z"
+          - name: Example database
+            group: Data
+            key: example-database
+            results:
+              - success: true
+                status: "200"
+                duration: 4000000
+                timestamp: "2026-10-01T12:00:00Z"
+          - name: Example queue
+            group: Workers
+            key: example-queue
+            results:
+              - success: true
+                status: "200"
+                duration: 3000000
+                timestamp: "2026-10-01T12:00:00Z"
+      expect:
+        state: healthy
+        values:
+          checks: "3"
+    - name: one check failing
+      responses:
+        statuses:
+          - name: Example site
+            group: Web
+            key: example-site
+            results:
+              - success: true
+                status: "200"
+                duration: 9000000
+                timestamp: "2026-10-01T12:00:00Z"
+          - name: Example database
+            group: Data
+            key: example-database
+            results:
+              - success: false
+                status: "500"
+                duration: 1000000
+                timestamp: "2026-10-01T12:00:00Z"
+          - name: Example queue
+            group: Workers
+            key: example-queue
+            results:
+              - success: true
+                status: "200"
+                duration: 3000000
+                timestamp: "2026-10-01T12:00:00Z"
+      expect:
+        state: needs_attention
+        values:
+          checks: "3"
+    - name: no checks configured
+      responses:
+        statuses: []
+      expect:
+        state: unknown
+        values:
+          checks: "0"
+    - name: unavailable
+      responses:
+        statuses:
+          __status: 500
+      expect:
+        state: unavailable
+        values:
+          checks: unknown

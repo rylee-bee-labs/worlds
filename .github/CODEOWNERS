@@ -1,0 +1,25 @@
+# CODEOWNERS for Project Worlds
+#
+# CODEOWNERS is informational here: the repository has a single
+# maintainer (Rylee). The pattern below expresses "any change in
+# these areas wants explicit human review" so future co-maintainers
+# inherit the intent.
+#
+# This file is NOT access control. Branch protection rules enforce
+# the actual review requirement.
+
+# Licensing, identity, security, deployment boundaries.
+/LICENSE                   @Rylee-Bee
+/TRADEMARKS.md              @Rylee-Bee
+/THIRD_PARTY_NOTICES.md     @Rylee-Bee
+/SECURITY.md                @Rylee-Bee
+/AGENTS.md                  @Rylee-Bee
+/AGENT_POLICY.md            @Rylee-Bee
+/AGENT_CONTRACTS.md          @Rylee-Bee
+/CONTRIBUTING.md            @Rylee-Bee
+/CODEOWNERS                 @Rylee-Bee
+/.github/workflows/         @Rylee-Bee
+/.github/dependabot.yml     @Rylee-Bee
+/tests/test_public_safety.py @Rylee-Bee
+/scripts/safe-commit.sh      @Rylee-Bee
+/Dockerfile                 @Rylee-Bee

@@ -1,0 +1,10 @@
+schema_version: 1
+id: bindery.queue
+provider: bindery
+method: GET
+path: /api/v1/queue
+query:
+  page: "1"
+  pageSize: "1"
+effect: read
+ttl_s: 120

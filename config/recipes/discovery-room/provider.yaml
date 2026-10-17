@@ -1,0 +1,15 @@
+schema_version: 1
+id: discovery-room
+name: A discovery room
+kind: room0
+base_url: https://discovery.lan.example
+public_url: https://discovery.lan.example
+principal_id: your-person-id
+governance: worlds
+group: life
+auth:
+  type: bearer
+  secret_ref: env:DISCOVERY_ROOM_TOKEN
+network:
+  lan: true
+timeout_s: 5

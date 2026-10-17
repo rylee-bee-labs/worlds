@@ -1,0 +1,22 @@
+.git
+.venv
+venv
+**/__pycache__
+**/node_modules
+**/dist
+# The image builds the interface itself (Dockerfile ui-build stage).
+# A locally staged src/personal_world/static/app/ must NOT ride in via
+# `COPY src` — a stale local build layering under the stage output would
+# mix two builds into one image. The stage is the only source.
+src/personal_world/static/app/
+# recursive: a ui/.env would be read by Vite at build time and inlined
+# into the public bundle — it must never enter the build context
+**/.env
+**/.env.*
+data/
+config/*.local.json
+config/principal.json
+config.local/
+design/exports/
+*.log
+.pytest_cache

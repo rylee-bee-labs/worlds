@@ -1,0 +1,92 @@
+{
+  "_comment": "Doorways theme — owner-selected direction B (2026-09-25): an inhabited observatory. Deep colourful navy with lamp-warm amber, rooms seen through arched doorways with their residents at the threshold. Optional pack beside starfield (the first-run default is unchanged). Every text token passes 4.5:1 on every surface, including muted on raised (5.62:1); secondary sits in the 7.5–11:1 comfort band. Body text starts at 16px; no label smaller than 13px.",
+  "_author": "Project Worlds (owner direction 2026-09-25)",
+
+  "surface": {
+    "void":     "#0F1226",
+    "canvas":   "#161A30",
+    "hull":     "#1A1E38",
+    "panel":    "#1F2442",
+    "elevated": "#262C4E",
+    "raised":   "#2C3358"
+  },
+
+  "accent": {
+    "primary":     "#E2AB62",
+    "on_primary":  "#161A30",
+    "secondary":   "#E7A3B0",
+    "warm":        "#E2AB62",
+    "warm_soft":   "rgba(226, 171, 98, 0.14)",
+    "gold":        "#C9A227",
+    "gold_soft":   "rgba(201, 162, 39, 0.14)",
+    "green":       "#9CC48A",
+    "green_soft":  "rgba(156, 196, 138, 0.14)",
+    "coral":       "#B57F8B",
+    "coral_soft":  "rgba(231, 163, 176, 0.14)",
+    "teal":        "#86C3CC",
+    "teal_soft":   "rgba(134, 195, 204, 0.14)",
+    "lavender":    "#B09CE0",
+    "lavender_soft": "rgba(176, 156, 224, 0.14)"
+  },
+
+  "text": {
+    "primary":   "#ECE4D6",
+    "secondary": "#D3CAB9",
+    "muted":     "#B8AF9F"
+  },
+
+  "border": {
+    "subtle": "rgba(236, 228, 214, 0.12)",
+    "strong": "rgba(236, 228, 214, 0.20)",
+    "hover":  "rgba(236, 228, 214, 0.24)"
+  },
+
+  "spacing": {
+    "xs":  "4px",
+    "sm":  "8px",
+    "md":  "12px",
+    "lg":  "16px",
+    "xl":  "24px",
+    "2xl": "32px",
+    "3xl": "48px",
+    "4xl": "64px"
+  },
+
+  "radius": {
+    "sm":   "12px",
+    "md":   "16px",
+    "lg":   "24px",
+    "full": "9999px"
+  },
+
+  "shadow": {
+    "soft": "0 10px 30px rgba(8,10,24,0.45), 0 0 32px rgba(226,171,98,0.05)",
+    "warm": "0 4px 24px rgba(226,171,98,0.12), 0 0 60px rgba(226,171,98,0.05)",
+    "glow": "0 0 20px rgba(226,171,98,0.18), 0 0 40px rgba(226,171,98,0.06)"
+  },
+
+  "typography": {
+    "font_sans":  "'Atkinson Hyperlegible Next', 'Public Sans', system-ui, sans-serif",
+    "font_serif": "'Fraunces', Georgia, serif",
+    "font_mono":  "'JetBrains Mono', ui-monospace, monospace",
+    "size_h1":    "clamp(32px, 4.4vw, 48px)",
+    "size_lead":  "18px",
+    "size_body":  "16px",
+    "size_small": "15px",
+    "size_micro": "14px",
+    "size_label": "13px"
+  },
+
+  "density": {
+    "comfortable": {
+      "pad_main":  "24px",
+      "gap_main":  "16px",
+      "gap_block": "24px"
+    },
+    "compact": {
+      "pad_main":  "16px",
+      "gap_main":  "12px",
+      "gap_block": "16px"
+    }
+  }
+}

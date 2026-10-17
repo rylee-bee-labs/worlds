@@ -1,0 +1,12 @@
+schema_version: 1
+id: lidarr.calendar
+provider: lidarr
+method: GET
+path: /api/v1/calendar
+query:
+  start: "{today}"
+  end: "{today+30d}"
+  includeArtist: "true"
+  unmonitored: "false"
+effect: read
+ttl_s: 60

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#161a30">
+<title>You're invited · Worlds</title>
+<style>
+  /* The invite page: the same starfield palette and type as First Light
+     (static/setup/styles.css), so the first thing an invited person sees
+     already looks like Worlds. Dark, 16px+ body, 44px targets, visible
+     focus, no motion. Sol is decoration; the words carry everything. */
+  :root {
+    color-scheme: dark;
+    --bg: #0F1119;
+    --void: #0C0D14;
+    --surface: #1A1D2A;
+    --surface-2: #222636;
+    --line: rgba(240, 237, 230, 0.14);
+    --text: #F0EDE6;
+    --muted: #B8B2A6;
+    --accent: #D4A057;
+    --problem: #ff9d94;
+    --focus: #ffd88a;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Atkinson Hyperlegible Next", "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --radius: 12px;
+    --radius-lg: 24px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(900px 520px at 50% -8%, rgba(212, 160, 87, 0.10), transparent 60%),
+      radial-gradient(1px 1px at 12% 22%, rgba(240, 237, 230, 0.5), transparent 60%),
+      radial-gradient(1px 1px at 78% 14%, rgba(240, 237, 230, 0.4), transparent 60%),
+      radial-gradient(1px 1px at 64% 72%, rgba(240, 237, 230, 0.35), transparent 60%),
+      radial-gradient(1px 1px at 24% 84%, rgba(240, 237, 230, 0.3), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font: 1.0625rem/1.6 var(--sans);
+  }
+  .skip-link {
+    position: absolute; left: 1rem; top: -4rem;
+    min-height: 44px; padding: 0.6rem 1rem;
+    background: var(--surface); color: var(--text);
+    border-radius: var(--radius);
+  }
+  .skip-link:focus { top: 1rem; }
+  .site-header {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-mark { width: 36px; height: 36px; object-fit: contain; }
+  .brand { margin: 0; font-family: var(--serif); font-weight: 600; font-size: 1.15rem; }
+  .layout { display: grid; place-items: center; padding: 2rem 1rem 3rem; }
+  main {
+    width: 100%;
+    max-width: 30rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+  .sol { display: block; width: 112px; height: 112px; margin: -0.5rem auto 0.5rem; object-fit: contain; }
+  .eyebrow {
+    margin: 0 0 0.25rem; color: var(--accent);
+    font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: 2rem; line-height: 1.2; margin: 0 0 0.75rem; }
+  .lede { color: var(--muted); margin: 0 0 1.25rem; }
+  .promises { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 0.75rem; }
+  .promises li {
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+  }
+  .promises strong { display: block; }
+  .promises span { color: var(--muted); font-size: 1rem; }
+  button, .button {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: 0.75rem 1.25rem;
+    border-radius: var(--radius); border: 1px solid transparent;
+    background: var(--accent); color: var(--void);
+    font: inherit; font-weight: 700; text-decoration: none;
+    cursor: pointer;
+  }
+  button.quiet {
+    background: transparent; color: var(--text); border-color: var(--line);
+  }
+  button:hover, .button:hover { filter: brightness(1.06); }
+  button[disabled] { opacity: 0.6; cursor: progress; }
+  #accept { width: 100%; }
+  label { display: block; font-weight: 700; margin: 0 0 0.35rem; }
+  .key-row { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; margin: 0 0 0.75rem; }
+  input[type="text"] {
+    width: 100%; min-height: 48px; padding: 0.6rem 0.75rem;
+    background: var(--void); color: var(--text);
+    border: 1px solid var(--line); border-radius: var(--radius);
+    font: 1rem ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .error {
+    border: 1px solid var(--problem); color: var(--problem);
+    border-radius: var(--radius); padding: 0.75rem 1rem; margin: 0 0 1rem;
+  }
+  .hint { margin: 0 0 1.25rem; color: var(--muted); font-size: 1rem; }
+  .next { margin: 0; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  .next p { margin: 0; color: var(--muted); font-size: 1rem; flex: 1 1 12rem; }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  @media (max-width: 30rem) {
+    main { padding: 1.5rem 1.25rem; border-radius: var(--radius); }
+    h1 { font-size: 1.65rem; }
+    .key-row { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <img class="brand-mark" src="/assets/crew/256/sol-mark.webp" alt="" aria-hidden="true">
+  <p class="brand">Worlds</p>
+</header>
+<div class="layout">
+<main id="main">
+  <img class="sol" id="sol" src="/assets/crew/256/sol-hello.webp" alt="" aria-hidden="true">
+  <p class="eyebrow">An invitation</p>
+  <h1 id="title">You're invited</h1>
+
+  <p class="lede" id="lede">Someone invited you to their World. Accepting makes
+  your own space here and shows your sign-in key one time.</p>
+
+  <ul class="promises" id="promises">
+    <li><strong>Your space is yours</strong>
+      <span>Your journal, notes and chats are private. Nobody else can read them, not even the people who run this World.</span></li>
+    <li><strong>Some rooms are shared</strong>
+      <span>You'll see the rooms everyone can see, and anything shared with you.</span></li>
+  </ul>
+
+  <p id="error" class="error" role="alert" hidden></p>
+
+  <div id="accept-block">
+    <button type="button" id="accept" disabled>Accept invite</button>
+  </div>
+
+  <section id="done" hidden aria-labelledby="key-label">
+    <label id="key-label" for="key">Your sign-in key (shown once)</label>
+    <div class="key-row">
+      <input id="key" type="text" readonly spellcheck="false"
+             autocapitalize="off" autocomplete="off">
+      <button type="button" id="copy" class="quiet">Copy</button>
+    </div>
+    <p class="hint" id="done-hint">Keep it somewhere safe, like a password manager.
+    It can't be shown again. If you lose it, ask the person who invited you for a new link.</p>
+    <div class="next">
+      <p>Next, sign in with this key. Worlds will show you around.</p>
+      <a class="button" href="/login" id="signin">Sign in</a>
+    </div>
+  </section>
+
+  <p id="live" class="visually-hidden" role="status" aria-live="polite"></p>
+</main>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  // The invite code is everything after `#`. Fragments never reach the
+  // server, so this page is served the same to everyone, signed out.
+  var hash = window.location.hash || "";
+  var code = (hash.charAt(0) === "#" ? hash.slice(1) : hash).trim();
+
+  var accept = document.getElementById("accept");
+  var copy = document.getElementById("copy");
+  var keyInput = document.getElementById("key");
+  var error = document.getElementById("error");
+  var live = document.getElementById("live");
+  var acceptBlock = document.getElementById("accept-block");
+  var done = document.getElementById("done");
+
+  var sol = document.getElementById("sol");
+  var title = document.getElementById("title");
+  var promises = document.getElementById("promises");
+
+  function showError(message) {
+    sol.src = "/assets/crew/256/sol-oops.webp";
+    error.textContent = message;
+    error.hidden = false;
+    live.textContent = message;
+  }
+
+  function resetAccept() {
+    accept.disabled = false;
+    accept.textContent = "Accept invite";
+  }
+
+  // A link with no code has nothing to accept: say so plainly and keep
+  // the button disabled rather than letting a click do a pointless POST.
+  if (!code) {
+    showError("This link is missing its invite code. Ask the person who invited you for a new one.");
+  } else {
+    accept.disabled = false;
+  }
+
+  accept.addEventListener("click", function () {
+    if (!code) return;
+    error.hidden = true;
+    sol.src = "/assets/crew/256/sol-hello.webp";
+    accept.disabled = true;
+    accept.textContent = "Working…";
+    fetch("/api/invites/accept", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: code })
+    })
+      .then(function (res) {
+        if (res.ok) return res.json();
+        // Honest, plain reasons — one per state the link can be in.
+        return res.json().catch(function () { return {}; }).then(function (body) {
+          var detail = (body && body.detail) || "";
+          var message;
+          if (res.status === 403 && detail.indexOf("expired") !== -1) {
+            message = "This invite link has expired. Ask the person who invited you for a new one.";
+          } else if (res.status === 403) {
+            message = "This invite link has already been used. Ask the person who invited you for a new one.";
+          } else if (res.status === 409) {
+            message = "That invite's account already exists. Ask the person who invited you for a new one.";
+          } else if (res.status === 422) {
+            message = "This link is missing its invite code. Ask the person who invited you for a new one.";
+          } else {
+            message = "The server could not accept this invite right now. Try again in a moment.";
+          }
+          showError(message);
+          resetAccept();
+          accept.focus();
+          return null;
+        });
+      })
+      .then(function (body) {
+        if (!body || !body.data || !body.data.sign_in_key) return;
+        // Show the key once. It goes nowhere else: not the URL, not
+        // browser storage, not a log.
+        acceptBlock.hidden = true;
+        error.hidden = true;
+        promises.hidden = true;
+        sol.src = "/assets/crew/256/sol-cheer.webp";
+        title.textContent = "Welcome to Worlds";
+        document.getElementById("lede").textContent =
+          "Your space is ready. Here is your sign-in key. You'll need it to sign in.";
+        done.hidden = false;
+        keyInput.value = body.data.sign_in_key;
+        live.textContent = "Here is your sign-in key. Keep it somewhere safe.";
+        copy.focus();
+      })
+      .catch(function () {
+        showError("Could not reach the server. Check your connection and try again.");
+        resetAccept();
+      });
+  });
+
+  copy.addEventListener("click", function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(keyInput.value).then(
+        function () { live.textContent = "Copied."; },
+        function () { selectKey(); }
+      );
+    } else {
+      selectKey();
+    }
+  });
+
+  function selectKey() {
+    // Clipboard refused or unavailable: put the key on screen selected,
+    // ready to copy by hand, instead of claiming a copy that failed.
+    keyInput.focus();
+    keyInput.select();
+    live.textContent =
+      "Copy did not work, so the key is selected for you. Press Ctrl+C (Cmd+C on a Mac) to copy it.";
+  }
+})();
+</script>
+</body>
+</html>

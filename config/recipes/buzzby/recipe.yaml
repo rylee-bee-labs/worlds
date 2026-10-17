@@ -1,0 +1,8 @@
+schema_version: 1
+name: buzzby
+title: Buzzby's releases
+summary: The latest public release, as Buzzby announced it.
+status: ready
+note: Reads GitHub's public releases API (no credentials). Buzzby's post is the release notes' first section.
+verified: false
+env: []

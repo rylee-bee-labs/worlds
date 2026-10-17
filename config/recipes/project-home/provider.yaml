@@ -1,0 +1,14 @@
+schema_version: 1
+id: project-home
+name: Project Home
+kind: room0
+base_url: https://project-home.lan.example
+public_url: https://project-home.lan.example
+principal_id: your-person-id
+group: machine
+auth:
+  type: bearer
+  secret_ref: env:PROJECT_HOME_ROOM_TOKEN
+network:
+  lan: true
+timeout_s: 5

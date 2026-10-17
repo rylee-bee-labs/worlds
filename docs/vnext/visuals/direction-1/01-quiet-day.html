@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Quiet day, several services all fine &middot; Worlds visual direction 1 (mockup)</title>
+<style>
+/* Direction 1 - The Shoreline. Inline: no build step, no network. */
+:root{
+  --ink:#0C1A1E;      /* canvas */
+  --hull:#13262B;     /* band surface */
+  --panel:#1A3238;    /* card */
+  --raised:#24444B;   /* raised surface for high contrast */
+  --line:#557F86;     /* borders */
+  --foam:#EAF4F1;     /* primary text */
+  --mist:#BFD6D2;     /* secondary text */
+  --sea:#6FD8C2;      /* healthy */
+  --amber:#FFC773;    /* needs attention */
+  --slate:#A9BEE0;    /* stale */
+  --lilac:#CDBDF2;    /* unknown */
+  --focus:#FFD166;    /* focus ring */
+  --deep:#07201C;     /* text on a bright accent */
+  --tap:44px;
+  --radius:16px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--foam);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px;line-height:1.55;
+  overflow-wrap:break-word;
+}
+svg{max-width:100%}
+h1,h2,h3{line-height:1.2;font-weight:600;margin:0}
+h1{font-size:1.75rem;letter-spacing:-.01em}
+h2{font-size:1.2rem}
+h3{font-size:1.05rem}
+p{margin:0}
+a{color:var(--sea)}
+
+/* skip link: first focusable element, visible once focused */
+.skip{
+  position:absolute;left:8px;top:-120px;z-index:10;
+  background:var(--sea);color:var(--deep);
+  padding:12px 16px;border-radius:10px;font-weight:600;text-decoration:none;
+  min-height:var(--tap);display:flex;align-items:center;
+}
+.skip:focus{top:8px}
+
+/* visible keyboard focus, everywhere, never removed for looks */
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--focus);outline-offset:3px;border-radius:8px;
+}
+a:focus,button:focus{outline:3px solid var(--focus);outline-offset:3px}
+
+.shell{max-width:1180px;margin:0 auto;padding:0 16px 64px}
+@media (min-width:900px){.shell{padding:0 32px 80px}}
+
+.masthead{border-bottom:1px solid var(--line);padding:18px 0 12px;margin-bottom:22px}
+.brand{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:0}
+.brand__name{font-size:1.1rem;font-weight:600}
+.brand__dir{font-size:.82rem;color:var(--mist)}
+.mockup{
+  display:inline-flex;align-items:center;
+  border:2px solid var(--amber);color:var(--amber);
+  border-radius:999px;padding:4px 12px;
+  font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;
+}
+
+/* landmarks: only Home is drawn in this mockup */
+.landmarks{padding:0;margin:12px 0 0;list-style:none;display:flex;flex-wrap:wrap;gap:2px 18px;font-size:.9rem}
+.landmarks li{display:flex;align-items:center;min-height:var(--tap)}
+.landmarks a{display:inline-flex;align-items:center;min-height:var(--tap);padding:2px 0;color:var(--sea)}
+.landmarks .is-current{color:var(--foam);font-weight:600;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+.landmarks .is-absent{color:var(--mist)}
+.landmarks .is-absent::after{content:" \2014 not drawn here";font-size:.8em}
+
+.head{margin:0 0 24px}
+.head__lede{color:var(--mist);font-size:1rem;max-width:62ch;margin-top:10px}
+
+/* the depth ruler: the words carry the meaning, the colour repeats it */
+.ruler{margin:0 0 28px;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--hull)}
+.ruler h2{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin-bottom:12px}
+.ruler ol{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ruler li{display:flex;gap:12px;align-items:flex-start;font-size:.93rem}
+.ruler b{font-weight:600;color:var(--foam)}
+.ruler span{color:var(--mist)}
+.ruler__key{flex:none;width:14px;height:14px;border-radius:4px;margin-top:5px;border:2px solid var(--line)}
+.ruler__key--attention{background:var(--amber);border-color:var(--amber)}
+.ruler__key--fine{background:var(--sea);border-color:var(--sea)}
+.ruler__key--blind{background:var(--lilac);border-color:var(--lilac)}
+@media (min-width:900px){.ruler ol{grid-template-columns:repeat(3,1fr)}}
+
+.band{margin:0 0 6px}
+.band__head{margin:0 0 12px}
+.band__head p{color:var(--mist);font-size:.93rem;margin-top:4px;max-width:60ch}
+.band--attention .band__head h2{color:var(--amber)}
+.band--fine .band__head h2{color:var(--sea)}
+.band--blind .band__head h2{color:var(--lilac)}
+
+.wave{display:block;width:100%;height:20px;margin:4px 0 20px;color:var(--line)}
+
+.cards{display:grid;gap:14px;grid-template-columns:1fr}
+@media (min-width:900px){.cards{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}}
+
+.card{
+  background:var(--panel);border:1px solid var(--line);
+  border-left-width:6px;border-radius:var(--radius);
+  padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0;
+}
+.card--attention{border-left-color:var(--amber)}
+.card--fine{border-left-color:var(--sea)}
+.card--stale{border-left-color:var(--slate)}
+.card--unknown{border-left-color:var(--lilac)}
+.card--empty{background:transparent;border-style:dashed}
+
+.card__name{font-size:1.08rem}
+.card__say{color:var(--foam);font-size:.97rem}
+.card__note{color:var(--mist);font-size:.93rem}
+
+/* status is a word plus a redundant shape: never colour alone */
+.pill{
+  align-self:flex-start;display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--line);border-radius:999px;padding:5px 12px;
+  font-size:.78rem;letter-spacing:.04em;background:var(--hull);color:var(--foam);
+}
+.pill__mark{flex:none;width:10px;height:10px;border:2px solid currentColor;border-radius:50%}
+.pill--attention{color:var(--amber);border-color:var(--amber)}
+.pill--attention .pill__mark{background:var(--amber)}
+.pill--fine{color:var(--sea);border-color:var(--sea)}
+.pill--fine .pill__mark{background:var(--sea)}
+.pill--stale{color:var(--slate);border-color:var(--slate)}
+.pill--stale .pill__mark{border-radius:1px}
+.pill--unknown{color:var(--lilac);border-color:var(--lilac)}
+.pill--unknown .pill__mark{border-radius:1px;transform:rotate(45deg)}
+
+.meta{margin:0;display:grid;gap:6px;font-size:.87rem}
+.meta div{display:flex;gap:8px;flex-wrap:wrap}
+.meta dt{color:var(--mist);min-width:9.5em}
+.meta dd{margin:0;color:var(--foam)}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:auto 0 0;padding-top:6px}
+.btn{
+  display:inline-flex;flex-direction:column;justify-content:center;
+  min-height:var(--tap);padding:10px 16px;border-radius:12px;
+  border:2px solid var(--sea);color:var(--sea);background:transparent;
+  text-decoration:none;font-size:.95rem;font-weight:600;
+}
+.btn--primary{background:var(--sea);color:var(--deep);border-color:var(--sea)}
+.btn--quiet{border-color:var(--line);color:var(--foam)}
+.btn small{font-weight:400;font-size:.78rem;opacity:.9}
+
+.note{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;background:var(--hull);color:var(--mist);font-size:.94rem;
+}
+.note + .note{margin-top:12px}
+.note h2{color:var(--foam);margin-bottom:8px}
+.note p + p{margin-top:10px}
+.note strong{color:var(--foam)}
+
+.steps{counter-reset:step;list-style:none;margin:12px 0 0;padding:0;display:grid;gap:12px}
+.steps li{
+  counter-increment:step;display:flex;gap:14px;align-items:flex-start;
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px;
+}
+.steps li::before{
+  content:counter(step);flex:none;width:32px;height:32px;border-radius:50%;
+  border:2px solid var(--sea);color:var(--sea);
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;
+}
+.steps b{display:block;color:var(--foam)}
+.steps span{color:var(--mist);font-size:.92rem}
+
+.foot{margin-top:44px;border-top:1px solid var(--line);padding-top:22px;color:var(--mist);font-size:.88rem}
+.foot h2{font-size:1rem;color:var(--foam);margin-bottom:8px}
+.foot p + p{margin-top:10px}
+.foot strong{color:var(--foam)}
+.foot code{font-size:.95em}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;list-style:none;margin:12px 0 0;padding:0}
+.legend li{display:flex;align-items:center;gap:8px;color:var(--mist)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
+  }
+}
+@media (prefers-contrast:more){
+  .card,.note,.ruler,.steps li{border-width:2px}
+  .card{background:var(--raised)}
+}
+@media (forced-colors:active){
+  .card,.note,.ruler,.steps li,.pill{border:2px solid CanvasText}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#shore">Skip to the shore</a>
+<div class="shell">
+
+<header class="masthead">
+  <p class="brand">
+    <span class="brand__name">Worlds</span>
+    <span class="brand__dir">visual direction 1 &mdash; the shoreline</span>
+    <span class="mockup">MOCKUP</span>
+  </p>
+  <nav aria-label="World landmarks">
+    <ul class="landmarks">
+      <li><a class="is-current" href="#shore" aria-current="page">Home</a></li>
+      <li><span class="is-absent">Connect</span></li>
+      <li><span class="is-absent">Memory</span></li>
+      <li><span class="is-absent">Settings</span></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="shore">
+<div class="head">
+<h1>Nothing has come in with the tide.</h1>
+<p class="head__lede">Six services answered in the last ten minutes and none of them is asking
+anything of you. The waterline is clear, so the whole page is the good news, and you are meant to be
+able to close it.</p>
+</div>
+
+<section class="ruler" aria-labelledby="ruler-h">
+  <h2 id="ruler-h">Distance from the waterline</h2>
+  <ol>
+    <li><span class="ruler__key ruler__key--attention" aria-hidden="true"></span>
+      <span><b>At the waterline</b> &mdash; something wants a person, here and now.</span></li>
+    <li><span class="ruler__key ruler__key--fine" aria-hidden="true"></span>
+      <span><b>In the shallows</b> &mdash; answered recently, nothing to do.</span></li>
+    <li><span class="ruler__key ruler__key--blind" aria-hidden="true"></span>
+      <span><b>Out past the point</b> &mdash; answered long ago, still fine, or out of reach.</span></li>
+  </ol>
+</section>
+
+<section class="band band--fine" aria-labelledby="band-water">
+<div class="band__head">
+<h2 id="band-water">At the waterline</h2>
+<p>Empty on purpose. When something arrives here it is because a person has to decide something, not
+because a machine noticed something.</p>
+</div>
+<div class="cards">
+<article class="card card--empty">
+<p class="pill pill--fine"><span class="pill__mark" aria-hidden="true"></span>Nothing waiting</p>
+<h3 class="card__name">The waterline is clear</h3>
+<p class="card__note">When a service does need you it lands here first, in words, with a link to the
+system that owns the decision.</p>
+</article>
+</div>
+</section>
+
+<svg class="wave" viewBox="0 0 1200 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 13 C 100 4, 200 4, 300 11 C 400 18, 500 18, 600 11 C 700 4, 800 4, 900 11 C 1000 18, 1100 18, 1200 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+
+<section class="band band--fine" aria-labelledby="band-shallow">
+<div class="band__head">
+<h2 id="band-shallow">In the shallows</h2>
+<p>Answered in the last ten minutes. Close enough to the house that nothing surprising can have
+happened to them.</p>
+</div>
+<div class="cards">
+<article class="card card--fine">
+<p class="pill pill--fine"><span class="pill__mark" aria-hidden="true"></span>Healthy</p>
+<h3 class="card__name">Media library</h3>
+<p class="card__say">Answered two minutes ago. 1,204 titles, nothing waiting on a transcoder.</p>
+<dl class="meta"><div><dt>Last checked</dt><dd>2 minutes ago</dd></div><div><dt>Owning system</dt><dd>Lumen</dd></div></dl>
+<p class="actions"><a class="btn" href="https://lumen.example.invalid/">Open Lumen</a></p>
+</article>
+<article class="card card--fine">
+<p class="pill pill--fine"><span class="pill__mark" aria-hidden="true"></span>Healthy</p>
+<h3 class="card__name">Home lights</h3>
+<p class="card__say">Answered a minute ago. Three rooms are on, the porch is off, and the evening schedule is armed.</p>
+<dl class="meta"><div><dt>Last checked</dt><dd>1 minute ago</dd></div><div><dt>Owning system</dt><dd>Hearthlight</dd></div></dl>
+<p class="actions"><a class="btn" href="https://hearthlight.example.invalid/">Open Hearthlight</a></p>
+</article>
+<article class="card card--fine">
+<p class="pill pill--fine"><span class="pill__mark" aria-hidden="true"></span>Healthy</p>
+<h3 class="card__name">Backups</h3>
+<p class="card__say">Answered nine minutes ago. Last night's snapshot finished, and the one before it is still kept.</p>
+<dl class="meta"><div><dt>Last checked</dt><dd>9 minutes ago</dd></div><div><dt>Owning system</dt><dd>Fernway</dd></div></dl>
+<p class="actions"><a class="btn" href="https://fernway.example.invalid/">Open Fernway</a></p>
+</article>
+</div>
+</section>
+
+<svg class="wave" viewBox="0 0 1200 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 13 C 100 4, 200 4, 300 11 C 400 18, 500 18, 600 11 C 700 4, 800 4, 900 11 C 1000 18, 1100 18, 1200 11" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+
+<section class="band band--fine" aria-labelledby="band-point">
+<div class="band__head">
+<h2 id="band-point">Out past the point</h2>
+<p>Fine, and not going to bother you. They stay out here until they have something to say.</p>
+</div>
+<div class="cards">
+<article class="card card--fine">
+<p class="pill pill--fine"><span class="pill__mark" aria-hidden="true"></span>Healthy</p>
+<h3 class="card__name">Files</h3>
+<p class="card__say">Answered three minutes ago. Nothing has moved since yesterday evening.</p>
+<dl class="meta"><div><dt>Last checked</dt><dd>3 minutes ago</dd></div><div><dt>Owning system</dt><dd>Tideline</dd></div></dl>
+<p class="actions"><a class="btn" href="https://tideline.example.invalid/">Open Tideline</a></p>
+</article>
+<article class="card card--fine">
+<p class="pill pill--fine"><span class="pill__mark" aria-hidden="true"></span>Healthy</p>
+<h3 class="card__name">Project dashboard</h3>
+<p class="card__say">Answered four minutes ago. Two builds green, nothing new red since Tuesday.</p>
+<dl class="meta"><div><dt>Last checked</dt><dd>4 minutes ago</dd></div><div><dt>Owning system</dt><dd>Orchard</dd></div></dl>
+<p class="actions"><a class="btn" href="https://orchard.example.invalid/">Open Orchard</a></p>
+</article>
+<article class="card card--fine">
+<p class="pill pill--fine"><span class="pill__mark" aria-hidden="true"></span>Healthy</p>
+<h3 class="card__name">Weather</h3>
+<p class="card__say">Answered a minute ago. Nothing severe on the coast in the next day.</p>
+<dl class="meta"><div><dt>Last checked</dt><dd>1 minute ago</dd></div><div><dt>Owning system</dt><dd>Nimbus</dd></div></dl>
+<p class="actions"><a class="btn" href="https://nimbus.example.invalid/">Open Nimbus</a></p>
+</article>
+</div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <h2>How to read this shore</h2>
+  <p>Services sit in one of three places. Where a service sits is a claim about how close it is to
+  needing you &mdash; it is not a score, and it is not a ranking of how important the service is.</p>
+  <ul class="legend">
+    <li><span class="pill pill--fine"><span class="pill__mark" aria-hidden="true"></span>Healthy</span>
+      <span>answered recently</span></li>
+    <li><span class="pill pill--attention"><span class="pill__mark" aria-hidden="true"></span>Needs attention</span>
+      <span>a person has to decide something</span></li>
+    <li><span class="pill pill--stale"><span class="pill__mark" aria-hidden="true"></span>Stale</span>
+      <span>heard from, but too old to trust</span></li>
+    <li><span class="pill pill--unknown"><span class="pill__mark" aria-hidden="true"></span>Unknown</span>
+      <span>never heard from</span></li>
+  </ul>
+  <p><strong>MOCKUP &mdash; not a prototype, and not approved.</strong> Every service name, owning
+  system and address on this page is invented for the mockup. Nothing here was fetched from a
+  provider, and no value shown is a real result. Outbound links point at reserved
+  <code>.invalid</code> addresses, which cannot resolve.</p>
+  <p>Only <strong>Home</strong> is drawn in this direction. Connect, Memory and Settings are named
+  so the landmarks stay honest, and are not mocked up here.</p>
+</footer>
+
+</div>
+</body>
+</html>

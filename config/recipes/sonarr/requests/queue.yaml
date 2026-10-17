@@ -1,0 +1,9 @@
+schema_version: 1
+id: sonarr.queue
+provider: sonarr
+method: GET
+path: /api/v3/queue
+query:
+  pageSize: "1"
+effect: read
+ttl_s: 60

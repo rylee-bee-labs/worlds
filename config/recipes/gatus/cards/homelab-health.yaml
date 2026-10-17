@@ -1,0 +1,25 @@
+schema_version: 1
+id: homelab-health
+title: Homelab health
+icon: heart
+group: machine
+request: gatus.statuses
+view: stat
+meaning:
+  concept: Whether the homelab checks are passing.
+  short: Are the homelab checks passing?
+  full: Reads the health checks the homelab is running and shows how many there are and which are not passing.
+status:
+  path: $[*].results[-1].success
+  mode: all
+  healthy:
+    - true
+  needs_attention:
+    - false
+fields:
+  - path: $
+    label: Checks
+    format: count
+meter:
+  type: dots
+  items: $[*].results[-1].success

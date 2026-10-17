@@ -1,0 +1,9 @@
+schema_version: 1
+name: project-home
+title: Project Home
+summary: The development estate's gateway, as a room. Its cards appear on Home; its approvals are made in Project Home itself.
+status: room
+note: "A room/0 service and the approval authority for what it governs, so the default governance (project_home) is kept. Installs provider-only: the room maps its own cards through C8, so there are no card files. Pass --base-url with the real address; the your-person-id placeholder is replaced in your private config."
+verified: false
+env:
+  - PROJECT_HOME_ROOM_TOKEN

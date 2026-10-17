@@ -1,0 +1,151 @@
+name: publish-image
+
+# Build the Project Worlds appliance once in CI and publish it to
+# GitHub Container Registry. The portable compose.yaml consumes the
+# published image (docker compose pull && docker compose up -d);
+# compose.dev.yaml still builds locally from source for development.
+#
+# Triggered via `workflow_run` after the `validate` workflow completes
+# successfully on main — that keeps this job from ever publishing a
+# known-broken image merely because a push occurred. SHA tags are
+# immutable and are the documented rollback path; `latest` advances on
+# each successful main publish.
+
+on:
+  workflow_run:
+    workflows: ["validate"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: publish-image-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.event.repository.owner.login }}/personal-world
+
+jobs:
+  changes:
+    # Build only when something that goes INTO the image changed since the
+    # commit baked into the current :latest image (not merely the previous
+    # commit: a cancelled build must never let code slip past). Docs, tests
+    # and CI-only merges skip the build, and `lab ship --main` then leaves
+    # the running Worlds alone ("no app change"). Owner decision 2026-09-27.
+    # IMAGE_INPUTS mirrors the Dockerfile's COPY sources: keep them in sync.
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      build: ${{ steps.decide.outputs.build }}
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Did anything in the image change?
+        id: decide
+        env:
+          HEAD: ${{ github.event.workflow_run.head_sha }}
+          IMAGE: ghcr.io/${{ github.event.repository.owner.login }}/personal-world:latest
+        run: |
+          set -uo pipefail
+          IMAGE_INPUTS='^(src/|ui/|design/|docs/library/|pyproject\.toml$|uv\.lock$|README\.md$|Dockerfile$|\.dockerignore$)'
+          NOT_SHIPPED='^ui/(e2e|uat|\.storybook)/|^ui/src/test/|\.test\.tsx?$|\.stories\.tsx$'
+          base=$(docker buildx imagetools inspect "$IMAGE" --format '{{ index .Image.Config.Labels "org.opencontainers.image.revision" }}' 2>/dev/null || true)
+          if [ -z "$base" ] || ! git merge-base --is-ancestor "$base" "$HEAD" 2>/dev/null; then
+            echo "No usable base image revision; building."
+            echo "build=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          changed=$(git diff --name-only "$base" "$HEAD" | grep -E "$IMAGE_INPUTS" | grep -Ev "$NOT_SHIPPED" || true)
+          if [ -n "$changed" ]; then
+            echo "App files changed since ${base:0:7}:"; echo "$changed" | head -40
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Nothing in the image changed since ${base:0:7}; skipping the build."
+            echo "build=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  publish:
+    # workflow_run only fires after the upstream completed; gate on its
+    # conclusion so a failed validate never ships an image.
+    needs: changes
+    if: needs.changes.outputs.build == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve validated SHA
+        id: sha
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          REPO: ${{ github.event.repository.full_name }}
+        run: |
+          set -euo pipefail
+          sha=$(gh api "/repos/${REPO}/actions/runs/${RUN_ID}" \
+              --jq '.head_sha')
+          echo "head_sha=${sha}" >> "$GITHUB_OUTPUT"
+          echo "Publishing image for ${REPO}@${sha}"
+
+      - name: Checkout validated source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ steps.sha.outputs.head_sha }}
+          persist-credentials: false
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - name: Log in to GHCR
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compute image metadata
+        id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # main publish → :latest and :sha-<full SHA>; the SHA tag is
+          # immutable and is the documented rollback handle.
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=long,prefix=sha-
+          labels: |
+            org.opencontainers.image.title=Project Worlds
+            org.opencontainers.image.description=Project Worlds — calm, accessible personal environment (API + dashboard)
+            org.opencontainers.image.source=https://github.com/${{ github.event.repository.full_name }}
+            org.opencontainers.image.licenses=MPL-2.0
+            org.opencontainers.image.revision=${{ steps.sha.outputs.head_sha }}
+            org.opencontainers.image.created=${{ github.event.workflow_run.head_commit.timestamp }}
+
+      - name: Build and push
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # Same validated SHA as the label above, but inside the image
+          # too: /healthz reports its short form so a running Worlds can
+          # be compared against main without inspecting image metadata.
+          build-args: |
+            PW_COMMIT=${{ steps.sha.outputs.head_sha }}
+          # Layer cache: dependency layers are reused, so most builds only
+          # redo the UI build and the source copy.
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          # Public visibility — Rylee-Bee/personal-world is a public
+          # repo and the image carries source only (no secrets, no
+          # private endpoints, no deployment topology — verified
+          # preflight against SECURITY.md and test_public_safety.py).
+          provenance: true

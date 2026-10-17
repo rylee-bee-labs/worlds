@@ -1,0 +1,147 @@
+# Project Worlds adoption manifest (broad adoption)
+# Follows the Play-Nice project-context layout and the library's
+# examples/personal-world.adoption.yaml. Projects consume contracts; they do
+# not fork them. Project-specific contracts (companion integration,
+# finish-line product rules, setup-wizard flows, etc.) stay local to the
+# Project Worlds repository.
+schema: play-nice/adoption-v1
+project: personal-world
+source:
+  repository: rylee-bee-labs/play-nice-contracts   # renamed from rylee-bee-labs/play-nice-contracts (account rename, 2026-09-12); old URL redirects
+  revision: 6669c019412ab8d1d0d9e72b88087dc87c37d145   # 2026-10-15: auto re-pin, fast-forward from 3282097 (1 commit(s); 1 file(s) under contracts/ changed)
+  # no file under contracts/ changed upstream, so the adopted id set is unchanged (same as vefr#390).
+  # Previous pin 2bbe8f6: owner-approved 2026-10-06 (C-17): every estate pin was orphaned by an upstream
+  # -> 2bbe8f6 (2026-10-10, Rylee: "Repin and fix the rot too"): play-nice-contracts #65 (README) and #66
+  # (org rename; schema/*.json changed only the owner in descriptions, defaults and $id). No contract rule
+  # changed. From here the pin is update: automatic: docs-only library moves read CURRENT through the
+  # equivalence rule (contract-attestation rule 27); any contracts/ or schema/ change still reads BEHIND.
+  # force-push on 2026-10-06T21:14Z — 1190e6a is DIVERGED from main, not merely behind.
+  # Library is now VERSION 2.0.0 (v2 reorganisation: contracts/ split into
+  # access/ everyone/ integration/ people/ sites/ surfaces/ work/). Delta verified with
+  # contractctl diff 1190e6a->d0bb0b2: 39 contracts unchanged, 2 MINOR receipt-rotated
+  # (plain-language 2.0.0->2.1.0, depth-on-demand 2.0.0->2.1.0); this manifest's
+  # always-set is UNAFFECTED. Adopted id set re-validated, not assumed.
+  # Bump history: 2bb60b4 (v0.3.0) -> d6c97db (v0.5.0) -> 0cee065
+  # (v0.6.0) -> f825ffb (v0.7.0, 2026-09-15). Each bump verified against the
+  # live repository (commit exists, VERSION/CHANGELOG match,
+  # contracts.lock.json fetched and diffed against the previous pin) before
+  # pinning — never taken on assertion. -> a0e3efb (2026-09-20 repin after
+  # upstream identity rewrite — ATTESTATION GAP: v0.8.0/v0.9.0 contract bumps
+  # entered unreviewed) -> 44ec8f4 (2026-09-21 ratified forward after full
+  # read + re-attestation; set content-identical to a0e3efb)
+  # v0.8.0–v0.10.0 delta: seven MINOR receipt-rotated contracts —
+  # human-reliability 1.1->1.2, contract-attestation 1.1->1.2, agent-behavior
+  # 1.0->1.1, copy-and-language 1.0->1.1, documentation-and-continuity
+  # 1.0->1.1, failure-and-degradation 1.0->1.1, progressive-disclosure
+  # 1.0->1.1. Provenance: v0.8.0 readability edits originated from Project
+  # Worlds' own 2026-09-17 pass; v0.9.0 added freshness/sync machinery;
+  # v0.10.0 orchestrator-only, no contract text. Un-versioned pointer-only
+  # cross-reference edits also landed in-window on what-why-next 1.0.0 and
+  # migraine-and-sensory-safety 1.0.0 (progress-and-closure likewise; not
+  # adopted here).
+  # -> 60eaeab (2026-09-25, owner-requested refresh after the contract-freshness
+  # check reported DIVERGED on PR #65). Verified fast-forward from 44ec8f4
+  # (merge-base --is-ancestor). One contract text change: contract-attestation
+  # 1.2.0 -> 1.3.0 (receipt quartz-rill-ember -> flint-meadow-anchor), which
+  # adds rule 27, freshness equivalence, for `update: automatic` only. This
+  # manifest is pinned, so the rule doesn't apply here. All other upstream
+  # changes are tooling, tests and docs (contractctl adopter toolkit,
+  # check.sh). Historical session receipts keep their old receipt values.
+  # -> e570e26 (2026-09-25, owner-approved; freshness reported DIVERGED on
+  # PR #71 because #32 landed as a merge commit). 60eaeab is its first
+  # parent (merge-base --is-ancestor). Delta is additive only: new
+  # contract `room` 1.0.0 (contracts/interfaces/ROOM.md, receipt
+  # fathom-ridge-wren) + its schema/tests; contract_count 66 -> 67. No
+  # adopted contract's text changed. Worlds' Rooms panel (#70) speaks it.
+  # -> 613f780 (2026-09-25, owner-approved ROOM 1.1.0 via play-nice #33).
+  # Fast-forward from e570e26. Delta: `room` 1.0.0 -> 1.1.0 (receipt
+  # fathom-ridge-wren -> lumen-quill-marsh): optional card `tone`
+  # (good_news|update|when_ready), optional need `link` (same-origin path),
+  # normative clause 15 (independent rooms). No other adopted contract changed.
+  # -> 0a7fb10 (2026-09-26, owner-approved ROOM 1.1.1 via play-nice #34): patch
+  # clarification only — freshness.observed_at is the item's own time.
+freshness:
+  policy: require-current
+  ref: main
+  update: automatic
+
+always:
+  - assume-unknown                   # new in v0.7.0; always-applicable
+  - ask-for-help
+  - truth-and-evidence
+  - human-reliability
+  - recovery-and-reversibility
+  - provenance-and-audit
+  - explicit-state
+  - stable-truth-replaceable-machinery
+  - participation-and-contribution
+  - mutual-contribution
+  - collaborative-good-faith
+
+triggers:
+  human-facing:
+    - accessibility-floor
+    - attention-and-focus
+    - complexity-on-demand
+    - what-why-next
+    - quiet-when-healthy
+    - progressive-disclosure
+    - guide-me
+    - copy-and-language
+  ui:
+    - low-vision-and-reflow
+    - migraine-and-sensory-safety
+    - themes-and-personalization
+    - motion-and-feedback
+    - web-ui
+    - visual-fidelity-and-composition
+  design:
+    - design-source-and-fidelity
+    - visual-fidelity-and-composition
+  external-api:
+    - capability-first
+    - friendly-api-client
+    - provider-neutrality
+    - discovery-and-negotiation
+    - idempotency
+    - polling-webhooks-and-caching
+    - external-mutations
+  api:
+    - api
+    - versioning-and-compatibility
+    - failure-and-degradation
+    - machine-readable-output
+    - human-and-machine-parity
+  cli:
+    - cli
+  security:
+    - authorization
+    - authentication
+    - secrets
+    - data-classification
+    - public-private-boundaries
+    - least-privilege
+  agent:
+    - agent-behavior
+    - bounded-work
+    - orchestration
+    - worker-contract
+    - review-and-integration
+    - handoff
+    - contract-attestation
+    - model-routing
+  engineering:
+    - deterministic-first
+    - search-before-inventing
+    - testing-and-verification
+    - dependency-discipline
+    - git-and-worktrees
+    - documentation-and-continuity
+    - migrations
+    - observability
+
+notes: >-
+  Broad adoption: Project Worlds is human-facing, provider-rich, agent-built,
+  and design-heavy, so nearly the full library applies. Companion/theme
+  product rules and the finish-line document remain local; this manifest
+  governs only the shared floors.

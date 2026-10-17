@@ -1,0 +1,92 @@
+{
+  "_comment": "Starfield theme — deep space palette with warm accents. Adapted from the constellation portfolio.",
+  "_author": "Starfield portfolio adaptation",
+
+  "surface": {
+    "void":     "#0C0D14",
+    "canvas":   "#0F1119",
+    "hull":     "#141620",
+    "panel":    "#1A1D2A",
+    "elevated": "#222636",
+    "raised":   "#2A2E40"
+  },
+
+  "accent": {
+    "primary":     "#D4A057",
+    "on_primary":  "#0C0D14",
+    "secondary":   "#5AA8B8",
+    "warm":        "#D4A057",
+    "warm_soft":   "rgba(212, 160, 87, 0.12)",
+    "gold":        "#C9A227",
+    "gold_soft":   "rgba(201, 162, 39, 0.14)",
+    "green":       "#6A9A66",
+    "green_soft":  "rgba(106, 154, 102, 0.16)",
+    "coral":       "#C47D6D",
+    "coral_soft":  "rgba(196, 125, 109, 0.14)",
+    "teal":        "#5AA8B8",
+    "teal_soft":   "rgba(90, 168, 184, 0.14)",
+    "lavender":    "#9B8EC4",
+    "lavender_soft": "rgba(155, 142, 196, 0.14)"
+  },
+
+  "text": {
+    "primary":   "#F0EDE6",
+    "secondary": "#B8B2A6",
+    "muted":     "#a29a8c"
+  },
+
+  "border": {
+    "subtle": "rgba(240, 237, 230, 0.08)",
+    "strong": "rgba(240, 237, 230, 0.15)",
+    "hover":  "rgba(240, 237, 230, 0.20)"
+  },
+
+  "spacing": {
+    "xs":  "4px",
+    "sm":  "8px",
+    "md":  "12px",
+    "lg":  "16px",
+    "xl":  "24px",
+    "2xl": "32px",
+    "3xl": "48px",
+    "4xl": "64px"
+  },
+
+  "radius": {
+    "sm":   "3px",
+    "md":   "8px",
+    "lg":   "16px",
+    "full": "9999px"
+  },
+
+  "shadow": {
+    "soft": "0 2px 16px rgba(0,0,0,0.3), 0 0 40px rgba(212,160,87,0.04)",
+    "warm": "0 4px 24px rgba(212,160,87,0.10), 0 0 60px rgba(212,160,87,0.05)",
+    "glow": "0 0 20px rgba(212,160,87,0.18), 0 0 40px rgba(212,160,87,0.06)"
+  },
+
+  "typography": {
+    "font_sans":  "'Atkinson Hyperlegible Next', 'Public Sans', system-ui, sans-serif",
+    "font_serif": "'Fraunces', Georgia, serif",
+    "font_mono":  "'JetBrains Mono', ui-monospace, monospace",
+    "size_h1":    "clamp(28px, 4vw, 40px)",
+    "size_lead":  "18px",
+    "size_body":  "16px",
+    "size_small": "14px",
+    "size_micro": "13px",
+    "size_label": "13px"
+  },
+
+  "density": {
+    "comfortable": {
+      "pad_main":  "24px",
+      "gap_main":  "16px",
+      "gap_block": "24px"
+    },
+    "compact": {
+      "pad_main":  "16px",
+      "gap_main":  "12px",
+      "gap_block": "16px"
+    }
+  }
+}

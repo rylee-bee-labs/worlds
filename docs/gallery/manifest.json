@@ -1,0 +1,326 @@
+{
+  "schema": "worlds-gallery/1",
+  "about": "What the screenshot gallery should show. capture.mjs reads this, writes shots/<id>/<theme>-<width>.png, and updates each entry's status. Screens are captured against the deterministic mock API (ui/scripts/e2e-api.mjs), never a real Worlds: this repo is public.",
+  "defaults": {
+    "widths": [
+      390,
+      1440
+    ],
+    "themes": [
+      "starfield"
+    ]
+  },
+  "all_themes": [
+    "starfield",
+    "doorways",
+    "station",
+    "moss",
+    "ocean",
+    "plain",
+    "daylight"
+  ],
+  "entries": [
+    {
+      "id": "bridge",
+      "title": "Bridge (home)",
+      "area": "Bridge",
+      "themes": [
+        "starfield",
+        "doorways",
+        "station",
+        "moss",
+        "ocean",
+        "plain",
+        "daylight"
+      ],
+      "caption": "Home: your guide's briefing, what needs you, and each room as a doorway.",
+      "alt": "The Bridge: a short briefing at the top, a Needs you tray, and room doorway cards with their status in words.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "room-drawer-studio",
+      "title": "A room's drawer (Studio)",
+      "area": "Bridge",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Look inside Studio"
+          }
+        }
+      ],
+      "caption": "Look inside a room: its status in words, what changed, and what needs you. Links open on the room's own site.",
+      "alt": "The Studio drawer open beside the Bridge, showing a need, cards with tone words, and an Open Studio button.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "room-drawer-workshop-secrets",
+      "title": "Workshop drawer with Secrets",
+      "area": "Bridge",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Look inside Workshop"
+          }
+        }
+      ],
+      "caption": "The Workshop's Secrets section, for the owner only: key names and health, never a value.",
+      "alt": "The Workshop drawer with a Secrets section: the station's health in words and key names in groups.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "secrets-waiting",
+      "title": "Secrets: waiting for you",
+      "area": "Bridge",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Look inside Workshop"
+          }
+        }
+      ],
+      "scroll_to": {
+        "role": "heading",
+        "name": "Secrets"
+      },
+      "caption": "An agent asked for a secret. Nothing is shared until you type it on Project Home's page.",
+      "alt": "The Workshop drawer's Secrets section with a request card and an Enter it in Project Home button.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "unreachable-room",
+      "title": "A room Worlds can't reach",
+      "area": "Bridge",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Look inside Cellar"
+          }
+        }
+      ],
+      "caption": "A room that isn't answering says so and when it last answered. Nothing from it is shown as current.",
+      "alt": "The Cellar drawer saying Worlds can't reach it and when it last answered.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "find-a-room",
+      "title": "Find a room (12 or more rooms)",
+      "area": "Bridge",
+      "fixture": "many-rooms",
+      "steps": [
+        {
+          "fill": {
+            "label": "Find a room",
+            "value": "st"
+          }
+        }
+      ],
+      "scroll_to": {
+        "role": "heading",
+        "name": "Rooms"
+      },
+      "caption": "With 12 or more rooms, a search box appears and says how many rooms match.",
+      "alt": "The Rooms section with a Find a room box containing 'st' and a line saying how many rooms match.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "no-rooms",
+      "title": "No rooms yet",
+      "area": "Bridge",
+      "fixture": "no-rooms",
+      "scroll_to": {
+        "role": "heading",
+        "name": "Rooms"
+      },
+      "caption": "Before any room is connected, the Bridge says so and explains how rooms connect.",
+      "alt": "The Rooms section saying there are no rooms yet, with a How rooms connect button.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "ask-in-chat",
+      "title": "Ask about a room in Chat",
+      "area": "Bridge",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Look inside Studio"
+          }
+        },
+        {
+          "click": {
+            "role": "button",
+            "name": "Ask about Studio in Chat"
+          }
+        }
+      ],
+      "caption": "Ask about a room: Chat opens with a question already written in the box. You send it.",
+      "alt": "The Chat screen with a question about Studio written in the message box, not yet sent.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "memory",
+      "title": "Memory",
+      "area": "Memory",
+      "caption": "Memory: your journal and records, and finding things in them.",
+      "alt": "The Memory screen with a note box and recent journal entries.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "chat",
+      "title": "Chat",
+      "area": "Chat",
+      "caption": "Chat with your companion. It can look things up; anything it wants to change becomes a proposal you approve.",
+      "alt": "The Chat screen with the companion's name in the header and the message box.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "settings",
+      "title": "Settings",
+      "area": "Settings",
+      "caption": "Settings: your crew, messages, look and feel, and more.",
+      "alt": "The Settings screen with the Your crew card, message choices and theme swatches.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "crew",
+      "title": "Crew",
+      "area": "Settings",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Crew"
+          }
+        }
+      ],
+      "caption": "Crew: choose your companion, and put a keeper and a doorway on each room.",
+      "alt": "The Crew page with companion cards and a keeper and doorway choice for each room.",
+      "status": "captured",
+      "notes": "If the Settings screen's way into Crew has a different accessible name, fix the step, not the UI.",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "people",
+      "title": "People",
+      "area": "Settings",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Open people"
+          }
+        }
+      ],
+      "caption": "People: who lives in this World, each role written as what that person can do, inviting someone, and handing the World over.",
+      "alt": "The People page listing Sam, Jo, Alex, Robin and Kit, each with a plain sentence about what they can do.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "helpers",
+      "title": "Let someone help you",
+      "area": "Settings",
+      "steps": [
+        {
+          "click": {
+            "role": "button",
+            "name": "Open helpers"
+          }
+        }
+      ],
+      "caption": "Let someone help you: choose who and for how long, stop it any time, and see what they did.",
+      "alt": "The helpers page with a form to choose a person and how long, a list of who is helping now with Stop now buttons, and a Who helped me list.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "interests",
+      "title": "Interests (moving to Candy)",
+      "area": "Interests",
+      "caption": "Interests: discovery as it lives in Worlds today, before it moves to the Candy room.",
+      "alt": "The Interests screen with a list of followed interests.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "projects-placeholder",
+      "title": "Projects (Hive Works not connected)",
+      "area": "Projects",
+      "caption": "Projects shows the Hive Works company. When Hive Works isn't connected, the page says so instead of showing anything as current.",
+      "alt": "The Projects page saying Hive Works isn't connected to this World yet.",
+      "status": "captured",
+      "captured_at": "2026-09-27",
+      "commit": "3d739fa"
+    },
+    {
+      "id": "first-light",
+      "title": "First Light: welcome",
+      "path": "/setup",
+      "caption": "First Light, the first-run setup, starts with a plain welcome.",
+      "alt": "The First Light welcome step with a Let's begin button.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "first-light-comfort",
+      "title": "First Light: make yourself comfortable",
+      "path": "/setup",
+      "caption": "Choose a theme, larger text, gentle motion, and whether the crew is on.",
+      "alt": "The First Light comfort step with three theme choices and three checkboxes.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "first-light-companion",
+      "title": "First Light: pick a companion",
+      "path": "/setup",
+      "caption": "Pick a companion, or keep the Assistant's plain voice.",
+      "alt": "The First Light companion step with the Assistant chosen.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    },
+    {
+      "id": "login",
+      "title": "Sign in",
+      "path": "/login",
+      "caption": "Sign in to Worlds. With an identity provider set up, a passkey comes first and the access code is the fallback.",
+      "alt": "The Worlds sign-in page with a field for the access code.",
+      "status": "captured",
+      "captured_at": "2026-09-26",
+      "commit": "74ae381"
+    }
+  ]
+}
