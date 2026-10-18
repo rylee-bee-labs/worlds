@@ -9,7 +9,8 @@ project: personal-world
 source:
   repository: rylee-bee-labs/play-nice-contracts   # renamed from rylee-bee-labs/play-nice-contracts (account rename, 2026-09-12); old URL redirects
   # 2026-10-18: auto re-pin, fast-forward from 6669c01 (1 commit(s); 0 file(s) under contracts/ changed)
-  revision: 63981682b638aa1418d995261e174f6bf92c0ca5
+  # 2026-10-18: auto re-pin, fast-forward from 6398168 (1 commit(s); 0 file(s) under contracts/ changed)
+  revision: 0ff800ba6d5ce865f001b01624bfbf98840e4dd6
   # no file under contracts/ changed upstream, so the adopted id set is unchanged (same as vefr#390).
   # Previous pin 2bbe8f6: owner-approved 2026-10-06 (C-17): every estate pin was orphaned by an upstream
   # -> 2bbe8f6 (2026-10-10, Rylee: "Repin and fix the rot too"): play-nice-contracts #65 (README) and #66
