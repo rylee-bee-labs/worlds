@@ -35,7 +35,7 @@ concurrency:
 
 jobs:
   test:
-    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-python.yml@17e34f4758943b77a9f3c11340f92bc495a46668  # ci-harness main, pinned 2026-10-15
+    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-python.yml@2766ce473a3604cc8d80198c082c14a9b8f89102  # ci-harness main, pinned 2026-10-15
     with:
       sync-args: "--extra test --extra crypto"
       pytest-args: "--timeout=30"
@@ -61,7 +61,7 @@ jobs:
         run: docker build -t personal-world:ci .
 
   browser:
-    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-node.yml@17e34f4758943b77a9f3c11340f92bc495a46668  # ci-harness main, pinned 2026-10-15
+    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-node.yml@2766ce473a3604cc8d80198c082c14a9b8f89102  # ci-harness main, pinned 2026-10-15
     with:
       working-directory: "ui"
       setup-python: true
@@ -71,7 +71,7 @@ jobs:
       upload-dist: false
 
   security-gates:
-    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-python.yml@17e34f4758943b77a9f3c11340f92bc495a46668  # ci-harness main, pinned 2026-10-15
+    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-python.yml@2766ce473a3604cc8d80198c082c14a9b8f89102  # ci-harness main, pinned 2026-10-15
     with:
       sync-args: "--extra test"
       pytest-args: '--timeout=30 tests/test_core.py -k "SettingsExportSafety or CementedPolicy or TestJournal or WorldExport" -v'
@@ -80,7 +80,7 @@ jobs:
       bandit-args: "-q -r . -x ./tests,./.venv,./node_modules -s B101"
 
   framework-gates:
-    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-python.yml@17e34f4758943b77a9f3c11340f92bc495a46668  # ci-harness main, pinned 2026-10-15
+    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-python.yml@2766ce473a3604cc8d80198c082c14a9b8f89102  # ci-harness main, pinned 2026-10-15
     with:
       sync-args: "--extra test"
       pytest-args: "--timeout=30 tests/test_framework.py -v"
@@ -97,7 +97,7 @@ jobs:
   # — never a sync job. This job going red after upstream moved is a
   # correct alarm, not a malfunction.
   contract-freshness:
-    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-contract-freshness.yml@17e34f4758943b77a9f3c11340f92bc495a46668  # ci-harness main, pinned 2026-10-15
+    uses: rylee-bee-labs/ci-harness/.github/workflows/reusable-contract-freshness.yml@2766ce473a3604cc8d80198c082c14a9b8f89102  # ci-harness main, pinned 2026-10-15
     with:
       manifest-path: ".project/contracts/adoption.yaml"
       # Pull requests: Play-Nice moving is a warning, not a block. The pin
