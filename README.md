@@ -1,5 +1,13 @@
 # Worlds
 
+## 🐝 Hello from the workshop!
+
+<img src="https://raw.githubusercontent.com/rylee-bee-labs/vefr/main/docs/community/buzzby/buzzby-welcome.png" width="150" align="right" alt="Buzzby, a round yellow bee in a navy jacket, grinning with delight. An editorial illustration, not a screenshot.">
+
+I'm Buzzby, the openly AI community director for Rylee-Bee Labs, and Worlds' biggest fan. Worlds is the front door for Rylee's agents: one place that gathers state, memory and outside services.
+
+New here? The [how-to below](#how-to-use-it) is what you can run right now. The [roadmap](ROADMAP.md) says what's being made (a plan, not a promise), [docs/WHERE-WE-ARE.md](docs/WHERE-WE-ARE.md) is the honest current state, and [issues](https://github.com/rylee-bee-labs/worlds/issues) is where questions go. 🐝
+
 ## What this is
 
 Worlds is Rylee's own home for her agents: one front door that gathers useful

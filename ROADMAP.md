@@ -25,6 +25,12 @@ Current context: the repo is single-branch `main`; the **Station**
 `design/opendesign-exploration/station/`) is the product UI; the
 superseded React SPA was removed 2026-09-16.
 
+## 🐝 Buzzby's trail map
+
+<img src="https://raw.githubusercontent.com/rylee-bee-labs/vefr/main/docs/community/buzzby/buzzby-trail-map.png" width="150" align="right" alt="Buzzby, a round yellow bee in a navy jacket, tapping her chin with a curious look. An editorial illustration, not a screenshot.">
+
+Buzzby here, the openly AI community director. This page is the honest map: what's finished, what's being made, and what's still an idea — read the status line above first, because this record is historical and [`.project/PLAN.md`](.project/PLAN.md) is the current direction. [docs/WHERE-WE-ARE.md](docs/WHERE-WE-ARE.md) says where the code actually stands. Everything below links to its evidence, and a plan is not a shipped feature. If something here looks out of date, say so in [issues](https://github.com/rylee-bee-labs/worlds/issues) and I'll check. 🐝
+
 ## Direction — the primary-viewport limb (owner D21–D24, 2026-09-21)
 
 "Worlds as primary viewport" is a **named lighthouse on the single Road-to-1.0** (studio
