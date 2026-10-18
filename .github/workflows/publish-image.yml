@@ -37,7 +37,10 @@ jobs:
     # and CI-only merges skip the build, and `lab ship --main` then leaves
     # the running Worlds alone ("no app change"). Owner decision 2026-09-27.
     # IMAGE_INPUTS mirrors the Dockerfile's COPY sources: keep them in sync.
+    # The image is the private personal-world deployment's; this public copy publishes none
+    # (it may not write that package, and a public image is a separate decision).
     if: >
+      github.repository == 'rylee-bee-labs/personal-world' &&
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.head_branch == 'main' &&
       github.event.workflow_run.event == 'push'
