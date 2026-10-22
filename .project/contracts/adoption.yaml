@@ -12,7 +12,8 @@ source:
   # 2026-10-18: auto re-pin, fast-forward from 6398168 (1 commit(s); 0 file(s) under contracts/ changed)
   # 2026-10-18: auto re-pin, fast-forward from 0ff800b (1 commit(s); 0 file(s) under contracts/ changed)
   # 2026-10-21: auto re-pin, fast-forward from 4d9deb0 (1 commit(s); 0 file(s) under contracts/ changed)
-  revision: b4ead256db890c3e959992a05d184623e72d8f47
+  # 2026-10-22: auto re-pin, fast-forward from b4ead25 (1 commit(s); 0 file(s) under contracts/ changed)
+  revision: c872b321244c57c112ebfab44dfa7d66f4a21495
   # no file under contracts/ changed upstream, so the adopted id set is unchanged (same as vefr#390).
   # Previous pin 2bbe8f6: owner-approved 2026-10-06 (C-17): every estate pin was orphaned by an upstream
   # -> 2bbe8f6 (2026-10-10, Rylee: "Repin and fix the rot too"): play-nice-contracts #65 (README) and #66
