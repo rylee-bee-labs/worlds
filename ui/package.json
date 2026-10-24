@@ -34,7 +34,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.13.0",
+    "@axe-core/playwright": "^4.14.0",
     "@chromatic-com/storybook": "^5.4.0",
     "@storybook/addon-a11y": "^10.6.2",
     "@storybook/addon-docs": "^10.6.1",
