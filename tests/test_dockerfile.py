@@ -111,28 +111,50 @@ class TestWorkflowPins:
                     assert re.fullmatch(r"[0-9a-f]{40}", m.group(2)), f"{wf.name}: {line.strip()}"
 
 
-class TestPublicCopyPublishesNoImage:
-    """Owner decision 2026-10-26: the archived `personal-world` repo stays archived.
+class TestWorldsPublishesItsOwnImage:
+    """Owner decision 2026-10-26: this repository publishes the production image.
 
-    This public copy never published an image -- the old
-    `.github/workflows/publish-image.yml` gated its only publish path on a
-    repository that is now archived read-only, so in this repo it could
-    never run. It was removed, not repointed: turning publishing on here
-    is a new decision, not a cleanup. These guards keep the removal from
-    silently regressing.
+    `personal-world` is archived read-only, so it can no longer be the
+    source of the image the homelab runs. `publish-image.yml` here builds
+    the appliance from this repository and pushes it to
+    `ghcr.io/rylee-bee-labs/worlds`, which the homelab autodeploy consumes
+    as `:main`. These guards keep the repository gate and the image name
+    honest: a fork must never publish into the estate's registry, and the
+    archived repository must never come back as the gate.
     """
 
-    def test_no_publish_workflow_file(self):
-        assert not (REPO_ROOT / ".github" / "workflows" / "publish-image.yml").exists()
+    WF = REPO_ROOT / ".github" / "workflows" / "publish-image.yml"
 
-    def test_no_workflow_pushes_an_image(self):
-        for wf in (REPO_ROOT / ".github" / "workflows").glob("*.yml"):
-            text = wf.read_text()
-            assert "packages: write" not in text, f"{wf.name} may write to a registry"
-            assert "push: true" not in text, f"{wf.name} pushes an image"
+    def _text(self):
+        assert self.WF.exists(), "the publish workflow is missing"
+        return self.WF.read_text()
 
-    def test_no_workflow_references_a_deleted_workflow(self):
-        for wf in (REPO_ROOT / ".github" / "workflows").glob("*.yml"):
-            assert "publish-image.yml" not in wf.read_text(), (
-                f"{wf.name} still references the deleted publish workflow"
-            )
+    def test_publish_workflow_exists_and_pushes_the_worlds_image(self):
+        text = self._text()
+        assert "ghcr.io/rylee-bee-labs/worlds" in text
+        assert "packages: write" in text
+        assert "push: true" in text
+
+    def test_publish_workflow_gates_on_this_repository(self):
+        text = self._text()
+        assert "github.repository == 'rylee-bee-labs/worlds'" in text
+        # The archived repository is never the gate, and never the target.
+        assert "rylee-bee-labs/personal-world" not in text
+
+    def test_publish_workflow_publishes_the_main_tag(self):
+        # The homelab autodeploy pulls `ghcr.io/rylee-bee-labs/worlds:main`.
+        assert "value=main" in self._text()
+
+    def test_publish_workflow_never_publishes_from_a_pull_request(self):
+        # `workflow_run` after `validate` on main is the only trigger: a
+        # pull request (or a fork's copy of this file) must not publish.
+        text = self._text()
+        assert "pull_request" not in text
+
+    def test_only_the_publish_workflow_pushes_an_image(self):
+        pushers = [
+            wf.name
+            for wf in (REPO_ROOT / ".github" / "workflows").glob("*.yml")
+            if "push: true" in wf.read_text()
+        ]
+        assert pushers == ["publish-image.yml"], pushers
