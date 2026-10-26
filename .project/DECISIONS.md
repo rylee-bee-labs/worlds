@@ -141,6 +141,22 @@ dated entry superseding the old one (append-only, like the journal).
 
 ## Container distribution
 
+- **2026-10-26 — This repository publishes the image Worlds runs.**
+  `personal-world` is archived read-only (owner decision, 2026-10-26), so
+  it can no longer be the source of the image the homelab ships. The
+  `publish-image` workflow lives here instead: it fires via `workflow_run`
+  after `validate` succeeds on `main`, and pushes the appliance to
+  `ghcr.io/rylee-bee-labs/worlds`. Tags: `:main` (what the homelab
+  autodeploy pulls), `:latest` (mutable convenience) and `:sha-<full
+  SHA>` (immutable; documented rollback handle). The publish path is
+  gated on `github.repository == 'rylee-bee-labs/worlds'`, so a fork can
+  never publish into the estate's registry, and nothing publishes on a
+  pull request. It uses `GITHUB_TOKEN` with `packages: write` +
+  `contents: read`, no PAT. Moving the transcode host onto this image is
+  a deploy step (owner gate), not a build step. Reason: the image has to
+  have a source that is still writable; an archived repository cannot be
+  that source.
+
 - **2026-09-12 — Project Worlds is distributed as a versioned OCI
   image through GitHub Container Registry.** The portable Compose
   deployment consumes the published image; machine-specific
