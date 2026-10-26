@@ -11,12 +11,11 @@ name: uat-live
 # NOT a required branch-protection check (informational, a read-only
 # walk against live prod that can go red for reasons unrelated to the
 # PR under review -- prod being briefly unreachable, a stale deploy).
-# publish-image.yml gates on validate's own conclusion
-# (workflow_run.conclusion == 'success'); if uat-live's job lived inside
-# validate.yml, a red uat-live would fail that conclusion too and block
-# every future image publish -- including the exact fix uat-live needs
-# deployed to go green. Keeping it a separate workflow means its result
-# never touches validate's conclusion.
+# A red uat-live must never colour another workflow's conclusion -- it
+# goes red for reasons that have nothing to do with the change under
+# review, including the exact fix uat-live needs deployed to go green.
+# Keeping it a separate workflow means its result never touches
+# validate's conclusion.
 
 on:
   # Manual only (2026-09-29). This walk targets a live Worlds that is internal-only, so it is not reachable from

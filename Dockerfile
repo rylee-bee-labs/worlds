@@ -52,7 +52,7 @@ RUN test -f src/personal_world/static/app/index.html \
 # tree from the image.
 RUN uv pip install --no-cache-dir .
 
-# The commit this image was built from. publish-image.yml passes the
+# The commit this image was built from. The build passes the
 # validated main SHA as a build arg; /healthz reports its first 7 chars
 # so Project Home can compare what is live against main. A local
 # `docker build` passes nothing and the value is empty (reported null).

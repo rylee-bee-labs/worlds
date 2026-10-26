@@ -110,6 +110,29 @@ class TestWorkflowPins:
                 if m and "/.github/workflows/" in m.group(1):
                     assert re.fullmatch(r"[0-9a-f]{40}", m.group(2)), f"{wf.name}: {line.strip()}"
 
-    def test_image_publish_records_provenance(self):
-        text = (REPO_ROOT / ".github" / "workflows" / "publish-image.yml").read_text()
-        assert "provenance: true" in text
+
+class TestPublicCopyPublishesNoImage:
+    """Owner decision 2026-10-26: the archived `personal-world` repo stays archived.
+
+    This public copy never published an image -- the old
+    `.github/workflows/publish-image.yml` gated its only publish path on a
+    repository that is now archived read-only, so in this repo it could
+    never run. It was removed, not repointed: turning publishing on here
+    is a new decision, not a cleanup. These guards keep the removal from
+    silently regressing.
+    """
+
+    def test_no_publish_workflow_file(self):
+        assert not (REPO_ROOT / ".github" / "workflows" / "publish-image.yml").exists()
+
+    def test_no_workflow_pushes_an_image(self):
+        for wf in (REPO_ROOT / ".github" / "workflows").glob("*.yml"):
+            text = wf.read_text()
+            assert "packages: write" not in text, f"{wf.name} may write to a registry"
+            assert "push: true" not in text, f"{wf.name} pushes an image"
+
+    def test_no_workflow_references_a_deleted_workflow(self):
+        for wf in (REPO_ROOT / ".github" / "workflows").glob("*.yml"):
+            assert "publish-image.yml" not in wf.read_text(), (
+                f"{wf.name} still references the deleted publish workflow"
+            )
