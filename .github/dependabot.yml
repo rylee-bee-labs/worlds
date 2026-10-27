@@ -1,10 +1,11 @@
 # Estate dependabot template (agent-platform docs/ops/dependabot.md, 2026-10-27):
 # - minor + patch arrive as ONE grouped PR per ecosystem; a major arrives as its own PR;
-# - security updates are grouped too, and are not delayed by the cooldown;
-# - a 3-day cooldown (14 for majors) lets a bad release get yanked before it reaches us;
+# - security updates are grouped too, are not delayed by the cooldown, and open as soon as an advisory
+#   lands -- the schedule below only paces version updates;
+# - a 3-day cooldown (14 for majors, where the ecosystem supports it) lets a bad release get yanked first;
 # - docs/archive/** is frozen history and never gets a bump;
-# - weekly (a live service), on wednesday: each repo has its own weekday,
-#   so the estate's shared runners do not get every repo's PRs on the same morning.
+# - weekly (a live service), on wednesday: each live service has its own weekday, so the shared runners do
+#   not get every repo's PRs on the same morning; the ecosystems in one repo share its day on purpose.
 version: 2
 updates:
   - package-ecosystem: pip
@@ -41,7 +42,6 @@ updates:
       prefix: "chore(deps)"
     cooldown:
       default-days: 3
-      semver-major-days: 14
     exclude-paths:
       - "docs/archive/**"
     groups:
@@ -55,6 +55,8 @@ updates:
       actions-minor-patch:
         update-types: [minor, patch]
         patterns: ["*"]
+    ignore:  # ci-harness pins belong to bin/harness-repin; the rest carried over from the previous file
+      - {dependency-name: rylee-bee-labs/ci-harness*}
   - package-ecosystem: npm
     directory: "/ui"
     schedule:
@@ -77,6 +79,6 @@ updates:
       npm-ui-minor-patch:
         update-types: [minor, patch]
         patterns: ["*"]
-    ignore:  # carried over from the previous file
+    ignore:  # ci-harness pins belong to bin/harness-repin; the rest carried over from the previous file
       - dependency-name: msw
         versions: ['>=3.0.0']
