@@ -148,10 +148,17 @@ the tracked Compose.
 
 ### Image tags
 
+This repository publishes its own image: `ghcr.io/rylee-bee-labs/worlds`.
+The `personal-world` repository is archived read-only (owner decision,
+2026-10-26), so nothing is published under that name from here; the tracked
+`compose.yaml` still defaults to the retired
+`ghcr.io/rylee-bee/personal-world:latest` until it is repointed.
+
 | Tag | Source | Use |
 | --- | --- | --- |
-| `ghcr.io/rylee-bee/personal-world:latest` | Each successful main publish | Convenience tag for fresh installs |
-| `ghcr.io/rylee-bee/personal-world:sha-<full SHA>` | Same publish | Immutable; preferred for reproducible deploys and rollback. Exists only for commits that built an image |
+| `ghcr.io/rylee-bee-labs/worlds:main` | Each successful main publish | The tag the homelab autodeploy pulls (`scripts/lab ship rylee-bee-labs/worlds --main`) |
+| `ghcr.io/rylee-bee-labs/worlds:latest` | Same publish | Convenience tag for fresh installs |
+| `ghcr.io/rylee-bee-labs/worlds:sha-<full SHA>` | Same publish | Immutable; preferred for reproducible deploys and rollback. Exists only for commits that built an image |
 
 Pin `latest` for ordinary use. Pin a `sha-...` tag when you need a
 reproducible deployment or want to roll back to a known-good image.
@@ -166,7 +173,7 @@ list on GHCR shows every `sha-...` tag that exists.
 ### Rollback
 
 ```bash
-PW_IMAGE=ghcr.io/rylee-bee/personal-world:sha-<known-good> \
+PW_IMAGE=ghcr.io/rylee-bee-labs/worlds:sha-<known-good> \
     docker compose up -d
 ```
 
@@ -204,16 +211,22 @@ Since the front-door rebuild (#277) the image runs the front-door app (`worlds.p
   - `PW_VAPID_PRIVATE_KEY` and `PW_VAPID_SUBJECT`: Web Push.
   - `PW_TRUSTED_PROXIES`: Traefik's address.
   - `PW_PORT`.
-  - `PW_IMAGE`, pinned to `ghcr.io/rylee-bee/personal-world:sha-<full sha>`. The compose default is `:latest`
+  - `PW_IMAGE`, pinned to `ghcr.io/rylee-bee-labs/worlds:sha-<full sha>`. The compose default is `:latest`
     with `pull_policy: always`, so an unpinned `docker compose up -d` moves production to whatever `main` is.
 
-Images are built by the GitHub Actions `publish-image` workflow on `main`
-and pushed to `ghcr.io/rylee-bee/personal-world`; production pulls them:
+Images are built by the GitHub Actions `publish-image` workflow in this
+repository on `main` and pushed to `ghcr.io/rylee-bee-labs/worlds`; the
+homelab autodeploy ships the `:main` tag of that image
+(`scripts/lab ship rylee-bee-labs/worlds --main`):
 
 ```bash
 cd /opt/personal-world
 docker compose pull && docker compose up -d
 ```
+
+Moving the transcode-host stack from the retired `personal-world` package
+to this one is a deploy step (owner gate), not a build step: the image is
+published by CI, and pointing the host at it is a separate, deliberate act.
 
 Updates are normally one tap: Project Home's "What's live" panel shows the
 running vs latest commit and can create an ask-first deploy task. After

@@ -67,7 +67,7 @@ publishes for each validated `main` commit (see `docs/OPERATIONS.md`,
   Evidence to record (private operator log): the full `sha-<40-char>` tag,
   the `org.opencontainers.image.revision` label (must equal the sha in the
   tag), and whether the tag came from the `publish-image` workflow.
-  **Pass:** the image tag is `ghcr.io/…/personal-world:sha-<full commit sha>`,
+  **Pass:** the image tag is `ghcr.io/…/worlds:sha-<full commit sha>`,
   pinned (not `latest`), and the running compose config resolves to it
   (`docker compose config` shows no unpinned override). `latest` is a
   convenience tag for fresh installs — acceptable to *pull*, but the
