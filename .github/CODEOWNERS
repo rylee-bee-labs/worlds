@@ -18,7 +18,7 @@
 /AGENTS.md                  @Rylee-Bee
 /AGENT_POLICY.md            @Rylee-Bee
 /AGENT_CONTRACTS.md          @Rylee-Bee
-/CODEOWNERS                 @Rylee-Bee
+/.github/CODEOWNERS         @Rylee-Bee
 /.github/workflows/         @Rylee-Bee
 /tests/test_public_safety.py @Rylee-Bee
 /scripts/safe-commit.sh      @Rylee-Bee
