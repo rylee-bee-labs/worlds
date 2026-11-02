@@ -60,8 +60,8 @@ authoritative over them.
 
 ## What is deployed
 
-Merging to `main` publishes the image; it does not deploy. Deploying the
-front door is a deliberate manual step.
+Merging to `main` publishes the image; it does not deploy. Deploying is a
+separate step with a live check and a rollback point (`docs/OPERATIONS.md`).
 
 A merge, CI run or published image is not proof of the running instance.
 Current runtime revision must come from the running application's `/healthz`
@@ -69,7 +69,8 @@ evidence through the private operator path.
 
 If that evidence has not been checked, runtime state is **UNKNOWN**.
 
-Deploying to production requires explicit owner approval.
+A production cutover to a new app generation is Rylee's call; an ordinary
+deploy of `main` is not (decisions in force, entry 11).
 
 ## Canonical routes
 

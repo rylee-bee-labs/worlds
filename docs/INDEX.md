@@ -104,7 +104,7 @@ are unchanged.)
 | [../scripts/route-inventory.json](../scripts/route-inventory.json) | The **generated** route contract (every `/api` route plus `/healthz`, with its auth level). Regenerate with `uv run python scripts/contract-drift-check.py --write`; check with the same script without `--write`. |
 | [../scripts/gen-openapi.py](../scripts/gen-openapi.py) | The **generator** for `ui/src/generated/openapi.json` (written from the live front-door app). Never hand-edit the generated files. |
 | [safe-commit.sh](../scripts/safe-commit.sh) | Stages named paths only; refuses unrelated-file sweeps. |
-| [Validation commands](../AGENTS.md#checks) | `pytest`, `framework validate` — the canonical checks. |
+| [Validation commands](../AGENTS.md#verify-run-it-what-ci-runs) | `pytest`, `framework validate` — the canonical checks. |
 | [DEV-ENVIRONMENT.md](DEV-ENVIRONMENT.md) | Setting up to run, test, or contribute: prerequisites, verification commands, and environment hygiene. |
 
 ## Surfaces, inventories & history
