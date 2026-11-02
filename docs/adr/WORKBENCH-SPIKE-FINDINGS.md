@@ -1,6 +1,6 @@
 # Workbench spike findings (Lane W, backend only)
 
-> **Status:** Historical · **Verified:** 2026-09-26 · **Canonical for:** nothing (evidence for `docs/adr/0003` and `docs/adr/0006`) · **Read this if:** you want to see what a spike actually found when the Workbench ADRs met the code. · **Superseded by:** `docs/adr/0003-workbench-core-owned-capability.md` and `docs/adr/0006-event-task-envelope.md`
+> Status: Unclear: this is historical spike evidence superseded by ADR-0003 and ADR-0006, but `src/personal_world/app.py` and `providers/workbench.py` still reference it by path; removing those references would decide whether it can be archived.
 
 **In short:** a dated record (2026-09-21) of what fit and what did not when the Workbench and task-envelope ADRs were tried against the code. It is evidence, not current state — both ADRs remain **proposed**, and the test counts and commit hashes are that session's.
 

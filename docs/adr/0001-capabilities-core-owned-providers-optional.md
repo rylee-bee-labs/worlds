@@ -2,7 +2,7 @@
 
 > **Superseded in part by [ADR-0008](0008-front-door.md) (2026-10-01):** amended: the capability registry is retired for front-door providers (S6); a small built-in set (Memory, vault, journal) keeps its contracts.
 
-> **Status:** Reference · **Verified:** 2026-09-26 · **Canonical for:** the rule that capabilities are core-owned and providers are optional · **Read this if:** you are adding or changing a capability, a provider, or anything that could make a vendor's shape into product truth.
+> Status: Current (2026-11-02): AGENT_CONTRACTS.md names this as rationale for the still-enforced provider-neutral baseline; ADR-0008 only amends its front-door registry scope.
 
 **In short:** capabilities (`source_control`, `memory`, `journal`, …) belong to the core and are provider-neutral; providers only implement or enrich them, and when one is missing the capability reports `not_configured` or `unavailable`. Accepted 2026-09-06, executed by `personal-world framework validate` and `tests/test_framework.py`. Rationale doc for the wider session: `docs/NATIVE-BASELINE-AND-ENRICHMENT.md`.
 

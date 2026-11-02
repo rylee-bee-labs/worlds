@@ -1,7 +1,8 @@
 # D-003: V1 has no current design authority
 
+> Status: Current (2026-11-02): the decision remains ACTIVE and defines the authority boundary for the V1 design.
+
 **Date:** 2026-09-13
-**Status:** ACTIVE
 **Owner:** Rylee
 
 ## Decision

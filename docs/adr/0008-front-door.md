@@ -1,8 +1,8 @@
 # ADR-0008: the front door (meaning, mechanics, authority)
 
-> **Status:** Accepted 2026-10-01 · **Amends:** ADR-0001 · **Relates to:** ADR-0006 (event envelope = journal entry), ADR-0007 (secrets) · **Canonical for:** the front-door architecture and its refinements · **Read this if:** you are touching providers, navigation, Memory, or how actions are authorized.
+> Status: Current (2026-11-02): `.project/CURRENT.md` and `docs/agent-reference.md` name ADR-0008 as the accepted architecture on `main` (PR #277).
 
-**In short:** Worlds owns meaning; providers own mechanics. The landmarks are `Home · Connect · Memory · Settings`. Executable actions have one authority path with at-most-once dispatch. Owner approval and refinements: `.project/HANDOFF-FRONT-DOOR-APPROVAL-2026-10-01.md`; baseline: `.project/PROPOSAL-FRONT-DOOR-2026-10-01.md`.
+**In short:** Worlds owns meaning; providers own mechanics. The landmarks are `Home · Connect · Memory · Settings`. Executable actions have one authority path with at-most-once dispatch. Owner approval and refinements: `.project/HANDOFF-FRONT-DOOR-APPROVAL-2026-10-01.md`; baseline: `docs/history/.project/PROPOSAL-FRONT-DOOR-2026-10-01.md`.
 
 ## Decision
 

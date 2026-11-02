@@ -1,6 +1,6 @@
 # Alpha status — Project Worlds (2026-09-17 snapshot)
 
-> **Status:** Historical · **Verified:** 2026-09-26 · **Canonical for:** nothing (see [`.project/CURRENT.md`](../../.project/CURRENT.md)) · **Read this if:** you want the dated 2026-09-17 alpha snapshot, not current truth · **Superseded by:** [`.project/PLAN.md`](../../.project/PLAN.md) for direction and [`.project/CURRENT.md`](../../.project/CURRENT.md) for state.
+> Status: Historical (2026-11-02): this is the dated 2026-09-17 alpha snapshot; `.project/PLAN.md` owns direction and `.project/CURRENT.md` owns current state.
 
 **In short:** a status snapshot of where the private alpha stood on
 2026-09-17. Direction now lives in `.project/PLAN.md` (with

@@ -335,7 +335,7 @@ blindly rename all of them. Classification used:
   companion get renamed too, or does it keep its established identity
   regardless of product branding?) — **not decided in this pass.**
 - **Left unchanged — historical documents:** `CHANGELOG.md` entries,
-  `design/handoff/*` (archived Figma spec package), `docs/p1/FOUNDATION-SPEC.md`,
+  `design/handoff/*` (archived Figma spec package), `docs/history/p1/FOUNDATION-SPEC.md`,
   ADRs, dated handoffs. These remain truthful to the period they
   describe; rewriting them would falsify history for no benefit.
 - **Identity cleanup complete (2026-09-12, second pass):** the
@@ -359,7 +359,7 @@ blindly rename all of them. Classification used:
   humanizers, companion-context names). TECHNICAL IDENTIFIERS and
   HISTORICAL TEXT unchanged, as before.
 - **Historical Personal World references intentionally retained:**
-  `CHANGELOG.md`, `docs/adr/`, `docs/p1/FOUNDATION-SPEC.md`,
+  `CHANGELOG.md`, `docs/adr/`, `docs/history/p1/FOUNDATION-SPEC.md`,
   `design/handoff/` (archived Figma package), `docs/FIGMA-HANDOFF-LESSONS.md`,
   dated postmortems (`design/SVG_POLISH_NOTES.md`), the
   `PERSONAL-WORLD-*` **filenames** and their cross-links (stable

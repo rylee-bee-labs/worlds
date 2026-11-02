@@ -1,5 +1,7 @@
 # Plan — Worlds
 
+> Status: Current (2026-11-02): `.project/CURRENT.md` and the linked live issues route implementation state and active work; this file owns product direction.
+
 This file owns **product direction**, not task state.
 
 Current product architecture: [ADR-0008 — the front door](../docs/adr/0008-front-door.md).
@@ -75,7 +77,7 @@ not a deployment, and it is not a production cutover.
 Issues #262 and #263 were closed as `not_planned` on 2026-10-07, but
 [#262](https://github.com/rylee-bee-labs/worlds/issues/262) was later
 **reopened** for the remaining source-retirement and cutover work. #263 remains
-closed. The historical [`docs/BACKLOG.md`](../docs/BACKLOG.md) preserves the
+closed. The historical [`docs/history/BACKLOG.md`](../docs/history/BACKLOG.md) preserves the
 October 7 census; it does not supersede live issue state. The current gated
 vNext campaign is [#321](https://github.com/rylee-bee-labs/worlds/issues/321),
 with visual direction [#322](https://github.com/rylee-bee-labs/worlds/issues/322)

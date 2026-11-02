@@ -1,6 +1,6 @@
 # Project Worlds — Completion Plan (historical)
 
-> **Status:** Historical · **Verified:** 2026-09-26 · **Canonical for:** nothing (see [`.project/CURRENT.md`](../../.project/CURRENT.md)) · **Read this if:** you want the dated v1 execution plan for provenance · **Superseded by:** [`.project/PLAN.md`](../../.project/PLAN.md) for direction and [`.project/CURRENT.md`](../../.project/CURRENT.md) for state.
+> Status: Historical (2026-11-02): `.project/PLAN.md` owns current direction, and `.project/CURRENT.md` identifies the rebuild work as landed in PR #277.
 
 **In short:** the dated **v1, 2026-09-10** execution plan (with a
 2026-09-14 progress note): dependency-ordered phases and acceptance
@@ -198,7 +198,7 @@ allowed; no pulse/spin/shake/flash. OS `prefers-reduced-motion` always
 overrides and suppresses subtle animation. Motion is never required to
 understand or operate the product. `off` is not collapsed into
 `reduced`: the explicit no-motion choice is cheap and useful.
-Definitions and CSS emission: `docs/p1/FOUNDATION-SPEC.md` §3.
+Definitions and CSS emission: `docs/history/p1/FOUNDATION-SPEC.md` §3.
 
 ### D4 — Memory canon
 
@@ -355,7 +355,7 @@ cutover checklist review. GLM: each primitive/screen (one task each). DET:
 axe/token/budget tests.
 
 **Spec.** The bounded implementation contract for this phase is
-[`p1/FOUNDATION-SPEC.md`](../p1/FOUNDATION-SPEC.md) (approved 2026-09-10):
+[`p1/FOUNDATION-SPEC.md`](p1/FOUNDATION-SPEC.md) (approved 2026-09-10):
 sections API (`settings` is the only pinned section; `today` is
 hideable; "Restore default sections" in Settings; canonical status or
 `null`, never invented values; `configured` separate from `status`),

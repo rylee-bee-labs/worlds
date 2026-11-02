@@ -1,5 +1,7 @@
 # Plan: remove the old UI tree (mechanical)
 
+> Status: Superseded by .project/PLAN.md (2026-11-02): remaining source retirement is tracked by reopened issue #262 and requires consumer and rollback proof before deletion.
+
 Goal: delete the old Worlds UI that the front-door UI replaced. You do NOT write code yourself: workers do, via `offload`. Your job is to dispatch, verify, and report honestly.
 
 ## Tasks

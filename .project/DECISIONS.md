@@ -1,5 +1,7 @@
 # Project Worlds — Durable Decisions
 
+> Status: Current (2026-11-02): `.project/CURRENT.md` names this file and `docs/adr/` as the durable decision sources.
+
 Decisions that are RESOLVED and durable — the "why it is this way"
 record. Current implementation state lives in
 [`.project/CURRENT.md`](./CURRENT.md); the cooperation constitution

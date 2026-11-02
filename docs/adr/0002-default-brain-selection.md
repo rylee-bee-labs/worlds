@@ -1,6 +1,6 @@
 # Small Model Decision — Worlds
 
-> **Status:** Reference · **Verified:** 2026-09-26 · **Canonical for:** which small local model Worlds defaults to, and why · **Read this if:** you are changing the default brain, the fallback, or the `reasoning` provider.
+> Status: Current (2026-11-02): no later decision replaces the recorded default and fallback; this remains the source for changes to the reasoning provider default.
 
 **In short:** the default small brain is **Qwen3 1.7B Q4_K_M**, with **LFM2.5 2.6B Q4_K_M** as fallback — chosen from a 14-task, CPU-only pass on 2026-09-13. The brain is wired through the optional `reasoning` capability; it helps the world operate without ever having write access to world state.
 

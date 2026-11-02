@@ -1,6 +1,6 @@
 # ADR-0005: Network overlay behind a `NetworkOverlay` contract (Headscale + Tailscale; NetBird dropped)
 
-> **Status:** Direction · **Verified:** 2026-09-26 · **Canonical for:** the replaceable network-overlay direction (proposed, review-only) · **Read this if:** you are touching mesh networking for Nodes.
+> Status: Unclear: AGENT_CONTRACTS.md keeps this as proposed, review-only direction; owner acceptance would decide whether it becomes an active plan.
 
 **Scope note:** proposed and review-only. `.project/PLAN.md` wins on scope and sequencing. (Filename keeps the original `netbird` slug; the decision dropped NetBird.)
 

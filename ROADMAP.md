@@ -19,7 +19,7 @@ Nothing else is open.
 
 No feature PRs are recorded in the facts.
 <!-- docsgen:end:roadmap -->
-> **Status:** Historical · **Verified:** 2026-09-26 · **Canonical for:** nothing (see `.project/PLAN.md`) · **Read this if:** you want the dated horizon record, not current direction · **Superseded by:** [`.project/PLAN.md`](./.project/PLAN.md) (current direction) and [`docs/TRUE-NORTH.md`](./docs/TRUE-NORTH.md) (principles; its scope is itself superseded by PLAN)
+> Status: Unclear: kept because `tests/test_docs.py` and `src/personal_world/scheduler.py` still reference `ROADMAP.md` by path; the live planning role is superseded by `.project/PLAN.md`, and the remaining schema dependency needs confirmation.
 
 **In short:** This is the old roadmap — a horizon record re-verified on 2026-09-17, before the `ui/` flip. It no longer describes how Worlds is built. Read `.project/PLAN.md` for what we are doing now.
 

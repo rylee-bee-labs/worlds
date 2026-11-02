@@ -1,6 +1,6 @@
 # ADR-0009: Rebuild Worlds on the Play-Nice semantic kernel
 
-**Status:** proposed  
+> Status: Unclear: `.project/PLAN.md` and `docs/vnext/inventory.md` retain this as a proposed experiment, while `.project/PLAN.md` says it is not an approved implementation sequence; owner approval or retirement would decide.
 **Date:** 2026-10-04  
 **Scope:** `rebuild/front-door`
 

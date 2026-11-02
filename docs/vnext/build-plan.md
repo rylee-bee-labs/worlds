@@ -1,11 +1,6 @@
 # Build plan — Worlds vnext / d-plan (PLAN ONLY)
 
-> **Status: PLAN ONLY. Nothing here is built.** This is a sequence for a human to execute, written
-> against a **MOCKUP** contract (`docs/vnext/connect-contract.md:3`) and two **DRAFT** proofs
-> (`docs/vnext/proof/c-proof.md:3`, `docs/vnext/proof/c-room0.md:3`). PLAN ≠ PROTOTYPE ≠ APPROVED,
-> and MOCKUP ≠ merged. No route in the contract's §3 exists, no field in its §2 is stored, and no
-> security test in its §4 or §5 has been written (`connect-contract.md:1022`–`:1024`). Every step
-> below is written in the tense that says so: **planned**, never done.
+> Status: Current (2026-11-02): docs/vnext/README.md names this as the bounded build sequence for the active vNext design lane; it remains PLAN ONLY, pending approval and execution.
 >
 > **Date:** 2026-10-15 · **Task:** d-plan · **Reads with:** `docs/vnext/connect-contract.md` (#329),
 > `docs/vnext/proof/c-proof.md`, `docs/vnext/proof/c-room0.md`, `docs/vnext/retire.md`.

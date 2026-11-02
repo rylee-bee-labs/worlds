@@ -1,5 +1,7 @@
 # personal-world backlog
 
+> Status: Historical (2026-11-02): `.project/CURRENT.md` identifies this as the October 7 issue census and directs readers to live GitHub issue state.
+
 This file is the tracking doc for work that was open in GitHub Issues and was closed as not planned on 2026-10-07, so the queue could reach zero without losing the backlog.
 The issue bodies themselves are not edited; every summary below is ours, written from the body as it stood.
 To restart an item, reopen the linked issue, or open a new one and delete its row here.

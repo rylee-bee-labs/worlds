@@ -23,7 +23,7 @@ are unchanged.)
 | [WHERE-WE-ARE.md](WHERE-WE-ARE.md) | **Plain words:** what Worlds is and where things stand today. Read this if you don't remember. |
 | [`.project/CURRENT.md`](../.project/CURRENT.md) | **For agents:** the canonical current-state entry point; routes to the canonical files. |
 | [vnext/docs-truth.md](vnext/docs-truth.md) | **The canonical pointer table:** which file owns each command or claim (routes, build, install, tests, backup) and which pages are superseded. Read it before hand-copying a list into a page. |
-| [BACKLOG.md](BACKLOG.md) | Current work carried after #262/#263 closed, newest entries first. |
+| [BACKLOG.md](history/BACKLOG.md) | Current work carried after #262/#263 closed, newest entries first. |
 | [ROOMS.md](ROOMS.md) | How Worlds finds, checks and shows rooms (Workshop, Studio, Engine room, Candy), and how to add one. |
 | [gallery/README.md](gallery/README.md) | Screenshots of every screen at 390 and 1440, from mock data. |
 | [docs/README.md](README.md) | Where truth lives: canonical source per subject, and the repo's layers. |
@@ -35,7 +35,7 @@ are unchanged.)
 | [history/ROADMAP-AND-TODO.md](history/ROADMAP-AND-TODO.md) | Owner-facing alpha-status snapshot, dated; links to the canonical roadmap. |
 | [PERSONAL-WORLD-FINISH-LINE.md](PERSONAL-WORLD-FINISH-LINE.md) | Target-experience detail where TRUE-NORTH is silent — superseded as direction (2026-09-22). |
 | [history/PERSONAL-WORLD-COMPLETION-PLAN.md](history/PERSONAL-WORLD-COMPLETION-PLAN.md) | Dated execution plan (v1, 2026-09-10): approved decisions, dependency-ordered phases P0–P14, acceptance criteria, model routing. Phase status predates the T15 cutover / Workshop v3 — verify against code. |
-| [p1/FOUNDATION-SPEC.md](p1/FOUNDATION-SPEC.md) | Historical (P1 complete) | Approved P1 implementation contract: sections API, primitive contracts, parity checklist, bounded tasks. Preserved for provenance. |
+| [p1/FOUNDATION-SPEC.md](history/p1/FOUNDATION-SPEC.md) | Historical (P1 complete) | Approved P1 implementation contract: sections API, primitive contracts, parity checklist, bounded tasks. Preserved for provenance. |
 | [AGENT_POLICY.md](../AGENT_POLICY.md) | Mandatory agent preflight and decision policy. |
 | [AGENT_CONTRACTS.md](../AGENT_CONTRACTS.md) | Canonical contract registry: applicability, authority, and exact entry points. |
 | [STATUS.md](../STATUS.md) | Retired current-state entry point; now a pointer to [`.project/CURRENT.md`](../.project/CURRENT.md). |
@@ -158,7 +158,7 @@ no status line (or was added since the sweep): add one.
 | [accessibility/SCREEN_READER_WALKTHROUGH.md](accessibility/SCREEN_READER_WALKTHROUGH.md) | you use a screen reader, or you are changing labels, landmarks or focus in `ui/` |
 | [accessibility/VOICEOVER_PASS.md](accessibility/VOICEOVER_PASS.md) | you are about to check Worlds with VoiceOver by hand, or you changed labels, focus or live regions |
 | [gallery/README.md](gallery/README.md) | you want to see Worlds without running it, or you are refreshing the pictures after a UI change |
-| [BACKLOG.md](BACKLOG.md) | you want the current work carried after #262/#263 closed |
+| [BACKLOG.md](history/BACKLOG.md) | you want the current work carried after #262/#263 closed |
 | [rebuild/DURABILITY.md](rebuild/DURABILITY.md) | you deploy, back up or restore Worlds |
 | [vnext/docs-truth.md](vnext/docs-truth.md) | a doc told you something the code no longer does, or you are about to hand-copy a command or route list |
 | [adr/0008-front-door.md](adr/0008-front-door.md) | you need the accepted architecture behind today's product: landmarks, Memory, the authority path |
@@ -259,7 +259,7 @@ no status line (or was added since the sweep): add one.
 | [history/MERGE-DOCS-RECEIPT.md](history/MERGE-DOCS-RECEIPT.md) | you need the 2026-09-13 merge/docs-refresh receipt and its screenshots manifest (superseded by `.project/CURRENT.md`.) |
 | [history/RECONCILIATION-RECEIPT.md](history/RECONCILIATION-RECEIPT.md) | you need the 2026-09-13 post-Connections issue-reconciliation record (superseded by `.project/CURRENT.md`.) |
 | [history/WIRING-COMPLETION-HANDOFF.md](history/WIRING-COMPLETION-HANDOFF.md) | you need the pre-merge 2026-09-13 handoff and its 10 open questions (superseded by `.project/CURRENT.md`.) |
-| [p1/FOUNDATION-SPEC.md](p1/FOUNDATION-SPEC.md) | you need the approved 2026-09-10 P1 frontend-foundation contract and its task list (superseded by `.project/CURRENT.md`.) |
+| [p1/FOUNDATION-SPEC.md](history/p1/FOUNDATION-SPEC.md) | you need the approved 2026-09-10 P1 frontend-foundation contract and its task list (superseded by `.project/CURRENT.md`.) |
 | [repo/REPOSITORY-INVENTORY.md](repo/REPOSITORY-INVENTORY.md) | you need the dated SHA `60823ae` inventory of the repo for provenance (superseded by the running code and `.project/CURRENT.md`.) |
 | [repo/WIRING-READINESS.md](repo/WIRING-READINESS.md) | you need the dated SHA `60823ae` GREEN/YELLOW/RED assessment for provenance (superseded by the running code and `.project/CURRENT.md`.) |
 | [surfaces/COHERENCE-DECISION-PREP.md](surfaces/COHERENCE-DECISION-PREP.md) | you want the dated pre-wiring decision prep behind the D1–D12 calls (superseded by `../repo/WIRING-READINESS.md` and the code) |
