@@ -1,6 +1,6 @@
 # Rebuild contracts C1–C5
 
-> **Status:** Accepted 2026-10-01 by orchestrator · **Date:** 2026-10-01 · **Canonical for:** the five contracts the front-door rebuild lanes build against · **Read this if:** you are working on any `rebuild/*` lane. Authority: [ADR-0008](../adr/0008-front-door.md). Baseline: `.project/PROPOSAL-FRONT-DOOR-2026-10-01.md`.
+> **Status:** Accepted 2026-10-01 by orchestrator · **Date:** 2026-10-01 · **Canonical for:** the five contracts the front-door rebuild lanes build against · **Read this if:** you are working on any `rebuild/*` lane. Authority: [ADR-0008](../adr/0008-front-door.md). Baseline: `docs/history/.project/PROPOSAL-FRONT-DOOR-2026-10-01.md`.
 
 **Stack (orchestrator decision):** Python 3 + FastAPI + uv; React + Vite + TypeScript + react-query. Package `personal_world`, env prefix `PW_`, image name and `/healthz` `commit` are kept. On `rebuild/front-door`, obsolete modules are deleted, not adapted.
 

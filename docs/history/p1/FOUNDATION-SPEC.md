@@ -1,10 +1,10 @@
 # P1 — Frontend Foundation Spec
 
-> **Status:** Historical · **Verified:** 2026-09-26 · **Canonical for:** nothing (see `.project/CURRENT.md`) · **Read this if:** you need the approved 2026-09-10 P1 frontend-foundation contract and its task list. · **Superseded by:** `.project/CURRENT.md`.
+> Status: Historical (2026-11-02): docs/repo/REPOSITORY-INVENTORY.md records P1 complete, and this spec describes the replaced pre-2026-09-22 frontend tree.
 
 **In short:** the approved 2026-09-10 implementation contract for the P1 frontend foundation (sections API, motion vocabulary, token generation, primitive contracts, parity gates). Kept for provenance; it describes the pre-2026-09-22 `frontend/` tree, which has since been replaced by `ui/` and the retired server-rendered Station (now a theme package).
 
-**Parent:** [`../history/PERSONAL-WORLD-COMPLETION-PLAN.md`](../history/PERSONAL-WORLD-COMPLETION-PLAN.md) Phase P1.
+**Parent:** [`../history/PERSONAL-WORLD-COMPLETION-PLAN.md`](../PERSONAL-WORLD-COMPLETION-PLAN.md) Phase P1.
 **Gate:** P1 implementation does not start until the owner confirms P0.1
 credential rotation, `main` is pushed, and CI is green for that exact SHA.
 

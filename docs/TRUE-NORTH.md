@@ -2,7 +2,7 @@
 
 > **Superseded in part by [ADR-0008](adr/0008-front-door.md) (2026-10-01):** its scope, the core-four navigation and Chat in the core are superseded (S1, S3). Accuracy and accessibility principles still hold.
 
-> **Status:** Direction · **Verified:** 2026-09-26 · **Canonical for:** vision, the five commitments, and the accuracy and accessibility principles · **Read this if:** you need *why* Worlds is designed this way; for *what we are building now* read [`.project/PLAN.md`](../.project/PLAN.md) first
+> Status: Current (2026-11-02): `.project/PLAN.md` supersedes its scope and sequencing while this remains the cited source for vision and accuracy/accessibility principles.
 
 **In short:** This is the owner-approved direction: the vision, the five commitments (fast · flexible · warm · polite · accessible by default), the daily home loop, and the alpha gates. Its **scope and sequencing are superseded by `.project/PLAN.md`** (owner-approved 2026-09-25) — where they conflict on scope or order, PLAN wins. The accuracy and accessibility principles here still hold.
 

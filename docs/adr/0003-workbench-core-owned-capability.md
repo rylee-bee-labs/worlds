@@ -1,6 +1,6 @@
 # ADR-0003: The Workbench is a core-owned capability (attach-existing, broker-scoped)
 
-> **Status:** Direction · **Verified:** 2026-09-26 · **Canonical for:** the Workbench direction (proposed, review-only) · **Read this if:** you are touching workbench/terminal/exec/preview work.
+> Status: Unclear: AGENT_CONTRACTS.md keeps this as proposed, review-only direction; owner acceptance would decide whether it becomes an active plan.
 
 **Scope note:** proposed and review-only. `.project/PLAN.md` wins on scope and sequencing; this record owns only the decision below.
 

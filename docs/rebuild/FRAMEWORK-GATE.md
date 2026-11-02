@@ -1,7 +1,7 @@
 # Framework gate: old rules → new rules (ADR-0008)
 
 > **Status:** Accepted 2026-10-01 · **Canonical for:** the mapping from the retired ADR-0001 framework rules to the front-door `personal-world framework validate` gate · **Read this if:** you are changing `src/personal_world/framework.py`, `tests/test_framework.py`, the `framework-gates` CI job, or wondering why an old rule is gone.
-> **Authority:** [ADR-0008](../adr/0008-front-door.md) (decision 3 retires the capability registry for front-door providers) · **Baseline:** `.project/PROPOSAL-FRONT-DOOR-2026-10-01.md` (S6).
+> **Authority:** [ADR-0008](../adr/0008-front-door.md) (decision 3 retires the capability registry for front-door providers) · **Baseline:** `docs/history/.project/PROPOSAL-FRONT-DOOR-2026-10-01.md` (S6).
 
 **In short:** after ADR-0008 the gate validates the *new* product (C1 config, recipes, the zero-provider baseline, compose additivity, Memory exports) instead of the ADR-0001 capability registry. The CLI verb, the JSON envelope and the exit-code semantics are unchanged; only the rule names and the objects they inspect change.
 

@@ -1,6 +1,6 @@
 # ADR-0006: One task/event envelope = the journal event shape (transport-agnostic)
 
-> **Status:** Direction · **Verified:** 2026-09-26 · **Canonical for:** the task/event envelope direction (proposed, review-only) · **Read this if:** you are designing how Workbench tasks and Agent operations record events.
+> Status: Unclear: AGENT_CONTRACTS.md keeps this as proposed, review-only direction; owner acceptance would decide whether it becomes an active plan.
 
 **Scope note:** proposed and review-only. `.project/PLAN.md` wins on scope and sequencing.
 

@@ -1,5 +1,7 @@
 # Play-Nice kernel rebuild plan
 
+> Status: Unclear: `.project/PLAN.md` and `docs/vnext/inventory.md` still link this as a proposed experiment, while `.project/PLAN.md` explicitly says it is not an approved implementation sequence; owner decision on retaining or authorizing it would decide.
+
 **Target:** `rebuild/front-door`  
 **Decision:** [ADR-0009](../adr/0009-play-nice-semantic-kernel.md)  
 **Mode:** deletion-first fresh-ground rebuild

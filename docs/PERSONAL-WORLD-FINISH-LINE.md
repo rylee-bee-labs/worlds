@@ -1,6 +1,6 @@
 # Worlds — Finish Line
 
-> **Status:** Direction · **Verified:** 2026-09-26 · **Canonical for:** the target-experience detail where [`TRUE-NORTH.md`](./TRUE-NORTH.md) is silent · **Read this if:** you are planning toward "finished enough to live in every day" and need the experience-level target.
+> Status: Current (2026-11-02): docs/README.md and docs/INDEX.md still route to this for target-experience detail where TRUE-NORTH is silent; `.project/PLAN.md` owns scope and sequencing.
 
 **In short:** what "finished enough to live in every day" means, at the
 level of the experience rather than the code. It is direction, not a

@@ -69,7 +69,7 @@ Companion docs:
 | `docs/MERGE-DOCS-RECEIPT.md` | Historical, orphan | Moved → `docs/history/` |
 | `docs/WIRING-COMPLETION-HANDOFF.md` | Historical, superseded | Moved → `docs/history/` |
 | `docs/API-WIRING-HANDOFF.md` | Historical, superseded | Moved → `docs/history/` |
-| `docs/p1/FOUNDATION-SPEC.md` | Historical (P1 complete) | Kept in place; reclassified in `docs/INDEX.md` |
+| `docs/history/p1/FOUNDATION-SPEC.md` | Historical (P1 complete) | Kept in place; reclassified in `docs/INDEX.md` |
 | `docs/surfaces/COHERENCE-DECISION-PREP.md` | Historical decision prep | Kept; classified historical in index |
 | `.project/HANDOFF-FRESHNESS-EVIDENCE-2026-09-12.md` | Historical evidence | Flagged; left in place (durable-context layer convention) |
 | `.project/attestations/*.json` | One-time attestations | Kept (provenance) |

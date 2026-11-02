@@ -1,6 +1,6 @@
 # ADR-0004: Node & Agent capability model (the Agent is the enabler, not the product)
 
-> **Status:** Direction · **Verified:** 2026-09-26 · **Canonical for:** the Node/Agent vocabulary and boundary (proposed, review-only) · **Read this if:** you are working on Nodes, remote machines, or the Worlds Agent.
+> Status: Unclear: AGENT_CONTRACTS.md keeps this as proposed, review-only direction; owner acceptance would decide whether it becomes an active plan.
 
 **Scope note:** proposed and review-only. `.project/PLAN.md` wins on scope and sequencing.
 

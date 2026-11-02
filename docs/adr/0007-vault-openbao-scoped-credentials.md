@@ -1,6 +1,6 @@
 # ADR-0007: Secrets = Worlds Vault → OpenBao → scoped temporary credential
 
-> **Status:** Direction · **Verified:** 2026-09-26 · **Canonical for:** the brokered-secrets direction (accepted 2026-09-29; migration plan pending) · **Read this if:** you are touching Vault, SOPS/OpenBao, or how tasks receive credentials.
+> Status: Current (2026-11-02): this decision was accepted 2026-09-29 and its migration remains pending; no later decision replaces it.
 
 **Scope note:** accepted 2026-09-29 (was review-only); the migration plan is still pending. `.project/PLAN.md` wins on scope and sequencing.
 

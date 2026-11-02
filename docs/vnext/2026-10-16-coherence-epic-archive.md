@@ -11,7 +11,7 @@
 > **LATEST OWNER DIRECTION · 2026-10-13:** Cleanup remains first, **and** Worlds vNext now explicitly includes a **new visual design [#322](https://github.com/rylee-bee-labs/worlds/issues/322)** plus a **new Connect API [#323](https://github.com/rylee-bee-labs/worlds/issues/323)** in the same gated campaign under [#321](https://github.com/rylee-bee-labs/worlds/issues/321). Earlier “design on hold” statements are superseded. No implementation of unapproved mockups, API trust changes or deployment; first preserve and clean, then design/contract gates, then build.
 
 ## Why
-2026-10-13 **Worlds coherence and readiness audit**. The front door (Home · Connect · Memory · Settings) is **source merged to main** (PR #277, 2026-10-06); actual deployed runtime revision remains **UNKNOWN** without private `/healthz` proof. GitHub open issue queue was empty at discovery because 2026-10-07 retirement moved unfinished work to `docs/BACKLOG.md`. Optimize existing capabilities and historical work rather than building a third experience.
+2026-10-13 **Worlds coherence and readiness audit**. The front door (Home · Connect · Memory · Settings) is **source merged to main** (PR #277, 2026-10-06); actual deployed runtime revision remains **UNKNOWN** without private `/healthz` proof. GitHub open issue queue was empty at discovery because 2026-10-07 retirement moved unfinished work to `docs/history/BACKLOG.md`. Optimize existing capabilities and historical work rather than building a third experience.
 
 ## Verified source facts
 - `src/personal_world/worlds/production.py` assembles owner auth, action dispatcher, Memory, room/0, Companion proxy, Connect and static front door.

@@ -1,4 +1,4 @@
-"""P1 T1: section registry + per-person layout (docs/p1/FOUNDATION-SPEC.md §2).
+"""P1 T1: section registry + per-person layout (docs/history/p1/FOUNDATION-SPEC.md §2).
 
 - registry defaults are tracked code; the owner's order/hidden live in
   their own world.json (world-classified, never settings-export)

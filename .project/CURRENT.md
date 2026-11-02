@@ -52,7 +52,7 @@ Do not retire source without consumer and rollback proof. Its 2026-10-07 closure
 
 [#263](https://github.com/rylee-bee-labs/worlds/issues/263) remains
 closed as `not_planned`; the rebuild-to-`main` merge overtook much of its earlier
-scope. The October 7 [BACKLOG](../docs/BACKLOG.md) is a **historical census**, not
+scope. The October 7 [BACKLOG](../docs/history/BACKLOG.md) is a **historical census**, not
 a current issue list. The [vNext crosswalk](../docs/vnext/2026-10-16-issue-crosswalk.md)
 records the preserved obligations of the superseded #312 epic. Follow linked
 GitHub issues and evidence for current acceptance; no routine session handoff is
@@ -83,7 +83,7 @@ deploy of `main` is not (decisions in force, entry 11).
 | durability | `docs/rebuild/DURABILITY.md` |
 | product direction | `.project/PLAN.md` |
 | durable decisions | `.project/DECISIONS.md` + `docs/adr/` |
-| current work | GitHub Issues + `docs/BACKLOG.md` |
+| current work | GitHub Issues + `docs/history/BACKLOG.md` |
 | security/public boundary | `SECURITY.md` |
 | accessibility | `docs/accessibility/ACCESSIBILITY_CONTRACT.md` |
 | agent rules | `AGENT_POLICY.md` + `AGENT_CONTRACTS.md` + `AGENTS.md` |
@@ -103,6 +103,6 @@ git log --oneline --decorate -12 origin/main
 gh issue list --repo rylee-bee-labs/personal-world --state open
 ```
 
-Then read [docs/BACKLOG.md](../docs/BACKLOG.md) and the current code.
+Then read [docs/history/BACKLOG.md](../docs/history/BACKLOG.md) and the current code.
 
 If evidence is missing, say **UNKNOWN**.

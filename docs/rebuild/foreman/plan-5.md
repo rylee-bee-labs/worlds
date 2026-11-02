@@ -1,5 +1,7 @@
 # Plan: L-recipes content (sanitized service recipes)
 
+> Status: Unclear: T10 is still marked planned in this file, while current state lists the recipe model as landed; completion of every planned recipe packet would decide.
+
 Goal: draft the recipe files and sample responses for the homelab services. You do NOT write files yourself: workers do, via `offload`. Your job is to dispatch, verify, and report honestly.
 
 ## Tasks

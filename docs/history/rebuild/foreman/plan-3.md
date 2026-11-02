@@ -1,5 +1,7 @@
 # Plan: L-experience slice 2 (Connect, Memory and Settings skeletons)
 
+> Status: Done (2026-11-02): `.project/CURRENT.md` reports the front-door rebuild merged in PR #277 and lists Connect, Memory and Settings among its landed paths.
+
 Goal: build three skeleton screens. You do NOT write code yourself: workers do, via `offload`. Your job is to dispatch, verify, and report honestly.
 
 ## Tasks
