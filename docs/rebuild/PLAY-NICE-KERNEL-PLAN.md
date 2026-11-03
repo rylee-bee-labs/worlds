@@ -1,6 +1,6 @@
 # Play-Nice kernel rebuild plan
 
-> Status: Unclear: `.project/PLAN.md` and `docs/vnext/inventory.md` still link this as a proposed experiment, while `.project/PLAN.md` explicitly says it is not an approved implementation sequence; owner decision on retaining or authorizing it would decide.
+> Status: not pursued (2026-11-02): the build lane is dropped; the document is kept as the cited rationale for the smaller machine model. Rylee approved all four recommendations (Project Home decision 391).
 
 **Target:** `rebuild/front-door`  
 **Decision:** [ADR-0009](../adr/0009-play-nice-semantic-kernel.md)  
