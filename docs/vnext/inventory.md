@@ -14,6 +14,7 @@
 - 2026-10-13 issue #321: "The current implementation is evidence and optional reusable code, not a mandatory design or API structure." and "Preserve legacy code until dependency/rollback evidence allows removal."
 
 Related standing records: [ADR-0008](../adr/0008-front-door.md) (front door; the capability registry is retired for front-door providers), [ADR-0001](../adr/0001-capabilities-core-owned-providers-optional.md) (capabilities core-owned; amended by 0008), [ADR-0009](../adr/0009-play-nice-semantic-kernel.md) and the [kernel plan](../rebuild/PLAY-NICE-KERNEL-PLAN.md) (deletion-first rebuild; Phase 0 is this inventory), [CONTRACTS.md](../rebuild/CONTRACTS.md) (C1–C9).
+The kernel plan's build lane was dropped by Project Home decision 391 (2026-11-02): it is not pursued as an experiment, and is kept as the cited rationale for the smaller machine model.
 
 ## How the classes are used here
 
